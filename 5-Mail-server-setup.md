@@ -1,7 +1,8 @@
 # Setting Mail server in Ubuntu 22
 
-Tutorials
+## Resources followed
 
+- [A Step-by-Step Guide to Installing OpenDKIM with Postfix on Ubuntu](https://tecadmin.net/setup-dkim-with-postfix-on-ubuntu-debian/)
 - [How To Install and Configure Postfix as a Send-Only SMTP Server on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-as-a-send-only-smtp-server-on-ubuntu-22-04)
 - [How email works (MTA, MDA, MUA)](https://www.idc-online.com/technical_references/pdfs/data_communications/How_email_works_Mta_Mda_Mua.pdf)
 - [Setup MAIL Server - Postfix (SMTP) - Dovecot (POP3/IMAP) - Mutt (Email Client) - Ubuntu](https://www.youtube.com/watch?v=ruD9bul7vDo)

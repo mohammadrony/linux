@@ -1,6 +1,6 @@
 # Linux-configuration
 
-Guideline to configure following environment:
+Steps to configure the following environment:
 
 - [NAT and Host-only network setup in Ubuntu 22](./1-Ubuntu-22-networking.md)
 - [Setup Python virtual environment for development](./2-Python-venv-setup.md)
