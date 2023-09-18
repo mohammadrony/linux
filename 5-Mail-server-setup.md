@@ -2,6 +2,7 @@
 
 Tutorials
 
+- [How To Install and Configure Postfix as a Send-Only SMTP Server on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-as-a-send-only-smtp-server-on-ubuntu-22-04)
 - [Setup MAIL Server - Postfix (SMTP) - Dovecot (POP3/IMAP) - Mutt (Email Client) - Ubuntu](https://www.youtube.com/watch?v=ruD9bul7vDo)
 - [Setup Mail Server on Linux with Multiple domain names](https://www.youtube.com/watch?v=Jlaq2fiSO9A)
 - [Postfix SMTP, Dovecot POP IMAP and SSL/TLS](https://www.youtube.com/watch?v=XqLgbn1NXTg)
