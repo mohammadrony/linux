@@ -12,7 +12,7 @@
 
 ### Buy a new Domain
 
-Goto any domain registrar and select your favorite 
+Goto any domain registrar and select your favorite
 
 ### Domain record setup
 
@@ -93,7 +93,7 @@ smtpd_tls_received_header = yes
 smtpd_tls_CAfile = /etc/ssl/certs/cacert.pem
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
-smtpd_sasl_local_domain = 
+smtpd_sasl_local_domain =
 smtpd_sasl_security_options = noanonymous,noplaintext
 smtpd_sasl_tls_security_options = noanonymous
 broken_sasl_auth_clients = yes
@@ -159,7 +159,7 @@ doveconf -n
 
 ```bash
 cd /etc/skel
-sudo mkdir -p Maildir/{cur,new,tmp} 
+sudo mkdir -p Maildir/{cur,new,tmp}
 ```
 
 ```bash
@@ -294,7 +294,7 @@ sudo chmod 700 -R /etc/skel
 ```bash
 sudo adduser --gecos "" user1
 sudo adduser --gecos "" user2
-``` 
+```
 
 ## SSL certificate setup
 

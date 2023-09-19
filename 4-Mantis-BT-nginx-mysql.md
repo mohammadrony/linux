@@ -18,7 +18,7 @@ reboot now
 
 ```bash
 sudo apt install -y wget vim unzip software-properties-common ca-certificates \
- lsb-release apt-transport-https 
+ lsb-release apt-transport-https
 sudo apt install -y nginx
 ```
 
@@ -100,7 +100,7 @@ sudo apt -y update
 ### Install PHP
 
 ```bash
-sudo apt install -y php 
+sudo apt install -y php
 sudo apt install -y php-fpm php-ldap php-soap php-gd php-curl php-mysqli \
  php-mbstring
 ```
@@ -150,7 +150,7 @@ server {
   root   /var/www/mantis;
   index  index.php index.html index.htm;
   server_name  mantis.example.com;
-  
+ 
   access_log /var/log/nginx/mantis.com.access.log;
   error_log /var/log/nginx/mantis.com.error.log;
 

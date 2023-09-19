@@ -8,7 +8,7 @@ Article: <https://thishosting.rocks/how-to-install-mantisbt-on-ubuntu/>
 ### Install base packages
 
 ```bash
-sudo apt-get install -y wget unzip nano software-properties-common ca-certificates lsb-release apt-transport-https 
+sudo apt-get install -y wget unzip nano software-properties-common ca-certificates lsb-release apt-transport-https
 sudo apt-get install -y apache2
 ```
 
