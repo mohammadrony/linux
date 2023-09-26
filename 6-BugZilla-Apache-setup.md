@@ -1,4 +1,6 @@
-# Setup BugZilla with Apache server in Ubuntu 22
+# Setup Bugzilla with Apache server in Ubuntu 22
+
+Installation guide: <https://bugzilla.readthedocs.io/en/latest/installing/quick-start.html>
 
 ## Initial server setup
 
@@ -7,7 +9,8 @@
 ```bash
 sudo apt -y update; sudo apt -y upgrade
 sudo echo 'dev.dsinnovators.com' > /etc/hostname
-sudo sed -i 's/\(127.0.0.1\).*/\1 dev.dsinnovators.com/' /etc/hosts
+sudo sed -i 's/\(127.0.0.1\).*/\1 localhost/' /etc/hosts
+sudo sed -i '/^127.0.0.1 localhost/a 127.0.0.1 dev.dsinnovators.com' /etc/hosts
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
@@ -15,7 +18,7 @@ sudo reboot now
 ### Install pre-requisites packages
 
 ```bash
-sudo apt install -y git nano
+sudo apt install -y git
 ```
 
 ## Setup Apache server
@@ -23,7 +26,23 @@ sudo apt install -y git nano
 ### Install required packages
 
 ```bash
-sudo apt install -y apache2 build-essential mariadb-server libcgi-pm-perl libdigest-sha-perl libtimedate-perl libdatetime-perl libdatetime-timezone-perl libdbi-perl libdbix-connector-perl libtemplate-perl libemail-address-perl libemail-sender-perl libemail-mime-perl liburi-perl liblist-moreutils-perl libmath-random-isaac-perl libjson-xs-perl libgd-perl libchart-perl libtemplate-plugin-gd-perl libgd-text-perl libgd-graph-perl libmime-tools-perl libwww-perl libxml-twig-perl libnet-ldap-perl libauthen-sasl-perl libnet-smtp-ssl-perl libauthen-radius-perl libsoap-lite-perl libxmlrpc-lite-perl libjson-rpc-perl libtest-taint-perl libhtml-parser-perl libhtml-scrubber-perl libencode-perl libencode-detect-perl libemail-reply-perl libhtml-formattext-withlinks-perl libtheschwartz-perl libdaemon-generic-perl libapache2-mod-perl2 libapache2-mod-perl2-dev libfile-mimeinfo-perl libio-stringy-perl libcache-memcached-perl libfile-copy-recursive-perl libfile-which-perl libdbd-mysql-perl perlmagick lynx graphviz python3-sphinx rst2pdf
+sudo apt install -y apache2 build-essential mariadb-server libcgi-pm-perl libdigest-sha-perl libtimedate-perl libdatetime-perl \
+  libdatetime-timezone-perl libdbi-perl libdbix-connector-perl libtemplate-perl libemail-address-perl libemail-sender-perl \
+  libemail-mime-perl liburi-perl liblist-moreutils-perl libmath-random-isaac-perl libjson-xs-perl libgd-perl libchart-perl \
+  libtemplate-plugin-gd-perl libgd-text-perl libgd-graph-perl libmime-tools-perl libwww-perl libxml-twig-perl libnet-ldap-perl \
+  libauthen-sasl-perl libnet-smtp-ssl-perl libauthen-radius-perl libsoap-lite-perl libxmlrpc-lite-perl libjson-rpc-perl \
+  libtest-taint-perl libhtml-parser-perl libhtml-scrubber-perl libencode-perl libencode-detect-perl libemail-reply-perl \
+  libhtml-formattext-withlinks-perl libtheschwartz-perl libdaemon-generic-perl libapache2-mod-perl2 libapache2-mod-perl2-dev \
+  libfile-mimeinfo-perl libio-stringy-perl libcache-memcached-perl libfile-copy-recursive-perl libfile-which-perl \
+  libdbd-mysql-perl perlmagick lynx graphviz python3-sphinx rst2pdf
+```
+
+### Add firewall rule
+
+```bash
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw reload
 ```
 
 ### Configure Apache
@@ -31,18 +50,16 @@ sudo apt install -y apache2 build-essential mariadb-server libcgi-pm-perl libdig
 ```bash
 sudo vi /etc/apache2/sites-available/bugzilla.conf
 
-# Or
+# Add
 <VirtualHost *:443>
     ServerName dev.dsinnovators.com
-    ServerAlias 178.128.113.15
 
     DocumentRoot /var/www/webapps/bugzilla
 
     Alias /bugzilla /var/www/webapps/bugzilla
-
     <Directory /var/www/webapps/bugzilla>
-      Options +ExecCGI
       AddHandler cgi-script .cgi
+      Options +ExecCGI
       DirectoryIndex index.cgi index.html
       AllowOverride All
     </Directory>
@@ -57,6 +74,7 @@ sudo vi /etc/apache2/sites-available/bugzilla.conf
 ```bash
 sudo a2ensite bugzilla
 sudo a2enmod cgi headers expires rewrite
+sudo apachectl configtest
 sudo systemctl restart apache2
 ```
 
@@ -72,7 +90,7 @@ max_allowed_packet=100M
 ft_min_word_len=2
 ```
 
-### Create database for BugZilla
+### Create database for Bugzilla
 
 ```bash
 db_pass='1234bz5678'
@@ -86,9 +104,9 @@ sudo mysql -u root -e "GRANT ALL PRIVILEGES ON bugs.* TO bugs@localhost IDENTIFI
 sudo systemctl restart mariadb
 ```
 
-## Setup BugZilla application
+## Setup Bugzilla application
 
-### Download BugZilla
+### Download Bugzilla
 
 ```bash
 sudo mkdir -p /var/www/webapps
@@ -122,7 +140,7 @@ sudo ./checksetup.pl
 
 # User credentials
 Admin-email: ashadous.jaman@dsinnovators.com
-Admin-pass: bugzilla
+Admin-pass: LSafAMIOftedpaQ1btYC
 ```
 
 ## Setup Certbot
@@ -140,7 +158,6 @@ sudo certbot --apache
 > ashadous.jaman@dsinnovators.com
 > y
 > n
-> 1
 ```
 
 ### Verify Certbot auto renewal
@@ -152,8 +169,10 @@ sudo certbot renew --dry-run
 
 ## Browser application from browser
 
-- Visit [DSi BugZilla Website](https://dev.dsinnovators.com/bugzilla) from your browser.
-- Goto [Bugzilla – Configuration: Required Settings](https://dev.dsinnovators.com/bugzilla/editparams.cgi) > Selct 'On' for ssl_redirect > Save Changes.
-- Goto [Bugzilla – Configuration: Email](https://dev.dsinnovators.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: SMTP` > Select `mailfrom: rony@dev.dsinnovators.com` > Select `smtp_username: rony` > Select `smtp_password: pass` > Select `smtp_ssl: Off`
+- Visit [DSi Bugzilla Website](https://dev.dsinnovators.com/bugzilla) from the browser.
+- Visit [Bugzilla – Configuration: Required Settings](https://dev.dsinnovators.com/bugzilla/editparams.cgi) > Add `urlbase: https://dev.dsinnovators.com/bugzilla/` > Selct `On` for `ssl_redirect` > Add `sslbase: https://dev.dsinnovators.com/bugzilla/` > Add `cookiepath: /bugzilla/` > Save Changes.
+- Visit [Bugzilla – Configuration: Email](https://dev.dsinnovators.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: Sendmail` > Update `mailfrom: Bugzilla | DSi<bugzilla@dev.dsinnovators.com>` > Save Changes.
+
+Follow [Bugzilla Documentation](https://bugzilla.readthedocs.io/en/latest/index.html) for more information.
 
 Thank you.
