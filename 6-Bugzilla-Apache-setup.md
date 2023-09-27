@@ -9,8 +9,7 @@ Installation guide: <https://bugzilla.readthedocs.io/en/latest/installing/quick-
 ```bash
 sudo apt -y update; sudo apt -y upgrade
 sudo echo 'dev.dsinnovators.com' > /etc/hostname
-sudo sed -i 's/\(127.0.0.1\).*/\1 localhost/' /etc/hosts
-sudo sed -i '/^127.0.0.1 localhost/a 127.0.0.1 dev.dsinnovators.com' /etc/hosts
+sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tdev.dsinnovators.com' /etc/hosts
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
@@ -48,13 +47,15 @@ sudo ufw reload
 ### Configure Apache
 
 ```bash
+sudo rm /etc/apache2/sites-enabled/000-default.conf
 sudo vi /etc/apache2/sites-available/bugzilla.conf
 
 # Add
-<VirtualHost *:443>
+<VirtualHost *:80>
     ServerName dev.dsinnovators.com
 
-    DocumentRoot /var/www/webapps/bugzilla
+    RedirectMatch ^/$ /bugzilla/
+    #DocumentRoot /var/www/webapps/bugzilla
 
     Alias /bugzilla /var/www/webapps/bugzilla
     <Directory /var/www/webapps/bugzilla>
@@ -64,17 +65,17 @@ sudo vi /etc/apache2/sites-available/bugzilla.conf
       AllowOverride All
     </Directory>
 
-    ErrorLog /var/log/apache2/bugzilla-https-error.log
-    CustomLog /var/log/apache2/bugzilla-https-access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/bugzilla-error.log
+    CustomLog ${APACHE_LOG_DIR}/bugzilla-access.log combined
 </VirtualHost>
 ```
 
 ### Service restart
 
 ```bash
+sudo apachectl configtest
 sudo a2ensite bugzilla
 sudo a2enmod cgi headers expires rewrite
-sudo apachectl configtest
 sudo systemctl restart apache2
 ```
 
