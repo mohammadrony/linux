@@ -18,17 +18,17 @@ Goto any domain registrar and select your favorite
 
 Required entries in the DNS record
 
---------------------------------------------------------------------------------------------------------------------
-| Type  | Name            | Content                                                                    | TTL value |
-|-------|-----------------|----------------------------------------------------------------------------|-----------|
-| A     | mail            | 178.128.113.15                                                             | Auto      |
-| MX    | @               | dev.example.com                                                       | Auto      |
-| TXT   | @               | `v=spf1 a mx ~all`                                                         | Auto      |
-| TXT   | dkim._domainkey | "v=DKIM1; h=sha256; k=rsa; p=Encrypted_key"                                | Auto      |
-| TXT   | _dmarc          | "v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:<someone@example.com>"  | Auto      |
-| CNAME | autodiscover    | dev.example.com                                                       | Auto      |
-| CNAME | autoconfig      | dev.example.com                                                       | Auto      |
---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+| Type  | Name            | Content                                                                     | TTL value |
+|-------|-----------------|-----------------------------------------------------------------------------|-----------|
+| A     | mail            | mail.server.ip.address                                                      | Auto      |
+| MX    | @               | dev.example.com                                                             | Auto      |
+| TXT   | @               | `v=spf1 a mx ~all`                                                          | Auto      |
+| TXT   | dkim._domainkey | "v=DKIM1; h=sha256; k=rsa; p=Encrypted_key"                                 | Auto      |
+| TXT   | _dmarc          | "v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:<someone@example.com>" | Auto      |
+| CNAME | autodiscover    | dev.example.com                                                             | Auto      |
+| CNAME | autoconfig      | dev.example.com                                                             | Auto      |
+---------------------------------------------------------------------------------------------------------------------
 
 *Low value in priority means higher the priority.*
 
