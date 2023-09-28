@@ -43,8 +43,10 @@ sudo mysql_secure_installation
 
 Prompt response:
 
+```text
 - Password: <Enter>
 - Press 'n' to every configuration.
+```
 
 ### Setup database authentication
 
@@ -114,18 +116,18 @@ cd /etc/apache2/sites-available
 sudo mv 000-default.conf 000-default.conf.txt
 sudo cat > mantisbt.conf << EOF
 <VirtualHost *:80>
-    ServerAdmin contact@mantisbt.local
-    DocumentRoot "/var/www/html"
     ServerName mantisbt.local
-    ServerAlias www.mantisbt.local
+    DocumentRoot "/var/www/html"
+
+    <Directory "/var/www/html/">
+        DirectoryIndex index.php index.html
+        Options FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
     ErrorLog "/var/log/apache2/mantis-error_log"
     CustomLog "/var/log/apache2/mantis-access_log" combined
-        <Directory "/var/www/html/">
-            DirectoryIndex index.php index.html
-            Options FollowSymLinks
-            AllowOverride All
-            Require all granted
-        </Directory>
 </VirtualHost>
 EOF
 sudo a2ensite mantisbt.conf

@@ -1,27 +1,4 @@
-# Update PostgreSQL database in a Private VPN Server
-
-## Connect to private server with VPN
-
-### Install OpenVPN package
-
-```bash
-sudo apt install -y openvpn
-```
-
-### Connect to the VPN
-
-```bash
-sudo openvpn --config ~/ssl_vpn_config.ovpn
-Username: <username>
-Password: <password>
-```
-
-### Another session for private server
-
-```bash
-ssh -R 1080 root@<ip-address>
-password: <password>
-```
+# Update PostgreSQL cluster version
 
 ## Upgrade Postgresql database
 

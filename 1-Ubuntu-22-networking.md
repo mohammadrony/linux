@@ -6,7 +6,7 @@ Got your VM's Network Settings > Select Adapter 1 as 'NAT' > Adapter 2 as 'Host-
 
 ## Update network configuration
 
-```
+```bash
 sudo cat > /etc/netplan/00-installer-config.yaml << EOF
 network:
   version: 2

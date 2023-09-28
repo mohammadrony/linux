@@ -22,12 +22,12 @@ Required entries in the DNS record
 | Type  | Name            | Content                                                                    | TTL value |
 |-------|-----------------|----------------------------------------------------------------------------|-----------|
 | A     | mail            | 178.128.113.15                                                             | Auto      |
-| MX    | @               | dev.dsinnovators.com                                                       | Auto      |
+| MX    | @               | dev.example.com                                                       | Auto      |
 | TXT   | @               | `v=spf1 a mx ~all`                                                         | Auto      |
 | TXT   | dkim._domainkey | "v=DKIM1; h=sha256; k=rsa; p=Encrypted_key"                                | Auto      |
-| TXT   | _dmarc          | "v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:someone@example.com"  | Auto      |
-| CNAME | autodiscover    | dev.dsinnovators.com                                                       | Auto      |
-| CNAME | autoconfig      | dev.dsinnovators.com                                                       | Auto      |
+| TXT   | _dmarc          | "v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:<someone@example.com>"  | Auto      |
+| CNAME | autodiscover    | dev.example.com                                                       | Auto      |
+| CNAME | autoconfig      | dev.example.com                                                       | Auto      |
 --------------------------------------------------------------------------------------------------------------------
 
 *Low value in priority means higher the priority.*
@@ -38,8 +38,9 @@ Required entries in the DNS record
 
 ```bash
 sudo apt -y update; sudo apt -y upgrade
-sudo echo '<your.domain.com>' > /etc/hostname
-sudo sed -i 's/\(127.0.0.1\).*/\1 <your.domain.com>/' /etc/hosts
+sudo echo 'dev.example.com' > /etc/hostname
+sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tdev.example.com' /etc/hosts
+sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
 
@@ -55,11 +56,10 @@ sudo ufw enable
 
 ## Setup Mail Transfer Agent
 
-### Install required packages
+### Install sending mail packages
 
 ```bash
 sudo apt install -y mailutils
-sudo apt install -y postfix
 ```
 
 ### Update Postfix configuration
@@ -67,9 +67,9 @@ sudo apt install -y postfix
 ```bash
 sudo dpkg-reconfigure postfix
 > Internet Site
-> System mail name: <mail.domain.com>
+> System mail name: <mail.example.com>
 > Recipient for root: <enter>
-> Other destinations to accept mail: <mail.domain.com>, localhost.<domain.com>, <domain.com>
+> Other destinations to accept mail: <mail.example.com>, localhost.<example.com>, <example.com>
 > Force synchronous updates: <No>
 > Local networks: 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 > Mailbox size limit: 0
@@ -111,7 +111,7 @@ telnet gmail-smtp-in.l.google.com 25
 
 ## Setup Mail Delivery Agent
 
-### Install required packages
+### Install dovecot packages
 
 ```bash
 sudo apt install -y dovecot-imapd dovecot-pop3d dovecot-core
@@ -148,6 +148,7 @@ sudo vi /etc/dovecot/dovecot.conf
 # Update
 listen = *, ::
 ```
+
 ### Reload Dovecot
 
 ```bash

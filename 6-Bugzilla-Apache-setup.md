@@ -8,8 +8,8 @@ Installation guide: <https://bugzilla.readthedocs.io/en/latest/installing/quick-
 
 ```bash
 sudo apt -y update; sudo apt -y upgrade
-sudo echo 'dev.dsinnovators.com' > /etc/hostname
-sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tdev.dsinnovators.com' /etc/hosts
+sudo echo 'dev.example.com' > /etc/hostname
+sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tdev.example.com' /etc/hosts
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
@@ -52,7 +52,7 @@ sudo vi /etc/apache2/sites-available/bugzilla.conf
 
 # Add
 <VirtualHost *:80>
-    ServerName dev.dsinnovators.com
+    ServerName dev.example.com
 
     RedirectMatch ^/$ /bugzilla/
     #DocumentRoot /var/www/webapps/bugzilla
@@ -140,7 +140,7 @@ cd /var/www/webapps/bugzilla
 sudo ./checksetup.pl
 
 # User credentials
-Admin-email: ashadous.jaman@dsinnovators.com
+Admin-email: ashadous.jaman@example.com
 Admin-pass: LSafAMIOftedpaQ1btYC
 ```
 
@@ -156,7 +156,7 @@ sudo apt install -y certbot python3-certbot-apache
 
 ```bash
 sudo certbot --apache
-> ashadous.jaman@dsinnovators.com
+> ashadous.jaman@example.com
 > y
 > n
 ```
@@ -170,9 +170,9 @@ sudo certbot renew --dry-run
 
 ## Browser application from browser
 
-- Visit [DSi Bugzilla Website](https://dev.dsinnovators.com/bugzilla) from the browser.
-- Visit [Bugzilla – Configuration: Required Settings](https://dev.dsinnovators.com/bugzilla/editparams.cgi) > Add `urlbase: https://dev.dsinnovators.com/bugzilla/` > Selct `On` for `ssl_redirect` > Add `sslbase: https://dev.dsinnovators.com/bugzilla/` > Add `cookiepath: /bugzilla/` > Save Changes.
-- Visit [Bugzilla – Configuration: Email](https://dev.dsinnovators.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: Sendmail` > Update `mailfrom: Bugzilla | DSi<bugzilla@dev.dsinnovators.com>` > Save Changes.
+- Visit [DSi Bugzilla Website](https://dev.example.com/bugzilla) from the browser.
+- Visit [Bugzilla – Configuration: Required Settings](https://dev.example.com/bugzilla/editparams.cgi) > Add `urlbase: https://dev.example.com/bugzilla/` > Selct `On` for `ssl_redirect` > Add `sslbase: https://dev.example.com/bugzilla/` > Add `cookiepath: /bugzilla/` > Save Changes.
+- Visit [Bugzilla – Configuration: Email](https://dev.example.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: Sendmail` > Update `mailfrom: Bugzilla | DSi<bugzilla@dev.example.com>` > Save Changes.
 
 Follow [Bugzilla Documentation](https://bugzilla.readthedocs.io/en/latest/index.html) for more information.
 

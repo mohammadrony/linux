@@ -67,7 +67,6 @@ sudo mysql_secure_installation
 > Reload privilege tables now? y
 ```
 
-
 ### Setup database access
 
 ```bash
@@ -79,7 +78,7 @@ sudo mysql
 > exit;
 ```
 
-###  Create Mantis database
+### Create Mantis database
 
 ```bash
 sudo mysql -u root -p
