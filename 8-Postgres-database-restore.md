@@ -1,5 +1,50 @@
 # Restore postgreSQL database from file
 
+## Create new user
+
+```bash
+sudo -u postgres psql # Switch into database command prompt
+# sudo -u postgres psql -c 'command' # Run database commands as any user
+# sudo -iu postgres; psql -d postgres -c 'command' # Run commands from postgres user prompt
+> CREATE USER rony WITH PASSWORD '<password>';
+or
+> CREATE ROLE rony SUPERUSER LOGIN PASSWORD '<password>';
+> CREATE DATABASE db_name; 
+```
+
+## Update user permission
+
+```bash
+sudo -u postgres psql # Switch into database command prompt
+# sudo -u postgres psql -c 'command' # Run database commands as any user
+# sudo -iu postgres; psql -d postgres -c 'command' # Run commands from postgres user prompt
+> ALTER USER rony WITH SUPERUSER;
+> GRANT ALL PRIVILEGES ON DATABASE db_name TO rony;
+> GRANT ALL PRIVILEGES ON SCHEMA public TO rony;
+```
+
+## See user permissions
+
+```bash
+sudo -u postgres psql # Switch into database command prompt
+# sudo -u postgres psql -c 'command' # Run database commands as any user
+# sudo -iu postgres; psql -d postgres -c 'command' # Run commands from postgres user prompt
+> \du+
+> \dn+
+```
+
+## Delete user with permission
+```bash
+sudo -u postgres psql # Switch into database command prompt
+# sudo -u postgres psql -c 'command' # Run database commands as any user
+# sudo -iu postgres; psql -d postgres -c 'command' # Run commands from postgres user prompt
+> ALTER USER rony WITH NOSUPERUSER;
+> REVOKE ALL PRIVILEGES ON DATABASE db_name FROM rony;
+> REVOKE ALL PRIVILEGES ON SCHEMA public FROM rony;
+> DROP DATABASE IF EXISTS db_name;
+> DROP USER IF EXISTS rony;
+```
+
 ## Download the tar file
 
 ```bash

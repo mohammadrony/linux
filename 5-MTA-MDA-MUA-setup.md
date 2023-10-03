@@ -40,6 +40,7 @@ Required entries in the DNS record
 sudo apt -y update; sudo apt -y upgrade
 sudo echo 'dev.example.com' > /etc/hostname
 sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tdev.example.com' /etc/hosts
+sudo sysctl kernel.hostname=dev.example.com
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
