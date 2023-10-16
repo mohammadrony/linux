@@ -34,6 +34,7 @@ sudo -u postgres psql # Switch into database command prompt
 ```
 
 ## Delete user with permission
+
 ```bash
 sudo -u postgres psql # Switch into database command prompt
 # sudo -u postgres psql -c 'command' # Run database commands as any user
