@@ -1,5 +1,0 @@
-{
-  "yaml.schemas": {
-    "kubernetes://schema/apps/v1%40deployment": "file:///home/mdrony/DevOps/Linux-config/Deployment/3-app-config/2-cluster-autoscaler-autodiscover.yaml"
-  }
-}

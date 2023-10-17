@@ -68,5 +68,5 @@ kubectl apply -f manifests/
 ### Scale current deployment
 
 ```bash
-ubectl scale deploy -n sock-shop --replicas=2 --all
+kubectl scale deploy -n sock-shop --replicas=2 --all
 ```

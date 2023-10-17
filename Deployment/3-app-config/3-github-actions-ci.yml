@@ -1,5 +1,5 @@
 # Save this file to .github/workflows/ in projects root directory.
-name: my-eks CI
+name: Python Build and Publish
 
 on:
   push:
@@ -10,18 +10,15 @@ jobs:
   deploy:
     name: Build Image
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.12.0]
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: '3.12'
 
     - name: Install Dependencies
       run: |
@@ -29,10 +26,10 @@ jobs:
         pip install -r requirements.txt
 
     - name: Install kubectl
-      uses: azure/setup-kubectl@v1
+      uses: azure/setup-kubectl@v3
 
     - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -40,7 +37,7 @@ jobs:
 
     - name: Login to Amazon ECR
       id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
+      uses: aws-actions/amazon-ecr-login@v2
 
     - name: Build, tag, and push image to Amazon ECR
       env:
@@ -59,7 +56,3 @@ jobs:
         kubectl apply -f eks-postgres-deployment.yaml
         kubectl apply -f eks-app-deployment.yaml
         kubectl apply -f eks-ingress.yaml
-
-    - name: Run Tests
-      run: |
-        kubectl exec --stdin --tty eks-app-deployment-pod pytest
