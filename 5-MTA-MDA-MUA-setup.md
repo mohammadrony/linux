@@ -25,7 +25,7 @@ Required entries in the DNS record
 | MX    | @               | dev.example.com                                                             | Auto      |
 | TXT   | @               | `v=spf1 a mx ~all`                                                          | Auto      |
 | TXT   | dkim._domainkey | "v=DKIM1; h=sha256; k=rsa; p=Encrypted_key"                                 | Auto      |
-| TXT   | _dmarc          | "v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:<someone@example.com>" | Auto      |
+| TXT   | _dmarc          | "v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:<dmarc@example.com>" | Auto      |
 | CNAME | autodiscover    | dev.example.com                                                             | Auto      |
 | CNAME | autoconfig      | dev.example.com                                                             | Auto      |
 ---------------------------------------------------------------------------------------------------------------------
@@ -108,6 +108,27 @@ smtpd_recipient_restrictions = permit_sasl_authenticated,permit_mynetworks,rejec
 sudo systemctl reload postfix
 postconf -n
 telnet gmail-smtp-in.l.google.com 25
+```
+
+### Setup Mail Aliases
+
+```bash
+sudo vi /etc/aliases
+
+# Add
+dmarc: postmaster
+postmaster: root
+app: root
+USER: root
+root: sysadmin@example.com
+noreply: /dev/null
+no-reply: /dev/null
+```
+
+### Reload Aliases
+
+```bash
+sudo newaliases
 ```
 
 ## Setup Mail Delivery Agent
