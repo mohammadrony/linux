@@ -18,31 +18,30 @@ DNS record entries for SPAM protection
 | Type  | Name            | Content                                                                     | TTL value |
 |-------|-----------------|-----------------------------------------------------------------------------|-----------|
 | A     | mail            | mail.server.ip.address                                                      | Auto      |
-| MX    | @               | dev.example.com                                                             | Auto      |
+| MX    | @               | mail.example.com                                                             | Auto      |
 | TXT   | @               | `v=spf1 mx ~all`                                                          | Auto      |
 | TXT   | dkim._domainkey | "v=DKIM1; h=sha256; k=rsa; p=Encrypted_key"                                 | Auto      |
-| TXT   | _dmarc          | ""v=DMARC1; p=quarantine; rua=mailto:<dmarc@example.com>; ruf=mailto:<dmarc@example.com>; fo=1; pct=100"
-" | Auto      |
-| CNAME | autodiscover    | dev.example.com                                                             | Auto      |
-| CNAME | autoconfig      | dev.example.com                                                             | Auto      |
+| TXT   | _dmarc          | "v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:<dmarc@example.com>; ruf=mailto:<dmarc@example.com>; fo=1; pct=100" | Auto      |
+| CNAME | autodiscover    | mail.example.com                                                             | Auto      |
+| CNAME | autoconfig      | mail.example.com                                                             | Auto      |
 ---------------------------------------------------------------------------------------------------------------------
 
 *Low value in priority means higher the priority.*
 
 ## Initial server setup
 
-### Configure server domain name
+### Setup server name
 
 ```bash
 sudo apt -y update; sudo apt -y upgrade
-sudo echo 'dev.example.com' > /etc/hostname
-sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tdev.example.com' /etc/hosts
-sudo sysctl kernel.hostname=dev.example.com
+sudo echo 'mail.example.com' > /etc/hostname
+sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tmail.example.com' /etc/hosts
+sudo sysctl kernel.hostname=mail.example.com
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
 
-## Setup Mail Transfer Agent
+## Initial Postfix and DKIM setup
 
 ### Install required packages
 
@@ -55,9 +54,9 @@ sudo apt install -y mailutils
 ```bash
 sudo dpkg-reconfigure postfix
 > Internet Site
-> System mail name: dev.example.com
+> System mail name: mail.example.com
 > Recipient for root: <enter>
-> Other destinations to accept mail: dev.example.com, example.com, localhost.example.com, localhost
+> Other destinations to accept mail: mail.example.com, example.com, localhost.example.com, localhost
 > Force synchronous updates: <No>
 > Local networks: 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 > Mailbox size limit: 0
@@ -132,18 +131,18 @@ sudo chown -R opendkim:opendkim /etc/opendkim
 sudo chmod  744 /etc/opendkim/keys
 ```
 
-### Generate DKIM key for website
+### Generate DKIM key for domain
 
 ```bash
-sudo mkdir /etc/opendkim/keys/dev.example.com
-sudo opendkim-genkey -b 2048 -d dev.example.com -D /etc/opendkim/keys/dev.example.com -s default -v
-sudo chown opendkim:opendkim /etc/opendkim/keys/dev.example.com/default.private
+sudo mkdir /etc/opendkim/keys/example.com
+sudo opendkim-genkey -b 2048 -d example.com -D /etc/opendkim/keys/example.com -s default -v
+sudo chown opendkim:opendkim /etc/opendkim/keys/example.com/default.private
 ```
 
 ### Update DKIM key in DNS record
 
 ```bash
-sudo cat /etc/opendkim/keys/dev.example.com/default.txt
+sudo cat /etc/opendkim/keys/example.com/default.txt
 
 # Output
 default._domainkey IN TXT ("v=DKIM1; h=sha256; k=rsa; p=Encrypted_key");
@@ -152,7 +151,7 @@ default._domainkey IN TXT ("v=DKIM1; h=sha256; k=rsa; p=Encrypted_key");
 ### Verify the DNS record
 
 ```bash
-sudo opendkim-testkey -d dev.example.com -s default -vvv
+sudo opendkim-testkey -d example.com -s default -vvv
 ```
 
 ### Update DKIM configuration
@@ -179,7 +178,18 @@ ExternalIgnoreList      /etc/opendkim/trusted.hosts
 InternalHosts           /etc/opendkim/trusted.hosts
 ```
 
-## Additional DKIM Files
+OR
+
+```bash
+sudo sed -i 's/^#\(LogWhy\s*\)no/\1yes/' /etc/opendkim.conf
+sudo sed -i 's/^#\(Mode\s*sv\)/\1/' /etc/opendkim.conf
+sudo sed -i 's/^#\(SubDomains\s*no\)/\1/' /etc/opendkim.conf
+
+sudo sed -i '18i AutoRestart\t\tyes\nAutoRestartRate\t\t10/1M\nBackground\t\tyes\nDNSTimeout\t\t5\nSignatureAlgorithm\trsa-sha256\n' /etc/opendkim.conf
+sudo sed -i '$ a KeyTable\t\trefile:/etc/opendkim/key.table\nSigningTable\t\trefile:/etc/opendkim/signing.table\nExternalIgnoreList\t/etc/opendkim/trusted.hosts\nInternalHosts\t\t/etc/opendkim/trusted.hosts' /etc/opendkim.conf
+```
+
+## Additional DKIM configuration
 
 ### Update Signing table
 
@@ -187,8 +197,18 @@ InternalHosts           /etc/opendkim/trusted.hosts
 sudo vi /etc/opendkim/signing.table
 
 # Add
-*@example.com   default._domainkey.dev.example.com
-*@*.example.com default._domainkey.dev.example.com
+*@example.com   default._domainkey.example.com
+*@*.example.com default._domainkey.example.com
+```
+
+OR
+
+```bash
+sudo touch /etc/opendkim/signing.table
+
+sudo awk -i inplace 'BEGINFILE {print "*@example.com\t\tdefault._domainkey.example.com\n*@*.example.com\tdefault._domainkey.example.com"}' /etc/opendkim/signing.table
+
+cat /etc/opendkim/signing.table
 ```
 
 ### Update Key table
@@ -197,7 +217,17 @@ sudo vi /etc/opendkim/signing.table
 sudo vi /etc/opendkim/key.table
 
 # Add
-default._domainkey.dev.example.com  dev.example.com:default:/etc/opendkim/keys/dev.example.com/default.private
+default._domainkey.example.com  example.com:default:/etc/opendkim/keys/example.com/default.private
+```
+
+Or
+
+```bash
+sudo touch /etc/opendkim/key.table
+
+sudo awk -i inplace 'BEGINFILE {print "default._domainkey.example.com\texample.com:default:/etc/opendkim/keys/example.com/default.private"}' /etc/opendkim/key.table
+
+cat /etc/opendkim/key.table
 ```
 
 ### Update hosts
@@ -208,8 +238,17 @@ sudo vi /etc/opendkim/trusted.hosts
 # Add
 127.0.0.1
 localhost
-.dev.example.com
+.example.com
+```
 
+Or
+
+```bash
+sudo touch /etc/opendkim/trusted.hosts
+
+sudo awk -i inplace 'BEGINFILE {print "127.0.0.1\nlocalhost\n\n.example.com"}' /etc/opendkim/trusted.hosts
+
+cat /etc/opendkim/trusted.hosts
 ```
 
 ### Restart OpenDKIM
@@ -218,16 +257,30 @@ localhost
 sudo systemctl restart opendkim
 ```
 
-## Configuring Postfix With OpenDKIM
+## Configure Postfix With OpenDKIM
 
-### Update OpenDKIM socket file
+### Update socket file configuration
 
 ```bash
 sudo mkdir /var/spool/postfix/opendkim
 sudo chown opendkim:postfix /var/spool/postfix/opendkim
 ```
 
-### Update configuration file
+```bash
+sudo vi /etc/default/opendkim
+
+# Update
+SOCKET="local:/var/spool/postfix/opendkim/opendkim.sock"
+```
+
+Or
+
+```bash
+sudo sed -i 's/\(^SOCKET=local:$RUNDIR\/opendkim.sock\)/#\1/' /etc/default/opendkim
+sudo sed -i '20a SOCKET=local:/var/spool/postfix/opendkim/opendkim.sock' /etc/default/opendkim
+```
+
+### Update opendkim configuration
 
 ```bash
 sudo vi /etc/opendkim.conf
@@ -236,13 +289,11 @@ sudo vi /etc/opendkim.conf
 Socket    local:/var/spool/postfix/opendkim/opendkim.sock
 ```
 
-### Update OpenDKIM configuration
+Or
 
 ```bash
-sudo vi /etc/default/opendkim
-
-# Update
-SOCKET="local:/var/spool/postfix/opendkim/opendkim.sock"
+sudo sed -i 's/\(Socket\s*local:\/run\/opendkim\/opendkim.sock\)/#\1/' /etc/opendkim.conf
+sudo sed -i 's/#\(Socket\s*local:\/var\/spool\/postfix\/opendkim\/opendkim.sock\)/\1/' /etc/opendkim.conf
 ```
 
 ### Update Postfix configuration
@@ -259,6 +310,12 @@ smtpd_milters = local:opendkim/opendkim.sock
 non_smtpd_milters = $smtpd_milters
 ```
 
+Or
+
+```bash
+sudo sed -i '$ a # Milter configuration\nmilter_default_action = accept\nmilter_protocol = 6\nsmtpd_milters = local:opendkim/opendkim.sock\nnon_smtpd_milters = $smtpd_milters' /etc/postfix/main.cf
+```
+
 ### Restart services
 
 ```bash
@@ -266,7 +323,7 @@ sudo systemctl restart opendkim
 sudo systemctl restart postfix
 ```
 
-## Sending Email
+## Send Email
 
 ```bash
 mail <user>@example.com
