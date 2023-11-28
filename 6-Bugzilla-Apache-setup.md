@@ -63,6 +63,7 @@ sudo vi /etc/apache2/sites-available/bugzilla.conf
       AddHandler cgi-script .cgi
       Options +ExecCGI
       DirectoryIndex index.cgi index.html
+      LimitRequestBody 16777216
       AllowOverride All
     </Directory>
 
