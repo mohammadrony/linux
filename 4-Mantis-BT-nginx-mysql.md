@@ -6,10 +6,10 @@ Official Guide: <https://www.mantisbt.org/docs/master/en-US/Admin_Guide/html-des
 
 ```bash
 #!/bin/bash
-echo 'mantis-server' > /etc/hostname
-sudo apt -y update
-sudo apt -y upgrade
-reboot now
+sudo echo 'mantisbt' > /etc/hostname
+sudo apt -y update; sudo apt -y upgrade
+sudo timedatectl set-timezone Asia/Dhaka
+sudo reboot now
 ```
 
 ## Setup Nginx server

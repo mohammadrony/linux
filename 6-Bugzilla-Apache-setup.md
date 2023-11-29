@@ -18,7 +18,7 @@ sudo reboot now
 ### Install pre-requisites packages
 
 ```bash
-sudo apt install -y git
+sudo apt install -y git net-tools tree
 ```
 
 ## Setup Apache server
@@ -40,6 +40,8 @@ sudo apt install -y apache2 build-essential mariadb-server libcgi-pm-perl libdig
 ### Add firewall rule
 
 ```bash
+sudo ufw enable
+sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 sudo ufw reload
@@ -143,6 +145,7 @@ sudo ./checksetup.pl
 
 # User credentials
 Admin-email: ashadous.jaman@example.com
+Admin-name: Md. Rony
 Admin-pass: LSafAMIOftedpaQ1btYC
 ```
 
