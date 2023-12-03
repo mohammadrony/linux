@@ -50,27 +50,53 @@ sudo ufw reload
 ### Configure Apache
 
 ```bash
+sudo cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf.orig
+sudo vi /etc/apache2/apache2.conf
+
+# RAM: 1 GB, CPU: 1 Thread
+# Add
+Timeout 30
+<IfModule mpm_event_module>
+  KeepAlive               On
+  MaxKeepAliveRequests    25
+  KeepAliveTimeout        3
+
+  StartServers            2
+
+  ServerLimit             4
+  ThreadsPerChild         5
+  MaxRequestWorkers       20 # MaxRequestWorkers = ServerLimit x ThreadsPerChild
+
+  MinSpareThreads         2
+  MaxSpareThreads         4
+  
+  MaxConnectionsPerChild  0
+</IfModule>
+```
+
+```bash
 sudo rm /etc/apache2/sites-enabled/000-default.conf
 sudo vi /etc/apache2/sites-available/bugzilla.conf
 
 # Add
 <VirtualHost *:80>
-    ServerName dev.example.com
+  ServerName dev.example.com
 
-    RedirectMatch ^/$ /bugzilla/
-    #DocumentRoot /var/www/webapps/bugzilla
+  RedirectMatch ^/$ /bugzilla/
+  #DocumentRoot /var/www/webapps/bugzilla
 
-    Alias /bugzilla /var/www/webapps/bugzilla
-    <Directory /var/www/webapps/bugzilla>
-      AddHandler cgi-script .cgi
-      Options +ExecCGI
-      DirectoryIndex index.cgi index.html
-      LimitRequestBody 16777216
-      AllowOverride All
-    </Directory>
+  Alias /bugzilla /var/www/webapps/bugzilla
+  <Directory /var/www/webapps/bugzilla>
+    AddHandler cgi-script .cgi
+    Options +ExecCGI
+    DirectoryIndex index.cgi index.html
+    LimitRequestBody 10485760 # 10MB
+    LimitRequestFields 100
+    AllowOverride All
+  </Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/bugzilla-error.log
-    CustomLog ${APACHE_LOG_DIR}/bugzilla-access.log combined
+  ErrorLog ${APACHE_LOG_DIR}/bugzilla-error.log
+  CustomLog ${APACHE_LOG_DIR}/bugzilla-access.log combined
 </VirtualHost>
 ```
 

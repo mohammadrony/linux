@@ -1,2 +1,0 @@
-https://tldp.org/
-https://www.baeldung.com/linux/

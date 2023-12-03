@@ -1,1 +1,0 @@
-pdfunite `ls -1v ch1*.pdf` ch1.pdf
