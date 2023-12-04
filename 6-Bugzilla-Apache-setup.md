@@ -180,22 +180,43 @@ Admin-pass: LSafAMIOftedpaQ1btYC
 ### Install certbot package
 
 ```bash
-sudo apt install -y certbot python3-certbot-apache
+# Method 1
+sudo apt install -y python3-certbot-apache
+```
+
+```bash
+# Method 2
+sudo snap install core
+sudo snap refresh core
+sudo apt remove certbot
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
 ### Obtain SSL Certificate
 
 ```bash
-sudo certbot --apache
-> ashadous.jaman@example.com
-> y
-> n
+sudo certbot --apache -d example.com -d www.example.com
 ```
 
 ### Verify Certbot auto renewal
 
 ```bash
+# Method 1
+systemctl list-timers
 sudo systemctl status certbot.timer
+```
+
+```bash
+# Method 2
+systemctl list-timers
+sudo systemctl status snap.certbot.renew.timer
+sudo systemctl status snap.certbot.renew.service
+```
+
+Certificate renew command
+
+```bash
 sudo certbot renew --dry-run
 ```
 
