@@ -1,5 +1,0 @@
-apt is the package manager for Ubuntu
-apt is the package manager for Debian
-yum is the package manager for CentOS
-pacman is the package manager for Arch Linux
-dnf is the package manager for Fedora

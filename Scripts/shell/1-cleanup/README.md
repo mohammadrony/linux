@@ -19,3 +19,16 @@ echo 1 | sudo tee /proc/sys/vm/drop_caches
 sudo swapoff -a
 sudo swapon -a
 ```
+
+## Log cleanup
+
+```bash
+LOG_DIR=/var/log
+
+cd $LOG_DIR
+
+sudo cat /dev/null > messages
+sudo cat /dev/null > wtmp
+
+echo "Logs cleaned up."
+```
