@@ -34,5 +34,3 @@ network:
 EOF
 sudo netplan apply
 ```
-
-Thank you.

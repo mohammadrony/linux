@@ -52,5 +52,3 @@ sudo -i -u postgres
 ```bash
 \list
 ```
-
-Thank you.

@@ -229,5 +229,3 @@ sudo certbot renew --dry-run
 - Visit [Bugzilla – Configuration: Email](https://dev.example.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: Sendmail` > Update `mailfrom: Bugzilla | DSi<bugzilla@dev.example.com>` > Save Changes.
 
 Follow [Bugzilla Documentation](https://bugzilla.readthedocs.io/en/latest/index.html) for more information.
-
-Thank you.

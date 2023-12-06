@@ -152,5 +152,3 @@ Visit: <http://mantis-host/admin/install.php> for initial setup of the applicati
 ### Login to dashboard as administrator
 
 Goto Login page > Use 'administrator' username > 'root' password > Login.
-
-Thank you.

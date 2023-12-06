@@ -167,5 +167,3 @@ sudo -u postgres psql # Switch into database command prompt
 
 > DROP DATABASE db_name;
 ```
-
-Thank you.

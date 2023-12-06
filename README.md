@@ -10,5 +10,3 @@ Steps to configure the following environment:
 - [Setup Bugzilla with Apache server in Ubuntu 22](./6-Bugzilla-Apache-setup.md)
 - [Update PostgreSQL cluster version](./7-Postgres-cluster-upgrade.md)
 - [Restore postgreSQL database from file](./8-Postgres-database-restore.md)
-
-Thank you.

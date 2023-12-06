@@ -31,5 +31,3 @@ python main.py
 ```bash
 deactivate
 ```
-
-Thank you.

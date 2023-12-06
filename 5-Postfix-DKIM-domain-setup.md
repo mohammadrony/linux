@@ -410,7 +410,6 @@ submission inet n       -       -       -       -       smtpd
 sudo cp /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf.orig
 sudo vi /etc/dovecot/dovecot.conf
 
-
 # Add
 #set mailbox location to Maildir style
 disable_plaintext_auth = yes
@@ -473,5 +472,3 @@ ssl_key = </etc/ssl/private/example.com.key
 ```bash
 sudo systemctl restart postfix dovecot
 ```
-
-Thank you.
