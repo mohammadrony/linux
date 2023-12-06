@@ -5,7 +5,7 @@
 ## Scripts
 
 - [Cleanup](./1-cleanup/)
-- [Files](./2-files/)
+- [File size](./2-file-size/)
 - [PDF](./3-pdf/)
 - [Image](./4-image/)
 - [Video](./5-video/)
