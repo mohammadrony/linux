@@ -21,6 +21,65 @@ sudo reboot now
 sudo apt install -y git net-tools tree
 ```
 
+## Server Resource Monitoring
+
+### Install Sysstat
+
+```bash
+sudo apt install -y sysstat
+```
+
+```bash
+sudo cp /etc/default/sysstat /etc/default/sysstat.orig
+sudo sed -i 's/ENABLED="false"/ENABLED="true"/' /etc/default/sysstat
+```
+
+### Update Cronjob for sysstat
+
+```bash
+sudo vi /etc/cron.d/sysstat
+```
+
+Update
+
+```cron
+*/5 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1
+```
+
+Restart sysstat service
+
+```bash
+sudo systemctl enable --now sysstat
+```
+
+### State of the Server
+
+Current state monitoring
+
+```bash
+sar -A
+```
+
+```bash
+sar -u
+sar -r
+```
+
+```bash
+sar -u 1 5
+```
+
+Time range state monitoring
+
+```bash
+sar -u -f /var/log/sysstat/saXX
+sar -u -f /var/log/sysstat/saXX -s 00:00:00 -e 23:00:00
+```
+
+```bash
+sar -A > $(date +`hostname`-%d-%m-%y-%H%M.log)
+```
+
 ## Setup Apache server
 
 ### Install required packages
@@ -52,9 +111,14 @@ sudo ufw reload
 ```bash
 sudo cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf.orig
 sudo vi /etc/apache2/apache2.conf
+```
 
+Add
+
+```conf
 # RAM: 1 GB, CPU: 1 Thread
-# Add
+ServerName dev.example.com
+
 Timeout 30
 <IfModule mpm_event_module>
   KeepAlive               On
@@ -65,7 +129,8 @@ Timeout 30
 
   ServerLimit             4
   ThreadsPerChild         5
-  MaxRequestWorkers       20 # MaxRequestWorkers = ServerLimit x ThreadsPerChild
+  MaxRequestWorkers       20
+  # MaxRequestWorkers = ServerLimit x ThreadsPerChild
 
   MinSpareThreads         2
   MaxSpareThreads         4
@@ -77,8 +142,11 @@ Timeout 30
 ```bash
 sudo rm /etc/apache2/sites-enabled/000-default.conf
 sudo vi /etc/apache2/sites-available/bugzilla.conf
+```
 
-# Add
+Add
+
+```bash
 <VirtualHost *:80>
   ServerName dev.example.com
 
@@ -90,8 +158,7 @@ sudo vi /etc/apache2/sites-available/bugzilla.conf
     AddHandler cgi-script .cgi
     Options +ExecCGI
     DirectoryIndex index.cgi index.html
-    LimitRequestBody 10485760 # 10MB
-    LimitRequestFields 100
+    LimitRequestBody 20971520
     AllowOverride All
   </Directory>
 
@@ -105,7 +172,11 @@ sudo vi /etc/apache2/sites-available/bugzilla.conf
 ```bash
 sudo apachectl configtest
 sudo a2ensite bugzilla
-sudo a2enmod cgi headers expires rewrite
+sudo a2enmod cgi mpm_event headers expires rewrite
+```
+
+```bash
+sudo systemctl enable --now apache2
 sudo systemctl restart apache2
 ```
 
@@ -132,6 +203,7 @@ sudo mysql -u root -e "GRANT ALL PRIVILEGES ON bugs.* TO bugs@localhost IDENTIFI
 ### Restart MariaDB service
 
 ```bash
+sudo systemctl enable --now mariadb
 sudo systemctl restart mariadb
 ```
 
@@ -143,6 +215,26 @@ sudo systemctl restart mariadb
 sudo mkdir -p /var/www/webapps
 cd /var/www/webapps
 sudo git clone --branch release-5.0-stable https://github.com/bugzilla/bugzilla bugzilla
+```
+
+Add access rule
+
+```bash
+sudo vi bugzilla/.htaccess
+```
+
+Add
+
+```htaccess
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteCond %{HTTP_USER_AGENT} ^.*Go-http-client.*$ [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} ^.*curl.*$ [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} ^.*python.*$ [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} ^.*java.*$ [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} ^-?$ [NC]
+  RewriteRule ^.*$ - [R=403,L]
+</IfModule>
 ```
 
 ### Check Setup
@@ -226,6 +318,6 @@ sudo certbot renew --dry-run
 
 - Visit [Bugzilla – Configuration: Required Settings](https://dev.example.com/bugzilla/editparams.cgi) > Add `urlbase: https://dev.example.com/bugzilla/` > Selct `On` for `ssl_redirect` > Add `sslbase: https://dev.example.com/bugzilla/` > Add `cookiepath: /bugzilla/` > Save Changes.
 
-- Visit [Bugzilla – Configuration: Email](https://dev.example.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: Sendmail` > Update `mailfrom: Bugzilla | DSi<bugzilla@dev.example.com>` > Save Changes.
+- Visit [Bugzilla – Configuration: Email](https://dev.example.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: Sendmail` > Update `mailfrom: Bugzilla | DSi<noreply@dev.example.com>` > Save Changes.
 
 Follow [Bugzilla Documentation](https://bugzilla.readthedocs.io/en/latest/index.html) for more information.
