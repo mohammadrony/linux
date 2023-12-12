@@ -21,65 +21,6 @@ sudo reboot now
 sudo apt install -y git net-tools tree
 ```
 
-## Server Resource Monitoring
-
-### Install Sysstat
-
-```bash
-sudo apt install -y sysstat
-```
-
-```bash
-sudo cp /etc/default/sysstat /etc/default/sysstat.orig
-sudo sed -i 's/ENABLED="false"/ENABLED="true"/' /etc/default/sysstat
-```
-
-### Update Cronjob for sysstat
-
-```bash
-sudo vi /etc/cron.d/sysstat
-```
-
-Update
-
-```cron
-*/5 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1
-```
-
-Restart sysstat service
-
-```bash
-sudo systemctl enable --now sysstat
-```
-
-### State of the Server
-
-Current state monitoring
-
-```bash
-sar -A
-```
-
-```bash
-sar -u
-sar -r
-```
-
-```bash
-sar -u 1 5
-```
-
-Time range state monitoring
-
-```bash
-sar -u -f /var/log/sysstat/saXX
-sar -u -f /var/log/sysstat/saXX -s 00:00:00 -e 23:00:00
-```
-
-```bash
-sar -A > $(date +`hostname`-%d-%m-%y-%H%M.log)
-```
-
 ## Setup Apache server
 
 ### Install required packages
@@ -109,17 +50,12 @@ sudo ufw reload
 ### Configure Apache
 
 ```bash
-sudo cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf.orig
-sudo vi /etc/apache2/apache2.conf
+sudo vi /etc/apache2/mods-available/mpm_event.conf
 ```
 
 Add
 
 ```conf
-# RAM: 1 GB, CPU: 1 Thread
-ServerName dev.example.com
-
-Timeout 30
 <IfModule mpm_event_module>
   KeepAlive               On
   MaxKeepAliveRequests    25
@@ -158,7 +94,7 @@ Add
     AddHandler cgi-script .cgi
     Options +ExecCGI
     DirectoryIndex index.cgi index.html
-    LimitRequestBody 20971520
+    LimitRequestBody 10485760
     AllowOverride All
   </Directory>
 
@@ -230,6 +166,8 @@ Add
   RewriteEngine on
   RewriteCond %{HTTP_USER_AGENT} ^.*Go-http-client.*$ [NC,OR]
   RewriteCond %{HTTP_USER_AGENT} ^.*curl.*$ [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} ^.*wget.*$ [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} ^.*ApacheBench.*$ [NC,OR]
   RewriteCond %{HTTP_USER_AGENT} ^.*python.*$ [NC,OR]
   RewriteCond %{HTTP_USER_AGENT} ^.*java.*$ [NC,OR]
   RewriteCond %{HTTP_USER_AGENT} ^-?$ [NC]
