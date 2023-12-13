@@ -1,9 +1,27 @@
 # Log rotate config
 
-Ghost config
+## Ghost log
+
+Install package
 
 ```bash
-sudo vi /etc/logrotate.d/ghost.conf
+sudo apt install -y logrotate
+```
+
+Update log directory permission
+
+```bash
+sudo chown root /var/www/dsinnovators/content/logs
+```
+
+```bash
+sudo chmod 755 /var/www/dsinnovators/content/logs
+```
+
+Create Ghost config
+
+```bash
+sudo vi /etc/logrotate.d/ghost
 ```
 
 ```conf
@@ -16,6 +34,18 @@ sudo vi /etc/logrotate.d/ghost.conf
   copytruncate
   notifyempty
   create 0640 ghost ghost
-  su ghost ghost
+  sharedscripts
+  prerotate
+    systemctl stop ghost
+  endscript
+  postrotate
+    systemctl start ghost
+  endscript
 }
+```
+
+Debug config file
+
+```bash
+sudo logrotate -d /etc/logrotate.d/ghost
 ```
