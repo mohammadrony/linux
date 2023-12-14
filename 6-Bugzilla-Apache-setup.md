@@ -50,10 +50,12 @@ sudo ufw reload
 ### Configure Apache
 
 ```bash
-sudo vi /etc/apache2/mods-available/mpm_event.conf
+cd /etc/apache2/mods-available
+sudo cp mpm_event.conf mpm_event.conf.orig
+sudo vi mpm_event.conf
 ```
 
-Add
+Update
 
 ```conf
 <IfModule mpm_event_module>
@@ -63,6 +65,7 @@ Add
 
   StartServers            2
 
+  MaxClients              500
   ServerLimit             4
   ThreadsPerChild         5
   MaxRequestWorkers       20
@@ -76,8 +79,9 @@ Add
 ```
 
 ```bash
-sudo rm /etc/apache2/sites-enabled/000-default.conf
-sudo vi /etc/apache2/sites-available/bugzilla.conf
+cd /etc/apache2
+sudo rm sites-enabled/000-default.conf
+sudo vi sites-available/bugzilla.conf
 ```
 
 Add
@@ -98,6 +102,18 @@ Add
     AllowOverride All
   </Directory>
 
+  <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_USER_AGENT} ^.*Go-http-client.*$ [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} ^.*curl.*$ [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} ^.*wget.*$ [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} ^.*apachebench.*$ [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} ^.*python.*$ [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} ^.*java.*$ [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} ^-?$ [NC]
+    RewriteRule ^.*$ - [R=403,L]
+  </IfModule>
+
   ErrorLog ${APACHE_LOG_DIR}/bugzilla-error.log
   CustomLog ${APACHE_LOG_DIR}/bugzilla-access.log combined
 </VirtualHost>
@@ -114,6 +130,7 @@ sudo a2enmod cgi mpm_event headers expires rewrite
 ```bash
 sudo systemctl enable --now apache2
 sudo systemctl restart apache2
+apache2 -t
 ```
 
 ## Configure MariaDB database
@@ -163,11 +180,11 @@ Add
 
 ```htaccess
 <IfModule mod_rewrite.c>
-  RewriteEngine on
+  RewriteEngine On
   RewriteCond %{HTTP_USER_AGENT} ^.*Go-http-client.*$ [NC,OR]
   RewriteCond %{HTTP_USER_AGENT} ^.*curl.*$ [NC,OR]
   RewriteCond %{HTTP_USER_AGENT} ^.*wget.*$ [NC,OR]
-  RewriteCond %{HTTP_USER_AGENT} ^.*ApacheBench.*$ [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} ^.*apachebench.*$ [NC,OR]
   RewriteCond %{HTTP_USER_AGENT} ^.*python.*$ [NC,OR]
   RewriteCond %{HTTP_USER_AGENT} ^.*java.*$ [NC,OR]
   RewriteCond %{HTTP_USER_AGENT} ^-?$ [NC]

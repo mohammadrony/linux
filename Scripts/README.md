@@ -15,7 +15,10 @@ Scripts
 
 Commands
 
+- [ab](./shell/7-commands/ab/)
+- [curl](./shell/7-commands/curl/)
 - [find](./shell/7-commands/find/)
-- [sed](./shell/7-commands/sed/)
 - [read](./shell/7-commands/read/)
 - [redirect](./shell/7-commands/redirect/)
+- [sed](./shell/7-commands/sed/)
+- [xargs](./shell/7-commands/xargs/)

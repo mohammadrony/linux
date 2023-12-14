@@ -49,3 +49,9 @@ Debug config file
 ```bash
 sudo logrotate -d /etc/logrotate.d/ghost
 ```
+
+Force log rotate
+
+```bash
+sudo logrotate -f /etc/logrotate.d/ghost
+```
