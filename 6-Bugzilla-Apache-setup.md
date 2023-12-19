@@ -59,22 +59,13 @@ Update
 
 ```conf
 <IfModule mpm_event_module>
-  KeepAlive               On
-  MaxKeepAliveRequests    25
-  KeepAliveTimeout        3
-
-  StartServers            2
-
-  MaxClients              500
-  ServerLimit             4
-  ThreadsPerChild         5
-  MaxRequestWorkers       20
-  # MaxRequestWorkers = ServerLimit x ThreadsPerChild
-
-  MinSpareThreads         2
-  MaxSpareThreads         4
-  
-  MaxConnectionsPerChild  0
+  StartServers             2
+  MinSpareThreads          25
+  MaxSpareThreads          75
+  ThreadLimit              64
+  ThreadsPerChild          25
+  MaxRequestWorkers        100
+  MaxConnectionsPerChild   0
 </IfModule>
 ```
 
@@ -168,28 +159,6 @@ sudo systemctl restart mariadb
 sudo mkdir -p /var/www/webapps
 cd /var/www/webapps
 sudo git clone --branch release-5.0-stable https://github.com/bugzilla/bugzilla bugzilla
-```
-
-Add access rule
-
-```bash
-sudo vi bugzilla/.htaccess
-```
-
-Add
-
-```htaccess
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteCond %{HTTP_USER_AGENT} ^.*Go-http-client.*$ [NC,OR]
-  RewriteCond %{HTTP_USER_AGENT} ^.*curl.*$ [NC,OR]
-  RewriteCond %{HTTP_USER_AGENT} ^.*wget.*$ [NC,OR]
-  RewriteCond %{HTTP_USER_AGENT} ^.*apachebench.*$ [NC,OR]
-  RewriteCond %{HTTP_USER_AGENT} ^.*python.*$ [NC,OR]
-  RewriteCond %{HTTP_USER_AGENT} ^.*java.*$ [NC,OR]
-  RewriteCond %{HTTP_USER_AGENT} ^-?$ [NC]
-  RewriteRule ^.*$ - [R=403,L]
-</IfModule>
 ```
 
 ### Check Setup
