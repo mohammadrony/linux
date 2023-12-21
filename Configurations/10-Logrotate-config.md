@@ -1,4 +1,4 @@
-# Log rotate config
+# Log Rotate config
 
 ## Ghost log
 
@@ -11,11 +11,11 @@ sudo apt install -y logrotate
 Update log directory permission
 
 ```bash
-sudo chown root /var/www/dsinnovators/content/logs
+sudo chown root /var/www/*/content/logs
 ```
 
 ```bash
-sudo chmod 755 /var/www/dsinnovators/content/logs
+sudo chmod 755 /var/www/*/content/logs
 ```
 
 Create Ghost config

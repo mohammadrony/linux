@@ -14,7 +14,7 @@ LANG=en_US.UTF-8 snap list --all | awk '/disabled/{print $1, $3}' |
 
 ```bash
 set -eu
-sudo sync 
+sudo sync
 echo 1 | sudo tee /proc/sys/vm/drop_caches
 sudo swapoff -a
 sudo swapon -a

@@ -101,7 +101,7 @@ psql hrythmic_prod < hrythmic_prod_db.sql
 
 ```bash
 sudo -u postgres psql
-> \c hrythmic_prod; 
+> \c hrythmic_prod;
 > \dt;
 ```
 
@@ -116,7 +116,7 @@ sudo -u postgres psql # Switch into database command prompt
 > CREATE USER rony WITH PASSWORD '<password>';
 or
 > CREATE ROLE rony SUPERUSER LOGIN PASSWORD '<password>';
-> CREATE DATABASE db_name; 
+> CREATE DATABASE db_name;
 ```
 
 ### Update user permission

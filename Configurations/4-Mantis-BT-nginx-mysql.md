@@ -149,7 +149,7 @@ server {
   root   /var/www/mantis;
   index  index.php index.html index.htm;
   server_name  mantis.example.com;
- 
+
   access_log /var/log/nginx/mantis.com.access.log;
   error_log /var/log/nginx/mantis.com.error.log;
 

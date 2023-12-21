@@ -5,11 +5,11 @@
 Download Images from Google Search
 
 ```bash
-cat images.json | 
-  grep '"url": "https://' | 
-  sed 's/.*\(https:.*\)",/\1/' | 
+cat images.json |
+  grep '"url": "https://' |
+  sed 's/.*\(https:.*\)",/\1/' |
   while read link
-    do 
+    do
     curl -s -L -I $link |
       gawk -v IGNORECASE=1 '/^Content-Length/ { print $2 }' |
       read length
@@ -24,7 +24,7 @@ cat images.json |
       count=$(($count+1))
       echo $count
     fi
-  done 
+  done
 ```
 
 ## Modify Image
@@ -42,7 +42,7 @@ done
 ```
 
 ```bash
-for i in images/* ; do 
+for i in images/* ; do
   (( $(identify -format '%w > %h' $i) )) && convert $i -rotate 90 $i
 done
 ```

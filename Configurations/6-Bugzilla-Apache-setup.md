@@ -238,10 +238,10 @@ sudo certbot renew --dry-run
 
 ## Browser application from browser
 
-- Visit [DSi Bugzilla Website](https://dev.example.com/bugzilla) from the browser.
+- Visit [Bugzilla Website](https://dev.example.com/bugzilla) from the browser.
 
 - Visit [Bugzilla – Configuration: Required Settings](https://dev.example.com/bugzilla/editparams.cgi) > Add `urlbase: https://dev.example.com/bugzilla/` > Selct `On` for `ssl_redirect` > Add `sslbase: https://dev.example.com/bugzilla/` > Add `cookiepath: /bugzilla/` > Save Changes.
 
-- Visit [Bugzilla – Configuration: Email](https://dev.example.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: Sendmail` > Update `mailfrom: Bugzilla | DSi<noreply@dev.example.com>` > Save Changes.
+- Visit [Bugzilla – Configuration: Email](https://dev.example.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: Sendmail` > Update `mailfrom: Bugzilla<noreply@dev.example.com>` > Save Changes.
 
 Follow [Bugzilla Documentation](https://bugzilla.readthedocs.io/en/latest/index.html) for more information.
