@@ -1,4 +1,4 @@
-# Restore postgreSQL database from file
+# Restore PostgreSQL database
 
 ## Setup PostgreSQL in Ubuntu
 

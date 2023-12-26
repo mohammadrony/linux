@@ -1,4 +1,4 @@
-# Setting Mail server in Ubuntu 22
+# Mail Transfer Agent setup in Ubuntu
 
 ## Setup mail server domain
 

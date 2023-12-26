@@ -1,4 +1,4 @@
-# Mantis BT setup in Ubuntu 22 server with Nginx + MySQL
+# MantisBT setup with Nginx and MySQL in Ubuntu
 
 Official Guide: <https://www.mantisbt.org/docs/master/en-US/Admin_Guide/html-desktop/#admin.install>
 

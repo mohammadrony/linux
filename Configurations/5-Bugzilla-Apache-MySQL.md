@@ -1,4 +1,4 @@
-# Setup Bugzilla with Apache server in Ubuntu 22
+# Bugzilla setup with Apache and MySQL in Ubuntu
 
 Installation guide: <https://bugzilla.readthedocs.io/en/latest/installing/quick-start.html>
 

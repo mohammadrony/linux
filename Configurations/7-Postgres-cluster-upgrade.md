@@ -1,4 +1,4 @@
-# Update PostgreSQL cluster version
+# Upgrade PostgreSQL cluster version
 
 ## Upgrade Postgresql database
 

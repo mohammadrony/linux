@@ -1,4 +1,4 @@
-# Setup Python Virtual Environment for Development
+# Python virtual environment setup
 
 ## Install required packages for Ubuntu
 
