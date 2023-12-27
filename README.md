@@ -9,7 +9,7 @@
 ## Configurations
 
 - [NAT and Host-only network setup in Ubuntu 22](./Configurations/1-Ubuntu-22-networking.md)
-- [Python virtual environment setup](./Configurations/2-Python-venv-setup.md)
+- [Prepare External Volume in Linux](./Configurations/2-External-volume-setup.md)
 - [Mail Transfer Agent setup in Ubuntu](./Configurations/3-Postfix-DKIM-setup.md)
 - [MantisBT setup with Nginx and MySQL in Ubuntu](./Configurations/4-Mantis-Nginx-MySQL.md)
 - [Bugzilla setup with Apache and MySQL in Ubuntu](./Configurations/5-Bugzilla-Apache-MySQL.md)
@@ -18,6 +18,7 @@
 - [Restore PostgreSQL database](./Configurations/8-Postgres-database-restore.md)
 - [Linux Resource Monitoring](./Configurations/9-Resource-monitoring.md)
 - [Logrotate config](./Configurations/10-Logrotate-config.md)
+- [Python virtual environment setup](./Configurations/11-Python-venv-setup.md)
 
 ## Scripts
 
