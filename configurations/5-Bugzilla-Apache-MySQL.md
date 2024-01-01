@@ -7,7 +7,7 @@ Installation guide: <https://bugzilla.readthedocs.io/en/latest/installing/quick-
 ### Configure server domain name
 
 ```bash
-sudo apt -y update; sudo apt -y upgrade
+sudo apt update; sudo apt -y upgrade
 sudo echo 'dev.example.com' > /etc/hostname
 sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tdev.example.com' /etc/hosts
 sudo sysctl kernel.hostname=dev.example.com
@@ -209,7 +209,7 @@ sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
-### Obtain SSL Certificate
+### Get SSL Certificate
 
 ```bash
 sudo certbot --apache -d example.com -d www.example.com

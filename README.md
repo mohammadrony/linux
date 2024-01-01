@@ -13,7 +13,7 @@
 - [Mail Transfer Agent setup in Ubuntu](./configurations/3-Postfix-DKIM-setup.md)
 - [MantisBT setup with Nginx and MySQL in Ubuntu](./configurations/4-Mantis-Nginx-MySQL.md)
 - [Bugzilla setup with Apache and MySQL in Ubuntu](./configurations/5-Bugzilla-Apache-MySQL.md)
-- [Redmine setup with Nginx and MySQL in Ubuntu](./configurations/6-Redmine-Nginx-MySQL.md)
+- [OpenProject setup with Apache and PostgreSQL in Ubuntu](./configurations/6-OpenProject-Apache-PostgreSQL.md)
 - [Upgrade PostgreSQL cluster version](./configurations/7-Postgres-cluster-upgrade.md)
 - [Restore PostgreSQL database](./configurations/8-Postgres-database-restore.md)
 - [Linux Resource Monitoring](./configurations/9-Resource-monitoring.md)

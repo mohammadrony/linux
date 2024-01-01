@@ -33,7 +33,7 @@ DNS record entries for SPAM protection
 ### Setup server name
 
 ```bash
-sudo apt -y update; sudo apt -y upgrade
+sudo apt update; sudo apt -y upgrade
 sudo echo 'mail.example.com' > /etc/hostname
 sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tmail.example.com' /etc/hosts
 sudo sysctl kernel.hostname=mail.example.com

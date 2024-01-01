@@ -13,8 +13,9 @@ sudo systemctl start ssh
 
 ```bash
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-wget -q -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt update -y; sudo apt upgrade -y
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg -
+# sudo wget -O /etc/apt/trusted.gpg.d/postgresql.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+sudo apt update; sudo apt upgrade -y
 sudo apt install -y postgresql-14 postgresql-15
 ```
 
@@ -54,6 +55,10 @@ sudo systemctl status postgresql
 ### See available cluster
 
 ```bash
+pg_ctlcluster 14 main start
+```
+
+```bash
 sudo pg_lsclusters
 ```
 
@@ -91,79 +96,73 @@ scp hrythmic_prod_db.sql prod.hrythmic.com:~/
 ### Import database from SQL file
 
 ```bash
-sudo -i -u postgres
-psql
+sudo -u postgres psql --port 5432
 > CREATE DATABASE hrythmic_prod;
 psql hrythmic_prod < hrythmic_prod_db.sql
 ```
 
-### See databases
+## Some SQL commands
+
+Login to postgres command prompt
 
 ```bash
 sudo -u postgres psql
-> \c hrythmic_prod;
-> \dt;
+# sudo -u postgres psql --port 5432
+# sudo -u postgres psql -c 'command'
+# sudo -iu postgres; psql -d postgres -c 'command'
 ```
 
-## Some SQL commands
+Create new user
 
-### Create new user
-
-```bash
-sudo -u postgres psql # Switch into database command prompt
-# sudo -u postgres psql -c 'command' # Run database commands as any user
-# sudo -iu postgres; psql -d postgres -c 'command' # Run commands from postgres user prompt
-> CREATE USER rony WITH PASSWORD '<password>';
+```psql
+CREATE USER rony WITH PASSWORD '<password>';
 or
-> CREATE ROLE rony SUPERUSER LOGIN PASSWORD '<password>';
-> CREATE DATABASE db_name;
+CREATE ROLE rony SUPERUSER LOGIN PASSWORD '<password>';
+CREATE DATABASE db_name;
 ```
 
-### Update user permission
+See databases
 
-```bash
-sudo -u postgres psql # Switch into database command prompt
-# sudo -u postgres psql -c 'command' # Run database commands as any user
-# sudo -iu postgres; psql -d postgres -c 'command' # Run commands from postgres user prompt
-> ALTER USER rony WITH SUPERUSER;
-> GRANT ALL PRIVILEGES ON DATABASE db_name TO rony;
-> GRANT ALL PRIVILEGES ON SCHEMA public TO rony;
+```psql
+\list
 ```
 
-### See user permissions
+Connect to database
 
-```bash
-sudo -u postgres psql # Switch into database command prompt
-# sudo -u postgres psql -c 'command' # Run database commands as any user
-# sudo -iu postgres; psql -d postgres -c 'command' # Run commands from postgres user prompt
-> \du+
-> \dn+
+```psql
+\c hrythmic_prod
+\dt
 ```
 
-### Delete user with permission
+Update user permission
 
-```bash
-sudo -u postgres psql # Switch into database command prompt
-# sudo -u postgres psql -c 'command' # Run database commands as any user
-# sudo -iu postgres; psql -d postgres -c 'command' # Run commands from postgres user prompt
-> ALTER USER rony WITH NOSUPERUSER;
-> REVOKE ALL PRIVILEGES ON DATABASE db_name FROM rony;
-> REVOKE ALL PRIVILEGES ON SCHEMA public FROM rony;
-> DROP DATABASE IF EXISTS db_name;
-> DROP USER IF EXISTS rony;
+```psql
+ALTER USER rony WITH SUPERUSER;
+GRANT ALL PRIVILEGES ON DATABASE db_name TO rony;
+GRANT ALL PRIVILEGES ON SCHEMA public TO rony;
 ```
 
-### Drop Database having connection
+See user permissions
 
-```bash
-sudo -u postgres psql # Switch into database command prompt
-# sudo -u postgres psql -c 'command' # Run database commands as any user
-# sudo -iu postgres; psql -d postgres -c 'command' # Run commands from postgres user prompt
-> REVOKE CONNECT ON DATABASE db_name FROM public;
+```psql
+\du+
+\dn+
+```
 
-> SELECT pg_terminate_backend(pg_stat_activity.pid)
-> FROM pg_stat_activity
-> WHERE pg_stat_activity.datname = 'db_name';
+Delete user with permission
 
-> DROP DATABASE db_name;
+```psql
+ALTER USER rony WITH NOSUPERUSER;
+REVOKE ALL PRIVILEGES ON DATABASE db_name FROM rony;
+REVOKE ALL PRIVILEGES ON SCHEMA public FROM rony;
+DROP DATABASE IF EXISTS db_name;
+DROP USER IF EXISTS rony;
+```
+
+Drop Database and connection
+
+```psql
+REVOKE CONNECT ON DATABASE db_name FROM public;
+SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = 'db_name';
+DROP DATABASE db_name;
 ```

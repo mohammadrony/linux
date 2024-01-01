@@ -1,13 +1,14 @@
 # MantisBT setup with Nginx and MySQL in Ubuntu
 
 Official Guide: <https://www.mantisbt.org/docs/master/en-US/Admin_Guide/html-desktop/#admin.install>
+Article: <https://thishosting.rocks/how-to-install-mantisbt-on-ubuntu/>
 
-## Create Ubuntu 22 server in Cloud or VM
+## Initial server setup
 
 ```bash
 #!/bin/bash
 sudo echo 'mantisbt' > /etc/hostname
-sudo apt -y update; sudo apt -y upgrade
+sudo apt update; sudo apt -y upgrade
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
@@ -17,8 +18,7 @@ sudo reboot now
 ### Install base packages
 
 ```bash
-sudo apt install -y wget vim unzip software-properties-common ca-certificates \
- lsb-release apt-transport-https
+sudo apt install -y wget vim unzip software-properties-common ca-certificates lsb-release apt-transport-https net-tools
 sudo apt install -y nginx
 ```
 
@@ -61,10 +61,10 @@ sudo mysql_secure_installation
 
 > VALIDATE PASSWORD component? y
 > Password strength: 0
-> Remove anonymous users? y
-> Disallow root login remotely? y
-> Remove test database and access to it? y
-> Reload privilege tables now? y
+> Remove anonymous users? n
+> Disallow root login remotely? n
+> Remove test database and access to it? n
+> Reload privilege tables now? n
 ```
 
 ### Setup database access
@@ -73,9 +73,8 @@ sudo mysql_secure_installation
 sudo mysql
 > ALTER USER 'root'@'localhost' IDENTIFIED BY '12345678';
 > CREATE USER 'mantis'@'localhost' IDENTIFIED BY '12345678';
-> GRANT ALL PRIVILEGES ON mantisdb.* TO 'mantis'@'localhost' WITH GRANT OPTION;
 > FLUSH PRIVILEGES;
-> exit;
+> exit
 ```
 
 ### Create Mantis database
@@ -83,7 +82,9 @@ sudo mysql
 ```bash
 sudo mysql -u root -p
 > CREATE DATABASE mantisdb;
-> exit;
+> GRANT ALL PRIVILEGES ON mantisdb.* TO 'mantis'@'localhost' WITH GRANT OPTION;
+> FLUSH PRIVILEGES;
+> exit
 ```
 
 ## Install PHP-8
@@ -93,15 +94,14 @@ sudo mysql -u root -p
 ```bash
 LC_ALL=C.UTF-8
 sudo add-apt-repository ppa:ondrej/php
-sudo apt -y update
+sudo apt update
 ```
 
 ### Install PHP
 
 ```bash
 sudo apt install -y php
-sudo apt install -y php-fpm php-ldap php-soap php-gd php-curl php-mysqli \
- php-mbstring
+sudo apt install -y php-fpm php-ldap php-soap php-gd php-curl php-mysqli php-mbstring
 ```
 
 ### Check PHP installed modules
@@ -116,8 +116,7 @@ php -m
 
 ```bash
 mantis_version=2.25.7
-wget "https://downloads.sourceforge.net/project/mantisbt/mantis-stable/\
-${mantis_version}/mantisbt-${mantis_version}.zip"
+wget "https://downloads.sourceforge.net/project/mantisbt/mantis-stable/${mantis_version}/mantisbt-${mantis_version}.zip"
 unzip mantisbt-${mantis_version}.zip
 ```
 
@@ -129,20 +128,11 @@ sudo chown -R www-data:www-data /var/www/mantis/
 sudo chmod -R 755 /var/www/mantis
 ```
 
-### Update default Nginx page config
-
-Change server port from 80 to any other port in `/etc/nginx/sites-enabled/default` file.
-
-```bash
-sudo sed -i "s/\(.*\)80 \(.*\)/\181 \2/" /etc/nginx/sites-enabled/default
-```
-
 ### Update Nginx configuration
 
 ```bash
 sudo su
-cd /etc/nginx/sites-available/
-cat > mantis << EOF
+cat > /etc/nginx/sites-available/mantis << EOF
 server {
   listen 80;
   listen [::]:80;
@@ -150,8 +140,8 @@ server {
   index  index.php index.html index.htm;
   server_name  mantis.example.com;
 
-  access_log /var/log/nginx/mantis.com.access.log;
-  error_log /var/log/nginx/mantis.com.error.log;
+  access_log /var/log/nginx/mantis-access.log;
+  error_log /var/log/nginx/mantis-error.log;
 
   client_max_body_size 100M;
 
@@ -168,13 +158,50 @@ server {
   }
 }
 EOF
+```
+
+Update default Nginx page config
+
+```bash
+sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/mantis /etc/nginx/sites-enabled/mantis
 sudo systemctl restart nginx
 ```
 
+### Update apache configuration
+
+```bash
+cd /etc/apache2/sites-available
+sudo rm 000-default.conf
+```
+
+```bash
+sudo cat > mantisbt.conf << EOF
+<VirtualHost *:80>
+    ServerName mantis.example.com
+    DocumentRoot "/var/www/mantis"
+
+    <Directory "/var/www/mantis/">
+        DirectoryIndex index.php index.html
+        Options FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog "/var/log/apache2/mantis-error.log"
+    CustomLog "/var/log/apache2/mantis-access.log" combined
+</VirtualHost>
+EOF
+```
+
+```bash
+sudo a2ensite mantisbt.conf
+sudo systemctl restart apache2
+```
+
 ## Final MantisBT setup
 
-Visit: <http://mantis-host/admin/install.php> for initial setup of the application.
+Visit: <http://mantis.example.com/admin/install.php> for initial setup of the application.
 
 ### Update database information to web server
 
@@ -189,4 +216,4 @@ Visit: <http://mantis-host/admin/install.php> for initial setup of the applicati
 
 ### Login to dashboard as administrator
 
-Continue to Login page > Use 'administrator' username > 'root' password > Login.
+Visit Login page > Use 'administrator' username > 'root' password > Login.
