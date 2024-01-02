@@ -13,40 +13,43 @@ sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
 
-## Setup Nginx server
-
-### Install base packages
+Install some base packages
 
 ```bash
 sudo apt install -y wget vim unzip software-properties-common ca-certificates lsb-release apt-transport-https net-tools
+```
+
+## Setup Nginx server
+
+Install Nginx
+
+```bash
 sudo apt install -y nginx
 ```
 
-### Start Nginx server
+Start Nginx server
 
 ```bash
-sudo systemctl start nginx
-sudo systemctl enable nginx
+sudo systemctl enable --now nginx
 sudo systemctl status nginx
 ```
 
 ## Setup MySQL server
 
-### Install database packages
+Install database packages
 
 ```bash
 sudo apt install -y mysql-server
 ```
 
-### Setup MySQL service
+Start MySQL service
 
 ```bash
-sudo systemctl start mysql
-sudo systemctl enable mysql
+sudo systemctl enable --now mysql
 sudo systemctl status mysql
 ```
 
-### Initial MySQL setup
+Initial MySQL setup
 
 ```bash
 sudo mysql
@@ -67,7 +70,7 @@ sudo mysql_secure_installation
 > Reload privilege tables now? n
 ```
 
-### Setup database access
+Update database permission
 
 ```bash
 sudo mysql
@@ -77,7 +80,7 @@ sudo mysql
 > exit
 ```
 
-### Create Mantis database
+Create new database
 
 ```bash
 sudo mysql -u root -p
@@ -89,7 +92,7 @@ sudo mysql -u root -p
 
 ## Install PHP-8
 
-### Add Ondrej PPA repository
+Add Ondrej PPA repository
 
 ```bash
 LC_ALL=C.UTF-8
@@ -97,14 +100,14 @@ sudo add-apt-repository ppa:ondrej/php
 sudo apt update
 ```
 
-### Install PHP
+Install PHP
 
 ```bash
 sudo apt install -y php
 sudo apt install -y php-fpm php-ldap php-soap php-gd php-curl php-mysqli php-mbstring
 ```
 
-### Check PHP installed modules
+Check PHP modules
 
 ```bash
 php -m
@@ -112,15 +115,15 @@ php -m
 
 ## Setup MantisBT server
 
-### Download MantisBT application
+Download MantisBT application
 
 ```bash
-mantis_version=2.25.7
+mantis_version=2.26.0
 wget "https://downloads.sourceforge.net/project/mantisbt/mantis-stable/${mantis_version}/mantisbt-${mantis_version}.zip"
 unzip mantisbt-${mantis_version}.zip
 ```
 
-### Host MantisBT app to Apache
+Save MantisBT app in server
 
 ```bash
 mv -v mantisbt-${mantis_version} /var/www/mantis
@@ -128,7 +131,9 @@ sudo chown -R www-data:www-data /var/www/mantis/
 sudo chmod -R 755 /var/www/mantis
 ```
 
-### Update Nginx configuration
+### Setup MantisBT with Nginx
+
+Create new Nginx configuration
 
 ```bash
 sudo su
@@ -160,7 +165,7 @@ server {
 EOF
 ```
 
-Update default Nginx page config
+Update some other Nginx configuration
 
 ```bash
 sudo rm /etc/nginx/sites-enabled/default
@@ -168,7 +173,11 @@ sudo ln -s /etc/nginx/sites-available/mantis /etc/nginx/sites-enabled/mantis
 sudo systemctl restart nginx
 ```
 
-### Update apache configuration
+### Setup MantisBT with Apache
+
+```bash
+sudo apt install -y apache2
+```
 
 ```bash
 cd /etc/apache2/sites-available
@@ -176,7 +185,7 @@ sudo rm 000-default.conf
 ```
 
 ```bash
-sudo cat > mantisbt.conf << EOF
+sudo cat > mantisbt << EOF
 <VirtualHost *:80>
     ServerName mantis.example.com
     DocumentRoot "/var/www/mantis"
@@ -195,11 +204,11 @@ EOF
 ```
 
 ```bash
-sudo a2ensite mantisbt.conf
+sudo a2ensite mantisbt
 sudo systemctl restart apache2
 ```
 
-## Final MantisBT setup
+## Final MantisBT configuration
 
 Visit: <http://mantis.example.com/admin/install.php> for initial setup of the application.
 

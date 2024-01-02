@@ -4,7 +4,7 @@ Installation guide: <https://bugzilla.readthedocs.io/en/latest/installing/quick-
 
 ## Initial server setup
 
-### Configure server domain name
+Configure server domain name
 
 ```bash
 sudo apt update; sudo apt -y upgrade
@@ -15,15 +15,15 @@ sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
 
-### Install pre-requisites packages
+## Package Installation
+
+Install some base packages
 
 ```bash
 sudo apt install -y git net-tools tree
 ```
 
-## Setup Apache server
-
-### Install required packages
+Install required packages
 
 ```bash
 sudo apt install -y apache2 build-essential mariadb-server libcgi-pm-perl libdigest-sha-perl libtimedate-perl libdatetime-perl \
@@ -37,7 +37,7 @@ sudo apt install -y apache2 build-essential mariadb-server libcgi-pm-perl libdig
   libdbd-mysql-perl perlmagick lynx graphviz python3-sphinx rst2pdf
 ```
 
-### Add firewall rule
+Add firewall rule
 
 ```bash
 sudo ufw enable
@@ -47,7 +47,7 @@ sudo ufw allow 443/tcp
 sudo ufw reload
 ```
 
-### Configure Apache
+## Configure Apache
 
 ```bash
 cd /etc/apache2/mods-available
@@ -72,10 +72,8 @@ Update
 ```bash
 cd /etc/apache2
 sudo rm sites-enabled/000-default.conf
-sudo vi sites-available/bugzilla.conf
+sudo vi sites-available/bugzilla
 ```
-
-Add
 
 ```bash
 <VirtualHost *:80>
@@ -110,7 +108,7 @@ Add
 </VirtualHost>
 ```
 
-### Service restart
+Start service
 
 ```bash
 sudo apachectl configtest
@@ -126,17 +124,18 @@ apache2 -t
 
 ## Configure MariaDB database
 
-### Update MariaDB configuration
+Update MariaDB configuration
 
 ```bash
 sudo vi /etc/mysql/mariadb.conf.d/50-server.cnf
+```
 
-# Update
+```cnf
 max_allowed_packet=100M
 ft_min_word_len=2
 ```
 
-### Create database for Bugzilla
+Create new database
 
 ```bash
 db_pass='1234bz5678'
@@ -144,16 +143,16 @@ sudo mysql -u root -e "CREATE DATABASE IF NOT EXISTS bugs CHARACTER SET = 'utf8'
 sudo mysql -u root -e "GRANT ALL PRIVILEGES ON bugs.* TO bugs@localhost IDENTIFIED BY '$db_pass'"
 ```
 
-### Restart MariaDB service
+Restart database service
 
 ```bash
 sudo systemctl enable --now mariadb
 sudo systemctl restart mariadb
 ```
 
-## Setup Bugzilla application
+## Setup Bugzilla app
 
-### Download Bugzilla
+Download Bugzilla
 
 ```bash
 sudo mkdir -p /var/www/webapps
@@ -161,14 +160,14 @@ cd /var/www/webapps
 sudo git clone --branch release-5.0-stable https://github.com/bugzilla/bugzilla bugzilla
 ```
 
-### Check Setup
+Check Setup
 
 ```bash
 cd /var/www/webapps/bugzilla
 sudo ./checksetup.pl
 ```
 
-### Edit localconfig file
+Edit localconfig file
 
 ```bash
 cd /var/www/webapps/bugzilla
@@ -179,13 +178,16 @@ $webservergroup = 'www-data';
 $db_pass = '1234bz5678';
 ```
 
-### Check Setup again
+Check Setup again
 
 ```bash
 cd /var/www/webapps/bugzilla
 sudo ./checksetup.pl
+```
 
-# User credentials
+User credentials
+
+```txt
 Admin-email: ashadous.jaman@example.com
 Admin-name: Md. Rony
 Admin-pass: LSafAMIOftedpaQ1btYC
@@ -193,7 +195,7 @@ Admin-pass: LSafAMIOftedpaQ1btYC
 
 ## Setup Certbot
 
-### Install certbot package
+Install certbot
 
 ```bash
 # Method 1
@@ -209,13 +211,13 @@ sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
-### Get SSL Certificate
+Get SSL Certificate
 
 ```bash
 sudo certbot --apache -d example.com -d www.example.com
 ```
 
-### Verify Certbot auto renewal
+Verify Certbot auto renewal
 
 ```bash
 # Method 1
