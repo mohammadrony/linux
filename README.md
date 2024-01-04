@@ -9,7 +9,7 @@
 ## Configurations
 
 - [NAT and Host-only network setup in Ubuntu 22](./configurations/1-Ubuntu-22-networking.md)
-- [Prepare External Volume in Linux](./configurations/2-External-volume-setup.md)
+- [Secondary Storage Management in Linux](./configurations/2-Secondary-storage.md)
 - [Mail Transfer Agent setup in Ubuntu](./configurations/3-Postfix-DKIM-setup.md)
 - [MantisBT setup with Nginx and MySQL in Ubuntu](./configurations/4-Mantis-Nginx-MySQL.md)
 - [Bugzilla setup with Apache and MySQL in Ubuntu](./configurations/5-Bugzilla-Apache-MySQL.md)
