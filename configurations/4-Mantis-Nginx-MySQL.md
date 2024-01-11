@@ -74,20 +74,38 @@ Update database permission
 
 ```bash
 sudo mysql
-> ALTER USER 'root'@'localhost' IDENTIFIED BY '12345678';
-> CREATE USER 'mantis'@'localhost' IDENTIFIED BY '12345678';
-> FLUSH PRIVILEGES;
-> exit
+```
+
+```mysql
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'PASSWORD';
+CREATE USER 'mantis'@'%' IDENTIFIED WITH mysql_native_password BY 'PASSWORD';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
 ```
 
 Create new database
 
 ```bash
 sudo mysql -u root -p
-> CREATE DATABASE mantisdb;
-> GRANT ALL PRIVILEGES ON mantisdb.* TO 'mantis'@'localhost' WITH GRANT OPTION;
-> FLUSH PRIVILEGES;
-> exit
+```
+
+```mysql
+CREATE DATABASE IF NOT EXISTS mantis_bugs;
+GRANT ALL PRIVILEGES ON *.* TO 'mantis'@'%';
+FLUSH PRIVILEGES;
+```
+
+```bash
+sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+```
+
+```cnf
+bind-address = 0.0.0.0
+mysqlx-bind-address = 0.0.0.0
+```
+
+```bash
+sudo systemctl restart mysql
 ```
 
 ## Install PHP-8
@@ -217,7 +235,7 @@ Visit: <http://mantis.example.com/admin/install.php> for initial setup of the ap
 - Browse the application from a browser.
 - Update database username `mantis`
 - Update database password `12345678`
-- Update database name `mantisdb`
+- Update database name `mantis_bugs`
 - Update admin username `root`
 - Update admin password `12345678`
 - Update default time zone `Dhaka`
