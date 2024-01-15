@@ -12,8 +12,8 @@ sudo reboot now
 
 ```bash
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg -
-# sudo wget -O /etc/apt/trusted.gpg.d/postgresql.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+sudo wget -O /etc/apt/trusted.gpg.d/postgresql.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg -
 sudo apt update; sudo apt -y upgrade
 sudo apt install -y postgresql-16
 ```
@@ -46,16 +46,16 @@ sudo -u postgres psql
 ```
 
 ```psql
-CREATE DATABASE openproject;
 CREATE USER openproject WITH PASSWORD '1password1';
 ALTER USER openproject WITH SUPERUSER CREATEROLE CREATEDB;
-```
 
-```psql
+# OR
+
 CREATE ROLE openproject WITH SUPERUSER CREATEROLE CREATEDB LOGIN PASSWORD '1password1';
 ```
 
 ```psql
+CREATE DATABASE openproject;
 ALTER DATABASE openproject OWNER TO openproject;
 GRANT ALL PRIVILEGES ON DATABASE openproject TO openproject;
 ```
@@ -63,6 +63,7 @@ GRANT ALL PRIVILEGES ON DATABASE openproject TO openproject;
 ```psql
 \list
 \du+
+\q
 ```
 
 ## Setup OpenProject
@@ -107,7 +108,7 @@ Configure OpenProject with SSL certificate
   - hostname > 127.0.0.1
   - port > 5432
   - Username > openproject
-  - password > ?password?
+  - password > 1password1
   - database > openproject
 
 - Web server
