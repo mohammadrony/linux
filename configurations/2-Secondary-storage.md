@@ -30,7 +30,7 @@ lsblk -f | grep -v loop
 ```
 
 ```bash
-lsblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL
+lsblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL,PARTUUID | grep -v loop
 ```
 
 ## Mount volumes for persistant storage
