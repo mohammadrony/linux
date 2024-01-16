@@ -18,7 +18,7 @@
 - [Restore PostgreSQL database](./configurations/8-Postgres-database-restore.md)
 - [Linux Resource Monitoring](./configurations/9-Resource-monitoring.md)
 - [Logrotate config](./configurations/10-Logrotate-config.md)
-- [Python virtual environment setup](./configurations/11-Python-venv-setup.md)
+- [Python setup with Pyenv](./configurations/11-Python-with-pyenv.md)
 
 ## Scripts
 
