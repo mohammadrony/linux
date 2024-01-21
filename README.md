@@ -19,6 +19,7 @@
 - [Linux Resource Monitoring](./configurations/9-Resource-monitoring.md)
 - [Logrotate config](./configurations/10-Logrotate-config.md)
 - [Python setup with pyenv](./configurations/11-Python-with-pyenv.md)
+- [Node setup with nvm](./configurations/12-Node-with-nvm.md)
 
 ## Scripts
 
