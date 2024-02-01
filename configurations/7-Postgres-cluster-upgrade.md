@@ -50,3 +50,24 @@ See database list
 ```bash
 \list
 ```
+
+## Remove Postgresql
+
+```bash
+dpkg -l | grep postgres
+```
+
+```bash
+sudo apt-get --purge remove postgresql ...
+```
+
+```bash
+sudo rm -r /etc/postgresql/
+sudo rm -r /etc/postgresql-common/
+sudo rm -r /var/lib/postgresql/
+```
+
+```bash
+sudo userdel -r postgres
+sudo groupdel postgres
+```

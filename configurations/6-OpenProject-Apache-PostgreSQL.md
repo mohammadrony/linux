@@ -1,7 +1,7 @@
 # OpenProject setup with Apache and PostgreSQL in Ubuntu
 
 ```bash
-sudo echo 'openproject' > /etc/hostname
+sudo echo 'dev.example.com' > /etc/hostname
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
@@ -11,7 +11,7 @@ sudo reboot now
 ### Install PostgreSQL 16
 
 ```bash
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+sudo sh -c 'echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 sudo wget -O /etc/apt/trusted.gpg.d/postgresql.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg -
 sudo apt update; sudo apt -y upgrade
@@ -46,12 +46,12 @@ sudo -u postgres psql
 ```
 
 ```psql
-CREATE USER openproject WITH PASSWORD '1password1';
+CREATE USER openproject WITH PASSWORD 'openproject24';
 ALTER USER openproject WITH SUPERUSER CREATEROLE CREATEDB;
 
 # OR
 
-CREATE ROLE openproject WITH SUPERUSER CREATEROLE CREATEDB LOGIN PASSWORD '1password1';
+CREATE ROLE openproject WITH SUPERUSER CREATEROLE CREATEDB LOGIN PASSWORD 'openproject24';
 ```
 
 ```psql
@@ -122,7 +122,7 @@ Configure OpenProject with SSL certificate
 - Subversion
   - skip > Skip
 - Git
-  - install > Install Git repository support
+  - skip > Skip
 - memcache
   - install > Install memcache server
 
