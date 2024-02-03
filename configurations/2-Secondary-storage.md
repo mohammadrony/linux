@@ -1,6 +1,6 @@
 # Secondary Storage Management in Linux
 
-## Gparted
+## Make changes by Gparted
 
 1. Attach bootable Ubuntu device
 2. Boot to new Ubuntu
@@ -68,4 +68,67 @@ UUID=<uuid>     /boot/efi       vfat    umask=0077        0       1
 /swapfile       none            swap    sw                0       0
 ...
 ...
+```
+
+## Setup Swap memory
+
+[Online Article](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04)
+
+Check swap status
+
+```bash
+sudo swapon --show
+free -h
+```
+
+Create swapfile
+
+```bash
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+ls -lh /swapfile
+```
+
+Mark the file as swap space
+
+```bash
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo swapon --show
+```
+
+Create permanent entry in fstab
+
+```bash
+sudo cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+```bash
+free -h
+```
+
+Additional settings
+
+```bash
+cat /proc/sys/vm/swappiness
+cat /proc/sys/vm/vfs_cache_pressure
+```
+
+```bash
+sudo sysctl vm.swappiness=30
+sudo sysctl vm.vfs_cache_pressure=50
+```
+
+```bash
+sudo vi /etc/sysctl.conf
+
+# Add
+vm.swappiness=30
+vm.vfs_cache_pressure=50
+```
+
+```bash
+cat /proc/sys/vm/swappiness
+cat /proc/sys/vm/vfs_cache_pressure
 ```
