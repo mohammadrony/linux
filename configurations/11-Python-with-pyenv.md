@@ -40,11 +40,11 @@ sudo apt install -y python3 python3-pip python3-venv python-is-python3
 ### Install Python with Pyenv
 
 ```bash
-pyenv install 3.6.0
+pyenv install 3.7.0
 ```
 
 ```bash
-pyenv virtualenv 3.6.0 general
+pyenv virtualenv 3.7.0 general
 ```
 
 ```bash
@@ -57,10 +57,10 @@ Uninstall
 pyenv uninstall general
 ```
 
-Other usage
+Version setup for directory
 
 ```bash
-pyenv virtualenv 3.6.0 project_1
+pyenv virtualenv 3.7.0 project_1
 ```
 
 ```bash
