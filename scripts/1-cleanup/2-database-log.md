@@ -1,14 +1,18 @@
 # Database logs
 
+```sql
+sqlcmd -U user -P 'password'
+```
+
 Find recovery model
 
 ```sql
-select NAME, recovery_model_desc FROM sys.databases
+select name, recovery_model_desc FROM sys.databases
 GO
 ```
 
 ```sql
-SELECT NAME, log_reuse_wait_desc FROM sys.databases
+SELECT name, log_reuse_wait_desc FROM sys.databases
 GO
 ```
 
@@ -18,7 +22,18 @@ DBCC LOGINFO
 GO
 ```
 
+```sql
+SELECT name FROM sys.master_files WHERE type_desc = 'LOG'
+GO
+```
+
 For SIMPLE recovery model
+
+```sql
+-- optional
+BACKUP LOG dbname TO mypath
+go
+```
 
 ```sql
 USE dbname

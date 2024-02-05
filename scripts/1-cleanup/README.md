@@ -1,4 +1,4 @@
 # Cleanup Space
 
-- [Linux Space](./linux-space.md)
-- [Database logs](./database-log.md)
+- [Linux Space](./1-linux-space.md)
+- [Database logs](./2-database-log.md)
