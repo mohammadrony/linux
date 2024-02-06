@@ -1,4 +1,4 @@
-# Linux Space
+# Linux Files
 
 ## Remove old Snap versions
 
@@ -25,14 +25,9 @@ sudo swapon -a
 ## Log cleanup
 
 ```bash
-LOG_DIR=/var/log
-
-cd $LOG_DIR
-
+cd /var/log
 sudo cat /dev/null > messages
 sudo cat /dev/null > wtmp
-
-echo "Logs cleaned up."
 ```
 
 ```bash

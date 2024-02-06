@@ -30,6 +30,7 @@
 - [Image](./scripts/4-image/)
 - [Video](./scripts/5-video/)
 - [Online data](./scripts/6-online-data/)
+- [Monitoring](./scripts/7-monitoring/)
 
 ## Commands
 
