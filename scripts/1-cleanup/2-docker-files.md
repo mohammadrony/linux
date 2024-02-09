@@ -1,7 +1,7 @@
 # Docker Files
 
 ```bash
-docker rmi <IMAGE>
+docker rmi IMAGE
 ```
 
 ```bash
