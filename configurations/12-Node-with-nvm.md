@@ -33,6 +33,18 @@ nvm --version
 
 ### Install Node using nvm
 
+List available versions
+
+```bash
+nvm ls
+```
+
+```bash
+nvm ls-remote
+```
+
+Install Node and NPM
+
 ```bash
 nvm install node
 ```
@@ -47,16 +59,6 @@ nvm install --lts
 
 ```bash
 nvm install 20.0
-```
-
-List available versions
-
-```bash
-nvm ls
-```
-
-```bash
-nvm ls-remote
 ```
 
 Use specific version
