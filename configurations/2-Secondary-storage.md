@@ -9,7 +9,11 @@
 5. Save new changes
 6. Reboot system
 
-## Collect Disk Information
+## Disk Information
+
+```bash
+findmnt
+```
 
 ```bash
 ls -l /dev/disk/by-uuid
