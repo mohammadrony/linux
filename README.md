@@ -20,7 +20,8 @@
 - [Logrotate config](./configurations/10-Logrotate-config.md)
 - [Python setup with pyenv](./configurations/11-Python-with-pyenv.md)
 - [Node setup with nvm](./configurations/12-Node-with-nvm.md)
-- [Keycloak with Postgresql Database](./configurations/13-Keycloak-Postgres.md)
+- [Java and Maven setup](./configurations/13-Java-maven.md)
+- [Keycloak with Postgresql Database](./configurations/14-Keycloak-Postgres.md)
 
 ## Scripts
 
