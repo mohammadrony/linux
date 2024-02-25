@@ -45,6 +45,10 @@ network:
 sudo netplan apply
 ```
 
+```bash
+route -n
+```
+
 ## CentOS 8/9
 
 ### Host-only and Bridge network mode
@@ -70,5 +74,9 @@ Edit connection (VirtualBox example)
 - Save and Apply
 
 ```bash
-sudo ifdown enp0s3 && sudo ifup enp0s3
+sudo systemctl restart NetworkManager
+```
+
+```bash
+route -n
 ```
