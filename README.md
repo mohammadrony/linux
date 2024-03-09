@@ -23,6 +23,10 @@
 - [Java and Maven setup](./configurations/13-Java-maven.md)
 - [Keycloak with Postgresql Database](./configurations/14-Keycloak-Postgres.md)
 
+## Packages
+
+- [System Monitoring](./packages/monitoring/)
+
 ## Scripts
 
 - [Cleanup](./scripts/1-cleanup/)
