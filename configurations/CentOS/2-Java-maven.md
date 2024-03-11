@@ -3,7 +3,7 @@
 Install Java
 
 ```bash
-sudo apt install -y openjdk-17-jdk openjdk-17-jre
+sudo dnf install -y java-17-openjdk java-17-openjdk-devel
 ```
 
 Configure Java default version
@@ -35,5 +35,5 @@ java --version
 Install Maven
 
 ```bash
-sudo apt install -y maven
+sudo dnf install -y maven
 ```
