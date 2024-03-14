@@ -25,7 +25,8 @@
 
 ## Packages
 
-- [System Monitoring](./packages/monitoring/)
+- [System Monitoring](./packages/monitor/)
+- [Network tools](./packages/network/)
 
 ## Scripts
 
