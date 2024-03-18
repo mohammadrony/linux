@@ -15,21 +15,9 @@ sudo alternatives --config java
 Update JAVA_HOME
 
 ```bash
-realpath $(which java)
-```
-
-```bash
-vi ~/.bashrc
-```
-
-```bash
-export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which java)))))
+# Update ~/.bashrc and ~/.zshrc
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export PATH=$PATH:$JAVA_HOME/bin
-```
-
-```bash
-source ~/.bashrc
-java --version
 ```
 
 Install Maven
