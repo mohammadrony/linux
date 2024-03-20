@@ -6,6 +6,12 @@
 sudo apt install openjdk-17-jdk openjdk-17-jre
 ```
 
+```bash
+# Update ~/.bashrc and ~/.zshrc
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+export PATH=$PATH:$JAVA_HOME/bin
+```
+
 Find latest keycloak version from [here](https://github.com/keycloak/keycloak/releases/).
 
 ```bash
