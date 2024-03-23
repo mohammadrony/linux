@@ -3,7 +3,7 @@
 ## Package setup
 
 ```bash
-sudo apt install openvpn vpnc
+sudo apt install openvpn openconnect vpnc
 ```
 
 Save [vpnc-script](https://gitlab.com/openconnect/vpnc-scripts/raw/master/vpnc-script) in `/etc/vpnc/vpnc-script` file.
@@ -18,12 +18,10 @@ Add `myvpn` function in `~/.bash_functions` and `~/.zsh_functions`.
 ```bash
 myvpn () {
   if [[ $# -gt 0 && $1 == 'vpn1' ]]; then
-    VPNGRP=VPN1
     VPNUSER=VPN1_USER
     VPNPASS=VPN1_PASS
     VPNURL=VPN1_URL
   elif [[ $# -gt 0 && $1 == 'vpn2' ]]; then
-    VPNGRP=VPN2
     VPNUSER=VPN2_USER
     VPNPASS=VPN2_PASS
     VPNURL=VPN2_URL
@@ -35,7 +33,7 @@ myvpn () {
 
   sudo openvpn --mktun --dev tun1 && \
   sudo ifconfig tun1 up && \
-  printf "$VPNPASS\nyes" | sudo /usr/sbin/openconnect -s /etc/vpnc/vpnc-script $VPNURL --user=$VPNUSER --authgroup=$VPNGRP --passwd-on-stdin --interface=tun1
+  printf "$VPNPASS\nyes" | sudo /usr/sbin/openconnect -s /etc/vpnc/vpnc-script $VPNURL --user=$VPNUSER --passwd-on-stdin --interface=tun1
   sudo ifconfig tun1 down
 }
 ```
