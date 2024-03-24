@@ -16,6 +16,17 @@ lvdisplay
 lvscan
 ```
 
+Remove a partition
+
+```bash
+vi /etc/fstab
+# Remove partition name
+```
+
+```lvm
+lvremove /dev/ol/part1
+```
+
 Partition size modification
 
 ```lvm
