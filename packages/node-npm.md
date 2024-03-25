@@ -1,4 +1,4 @@
-# Node setup with nvm
+# Nodejs and NPM setup with NVM
 
 ## Packages Installation
 

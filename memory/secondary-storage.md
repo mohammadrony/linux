@@ -1,4 +1,4 @@
-# Secondary Storage Management in Linux
+# Secondary Storage Management
 
 ## Make changes by Gparted
 

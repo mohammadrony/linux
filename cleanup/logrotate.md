@@ -1,4 +1,4 @@
-# Logrotate config
+# Logrotate
 
 ## Ghost log
 

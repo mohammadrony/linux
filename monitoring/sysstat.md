@@ -1,6 +1,6 @@
-# Linux Resource Monitoring
+# Sysstat
 
-## Install Sysstat
+## Installation
 
 ```bash
 sudo apt install -y sysstat

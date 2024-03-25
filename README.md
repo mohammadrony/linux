@@ -8,20 +8,11 @@
 
 ## Configurations
 
-- [VMs Network Interface setup](./configurations/1-VMs-network-interface.md)
-- [Secondary Storage Management in Linux](./configurations/2-Secondary-storage.md)
-- [Mail Transfer Agent setup in Ubuntu](./configurations/3-Postfix-DKIM-setup.md)
-- [MantisBT setup with Nginx and MySQL in Ubuntu](./configurations/4-Mantis-Nginx-MySQL.md)
-- [Bugzilla setup with Apache and MySQL in Ubuntu](./configurations/5-Bugzilla-Apache-MySQL.md)
-- [OpenProject setup with Apache and PostgreSQL in Ubuntu](./configurations/6-OpenProject-Apache-PostgreSQL.md)
-- [Upgrade PostgreSQL cluster version](./configurations/7-Postgres-cluster-upgrade.md)
-- [Restore PostgreSQL database](./configurations/8-Postgres-database-restore.md)
-- [Linux Resource Monitoring](./configurations/9-Resource-monitoring.md)
-- [Logrotate config](./configurations/10-Logrotate-config.md)
-- [Python setup with pyenv](./configurations/11-Python-with-pyenv.md)
-- [Node setup with nvm](./configurations/12-Node-with-nvm.md)
-- [Java and Maven setup](./configurations/13-Java-maven.md)
-- [Keycloak with Postgresql Database](./configurations/14-Keycloak-Postgres.md)
+- [Mail Transfer Agent setup in Ubuntu](./configurations/postfix-dkim.md)
+- [MantisBT setup with Nginx and MySQL in Ubuntu](./configurations/mantis-nginx-mysql.md)
+- [Bugzilla setup with Apache and MySQL in Ubuntu](./configurations/bugzilla-apache-mysql.md)
+- [OpenProject setup with Apache and PostgreSQL in Ubuntu](./configurations/openproject-apache-postgresql.md)
+- [Keycloak with Postgresql Database](./configurations/keycloak-postgresql.md)
 
 ## Packages
 
