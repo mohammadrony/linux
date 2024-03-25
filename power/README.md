@@ -1,3 +1,3 @@
 # Power Settings
 
-- [Keep Desktop Alive](./keep-alilve.md)
+- [Keep Desktop Alive](./keep-alive.md)
