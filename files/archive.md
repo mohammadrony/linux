@@ -21,6 +21,18 @@ mkdir files
 tar -xvf my-files.tar -C files
 ```
 
+Extract specific file
+
+```bash
+tar -xvf my-files.tar ./file1
+```
+
+## Read
+
+```bash
+tar -tvf my-files.tar
+```
+
 ## Modify
 
 Add files to existing archive

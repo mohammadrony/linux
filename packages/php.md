@@ -1,6 +1,8 @@
-# PHP
+# PHP Laravel
 
-## Ubuntu
+## PHP Setup
+
+### Ubuntu
 
 ```bash
 sudo apt install -y software-properties-common
@@ -15,15 +17,18 @@ sudo apt update
 ```
 
 ```bash
-sudo apt install -y php$N # N = 7.2
+N=7.2 # 8 9
+sudo apt install -y php$N php$N-fpm 
 ```
 
 ```bash
-sudo apt install -y php$N-fpm php$N-common php$N-cli # N = 7.2
+N=7.2 # 8 9
+sudo apt install -y php$N-fpm php$N-common php$N-cli php$N-curl
 ```
 
 ```bash
-sudo systemctl enable --now php-fpm
+N=7.2 # 8 9
+sudo systemctl enable --now php$N-fpm
 ```
 
 Version check
@@ -32,14 +37,28 @@ Version check
 php -v
 ```
 
-## RHEL
+Package check
 
 ```bash
-sudo yum install yum-utils http://rpms.remirepo.net/enterprise/remi-release-$N.rpm # N = 8
+php -m
+```
+
+Remove PHP
+
+```bash
+sudo apt remove -y "php*"
+```
+
+### RHEL
+
+```bash
+N=8 # 9
+sudo yum install yum-utils http://rpms.remirepo.net/enterprise/remi-release-$N.rpm
 ```
 
 ```bash
-sudo yum module enable -y php:remi-$N # N = 7.2
+N=7.2 # 8 9
+sudo yum module enable -y php:remi-$N
 ```
 
 ```bash
@@ -49,7 +68,7 @@ sudo yum install -y php
 HTTPD less installation
 
 ```bash
-sudo yum install -y php-fpm php-common php-cli
+sudo yum install -y php-fpm php-common php-cli php-curl
 ```
 
 Start PHP-FPM
@@ -62,4 +81,30 @@ Version check
 
 ```bash
 php -v
+```
+
+Package check
+
+```bash
+php -m
+```
+
+Remove PHP
+
+```bash
+sudo yum remove -y "php*"
+```
+
+## Composer
+
+```bash
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+```
+
+```bash
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+```
+
+```bash
+composer
 ```
