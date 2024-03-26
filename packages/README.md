@@ -1,7 +1,8 @@
-# Network tools
+# Packages
 
+- [PHP](./php.md)
 - [Speedtest CLI](./speedtest.md)
-- [Java and Maven setup](./java-maven.md)
-- [Nodejs and NPM setup with NVM](./node-npm.md)
+- [Java and Maven](./java-maven.md)
+- [Nginx and Certbot](./nginx-certbot.md)
 - [Python setup with pyenv](./python-pyenv.md)
-- [System Monitoring](./system-monitoring.md)
+- [Nodejs and NPM setup with NVM](./node-npm.md)

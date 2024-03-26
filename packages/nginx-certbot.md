@@ -1,6 +1,14 @@
-# Nginx and Certbot setup
+# Nginx and Certbot
 
 ## Nginx
+
+Ubuntu
+
+```bash
+sudo apt install -y nginx
+```
+
+RHEL
 
 ```bash
 sudo dnf install -y nginx
@@ -41,6 +49,14 @@ sudo ln -s example.com.conf ../sites-available/example.com.conf
 
 ## Certbot
 
+Ubuntu
+
+```bash
+sudo apt install -y python3-certbot-apache
+```
+
+RHEL
+
 ```bash
 sudo dnf install -y epel-release
 ```
@@ -48,6 +64,8 @@ sudo dnf install -y epel-release
 ```bash
 sudo dnf install -y certbot python3-certbot-apache mod_ssl
 ```
+
+Usage
 
 ```bash
 sudo certbot --nginx -d example.com

@@ -188,9 +188,9 @@ sudo ./checksetup.pl
 User credentials
 
 ```txt
-Admin-email: ashadous.jaman@example.com
-Admin-name: Md. Rony
-Admin-pass: LSafAMIOftedpaQ1btYC
+Admin-email: user@example.com
+Admin-name: admin
+Admin-pass: password
 ```
 
 ## Setup Certbot

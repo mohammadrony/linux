@@ -1,9 +1,17 @@
-# Java and Maven setup
+# Java and Maven
 
-Install Java
+## Install Java
+
+Ubuntu
 
 ```bash
 sudo apt install -y openjdk-17-jdk openjdk-17-jre
+```
+
+RHEL
+
+```bash
+sudo dnf install -y java-17-openjdk java-17-openjdk-devel
 ```
 
 Configure Java default version
@@ -20,8 +28,16 @@ export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export PATH=$PATH:$JAVA_HOME/bin
 ```
 
-Install Maven
+## Install Maven
+
+Ubuntu
 
 ```bash
 sudo apt install -y maven
+```
+
+RHEL
+
+```bash
+sudo dnf install -y maven
 ```

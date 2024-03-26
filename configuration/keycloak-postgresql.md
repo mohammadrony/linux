@@ -179,8 +179,8 @@ sudo vi /etc/apache2/sites-available/keycloak.conf
   ErrorLog ${APACHE_LOG_DIR}/keycloak-error.log
   CustomLog ${APACHE_LOG_DIR}/keycloak-access.log combined
 
-  SSLCertificateFile /etc/letsencrypt/live/dev.dsinnovators.com/fullchain.pem
-  SSLCertificateKeyFile /etc/letsencrypt/live/dev.dsinnovators.com/privkey.pem
+  SSLCertificateFile /etc/letsencrypt/live/sso.example.com/fullchain.pem
+  SSLCertificateKeyFile /etc/letsencrypt/live/sso.example.com/privkey.pem
   Include /etc/letsencrypt/options-ssl-apache.conf
 </VirtualHost>
 ```

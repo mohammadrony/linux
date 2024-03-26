@@ -5,11 +5,11 @@
 ### Install pyenv
 
 ```bash
-sudo apt-get install -y git
-sudo apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev tk-dev
+sudo apt install -y git
+sudo apt install -y build-essential libbz2-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev tk-dev
 
 # Optional scientific package headers (for Numpy, Matplotlib, SciPy, etc.)
-sudo apt-get install -y libpng-dev libfreetype6-dev 
+sudo apt install -y libpng-dev libfreetype6-dev 
 ```
 
 ```bash
