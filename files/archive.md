@@ -12,6 +12,13 @@ Extract archive
 tar -xvf my-files.tar
 ```
 
+Extract archive to a directory
+
+```bash
+mkdir my-dir
+tar -xvf my-files.tar -C my-dir
+```
+
 Add files to existing archive
 
 ```bash

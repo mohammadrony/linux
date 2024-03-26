@@ -1,5 +1,7 @@
 # Monitoring
 
+- [ps](./ps.md)
+- [top](./top.md)
 - [sysstat](./sysstat.md)
-- [btop](./btop.md)
-- [htop-pro](./htop-pro.md)
+- [jvm](./jvm.md)
+- [Some useful tools](./others.md)
