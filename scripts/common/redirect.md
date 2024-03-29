@@ -1,4 +1,4 @@
-# Redirect output
+# Redirect
 
 ## Redirect output to another address
 
