@@ -8,23 +8,34 @@ sudo snap install speedtest-cli
 
 Install snapd in [RHEL](./snap.md).
 
-## Package
+## Binary
 
-Ubuntu
+```bash
+https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-x86_64.tgz -O speedtest-cli.tgz
+tar -xvfz speedtest-cli.tgz
+```
+
+```bash
+./speedtest
+```
+
+## Ubuntu
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
 sudo apt install -y speedtest
 ```
 
-RHEL
+```bash
+speedtest
+```
+
+## RHEL
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.rpm.sh | sudo bash
 sudo yum install -y speedtest
 ```
-
-## Examples
 
 ```bash
 speedtest
