@@ -1,4 +1,4 @@
-# Mail Transfer Agent setup in Ubuntu
+# Mail Transfer Agent setup
 
 ## Setup mail server domain
 

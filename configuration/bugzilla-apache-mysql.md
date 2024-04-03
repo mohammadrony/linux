@@ -1,4 +1,4 @@
-# Bugzilla setup with Apache and MySQL in Ubuntu
+# Bugzilla setup with Apache and MySQL
 
 Installation guide: <https://bugzilla.readthedocs.io/en/latest/installing/quick-start.html>
 

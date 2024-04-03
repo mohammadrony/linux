@@ -1,4 +1,4 @@
-# OpenProject setup with Apache and PostgreSQL in Ubuntu
+# OpenProject setup with Apache and PostgreSQL
 
 ```bash
 sudo echo 'dev.example.com' > /etc/hostname
