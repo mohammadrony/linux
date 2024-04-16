@@ -13,5 +13,5 @@
 - [Packages](./packages/)
 - [Power](./power/)
 - [Scripts](./scripts/)
-- [SSH](./ssh/)
+- [VM Login](./ssh/)
 - [User Interface](./user-interface/)
