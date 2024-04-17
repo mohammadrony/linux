@@ -1,4 +1,4 @@
-# MantisBT setup with Nginx and MySQL in Ubuntu
+# MantisBT setup with Nginx and MySQL
 
 Official Guide: <https://www.mantisbt.org/docs/master/en-US/Admin_Guide/html-desktop/#admin.install>
 Article: <https://thishosting.rocks/how-to-install-mantisbt-on-ubuntu/>
