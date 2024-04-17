@@ -37,6 +37,29 @@ lsblk -f | grep -v loop
 lsblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL,PARTUUID | grep -v loop
 ```
 
+List attached hardware
+
+```bash
+hwinfo --all
+hwinfo --all --short
+```
+
+```bash
+hwinfo --disk --short
+```
+
+```bash
+sudo lshw -class disk
+```
+
+```bash
+sudo lshw -class disk
+```
+
+```bash
+duf
+```
+
 ## Mount volumes for persistant storage
 
 Create or formate the device (WIPE ALL PREVIOUS DATA)
