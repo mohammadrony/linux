@@ -11,12 +11,12 @@ Install snapd in [RHEL](./snap.md).
 ## Binary
 
 ```bash
-https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-x86_64.tgz -O speedtest-cli.tgz
-tar -xvfz speedtest-cli.tgz
+wget https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-x86_64.tgz -O speedtest-cli.tgz
+tar -zxvf speedtest-cli.tgz
+./speedtest
 ```
 
 ```bash
-./speedtest
 ```
 
 ## Ubuntu
