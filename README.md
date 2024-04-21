@@ -7,6 +7,7 @@
 - [Core concepts](./core-concepts/)
 - [Files](./files/)
 - [Git](./git/)
+- [Known Issues](./issues/)
 - [Memory](./memory/)
 - [Monitoring](./monitoring/)
 - [Networking](./networking/)
