@@ -60,9 +60,9 @@ sudo lshw -class disk
 duf
 ```
 
-## Mount volumes for persistant storage
+## Mount volumes in ext4 partition
 
-Create or formate the device (WIPE ALL PREVIOUS DATA)
+Create or format the device (WIPE ALL PREVIOUS DATA)
 
 ```bash
 sudo fdisk /dev/sdX
