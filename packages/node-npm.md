@@ -12,7 +12,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$version/install.sh | bash
 ```
 
 ```bash
-vi .bashrc
+vi ~/.bashrc
 ```
 
 ```bashrc

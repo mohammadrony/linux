@@ -52,7 +52,7 @@ sudo ln -s example.com.conf ../sites-available/example.com.conf
 Ubuntu
 
 ```bash
-sudo apt install -y python3-certbot-apache
+sudo apt install -y certbot python3-certbot-nginx # python3-certbot-apache
 ```
 
 RHEL
@@ -62,7 +62,7 @@ sudo dnf install -y epel-release
 ```
 
 ```bash
-sudo dnf install -y certbot python3-certbot-apache mod_ssl
+sudo dnf install -y certbot python3-certbot-nginx mod_ssl # python3-certbot-apache
 ```
 
 Usage
