@@ -11,6 +11,7 @@ sudo apt install -y gnome-shell-extension-manager
 
 - [Simple monitor](https://extensions.gnome.org/extension/3891/simple-monitor/)
 - [Bing Wallpaper](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
+- [Task Widget](https://extensions.gnome.org//extension/3569/task-widget/)
 - [User Themes](https://extensions.gnome.org/extension/19/user-themes/)
 - [Tiling Assistant](https://extensions.gnome.org/extension/3733/tiling-assistant/)
 - [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/)
