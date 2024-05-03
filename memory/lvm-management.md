@@ -16,7 +16,7 @@ sudo fdisk /dev/sdX
 > Enter partition table information
 > Enter 't' to select partition type
 > Enter 'L' to see all types
-> Enter '31' for Linux LVM
+> Select 'Linux LVM' id number i.e. '30'
 > Enter 'p' to print partition table
 > Press 'w' to save partition table
 ```
@@ -54,8 +54,8 @@ sudo vi /etc/fstab
 ```
 
 ```fstab
-# <file system>       <mount point>   <type>  <options>         <dump>  <pass>
-/dev/vg-data/lv-data   /appdata        xfs    defaults          0       2
+# <file system>       <mount point>    <type>   <options>         <dump>  <pass>
+/dev/vg-data/lv-data    /appdata        xfs     defaults                0       2
 ```
 
 ```bash
