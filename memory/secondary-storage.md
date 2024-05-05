@@ -53,10 +53,6 @@ sudo lshw -class disk
 ```
 
 ```bash
-sudo lshw -class disk
-```
-
-```bash
 duf
 ```
 
