@@ -15,7 +15,7 @@ sudo dnf install -y nginx
 ```
 
 ```bash
-sudo sed '36a \tinclude /etc/nginx/sites-enabled/*.conf;'
+sudo sed '36a \tinclude /etc/nginx/sites-enabled/*.conf;' nginx.conf
 ```
 
 ```bash
