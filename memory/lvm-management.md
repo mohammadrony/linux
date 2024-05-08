@@ -10,7 +10,7 @@ lsblk -f
 Create or format the device (WIPE ALL PREVIOUS DATA)
 
 ```bash
-sudo fdisk /dev/sdX
+sudo fdisk /dev/sdc
 > Press 'g' to create gpt formated
 > Press 'n' to create new partition
 > Enter partition table information
@@ -24,9 +24,9 @@ sudo fdisk /dev/sdX
 Create physical volume
 
 ```bash
-sudo pvcreate /dev/sdX1
+sudo pvcreate /dev/sdc1
 sudo pvdisplay
-sudo vgcreate vg-data /dev/sdX1
+sudo vgcreate vg-data /dev/sdc1
 ```
 
 Create logical volume
@@ -54,13 +54,12 @@ sudo vi /etc/fstab
 ```
 
 ```fstab
-# <file system>       <mount point>    <type>   <options>         <dump>  <pass>
-/dev/vg-data/lv-data    /appdata        xfs     defaults                0       2
+# <file system>       <mount point>    <type>   <options>   <dump>  <pass>
+/dev/vg-data/lv-data    /appdata        xfs     defaults      0       2
 ```
 
 ```bash
-sudo reboot now
-# sudo systemctl daemon-reload
+sudo systemctl daemon-reload
 ```
 
 ## Extend Volume from disk
