@@ -7,10 +7,12 @@ lsblk
 lsblk -f
 ```
 
-Create or format the device (WIPE ALL PREVIOUS DATA)
+Create or format the device (WIPE ALL PREVIOUS DATA). 
+
+*Update `sdX` to appropriate name.*
 
 ```bash
-sudo fdisk /dev/sdc
+sudo fdisk /dev/sdX
 > Press 'g' to create gpt formated
 > Press 'n' to create new partition
 > Enter partition table information
@@ -24,9 +26,9 @@ sudo fdisk /dev/sdc
 Create physical volume
 
 ```bash
-sudo pvcreate /dev/sdc1
+sudo pvcreate /dev/sdX1
 sudo pvdisplay
-sudo vgcreate vg-data /dev/sdc1
+sudo vgcreate vg-data /dev/sdX1
 ```
 
 Create logical volume

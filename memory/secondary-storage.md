@@ -11,6 +11,18 @@
 
 ## Disk Information
 
+### SSD check
+
+- HDD for 1
+- SSD for 0
+
+```bash
+lsblk -d -o name,rota
+cat /sys/block/sdX/queue/rotational
+```
+
+### Disks and mountpoints
+
 ```bash
 findmnt
 ```
