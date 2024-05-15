@@ -26,10 +26,10 @@ sudo apt install glusterfs-server
 sudo systemctl enable --now glusterd
 ```
 
-## Storage Node
+Storage setup
 
 ```bash
-sudo gluster peer probe node-2
+sudo gluster peer probe node_2
 ```
 
 ```bash
@@ -53,7 +53,7 @@ sudo gluster volume start myvol
 sudo gluster volume info
 ```
 
-Add Nodes to volume
+Add storage to gluster
 
 ```bash
 sudo gluster volume add-brick myvol node_2:/data force
@@ -72,5 +72,4 @@ sudo apt install -y glusterfs-client
 
 ```bash
 mount -t glusterfs node_1:/myvol /mnt/appdata
-mount -t glusterfs node_2:/myvol /mnt/appdata
 ```
