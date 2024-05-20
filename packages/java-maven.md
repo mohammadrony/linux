@@ -17,7 +17,7 @@ sudo dnf install -y java-17-openjdk java-17-openjdk-devel
 Configure Java default version
 
 ```bash
-sudo alternatives --config java
+sudo update-alternatives --config java
 ```
 
 Update JAVA_HOME
