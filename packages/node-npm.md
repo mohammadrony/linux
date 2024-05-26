@@ -1,5 +1,17 @@
 # Nodejs and NPM setup with NVM
 
+## TL;DR
+
+```bash
+version=v0.39.7
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$version/install.sh | bash
+source ~/.bashrc
+```
+
+```bash
+nvm install 20.0
+```
+
 ## Packages Installation
 
 ### Install nvm
