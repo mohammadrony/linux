@@ -37,11 +37,11 @@ ss -ant | grep -E ':80|:443' | grep -v grep | wc -l
 List of process size
 
 ```bash
-ps aux | grep 'apache2' | grep -v grep | awk '{print $6/1024;}'
+ps aux | grep -E 'httpd|apache2' | grep -v grep | awk '{print $6/1024;}'
 ```
 
 Average process size
 
 ```bash
-ps aux | grep 'apache2' | grep -v grep | awk '{print $6/1024;}' | awk '{avg += ($1 - avg) / NR;} END {print avg " MB";}'
+ps aux | grep -E 'httpd|apache2' | grep -v grep | awk '{print $6/1024;}' | awk '{avg += ($1 - avg) / NR;} END {print avg " MB";}'
 ```

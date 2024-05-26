@@ -1,4 +1,15 @@
-# Keycloak with Nginx
+# Custom Keycloak and Nginx
+
+## Keycloak
+
+Get version form [release](https://github.com/keycloak/keycloak/releases/).
+
+```bash
+KEYCLOAK_VERSION=24.0.4
+wget https://github.com/keycloak/keycloak/releases/download/$KEYCLOAK_VERSION/keycloak-$KEYCLOAK_VERSION.tar.gz
+```
+
+## Nginx
 
 ```bash
 sudo apt install nginx
