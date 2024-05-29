@@ -2,6 +2,7 @@
 
 ## Using Git Commands
 
+- [Configuration](./configuration.md)
 - [Basics of Git](./basics.md)
 - [Pull Changes in Local Repository](./pull-changes.md)
 - [Branches in Git](./branches.md)
