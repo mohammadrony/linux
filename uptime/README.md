@@ -1,3 +1,3 @@
-# Power Settings
+# Uptime
 
 - [Keep Desktop Alive](./keep-alive.md)

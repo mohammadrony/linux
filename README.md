@@ -12,7 +12,7 @@
 - [Monitoring](./monitoring/)
 - [Networking](./networking/)
 - [Packages](./packages/)
-- [Power](./power/)
+- [Uptime](./uptime/)
 - [Scripts](./scripts/)
 - [VM Login](./ssh/)
 - [User Interface](./user-interface/)
