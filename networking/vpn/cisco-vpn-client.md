@@ -3,7 +3,7 @@
 ## Package setup
 
 ```bash
-sudo apt install openvpn openconnect vpnc
+sudo apt install openvpn openconnect vpnc network-manager-openconnect-gnome
 ```
 
 Save [vpnc-script](https://gitlab.com/openconnect/vpnc-scripts/raw/master/vpnc-script) in `/etc/vpnc/vpnc-script` file.
