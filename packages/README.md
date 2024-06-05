@@ -1,5 +1,11 @@
 # Packages
 
+## Application Source
+
+- [Flatpak](./flatpak.md)
+
+## Developer tools
+
 - [PHP](./php.md)
 - [Speedtest CLI](./speedtest.md)
 - [Java and Maven](./java-maven.md)

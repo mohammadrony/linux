@@ -1,4 +1,4 @@
-# SSH known hosts
+# SSH Known Hosts
 
 ```bash
 ssh -o StrictHostKeyChecking=no user@host
