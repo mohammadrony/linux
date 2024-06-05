@@ -14,3 +14,4 @@ Special use case
 
 - `scp user@host:"~/my-files/*.txt" ~/my-files/`
 - `scp 'user@host:"~/my files/*.txt"' ~/my-files/`
+- `scp user1@host1:"~/my-files/*.txt" user2@host2:~/my-files/`
