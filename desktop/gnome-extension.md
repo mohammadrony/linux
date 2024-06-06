@@ -1,4 +1,4 @@
-# Gnome Extention Setup in Ubuntu
+# Gnome Extention
 
 ## Installation
 
@@ -9,21 +9,26 @@ sudo apt install -y gnome-shell-extension-manager
 
 ```bash
 # Task widget dependency
-sudo apt install gir1.2-edataserver-1.2 gir1.2-ecal-2.0 gir1.2-ical-3.0
+sudo apt install -y gir1.2-edataserver-1.2 gir1.2-ecal-2.0 gir1.2-ical-3.0
+sudo reboot now
 ```
 
 ## Useful Extensions
 
+- [Ubuntu Dock](https://extensions.gnome.org/extension/1300/ubuntu-dock/)
+  - Position and size > Show on all monitor
+  - Launchers > Isolate monitor
+  - Behavior > Click action > Minimize or show previews
+  - Behavior > Scroll aciton > Cycle through windows
 - [Simple monitor](https://extensions.gnome.org/extension/3891/simple-monitor/)
+- [System Monitor](https://extensions.gnome.org/extension/6807/system-monitor/)
+  - CPU, RAM, Net I/O
 - [Bing Wallpaper](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
-- [Task Widget](https://extensions.gnome.org//extension/3569/task-widget/)
 - [User Themes](https://extensions.gnome.org/extension/19/user-themes/)
-- [Tiling Assistant](https://extensions.gnome.org/extension/3733/tiling-assistant/)
 - [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/)
 - [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/)
 - [Control Blur Effect On Lockscreen](https://extensions.gnome.org/extension/2935/control-blur-effect-on-lock-screen/)
-- [Extension List](https://extensions.gnome.org/extension/3088/extension-list/)
-- [Notes](https://extensions.gnome.org/extension/1357/notes/)
-- [Change Desktop Background When Workspace Empty](https://extensions.gnome.org/extension/4096/change-desktop-background-when-workspace-empty/)
-- [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect/)
+- [Task Widget](https://extensions.gnome.org//extension/3569/task-widget/)
 - [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
+- [Extension List](https://extensions.gnome.org/extension/3088/extension-list/)
+- [Change Desktop Background When Workspace Empty](https://extensions.gnome.org/extension/4096/change-desktop-background-when-workspace-empty/)

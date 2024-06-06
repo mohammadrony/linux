@@ -6,7 +6,7 @@
 - [Commands](./commands/)
 - [Configuration](./configuration/)
 - [Core concepts](./core-concepts/)
-- [Desktop Health](./desktop-health/)
+- [Desktop](./desktop/)
 - [Files](./files/)
 - [Git](./git/)
 - [Known Issues](./issues/)
@@ -16,4 +16,3 @@
 - [Packages](./packages/)
 - [Remote Connect](./remote-connect/)
 - [Scripts](./scripts/)
-- [User Interface](./user-interface/)
