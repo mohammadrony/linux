@@ -10,7 +10,7 @@ sudo apt install -y gnome-shell-extension-manager
 ```bash
 # Task widget dependency
 sudo apt install -y gir1.2-edataserver-1.2 gir1.2-ecal-2.0 gir1.2-ical-3.0
-sudo reboot now
+gnome-session-quit
 ```
 
 ## Useful Extensions
