@@ -1,23 +1,25 @@
 # Create User
 
-## Ubuntu
+Ubuntu
 
 ```bash
-USERNAME=linux
-sudo adduser --gecos "" $USERNAME
-sudo usermod -aG sudo $USERNAME
-sudo tee -a /etc/sudoers.d/$USERNAME << EOF
-$USERNAME ALL=(ALL) NOPASSWD: ALL
-EOF
+USER=linux
+sudo adduser --gecos "" $USER
+sudo usermod -aG sudo $USER
 ```
 
-## CentOS
+CentOS
 
 ```bash
-USERNAME=linux
-sudo useradd $USERNAME
-sudo usermod -aG wheel $USERNAME
-sudo tee -a /etc/sudoers.d/$USERNAME << EOF
-$USERNAME ALL=(ALL) NOPASSWD: ALL
+USER=linux
+sudo useradd $USER
+sudo usermod -aG wheel $USER
+```
+
+Password less sudo command execution
+
+```bash
+sudo tee -a /etc/sudoers.d/$USER << EOF
+$USER ALL=(ALL) NOPASSWD: ALL
 EOF
 ```
