@@ -22,7 +22,7 @@ gnome-session-quit
   - Behavior > Scroll aciton > Cycle through windows
 - [Simple monitor](https://extensions.gnome.org/extension/3891/simple-monitor/)
 - [System Monitor](https://extensions.gnome.org/extension/6807/system-monitor/)
-  - CPU, RAM, Net I/O
+  - CPU, RAM
 - [Bing Wallpaper](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
 - [User Themes](https://extensions.gnome.org/extension/19/user-themes/)
 - [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/)
