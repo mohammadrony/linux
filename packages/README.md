@@ -2,13 +2,21 @@
 
 ## Application Source
 
+- [Snap](./snap.md)
 - [Flatpak](./flatpak.md)
+
+## Programming language
+
+- [PHP](./php.md)
+- [Java and Maven](./java-maven.md)
+- [Python setup with pyenv](./python-pyenv.md)
+- [Nodejs and NPM setup with NVM](./node-npm.md)
 
 ## Developer tools
 
-- [PHP](./php.md)
-- [Speedtest CLI](./speedtest.md)
-- [Java and Maven](./java-maven.md)
+- [Visual Studio Code](./vscode.md)
+
+## Server tools
+
 - [Nginx and Certbot](./nginx-certbot.md)
-- [Python setup with pyenv](./python-pyenv.md)
-- [Nodejs and NPM setup with NVM](./node-npm.md)
+- [Speedtest CLI](./speedtest.md)
