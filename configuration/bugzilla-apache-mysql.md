@@ -93,12 +93,6 @@ sudo vi sites-available/bugzilla
 
   <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteCond %{HTTP_USER_AGENT} ^.*Go-http-client.*$ [NC,OR]
-    RewriteCond %{HTTP_USER_AGENT} ^.*curl.*$ [NC,OR]
-    RewriteCond %{HTTP_USER_AGENT} ^.*wget.*$ [NC,OR]
-    RewriteCond %{HTTP_USER_AGENT} ^.*apachebench.*$ [NC,OR]
-    RewriteCond %{HTTP_USER_AGENT} ^.*python.*$ [NC,OR]
-    RewriteCond %{HTTP_USER_AGENT} ^.*java.*$ [NC,OR]
     RewriteCond %{HTTP_USER_AGENT} ^-?$ [NC]
     RewriteRule ^.*$ - [R=403,L]
   </IfModule>

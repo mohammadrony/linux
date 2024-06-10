@@ -1,4 +1,4 @@
-# Monitoring Network Connections
+# Network connections
 
 Running service in TCP port
 
@@ -32,16 +32,4 @@ netstat -ant | grep -E ':80|:443' | grep -v grep | wc -l
 
 ```bash
 ss -ant | grep -E ':80|:443' | grep -v grep | wc -l
-```
-
-List of process size
-
-```bash
-ps aux | grep -E 'httpd|apache2' | grep -v grep | awk '{print $6/1024;}'
-```
-
-Average process size
-
-```bash
-ps aux | grep -E 'httpd|apache2' | grep -v grep | awk '{print $6/1024;}' | awk '{avg += ($1 - avg) / NR;} END {print avg " MB";}'
 ```

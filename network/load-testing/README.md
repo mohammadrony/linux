@@ -1,4 +1,4 @@
-# Apache Benchmark
+# Load Testing
 
 ```bash
 ab -n 500 -c 50 "https://example.com/"
