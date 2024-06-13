@@ -18,5 +18,6 @@
 
 ## Server tools
 
-- [Nginx and Certbot](./nginx-certbot.md)
+- [Nginx](./nginx.md)
+- [Certbot](./certbot.md)
 - [Speedtest CLI](./speedtest.md)
