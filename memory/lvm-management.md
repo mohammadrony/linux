@@ -7,7 +7,7 @@ lsblk
 lsblk -f
 ```
 
-Create or format the device (WIPE ALL PREVIOUS DATA). 
+Create or format the device (WIPE ALL PREVIOUS DATA).
 
 *Update `sdX` to appropriate name.*
 
