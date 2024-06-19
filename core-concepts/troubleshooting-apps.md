@@ -1,4 +1,4 @@
-# Linux core concepts for troubleshooting
+# Troubleshooting Apps
 
 <https://www.youtube.com/watch?v=cSVvhUnE4hc>
 

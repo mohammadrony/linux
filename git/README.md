@@ -9,4 +9,3 @@
 - [Commit History of Repository](./commit-history.md)
 - [Save changes and Undo edits with Git](./stash-changes.md)
 - [Related Issues](./issues.md)
-

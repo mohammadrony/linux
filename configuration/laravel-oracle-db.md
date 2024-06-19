@@ -1,4 +1,4 @@
-# Laravel and Oracle database
+# Laravel and Oracle Database
 
 ## Ubuntu
 

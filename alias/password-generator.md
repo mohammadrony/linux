@@ -1,4 +1,4 @@
-# Password Generator from Keyword
+# Generate Password in Bash
 
 ## Prompt password
 

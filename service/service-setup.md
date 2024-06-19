@@ -1,4 +1,4 @@
-# Service Management
+# Service Setup
 
 ## List available service
 

@@ -1,4 +1,4 @@
-# Hardware Specification
+# VM Specification
 
 CPU
 

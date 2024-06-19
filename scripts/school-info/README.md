@@ -1,4 +1,4 @@
-# BD Govt Information
+# School Info
 
 ## Get EIIN
 

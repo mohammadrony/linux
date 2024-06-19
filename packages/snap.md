@@ -38,3 +38,30 @@ Update file link
 ```bash
 sudo ln -s /var/lib/snapd/snap /snap
 ```
+
+## Snap Commands
+
+Update
+
+```bash
+sudo snap refresh
+```
+
+Search
+
+```bash
+sudo snap search APPNAME
+sudo snap info APPNAME
+```
+
+Install
+
+```bash
+sudo snap install APPNAME
+```
+
+Uninstall
+
+```bash
+sudo snap remove APPNAME
+```

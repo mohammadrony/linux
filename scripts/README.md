@@ -1,4 +1,4 @@
 # Scripts
 
-- [Get yearly prayer time](./prayer-time/)
-- [Govt school vacancy](./govt-school-info/)
+- [Yearly Prayer Time](./prayer-time/)
+- [School Info](./school-info/)

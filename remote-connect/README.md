@@ -4,7 +4,7 @@
 
 - [SSH](./ssh)
 
-## Copy files
+## Copy Files
 
 - [SCP](./scp.md)
 
