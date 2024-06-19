@@ -3,15 +3,15 @@
 Unzip file
 
 ```bash
-unzip foo.zip
+unzip filename.zip
 ```
 
 List contents of zip file
 
 ```bash
-unzip -l foo.zip
+unzip -l filename.zip
 ```
 
 ```bash
-zipinfo foo.zip
+zipinfo filename.zip
 ```
