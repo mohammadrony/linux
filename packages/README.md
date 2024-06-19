@@ -25,3 +25,7 @@
 - [Nginx](./nginx.md)
 - [Certbot](./certbot.md)
 - [Speedtest CLI](./speedtest.md)
+
+## Miscellaneous
+
+- [Weather](./weather.md)
