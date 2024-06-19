@@ -1,5 +1,7 @@
 # Find
 
+## Search files
+
 ```bash
 find ./ -type f -name "*.log"
 ```
@@ -9,6 +11,12 @@ Find files with user and group
 ```bash
 find ./ -user root
 find ./ -group root
+```
+
+Find files with same reference
+
+```bash
+find -L /bin -samefile /bin/sh
 ```
 
 Find files by date
@@ -34,14 +42,30 @@ find ./ -type f -mmin -7 # minutes
 find ./ -type f -mtime -7 # days
 ```
 
+## Execute command in files
+
+Execute command for one file
+
+```bash
+find ./ -type d -exec cat {} \;
+```
+
+Execute command for all
+
+```bash
+find ./ -type f -exec cat {} +
+```
+
 Update file permission
 
 ```bash
-find ./ -type l -exec ls -l {} +
-find ./ -type f -exec chmod 644 {} +
-find ./ -type d -exec chmod 755 {} +
-find ./ -exec chown apache:apache {} +
+find ./ -type l -exec ls -l {} \;
+find ./ -type f -exec chmod 644 {} \;
+find ./ -type d -exec chmod 755 {} \;
+find ./ -exec chown USER:GROUP {} \;
 ```
+
+## Custom operation
 
 Count number of lines from similar files
 
@@ -53,10 +77,4 @@ Copy files selectively
 
 ```bash
 find ./ \( -wholename "*.java" -or -wholename "*.cpp" \) -exec sh -c "ls -l {}; cp --parents {} ~/targetdir/" \;
-```
-
-Find files with same reference
-
-```bash
-find -L /bin -samefile /bin/sh
 ```
