@@ -2,10 +2,10 @@
 
 - [awk](./awk.md)
 - [grep](./grep.md)
+- [jq](./jq.md)
 - [quotation](./quotation.md)
-- [redirect](./redirect.md)
 - [read](./read.md)
+- [redirect](./redirect.md)
 - [sed](./sed.md)
 - [xargs](./xargs.md)
-- [jq](./jq.md)
 - [yq](./yq.md)

@@ -1,4 +1,4 @@
-# Find
+# Find Commands
 
 ## Search files
 
@@ -9,8 +9,8 @@ find ./ -type f -name "*.log"
 Find files with user and group
 
 ```bash
-find ./ -user root
-find ./ -group root
+find ./ -user USER
+find ./ -group GROUP
 ```
 
 Find files with same reference

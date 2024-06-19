@@ -1,6 +1,12 @@
-# File or Directory Size
+# File and Directory Size
 
-## Directory size from root
+## File size
+
+```bash
+du *.zip
+```
+
+## Directory size
 
 Exclude specific directory
 
