@@ -1,5 +1,7 @@
 # Grep
 
+## Text Select
+
 ```bash
 grep 'bar' foo.txt
 echo 'bar baz' | grep 'bar'
@@ -17,10 +19,18 @@ Print matched text only
 echo 'bar baz' | grep -o 'bar'
 ```
 
+## Regex
+
 Print lines doesn't start with #
 
 ```bash
 grep -v '^#' foo.txt
+```
+
+Print line container number starting with 1
+
+```bash
+grep '1[0-9]*' foo.txt
 ```
 
 Print only numbers
@@ -29,11 +39,13 @@ Print only numbers
 grep -oP '\d+' foo.txt
 ```
 
-Print files containing a text
+Print files containing text
 
 ```bash
 grep -n 'text' *.txt
 ```
+
+## Examples
 
 ```bash
 grep -Rnw '/path/to/somewhere/' -e 'pattern'
