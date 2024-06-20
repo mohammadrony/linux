@@ -12,6 +12,8 @@ Bandwidth monitor
 bmon
 ```
 
-Others
+System resource statistics
 
-- `dstat`
+```bash
+dstat
+```
