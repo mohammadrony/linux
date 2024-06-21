@@ -117,7 +117,7 @@ GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
 \q
 ```
 
-Update keycloak configuration
+## Keycloak configuration
 
 ```bash
 sudo vi /opt/keycloak/conf/keycloak.conf

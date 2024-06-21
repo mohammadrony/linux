@@ -4,6 +4,7 @@
 
 - [Snap](./snap.md)
 - [Flatpak](./flatpak.md)
+- [APT Repository](./apt-repository.md)
 
 ## Programming Language
 
@@ -25,6 +26,7 @@
 - [Nginx](./nginx.md)
 - [Certbot](./certbot.md)
 - [Speedtest CLI](./speedtest.md)
+- [Tomcat](./tomcat.md)
 
 ## Miscellaneous
 
