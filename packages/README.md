@@ -16,6 +16,7 @@
 ## Desktop Applications
 
 - [Office Apps](./office.md)
+- [Tor Browser](./tor.md)
 
 ## Developer Tools
 

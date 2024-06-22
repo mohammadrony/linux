@@ -1,0 +1,206 @@
+# Tomcat
+
+## Guide
+
+- [Install Tomcat 9 on Ubuntu 24](https://linuxgenie.net/install-tomcat-ubuntu-24-04/)
+- [Install Tomcat 9 on Ubuntu 20](https://linuxize.com/post/how-to-install-tomcat-9-on-ubuntu-20-04/)
+
+## Custom Installation
+
+Create tomcat user
+
+```bash
+sudo groupadd tomcat
+sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+```
+
+Download and extract tomcat binary
+
+```bash
+cd /tmp
+
+curl -O https://downloads.apache.org/tomcat/tomcat-9/v9.0.90/bin/apache-tomcat-9.0.90.tar.gz # version 9
+# curl -O https://downloads.apache.org/tomcat/tomcat-10/v10.1.25/bin/apache-tomcat-10.1.25.tar.gz # version 10
+# curl -O https://downloads.apache.org/tomcat/tomcat-11/v11.0.0-M21/bin/apache-tomcat-11.0.0-M21.tar.gz # version 11
+
+sudo mkdir /opt/tomcat
+sudo tar xzvf /tmp/apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
+```
+
+Update file permission
+
+```bash
+cd /opt
+sudo chgrp -R tomcat /opt/tomcat
+
+cd /opt/tomcat
+sudo chmod -R g+r conf
+sudo chmod g+x conf
+sudo chown -R tomcat webapps/ work/ temp/ logs/
+```
+
+Create tomcat service
+
+```bash
+sudo tee /etc/systemd/system/tomcat.service << EOF
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+
+[Service]
+Type=forking
+
+User=tomcat
+Group=tomcat
+UMask=0007
+RestartSec=10
+Restart=always
+WorkingDirectory=/opt/tomcat
+
+Environment=JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
+Environment=CATALINA_Home=/opt/tomcat
+Environment=CATALINA_BASE=/opt/tomcat
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+Environment='JAVA_OPTS.awt.headless=true -Djava.security.egd=file:/dev/v/urandom'
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+Start the service
+
+```bash
+sudo systemctl daemon-reload
+
+# cd /opt/tomcat/bin
+# sudo ./startup.sh run
+
+sudo systemctl enable --now tomcat
+sudo systemctl status tomcat
+```
+
+Create tomcat user applications account
+
+```bash
+sudo vi /opt/tomcat/conf/tomcat-users.xml
+```
+
+Password: `1D5dof06su`
+
+- user manager can access only the manager section.
+- user admin can access manager and admin section both.
+
+```xml
+<tomcat-users ...>
+  <role rolename="manager-gui" />
+  <user username="manager" password="tomcat2024" roles="manager-gui" />
+
+  <role rolename="admin-gui" />
+  <user username="admin" password="tomcat2024" roles="manager-gui,admin-gui" />
+</tomcat-users>
+```
+
+Allow remote access to manager and host manager ui. *(By default tomcat is configured to access these pages from localhost only)*
+
+```bash
+sudo vi /opt/tomcat/webapps/manager/META-INF/context.xml
+```
+
+```bash
+sudo vi /opt/tomcat/webapps/host-manager/META-INF/context.xml
+```
+
+Update following configuration to access from anywhere
+
+```xml
+<Context antiResourceLocking="false" privileged="true" >
+  <CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor" sameSiteCookies="strict" />
+  <!-- <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
+  ...
+</Context>
+```
+
+Update following configuration to access from specific ip address (i.e. `80.80.80.80`)
+
+```xml
+<Context antiResourceLocking="false" privileged="true" >
+  <CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor" sameSiteCookies="strict" />
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|80.80.80.80" />
+  ...
+</Context>
+```
+
+Restart if change are not applied
+
+```bash
+sudo systemctl restart tomcat
+```
+
+## Browse Tomcat Server
+
+- Open <http://localhost:8080> or your configured host address from borwser.
+- Open <http://localhost:8080/manager> for application manager as `admin` or `manager` user.
+- Open <http://localhost:8080/host-manager> for application manager as `admin` user.
+- Current password is `tomcat2024` for `admin` and `manager` user.
+
+## Deploy jar/war Application
+
+```bash
+sudo cp app.war /opt/tomcat/webapps/
+```
+
+To deploy app in context path `/`
+
+```bash
+sudo vi /opt/tomcat/conf/server.xml
+```
+
+```xml
+<Server>
+  <Service>
+    <Engine>
+      <Host>
+        <Context path="" docBase="app" debug="0" reloadable="true"></Context>
+      </Host>
+    </Engine>
+  </Service>
+</Server>
+```
+
+## Uninstall Tomcat
+
+Stop service
+
+```bash
+sudo systemctl disable --now tomcat
+```
+
+Delete tomcat files
+
+```bash
+sudo rm -rf /opt/tomcat
+```
+
+Remove tomcat package if any
+
+```bash
+sudo apt remove -y tomcat
+```
+
+Delete tomcat user and group
+
+```bash
+sudo userdel tomcat
+sudo groupdel tomcat
+```
+
+Remove system service file
+
+```bash
+sudo rm /etc/systemd/system/tomcat.service
+```
