@@ -8,4 +8,4 @@
 - [MantisBT setup with Nginx and MySQL](./mantis-nginx-mysql.md)
 - [OpenProject setup with Apache and PostgreSQL](./openproject-apache-postgresql.md)
 - [Mail Transfer Agent setup](./postfix-dkim.md)
-- [RabbitMQ Cluster](./rabbitmq.md)
+- [RabbitMQ Cluster](./rabbitmq-cluster.md)
