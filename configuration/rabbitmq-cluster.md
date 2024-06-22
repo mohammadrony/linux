@@ -128,3 +128,25 @@ sudo rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 sudo rabbitmqctl list_feature_flags
 sudo rabbitmqctl enable_feature_flag all # name
 ```
+
+## Management Console configuration
+
+Login
+
+- Open rabbitmq [management console](http://localhost:15672) and Use `admin` username and `admin` password to login.
+- Update current password
+  - admin settings > Update this user > Enter password > Update user.
+
+Import definition
+
+- Goto Overview page > Import definitions > Select Definitions file > Upload broker definitions.
+
+Export definition
+
+- Goto Overview page > Export definitions > Enter filename > Select Virtual host > Download broker definitions.
+
+## Stop Service
+
+```bash
+sudo systemctl disable --now rabbitmq-server
+```
