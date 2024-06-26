@@ -1,5 +1,17 @@
 # Monitoring tools
 
+System monitoring tool
+
+```bash
+nmon
+```
+
+System resource statistics
+
+```bash
+dstat
+```
+
 Display current network usage
 
 ```bash
@@ -12,8 +24,16 @@ Bandwidth monitor
 bmon
 ```
 
-System resource statistics
+TCP connections on the network
 
 ```bash
-dstat
+tcptrack
+sudo tcptrack -i ens3
+```
+
+Network load monitor
+
+```bash
+slurm
+slurm -i ens3
 ```
