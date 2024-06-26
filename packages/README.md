@@ -25,7 +25,6 @@
 ## Server Tools
 
 - [Nginx](./nginx.md)
-- [Certbot](./certbot.md)
 - [Speedtest CLI](./speedtest.md)
 - [Tomcat](./tomcat.md)
 

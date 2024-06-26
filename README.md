@@ -2,6 +2,7 @@
 
 - [Administrative](./administrative/)
 - [Alias](./alias/)
+- [Certificate](./certificate/)
 - [Cleanup](./cleanup/)
 - [Commands](./commands/)
 - [Configuration](./configuration/)
