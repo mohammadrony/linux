@@ -2,5 +2,5 @@
 
 - [Login Session](./login-session.md)
 - [Ubuntu Firewall Configuration](./ubuntu-firewall.md)
-- [User Account](./user-account.md)
+- [User and Group](./user-and-group.md)
 - [VM Specification](./vm-specification.md)
