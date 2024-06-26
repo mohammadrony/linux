@@ -3,5 +3,5 @@
 Certificate validation
 
 ```bash
-openssl s_client -host www.domain.com -port 443
+openssl s_client -host www.example.com -port 443
 ```
