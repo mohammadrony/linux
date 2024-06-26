@@ -6,27 +6,27 @@
 - [Flatpak](./flatpak.md)
 - [APT Repository](./apt-repository.md)
 
-## Programming Language
+## Programming Language setup
 
 - [PHP](./php.md)
 - [Java and Maven](./java-maven.md)
 - [Python setup with pyenv](./python-pyenv.md)
 - [Nodejs and NPM setup with NVM](./node-npm.md)
 
-## Desktop Applications
-
-- [Office Apps](./office.md)
-- [Tor Browser](./tor.md)
-
-## Developer Tools
-
-- [Visual Studio Code](./vscode.md)
-
 ## Server Tools
 
 - [Nginx](./nginx.md)
 - [Speedtest CLI](./speedtest.md)
 - [Tomcat](./tomcat.md)
+
+## Developer Tools
+
+- [Visual Studio Code](./vscode.md)
+
+## Desktop Applications
+
+- [Office Apps](./office.md)
+- [Tor Browser](./tor.md)
 
 ## Miscellaneous
 

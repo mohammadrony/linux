@@ -2,6 +2,7 @@
 
 - [Bugzilla setup with Apache and MySQL](./bugzilla-apache-mysql.md)
 - [Initial OS Setup](./initial-os-setup.md)
+- [Jenkins](./jenkins.md)
 - [Custom Keycloak and Nginx](./keycloak-nginx.md)
 - [Keycloak with Postgresql Database](./keycloak-postgresql.md)
 - [Laravel and Oracle Database](./laravel-oracle-db.md)
