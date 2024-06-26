@@ -34,20 +34,19 @@ sudo systemctl enable --now sysstat
 Current state monitoring
 
 ```bash
-sar -A
+sar -h
 ```
 
 ```bash
+sar -A
 sar -u
 sar -r
 ```
 
 ```bash
-sar -h
-```
-
-```bash
 sar -A 1 5
+sar -u 1 5
+sar -r 1 5
 ```
 
 Time range state monitoring

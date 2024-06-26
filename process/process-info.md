@@ -7,6 +7,12 @@ ps auxf | grep <PROGRAM>
 ps -ef | grep <PROGRAM>
 ```
 
+List process by memory usage
+
+```bash
+sudo python ps_mem.py
+```
+
 Process from pid
 
 ```bash
