@@ -12,6 +12,10 @@ System resource statistics
 dstat
 ```
 
+```bash
+glances
+```
+
 System information
 
 ```bash

@@ -23,3 +23,13 @@ Highest directory size including hidden files
 ```bash
 sudo du -hcsx -- .[!.]* /* | sort -rh
 ```
+
+## dutop
+
+```bash
+curl -O -L http://www.pixelbeat.org/scripts/dutop
+```
+
+```bash
+python dutop
+```
