@@ -30,13 +30,14 @@ sudo tar xzvf /tmp/apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
 Update file permission
 
 ```bash
-cd /opt
-sudo chgrp -R tomcat /opt/tomcat
+sudo chown tomcat:tomcat /opt/tomcat -R
+sudo chmod -R g+rx /opt/tomcat/conf
+```
 
-cd /opt/tomcat
-sudo chmod -R g+r conf
-sudo chmod g+x conf
-sudo chown -R tomcat webapps/ work/ temp/ logs/
+Find Java Home
+
+```bash
+dirname $(dirname $(readlink -f $(which java)))
 ```
 
 Create tomcat service
@@ -133,6 +134,51 @@ Update following configuration to access from specific ip address (i.e. `80.80.8
   <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|80.80.80.80" />
   ...
 </Context>
+```
+
+Log rotation
+
+```bash
+sudo mkdir -p /opt/tomcat/logs/archive
+sudo chown tomcat:tomcat /opt/tomcat/logs/archive
+sudo chmod 755 /opt/tomcat/logs/archive
+```
+
+```bash
+sudo vi /etc/logrotate.d/tomcat
+```
+
+```txt
+/opt/tomcat/logs/archive/catalina.out.7
+/opt/tomcat/logs/archive/*.log.7
+/opt/tomcat/logs/archive/*.txt.7 {
+  rotate 90
+  missingok
+  notifempty
+  compress
+  dateext
+  dateformat -%Y-%m-%d
+  create 0644 tomcat tomcat
+}
+
+/opt/tomcat/logs/catalina.out
+/opt/tomcat/logs/*.log
+/opt/tomcat/logs/*.txt {
+  daily
+  rotate 7
+  missingok
+  notifempty
+  create 0644 tomcat tomcat
+  olddir /opt/tomcat/logs/archive
+  sharedscripts
+  postrotate
+      /bin/kill -USR1 $(cat /opt/tomcat/temp/tomcat.pid 2>/dev/null) 2>/dev/null || true
+  endscript
+}
+```
+
+```bash
+sudo logrotate -d /etc/logrotate.d/tomcat
 ```
 
 Restart if change are not applied
