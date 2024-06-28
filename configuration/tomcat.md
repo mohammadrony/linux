@@ -149,16 +149,18 @@ sudo vi /etc/logrotate.d/tomcat
 ```
 
 ```txt
-/opt/tomcat/logs/archive/catalina.out.7
-/opt/tomcat/logs/archive/*.log.7
-/opt/tomcat/logs/archive/*.txt.7 {
+/opt/tomcat/logs/catalina.out.7
+/opt/tomcat/logs/*.log.7
+/opt/tomcat/logs/*.txt.7 {
   rotate 90
   missingok
   notifempty
   compress
   dateext
+  dateyesterday
   dateformat -%Y-%m-%d
   create 0644 tomcat tomcat
+  olddir /opt/tomcat/logs/archive
 }
 
 /opt/tomcat/logs/catalina.out
@@ -169,7 +171,6 @@ sudo vi /etc/logrotate.d/tomcat
   missingok
   notifempty
   create 0644 tomcat tomcat
-  olddir /opt/tomcat/logs/archive
   sharedscripts
   postrotate
       /bin/kill -USR1 $(cat /opt/tomcat/temp/tomcat.pid 2>/dev/null) 2>/dev/null || true
