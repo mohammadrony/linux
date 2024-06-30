@@ -29,6 +29,12 @@ $USER ALL=(ALL) NOPASSWD: ALL
 EOF
 ```
 
+*Sometimes user needs to logout and re-login to update the group. Or [follow this](https://superuser.com/questions/272061/reload-a-linux-users-group-assignments-without-logging-out) to reload users groups without logging out.*
+
+```bash
+logout
+```
+
 ## Create Group
 
 CentOS and Ubuntu
