@@ -25,6 +25,16 @@ sudo dnf install -y epel-release
 sudo dnf install -y certbot python3-certbot-nginx mod_ssl # python3-certbot-apache
 ```
 
+Amazon Linux 2023
+
+```bash
+sudo dnf install -y augeas-libs
+sudo python3 -m venv /opt/certbot/
+sudo /opt/certbot/bin/pip install --upgrade pip
+sudo /opt/certbot/bin/pip install certbot certbot-nginx # certbot-apache
+sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
+```
+
 ## Usage
 
 ```bash
