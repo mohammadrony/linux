@@ -219,6 +219,34 @@ sudo vi /opt/tomcat/conf/server.xml
 </Server>
 ```
 
+## SSL Certificate
+
+```bash
+sudo su
+
+cd /etc/letsencrypt/live/www.example.com
+ln -s cert.pem /opt/tomcat/conf
+ln -s chain.pem /opt/tomcat/conf
+ln -s privkey.pem /opt/tomcat/conf
+```
+
+```bash
+sudo vi /opt/tomcat/conf/server.xml
+```
+
+Uncomment following segment
+
+```bash
+<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+maxThreads="150" SSLEnabled="true">
+  <SSLHostConfig>
+    <Certificate certificateFile="conf/cert.pem"
+                 certificateKeyFile="conf/privkey.pem"
+                 certificateChainFile="conf/chain.pem" />
+  </SSLHostConfig>
+</Connector>
+```
+
 ## Uninstall Tomcat
 
 Stop service
