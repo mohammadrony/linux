@@ -115,5 +115,17 @@ sudo certbot renew --dry-run
 Generate certificate only
 
 ```bash
-certbot certonly --standalone -d www.example.com
+sudo certbot certonly --standalone -d www.example.com
+```
+
+List certificates
+
+```bash
+sudo certbot certificates
+```
+
+Delete domain and certificates
+
+```bash
+sudo certbot delete --cert-name www.example.com
 ```
