@@ -223,8 +223,10 @@ sudo vi /opt/tomcat/conf/server.xml
 
 ```bash
 sudo su
+```
 
-cd /etc/letsencrypt/live/www.example.com
+```bash
+cd /etc/letsencrypt/live/example.com
 ln -s cert.pem /opt/tomcat/conf
 ln -s chain.pem /opt/tomcat/conf
 ln -s privkey.pem /opt/tomcat/conf
@@ -245,6 +247,56 @@ maxThreads="150" SSLEnabled="true">
                  certificateChainFile="conf/chain.pem" />
   </SSLHostConfig>
 </Connector>
+```
+
+```bash
+sudo systemctl restart tomcat
+```
+
+## Nginx Reverse Proxy
+
+```bash
+sudo apt install -y nginx
+```
+
+[How to enable port 80 on Apache tomcat?](https://www.digitalocean.com/community/questions/how-to-enable-port-80-on-apache-tomcat)
+
+```bash
+sudo tee -a /etc/nginx/sites-available/example.com.conf << EOF
+server {
+  server_name example.com;
+  access_log /var/log/nginx/example.log;
+  error_log  /var/log/nginx/example.log error;
+  
+  location / {
+        rewrite ^/$ /app redirect;
+    }
+
+  location /app {
+    proxy_connect_timeout       60s;
+    proxy_send_timeout          60s;
+    proxy_read_timeout          60s;
+    proxy_buffer_size           256k;
+    proxy_buffers               8 512k;
+    proxy_busy_buffers_size     512k;
+    proxy_set_header            Host $host;
+    proxy_set_header            X-Real-IP $remote_addr;
+    proxy_set_header            X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header            X-Forwarded-Proto $scheme;
+    proxy_pass                  http://127.0.0.1:8080;
+    proxy_redirect              off;
+  }
+}
+EOF
+```
+
+```bash
+cd /etc/nginx/sites-enabled/
+sudo ln -s ../sites-available/example.com.conf ./
+```
+
+```bash
+sudo systemctl restart nginx
 ```
 
 ## Uninstall Tomcat
