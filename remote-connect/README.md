@@ -8,6 +8,7 @@
 
 - [SCP](./scp.md)
 
-## Remote UI
+## Remote Login
 
+- [X11 Login](./x11-login/)
 - [Server setup](./rdp/server-setup.md)
