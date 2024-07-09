@@ -1,6 +1,6 @@
 # Cronjob
 
-## Configuration
+## Default Config
 
 Cronjob file: `/etc/crontab`
 
