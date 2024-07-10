@@ -13,10 +13,14 @@ List process by memory usage
 sudo python ps_mem.py
 ```
 
-Process from pid
+Pid to process
 
 ```bash
-ps -p <PID> -o comm=
+ps -p $PID -o comm=
+```
+
+```bash
+ps -p $PID -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS
 ```
 
 Top memory usage
