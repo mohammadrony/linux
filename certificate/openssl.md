@@ -8,6 +8,10 @@ Certificate validation
 openssl s_client -host www.example.com -port 443
 ```
 
+```bash
+openssl s_client -connect www.example.com:443 < /dev/null | openssl x509 -noout -dates
+```
+
 Renew certificate
 
 ```bash
