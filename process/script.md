@@ -1,26 +1,9 @@
-# Process Info
-
-List running process
-
-```bash
-ps auxf | grep <PROGRAM>
-ps -ef | grep <PROGRAM>
-```
+# Script
 
 List process by memory usage
 
 ```bash
 sudo python ps_mem.py
-```
-
-Pid to process
-
-```bash
-ps -p $PID -o comm=
-```
-
-```bash
-ps -p $PID -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS
 ```
 
 Top memory usage

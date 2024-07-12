@@ -1,4 +1,4 @@
-# Monitor Java Memory Usage
+# JVM
 
 jvm-mon
 

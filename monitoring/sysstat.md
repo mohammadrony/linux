@@ -1,4 +1,4 @@
-# Sysstat
+# sysstat
 
 ## Installation
 

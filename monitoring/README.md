@@ -1,6 +1,7 @@
 # Monitoring
 
-- [jvm](./jvm.md)
-- [Other tools](./others.md)
+- [JVM](./jvm.md)
+- [pidstat](./pidstat.md)
 - [sysstat](./sysstat.md)
-- [Tops](./tops.md)
+- [Tools](./tools.md)
+- [Top](./top.md)

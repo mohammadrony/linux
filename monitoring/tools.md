@@ -1,4 +1,22 @@
-# Other tools
+# Tools
+
+Process viewer
+
+```bash
+htop
+```
+
+Resource monitor
+
+```bash
+btop
+```
+
+Monitoring with remote access
+
+```bash
+glances
+```
 
 Interactive resource viewer
 
@@ -10,10 +28,6 @@ System resource statistics
 
 ```bash
 dstat
-```
-
-```bash
-glances
 ```
 
 System information

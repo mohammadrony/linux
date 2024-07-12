@@ -1,8 +1,7 @@
 # Process
 
-- [fuser](./fuser.md)
-- [Kill process](./kill.md)
-- [PID](./pid.md)
-- [Process Info](./process-info.md)
-- [Process PWD](./process-pwd.md)
-- [Process Status](./ps.md)
+- [Process Environment](./env.md)
+- [Kill Process](./kill.md)
+- [PIDs](./pids.md)
+- [Process Status](./process-status.md)
+- [Script](./script.md)
