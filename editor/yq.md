@@ -1,4 +1,4 @@
-# YQ
+# yq
 
 ```bash
 sudo snap install yq
