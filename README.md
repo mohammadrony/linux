@@ -8,6 +8,7 @@
 - [Configuration](./configuration/)
 - [Core concepts](./core-concepts/)
 - [Desktop](./desktop/)
+- [Editor](./editor/)
 - [Files](./files/)
 - [Git](./git/)
 - [Known Issues](./issues/)

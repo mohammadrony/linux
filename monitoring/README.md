@@ -5,3 +5,4 @@
 - [sysstat](./sysstat.md)
 - [Tools](./tools.md)
 - [Top](./top.md)
+- [Watch](./watch.md)
