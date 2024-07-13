@@ -1,16 +1,36 @@
 # Redirect
 
-## Redirect output to another address
+[Redirection](https://www.gnu.org/software/bash/manual/bash.html#Redirections)
 
-- `command 2>/dev/null`
-  - redirects stderr to /dev/null.
-- `command 1>/dev/null`
-  - redirects stdout to /dev/null.
-- `command 2>/dev/null 1>&2`
-  - redirects stderr to /dev/null then
-  - redirects stdout to stderr address.
+## Send stdout stderr to /dev/null
 
-## Write output into multiple file
+Redirects stdout to /dev/null
+
+```bash
+command 1>/dev/null | grep 'something'
+```
+
+Redirects stderr to /dev/null
+
+```bash
+command 2>/dev/null | grep 'something'
+```
+
+Redirect stderr to stdout then redirect stdout to /dev/null
+
+```bash
+command 2>&1 >/dev/null | grep 'something'
+```
+
+*[Details here.](https://stackoverflow.com/questions/2342826/how-can-i-pipe-stderr-and-not-stdout)*
+
+Redirects stderr to /dev/null then redirects stdout to stderr address
+
+```bash
+command 2>/dev/null 1>&2
+```
+
+## Save output in multiple file
 
 ```bash
 echo "1st line"

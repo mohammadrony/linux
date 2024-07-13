@@ -6,18 +6,6 @@ Running service in TCP port
 netstat -nltp
 ```
 
-Scan available ports to connect
-
-```bash
-nmap example.com
-```
-
-Test connect to an open port
-
-```bash
-telnet example.com 22
-```
-
 Connected IP address
 
 ```bash
