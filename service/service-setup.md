@@ -69,3 +69,9 @@ sudo systemctl restart example
 sudo systemctl stop example
 sudo systemctl start example
 ```
+
+Check dependency
+
+```bash
+systemctl list-dependencies example
+```

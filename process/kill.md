@@ -8,22 +8,34 @@ Kill process by port usage
 sudo fuser -k 80/tcp
 ```
 
-Kill process by pid
+Simulate kill signal
 
 ```bash
-sudo kill -9 <pid>
+sudo kill -s 0 <pid>
 ```
 
-Kill process by name
+Gracefully shutdown process
 
 ```bash
-sudo pkill -9 <process>
+sudo kill <pid>
 ```
 
 Kill newest process
 
 ```bash
 sudo pkill -n <process>
+```
+
+Kill process by pid forcefully
+
+```bash
+sudo kill -9 <pid>
+```
+
+Kill process by name forcefully
+
+```bash
+sudo pkill -9 <process>
 ```
 
 Kill process and wait to finish

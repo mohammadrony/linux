@@ -1,4 +1,4 @@
-# Process Status
+# Process Details
 
 `ps` options
 
@@ -39,4 +39,24 @@ ps -C <command> -o %cpu,%mem,cmd
 
 ```bash
 ps -eo pid,user,group,args,etime,lstart
+```
+
+## Related process and files
+
+Display process tree
+
+```bash
+pstree -p <pid>
+```
+
+List open files
+
+```bash
+lsof -p <pid>
+```
+
+More info
+
+```bash
+cat /proc/<pid>/status
 ```
