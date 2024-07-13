@@ -35,3 +35,9 @@ Display multiple report
 ```bash
 pidstat -p <pid> <interval> <count>
 ```
+
+Monitor command process and its threads
+
+```bash
+pidstat -t -C <command> <interval> <count>
+```

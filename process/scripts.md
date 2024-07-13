@@ -1,4 +1,4 @@
-# Script
+# Scripts
 
 List process by memory usage
 

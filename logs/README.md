@@ -1,0 +1,3 @@
+# Logs
+
+- [Journald](./journald.md)
