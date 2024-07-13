@@ -1,20 +1,37 @@
 # SSH Server Config
 
-Create original copy
+Copy original config
 
 ```bash
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.orig
 ```
 
-Change configuration
+## Change configuration
 
-`sudo sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config`
+```bash
+sudo vi /etc/ssh/sshd_config
+```
 
-`sudo sed -i 's/^#AuthorizedKeysFile\s.ssh\/authorized_keys/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config`
+- Allow public key authentication
 
-`sudo sed -i 's/^#PermitRootLogin\s.*/PermitRootLogin yes\n\1/' /etc/ssh/sshd_config`
+  ```txt
+  PubkeyAuthentication yes
+  AuthorizedKeysFile .ssh/authorized_keys
+  ```
 
-Restart SSH service
+- Allow root login
+
+  ```txt
+  PermitRootLogin yes
+  ```
+
+- Allow selected user
+
+  ```txt
+  AllowUsers root <user>
+  ```
+
+## Restart SSH service
 
 ```bash
 sudo systemctl reload sshd
