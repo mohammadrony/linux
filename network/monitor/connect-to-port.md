@@ -23,7 +23,7 @@ nmap -p 1-65535 host
 Connect to a port
 
 ```bash
-nc -vz host port
+telnet host port
 ```
 
 ```bash
@@ -31,5 +31,9 @@ ncat -vz host port
 ```
 
 ```bash
-telnet host port
+nc -vz host port
+```
+
+```bash
+nc -vz -w3 host port
 ```
