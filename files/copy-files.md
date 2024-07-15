@@ -33,5 +33,9 @@ rsync --ignore-existing
 ````
 
 ```bash
-rsync -avhe ssh --chown=USER:GROUP /foo user@remote-host:/tmp/
+rsync -avzh -e ssh --progress --chown=USER:GROUP /foo user@host:/tmp/
+```
+
+```bash
+rsync --ignore-existing -avzh -e ssh --progress /foo user@host:/tmp/ >> log.txt 2>&1
 ```
