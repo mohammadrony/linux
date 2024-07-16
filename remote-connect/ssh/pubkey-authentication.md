@@ -1,4 +1,4 @@
-# Public Key Based Authentication
+# Public Key Authentication
 
 Generate ssh-key
 

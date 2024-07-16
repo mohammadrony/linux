@@ -1,4 +1,4 @@
-# SSH Auth Agent for Client
+# Auth Agent for SSH Client
 
 Related information
 

@@ -1,9 +1,10 @@
 # SSH
 
+- [Auth Agent](./agent.md)
 - [Ansible with SSH](./ansible-with-ssh.md)
-- [Useful commands](./commands.md)
-- [SSH Known Hosts](./known-hosts.md)
-- [Public Key Based Authentication](./pubkey-authentication.md)
-- [SSH Auth Agent](./ssh-agent.md)
-- [SSH Key Generate](./ssh-keygen.md)
+- [Audit](./audit.md)
+- [SSH Key](./key.md)
+- [Known Hosts](./known-hosts.md)
+- [Login](./login.md)
+- [Public Key Authentication](./pubkey-authentication.md)
 - [SSH Server Config](./sshd-config.md)

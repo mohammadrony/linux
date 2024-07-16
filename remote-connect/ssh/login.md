@@ -1,10 +1,4 @@
-# Connect using SSH
-
-sshpass
-
-```bash
-sshpass -p '<password>' ssh <user>@<host>
-```
+# SSH Login
 
 For ssh-dss algorithm (legacy version)
 
@@ -18,11 +12,10 @@ Manage login to unknown hosts
 ssh -o StrictHostKeyChecking=no <user>@<host>
 ```
 
-Remove host from known_hosts
+Provider password for ssh
 
 ```bash
-ssh-keygen -R <host>,<ip-address>
-ssh-keyscan -H <host>,<ip-address> >> ~/.ssh/known_hosts
+sshpass -p '<password>' ssh <user>@<host>
 ```
 
 Login with identity file
