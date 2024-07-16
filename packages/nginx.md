@@ -29,25 +29,66 @@ sudo mkdir sites-available sites-enabled
 sudo vi /etc/nginx/sites-available/example.com.conf
 ```
 
-Example 1
+Full config
 
-```conf
+```bash
 server {
   listen 80;
   listen [::]:80;
 
-  server_name example.com;
-  access_log /var/log/nginx/example.com.log;
-  error_log  /var/log/nginx/example.com.log error;
+  server_name example.com www.example.com;
+  access_log /var/log/nginx/example-access.log;
+  error_log  /var/log/nginx/example-error.log error;
 
   location / {
-    proxy_pass  http://192.168.0.101:8080;
-    # Application specific config
+    proxy_pass                            http://192.168.0.101:8080;
+
+    # Memory efficient
+    proxy_buffer_size                     16k;
+    proxy_buffers                         8 32k; # 8 * 32k buffer.
+    proxy_busy_buffers_size               64k;
+
+    # More smaller response
+    proxy_buffer_size                     128k;
+    proxy_buffers                         256 16k; # 256 * 16k buffer.
+    proxy_busy_buffers_size               256k;
+
+    # Less but larger response
+    proxy_buffer_size                     128k;
+    proxy_buffers                         4 256k; # 4 * 256k buffer.
+    proxy_busy_buffers_size               256k;
+
+    client_max_body_size                  250m;
+    proxy_redirect                        off;
+
+    proxy_set_header Host                 $host;
+    proxy_set_header X-Forwarded-For      $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Host     $host;
+    proxy_set_header X-Forwarded-Server   $host;
+    proxy_set_header X-Forwarded-Proto    $scheme;
+
+    proxy_connect_timeout                 60s;
+    proxy_send_timeout                    60s;
+    proxy_read_timeout                    60s;
+    
+    proxy_cache_use_stale                 error timeout invalid_header updating http_500 http_502 http_503 http_504;
   }
 }
 ```
 
-Example 2
+Single proxy server
+
+```conf
+server {
+  ...
+  ...
+  location / {
+    proxy_pass          http://192.168.0.101:8080;
+  }
+}
+```
+
+Load balancer
 
 ```conf
 upstream myapplication {
@@ -56,26 +97,68 @@ upstream myapplication {
 }
 
 server {
-  listen 80;
-  listen [::]:80;
+  ...
+  ...
+  location / {
+    proxy_pass          http://myapplication;
+    rewrite             ^/[^/]+(.*)$ /$1 last;
+    # rewrite             ^/(.*)$ /$1 break;
+  }
+}
+```
 
-  server_name example.com;
-  access_log /var/log/nginx/example.com.log;
-  error_log  /var/log/nginx/example.com.log error;
+Change context path
+
+```conf
+server {
+  ...
+  ...
+  location / {
+    proxy_pass          http://192.168.0.101:8080;
+    rewrite             ^/(.*)$ /$1 break;
+  }
+}
+```
+
+Update url location from `/` to `/path`
+
+```conf
+server {
+  ...
+  ...
+  location / {
+    rewrite             ^/$ /path redirect;
+    proxy_pass          http://192.168.0.101:8080;
+  }
+}
+```
+
+```conf
+server {
+  ...
+  ...
+  location = / {
+    rewrite ^/$ /path redirect;
+  }
 
   location / {
-    proxy_buffer_size                     128k;
-    proxy_buffers                         4 256k;
-    proxy_busy_buffers_size               256k;
-    client_max_body_size                  250m;
-    proxy_redirect                        off;
-    proxy_pass                            http://myapplication;
-    rewrite                               ^/(.*)$ /$1 break;
-    proxy_set_header Host                 $host;
-    proxy_set_header X-Forwarded-For      $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Host     $host;
-    proxy_set_header X-Forwarded-Server   $host;
-    proxy_set_header X-Forwarded-Proto    $scheme;
+    proxy_pass          http://192.168.0.101:8080;
+  }
+}
+```
+
+Redirect to another domain for `/`
+
+```conf
+server {
+  ...
+  ...
+  location = / {
+    return 301          $scheme://example.com/path;
+  }
+
+  location / {
+    proxy_pass          http://192.168.0.101:8080;
   }
 }
 ```
