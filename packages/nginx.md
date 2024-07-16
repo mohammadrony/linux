@@ -101,8 +101,6 @@ server {
   ...
   location / {
     proxy_pass          http://myapplication;
-    rewrite             ^/[^/]+(.*)$ /$1 last;
-    # rewrite             ^/(.*)$ /$1 break;
   }
 }
 ```
@@ -115,7 +113,8 @@ server {
   ...
   location / {
     proxy_pass          http://192.168.0.101:8080;
-    rewrite             ^/(.*)$ /$1 break;
+    rewrite             ^/[^/]+(.*)$ /$1 last;
+    # rewrite             ^/(.*)$ /$1 break;
   }
 }
 ```
@@ -138,7 +137,7 @@ server {
   ...
   ...
   location = / {
-    rewrite ^/$ /path redirect;
+    rewrite             ^/$ /path redirect;
   }
 
   location / {
