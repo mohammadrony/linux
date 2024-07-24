@@ -115,6 +115,11 @@ sudo certbot renew --dry-run
 Generate certificate only
 
 ```bash
+sudo certbot certonly -d www.example.com
+```
+
+```bash
+sudo certbot certonly --nginx -d www.example.com
 sudo certbot certonly --standalone -d www.example.com
 ```
 
