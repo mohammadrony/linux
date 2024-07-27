@@ -1,6 +1,6 @@
 # Snap
 
-## RHEL
+## RHEL Installation
 
 ```bash
 N=9 # RHEL version 8 9
@@ -64,4 +64,13 @@ Uninstall
 
 ```bash
 sudo snap remove APPNAME
+```
+
+## Remove Previous Versions
+
+```bash
+snap list --all | awk '/disabled/{print $1, $3}' |
+  while read snapname revision; do
+    sudo snap remove "$snapname" --revision="$revision"
+  done
 ```
