@@ -1,17 +1,5 @@
 # SSH Login
 
-For ssh-dss algorithm (legacy version)
-
-```bash
-ssh -oHostKeyAlgorithms=+ssh-dss <user>@<host>
-```
-
-Manage login to unknown hosts
-
-```bash
-ssh -o StrictHostKeyChecking=no <user>@<host>
-```
-
 Provider password for ssh
 
 ```bash
@@ -28,12 +16,26 @@ ssh -i ~/.ssh/<file> <user>@<host>
 ssh -i ~/.ssh/<file> -o IdentitiesOnly=yes <user>@<host>
 ```
 
-Force password authentication
+Manage login to unknown hosts
+
+```bash
+ssh -o StrictHostKeyChecking=no <user>@<host>
+```
+
+For ssh-dss algorithm (legacy version)
+
+```bash
+ssh -o HostKeyAlgorithms=+ssh-dss <user>@<host>
+```
+
+Use password authentication
 
 ```bash
 ssh -o PreferredAuthentications=password <user>@<host>
 ```
 
+Using key exchange algorithm
+
 ```bash
-sshpass -p '<password>' ssh -o PreferredAuthentications=password <user>@<host>
+ssh -o KexAlgorithms=curve25519-sha256 <user>@<host>
 ```
