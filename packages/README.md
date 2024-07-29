@@ -5,6 +5,7 @@
 - [Snap](./snap.md)
 - [Flatpak](./flatpak.md)
 - [APT Repository](./apt-repository.md)
+- [RHEL](./rhel.md)
 
 ## Programming Language setup
 
