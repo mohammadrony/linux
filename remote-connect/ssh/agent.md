@@ -20,7 +20,7 @@ ssh-add -l
 Adding key to agent *for current session*
 
 ```bash
-ssh-add ~/.ssh/ed25519
+ssh-add ~/.ssh/id_ed25519
 ```
 
 Test connection
@@ -30,7 +30,7 @@ ssh -T user@host
 ```
 
 ```bash
-ssh -i ~/.ssh/ed25519 -T user@host
+ssh -i ~/.ssh/id_ed25519 -T user@host
 ```
 
 Kill current agent
