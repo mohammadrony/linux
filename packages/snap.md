@@ -60,6 +60,16 @@ Install
 sudo snap install APPNAME
 ```
 
+Stop update
+
+```bash
+snap changes
+```
+
+```bash
+sudo snap abort <id>
+```
+
 Uninstall
 
 ```bash
