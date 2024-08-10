@@ -1,10 +1,16 @@
 # IP Address
 
-All ip address (private)
+List IP address details
 
 ```bash
 ip a
 ip addr show eth0
+```
+
+List only IP addresses
+
+```bash
+hostname -i
 ```
 
 ```bash
