@@ -26,6 +26,7 @@
 
 ## Desktop Applications
 
+- [AppEditor](./appeditor.md)
 - [Office Apps](./office.md)
 - [Tor Browser](./tor.md)
 
