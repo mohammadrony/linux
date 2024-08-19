@@ -41,10 +41,10 @@ myvpn () {
 Example command
 
 ```bash
-/opt/cisco/anyconnect/bin/vpn -s connect host << EOF
+/opt/cisco/anyconnect/bin/vpn -s connect <host> << EOF
 0
-username
-password
+<username>
+<password>
 y
 exit
 EOF

@@ -7,11 +7,11 @@ ssh -o StrictHostKeyChecking=no user@host
 Add host as known hosts
 
 ```bash
-ssh-keyscan -H <host-address> >> ~/.ssh/known_hosts
+ssh-keyscan -H <host> >> ~/.ssh/known_hosts
 ```
 
 Remove host from known hosts
 
 ```bash
-ssh-keygen -R <host-address>
+ssh-keygen -R <host>
 ```

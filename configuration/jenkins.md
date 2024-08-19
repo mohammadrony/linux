@@ -56,8 +56,8 @@ Tools
 Secrets
 
 - Goto Dashboard > Manage Jenkins > Security > Credentials > System > Global credentials (unrestricted) > Add following credentials
-- Kind: `Username with password`, ID: *`user_repo_readonly`*, Username: *`username`*,
-Password: *`password`*
+- Kind: `Username with password`, ID: *`user_repo_readonly`*, Username: *`<username>`*,
+Password: *`<password>`*
 
 ## Create Pipeline Job
 

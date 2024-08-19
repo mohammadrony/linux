@@ -35,5 +35,5 @@ sudo systemctl reload sshd
 ## Connect from remote host
 
 ```bash
-ssh <user>@host
+ssh <user>@<host>
 ```

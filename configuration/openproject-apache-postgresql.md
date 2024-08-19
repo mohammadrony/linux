@@ -108,7 +108,7 @@ Configure OpenProject with SSL certificate
   - hostname > 127.0.0.1
   - port > 5432
   - Username > openproject
-  - password > 1password1
+  - password > <1password1>
   - database > openproject
 
 - Web server

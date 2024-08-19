@@ -9,31 +9,31 @@ netstat -nltp
 Scan open ports
 
 ```bash
-nmap host
+nmap <host>
 ```
 
 ```bash
-nmap -p port host
+nmap -p <port> <host>
 ```
 
 ```bash
-nmap -p 1-65535 host
+nmap -p 1-65535 <host>
 ```
 
 Connect to a port
 
 ```bash
-telnet host port
+telnet <host> <port>
 ```
 
 ```bash
-ncat -vz host port
+ncat -vz <host> <port>
 ```
 
 ```bash
-nc -vz host port
+nc -vz <host> <port>
 ```
 
 ```bash
-nc -vz -w3 host port
+nc -vz -w3 <host> <port>
 ```

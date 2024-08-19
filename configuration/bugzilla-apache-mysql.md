@@ -183,8 +183,8 @@ User credentials
 
 ```txt
 Admin-email: user@example.com
-Admin-name: admin
-Admin-pass: password
+Admin-name: <Admin>
+Admin-pass: <password>
 ```
 
 ## Setup Certbot
