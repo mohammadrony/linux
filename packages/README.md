@@ -2,10 +2,11 @@
 
 ## Application Source
 
-- [Snap](./snap.md)
-- [Flatpak](./flatpak.md)
 - [APT Repository](./apt-repository.md)
+- [Flatpak](./flatpak.md)
 - [RHEL](./rhel.md)
+- [Snap](./snap.md)
+- [Update](./update.md)
 
 ## Programming Language setup
 
