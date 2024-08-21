@@ -1,4 +1,4 @@
-# Curl
+# curl
 
 ```bash
 curl http://localhost/path[1-3]

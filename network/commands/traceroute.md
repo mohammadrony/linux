@@ -1,0 +1,5 @@
+# traceroute
+
+```bash
+traceroute <host>
+```

@@ -1,4 +1,4 @@
-# IP Address
+# ip
 
 List IP address details
 
