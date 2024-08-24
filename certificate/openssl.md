@@ -2,6 +2,12 @@
 
 [SSL For Free](https://www.sslforfree.com/)
 
+View certificate
+
+```bash
+openssl -x509 -in /path/to/file.pem -text -noout
+```
+
 Certificate validation
 
 ```bash
