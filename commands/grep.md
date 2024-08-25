@@ -3,20 +3,26 @@
 ## Text Select
 
 ```bash
-grep 'bar' foo.txt
-echo 'bar baz' | grep 'bar'
-```
-
-Ignore case
-
-```bash
-echo 'bar baz' | grep -i 'bar'
+grep 'foo' file.txt
+cat file.txt | grep 'bar'
 ```
 
 Print matched text only
 
 ```bash
 echo 'bar baz' | grep -o 'bar'
+```
+
+Ignore case of matched text
+
+```bash
+cat file.txt | grep -i 'foo'
+```
+
+Print next few lines of matched line
+
+```bash
+cat file.txt | grep -A 3 'foo'
 ```
 
 ## Regex
