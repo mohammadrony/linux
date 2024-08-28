@@ -1,5 +1,7 @@
 # APT Repository
 
+## Add Repository
+
 Add
 
 ```bash
@@ -11,6 +13,24 @@ Remove
 
 ```bash
 sudo apt-add-repository --remove --yes REPOSITORY
+```
+
+## Hold
+
+Hold Upgrade
+
+```bash
+sudo apt-mark hold PACKAGE
+```
+
+```bash
+apt-mark showhold
+```
+
+Unhold upgrade
+
+```bash
+sudo apt-mark unhold PACKAGE
 ```
 
 ## Ubuntu 22
@@ -29,4 +49,22 @@ Remove repository
 
 ```bash
 sudo add-apt-repository -r -y -s "deb http://archive.ubuntu.com/ubuntu/ jammy main universe"
+```
+
+## Upgrade
+
+Upgrade all package
+
+```bash
+sudo apt -y upgrade
+```
+
+Upgrade specific package
+
+```bash
+sudo apt install -y PACKAGE
+```
+
+```bash
+sudo apt install -y PACKAGE=VERSION*
 ```
