@@ -24,3 +24,9 @@ sudo mount -a
 ```bash
 df -h
 ```
+
+Unmount
+
+```bash
+sudo umount -f -l /appdata
+```

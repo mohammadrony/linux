@@ -73,3 +73,11 @@ sudo apt install -y glusterfs-client
 ```bash
 mount -t glusterfs node_1:/myvol /mnt/appdata
 ```
+
+## Cleanup
+
+Unmount
+
+```bash
+sudo umount -f -l /mnt/appdata
+```
