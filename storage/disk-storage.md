@@ -1,4 +1,4 @@
-# Secondary Storage Management
+# Disk Storage Management
 
 ## Make changes by Gparted
 
