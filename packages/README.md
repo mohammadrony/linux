@@ -28,6 +28,7 @@
 ## Desktop Applications
 
 - [AppEditor](./appeditor.md)
+- [Messaging](./messaging.md)
 - [Office Apps](./office.md)
 - [Tor Browser](./tor.md)
 
