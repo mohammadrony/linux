@@ -19,23 +19,39 @@ awk -f script.awk foo.txt
 
 ## Commands
 
+Print complete file
+
 ```bash
 awk '{print}' foo.txt
 ```
 
+Print lines having text
+
 ```bash
-awk '/foobar/ {print}' foo.txt 
+awk '/text/ {print}' foo.txt 
 ```
 
-Print first and 4th field
+Print first and third field
 
 ```bash
-awk '{print $1,$4}' foo.txt 
+# Separate by comma (,)
+awk '{print $1 "," $3}' foo.txt
 ```
 
-Print range of line
+```bash
+# Separate by space
+awk '{print $1,$3}' foo.txt
+```
+
+Print selected line
 
 ```bash
+# Print third line
+awk 'NR==3 {print NR,$0}' foo.txt 
+```
+
+```bash
+# Print 3rd to 6th line
 awk 'NR==3, NR==6 {print NR,$0}' foo.txt 
 ```
 
