@@ -19,6 +19,12 @@ Ignore case of matched text
 cat file.txt | grep -i 'foo'
 ```
 
+Print previous few lines of matched line
+
+```bash
+cat file.txt | grep -B 3 'foo'
+```
+
 Print next few lines of matched line
 
 ```bash

@@ -16,6 +16,16 @@ Redirects stderr to /dev/null
 command 2>/dev/null | grep 'something'
 ```
 
+Redirects stderr to /dev/null then redirects stdout to stderr address
+
+```bash
+command 2>/dev/null 1>&2
+```
+
+```bash
+command &>/dev/null
+```
+
 Redirect stderr to stdout then redirect stdout to /dev/null
 
 ```bash
@@ -23,12 +33,6 @@ command 2>&1 >/dev/null | grep 'something'
 ```
 
 *[Details here.](https://stackoverflow.com/questions/2342826/how-can-i-pipe-stderr-and-not-stdout)*
-
-Redirects stderr to /dev/null then redirects stdout to stderr address
-
-```bash
-command 2>/dev/null 1>&2
-```
 
 ## Save output in multiple file
 
