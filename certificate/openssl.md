@@ -2,13 +2,28 @@
 
 [SSL For Free](https://www.sslforfree.com/)
 
+```bash
+openssl -h
+openssl x509 -h
+```
+
 View certificate
 
 ```bash
-openssl -x509 -in /path/to/file.pem -text -noout
+openssl x509 -in /path/to/file.pem -text -noout
 ```
 
-Certificate validation
+Check validity date
+
+```bash
+openssl x509 -in /path/to/file.pem -dates -noout
+```
+
+```bash
+openssl x509 -in /path/to/file.pem -text -noout | grep -i validity -A 2
+```
+
+Domain certificate validity
 
 ```bash
 openssl s_client -host www.example.com -port 443
