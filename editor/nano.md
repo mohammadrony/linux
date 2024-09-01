@@ -1,1 +1,5 @@
 # nano
+
+```bash
+nano -h
+```

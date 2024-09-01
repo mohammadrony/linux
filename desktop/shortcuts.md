@@ -18,4 +18,3 @@ Ubuntu
 | Window > Hide window                                | Alt + D               |
 | Window > Toggle maximization state                  | Super + Up            |
 | Window > Restore window                             | Super + Down          |
-

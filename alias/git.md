@@ -1,6 +1,6 @@
-# Git Commands
+# Git
 
-Simple alias
+Common
 
 ```bash
 alias gl='git pull'
@@ -8,7 +8,7 @@ alias gp='git push'
 alias gpom='git push origin main'
 ```
 
-Keep changes
+To keep changes
 
 ```bash
 alias gsl='git stash; git pull; git stash pop'

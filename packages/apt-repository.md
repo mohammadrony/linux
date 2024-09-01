@@ -15,24 +15,6 @@ Remove
 sudo apt-add-repository --remove --yes REPOSITORY
 ```
 
-## Hold
-
-Hold Upgrade
-
-```bash
-sudo apt-mark hold PACKAGE
-```
-
-```bash
-apt-mark showhold
-```
-
-Unhold upgrade
-
-```bash
-sudo apt-mark unhold PACKAGE
-```
-
 ## Ubuntu 22
 
 Add repository
