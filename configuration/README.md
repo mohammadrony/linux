@@ -11,4 +11,5 @@
 - [OpenProject setup with Apache and PostgreSQL](./openproject-apache-postgresql.md)
 - [Mail Transfer Agent setup](./postfix-dkim.md)
 - [RabbitMQ Cluster](./rabbitmq-cluster.md)
+- [Redis](./redis.md)
 - [Tomcat](./tomcat.md)
