@@ -15,10 +15,14 @@ sudo apt-get install -y jenkins
 Update Jenkins Home
 
 ```bash
-USER=linux
+# USER=linux
 sudo sed -i "s/User=jenkins/User=$USER/" /lib/systemd/system/jenkins.service
 sudo sed -i "s#JENKINS_HOME=/var/lib/jenkins#JENKINS_HOME=/home/$USER/.jenkins#" /lib/systemd/system/jenkins.service
 sudo sed -i "s#WorkingDirectory=/var/lib/jenkins#WorkingDirectory=/home/$USER/.jenkins#" /lib/systemd/system/jenkins.service
+```
+
+```bash
+mkdir ~/.jenkins
 ```
 
 ```bash
