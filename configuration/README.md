@@ -13,3 +13,4 @@
 - [RabbitMQ Cluster](./rabbitmq-cluster.md)
 - [Redis](./redis.md)
 - [Tomcat](./tomcat.md)
+- [WordPress](./wordpress.md)
