@@ -1,5 +1,11 @@
 # Redis
 
+Redis components
+
+```bash
+sudo apt install -y redis
+```
+
 Server
 
 ```bash
@@ -9,7 +15,7 @@ sudo apt install -y redis-server
 Client
 
 ```bash
-sudo apt install -y redis
+sudo apt install -y redis-tools
 ```
 
 ```bash
