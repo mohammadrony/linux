@@ -42,6 +42,7 @@ Make filesystem
 
 ```bash
 sudo mkfs.xfs /dev/vg-data/lv-data
+# sudo mkfs.xfs -f /dev/vg-data/lv-data
 ```
 
 ```bash
@@ -82,7 +83,7 @@ sudo fdisk /dev/sdY
 > Enter partition table information
 > Enter 't' to select partition type
 > Enter 'L' to see all types
-> Enter '31' for Linux LVM
+> Enter '30' for Linux LVM
 > Enter 'p' to print partition table
 > Press 'w' to save partition table
 ```
@@ -111,8 +112,21 @@ sudo lvextend -l +100%FREE /dev/vg-data/lv-data
 sudo xfs_growfs /dev/vg-data/lv-data
 ```
 
-## Remove partition
+## Cleanup
 
-```lvm
+Backup data from mount point
+
+- `/appdata`
+- `/disk`
+
+Unmount volume
+
+```bash
+sudo umount /dev/vg-data/lv-data
+```
+
+Remove volume
+
+```bash
 sudo lvremove /dev/vg-data/lv-data
 ```
