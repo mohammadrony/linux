@@ -105,6 +105,29 @@ server {
 }
 ```
 
+Allow specific ip range
+
+```bash
+sudo tee -a /etc/hosts << EOF
+192.168.1.101 example.com
+EOF
+```
+
+```conf
+server {
+  ...
+  server_name example.com
+  ...
+  ...
+  location / {
+    deny  192.168.1.1;
+    allow 192.168.1.0/24;
+    allow 127.0.0.1;
+    deny  all;
+  }
+}
+```
+
 Change context path
 
 ```conf
