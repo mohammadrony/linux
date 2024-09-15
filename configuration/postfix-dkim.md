@@ -14,7 +14,6 @@ Goto any domain registrar and select your favorite domain. Some of the popular d
 
 DNS record entries for SPAM protection
 
----------------------------------------------------------------------------------------------------------------------
 | Type  | Name            | Content                                                                     | TTL value |
 |-------|-----------------|-----------------------------------------------------------------------------|-----------|
 | A     | mail            | mail.server.ip.address                                                      | Auto      |
@@ -24,7 +23,6 @@ DNS record entries for SPAM protection
 | TXT   | _dmarc          | "v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:<dmarc@example.com>; ruf=mailto:<dmarc@example.com>; fo=1; pct=100" | Auto      |
 | CNAME | autodiscover    | mail.example.com                                                             | Auto      |
 | CNAME | autoconfig      | mail.example.com                                                             | Auto      |
----------------------------------------------------------------------------------------------------------------------
 
 *Low value in priority means higher the priority.*
 
@@ -156,15 +154,12 @@ sudo cat /etc/opendkim/keys/example.com/default.txt
 default._domainkey IN TXT ("v=DKIM1; h=sha256; k=rsa; p=Encrypted_key");
 ```
 
-### Verify the DNS record
-
-```bash
-sudo opendkim-testkey -d example.com -s default -vvv
-```
+Upload keys in **DNS record**
 
 ### Update DKIM configuration
 
 ```bash
+sudo cp /etc/opendkim.conf /etc/opendkim.conf.orig
 sudo vi /etc/opendkim.conf
 
 # Update
@@ -186,77 +181,33 @@ ExternalIgnoreList      /etc/opendkim/trusted.hosts
 InternalHosts           /etc/opendkim/trusted.hosts
 ```
 
-OR
-
-```bash
-sudo sed -i 's/^#\(LogWhy\s*\)no/\1yes/' /etc/opendkim.conf
-sudo sed -i 's/^#\(Mode\s*sv\)/\1/' /etc/opendkim.conf
-sudo sed -i 's/^#\(SubDomains\s*no\)/\1/' /etc/opendkim.conf
-
-sudo sed -i '18i AutoRestart\t\tyes\nAutoRestartRate\t\t10/1M\nBackground\t\tyes\nDNSTimeout\t\t5\nSignatureAlgorithm\trsa-sha256\n' /etc/opendkim.conf
-sudo sed -i '$ a KeyTable\t\trefile:/etc/opendkim/key.table\nSigningTable\t\trefile:/etc/opendkim/signing.table\nExternalIgnoreList\t/etc/opendkim/trusted.hosts\nInternalHosts\t\t/etc/opendkim/trusted.hosts' /etc/opendkim.conf
-```
-
 ## Additional DKIM configuration
 
 ### Update Signing table
 
 ```bash
-sudo vi /etc/opendkim/signing.table
-
-# Add
+sudo tee -a /etc/opendkim/signing.table << EOF
 *@example.com   default._domainkey.example.com
 *@*.example.com default._domainkey.example.com
-```
-
-OR
-
-```bash
-sudo touch /etc/opendkim/signing.table
-
-sudo awk -i inplace 'BEGINFILE {print "*@example.com\t\tdefault._domainkey.example.com\n*@*.example.com\tdefault._domainkey.example.com"}' /etc/opendkim/signing.table
-
-cat /etc/opendkim/signing.table
+EOF
 ```
 
 ### Update Key table
 
 ```bash
-sudo vi /etc/opendkim/key.table
-
-# Add
+sudo tee -a /etc/opendkim/key.table << EOF
 default._domainkey.example.com  example.com:default:/etc/opendkim/keys/example.com/default.private
-```
-
-Or
-
-```bash
-sudo touch /etc/opendkim/key.table
-
-sudo awk -i inplace 'BEGINFILE {print "default._domainkey.example.com\texample.com:default:/etc/opendkim/keys/example.com/default.private"}' /etc/opendkim/key.table
-
-cat /etc/opendkim/key.table
+EOF
 ```
 
 ### Update hosts
 
 ```bash
-sudo vi /etc/opendkim/trusted.hosts
-
-# Add
+sudo tee -a /etc/opendkim/trusted.hosts << EOF
 127.0.0.1
 localhost
 .example.com
-```
-
-Or
-
-```bash
-sudo touch /etc/opendkim/trusted.hosts
-
-sudo awk -i inplace 'BEGINFILE {print "127.0.0.1\nlocalhost\n\n.example.com"}' /etc/opendkim/trusted.hosts
-
-cat /etc/opendkim/trusted.hosts
+EOF
 ```
 
 ### Restart OpenDKIM
@@ -275,53 +226,36 @@ sudo chown opendkim:postfix /var/spool/postfix/opendkim
 ```
 
 ```bash
+sudo cp /etc/default/opendkim /etc/default/opendkim.orig
 sudo vi /etc/default/opendkim
 
 # Update
 SOCKET="local:/var/spool/postfix/opendkim/opendkim.sock"
 ```
 
-Or
-
-```bash
-sudo sed -i 's/\(^SOCKET=local:$RUNDIR\/opendkim.sock\)/#\1/' /etc/default/opendkim
-sudo sed -i '20a SOCKET=local:/var/spool/postfix/opendkim/opendkim.sock' /etc/default/opendkim
-```
-
 ### Update opendkim configuration
 
 ```bash
+# check backup copy
 sudo vi /etc/opendkim.conf
 
 # Update
 Socket    local:/var/spool/postfix/opendkim/opendkim.sock
 ```
 
-Or
-
-```bash
-sudo sed -i 's/\(Socket\s*local:\/run\/opendkim\/opendkim.sock\)/#\1/' /etc/opendkim.conf
-sudo sed -i 's/#\(Socket\s*local:\/var\/spool\/postfix\/opendkim\/opendkim.sock\)/\1/' /etc/opendkim.conf
-```
-
 ### Update Postfix configuration
 
 ```bash
+# check backup copy
 sudo vi /etc/postfix/main.cf
 
 # Add
 # Milter configuration
 milter_default_action = accept
 milter_protocol = 6
-smtpd_milters = local:opendkim/opendkim.sock
-# smtpd_milters = local:/var/spool/postfix/opendkim/opendkim.sock
+# smtpd_milters = local:opendkim/opendkim.sock
+smtpd_milters = local:/var/spool/postfix/opendkim/opendkim.sock
 non_smtpd_milters = $smtpd_milters
-```
-
-Or
-
-```bash
-sudo sed -i '$ a # Milter configuration\nmilter_default_action = accept\nmilter_protocol = 6\nsmtpd_milters = local:opendkim/opendkim.sock\nnon_smtpd_milters = $smtpd_milters' /etc/postfix/main.cf
 ```
 
 ### Restart services
@@ -329,6 +263,12 @@ sudo sed -i '$ a # Milter configuration\nmilter_default_action = accept\nmilter_
 ```bash
 sudo systemctl restart opendkim
 sudo systemctl restart postfix
+```
+
+### Verify the DNS record
+
+```bash
+sudo opendkim-testkey -d example.com -s default -vvv
 ```
 
 ## Send Email
@@ -341,134 +281,4 @@ mail <user>@example.com
 > ...
 > ...
 > ^D
-```
-
-## Dovecot setup
-
-- [Postfix + Dovecot with multi-domain setup](https://gist.github.com/howyay/57982e6ba9eedd3a5662c518f1b985c7)
-- [Debian 9 Mail Server: Postfix and Dovecot](https://scaron.info/blog/debian-mail-postfix-dovecot.html)
-
-### Install Dovecot packages
-
-```bash
-sudo apt -y install dovecot-imapd dovecot-pop3d
-```
-
-### Start Dovecot service
-
-```bash
-sudo systemctl enable --now dovecot
-sudo systemctl status dovecot
-```
-
-### Generate SSL certificate
-
-```bash
-sudo openssl req -new -newkey rsa:2048 -nodes -keyout /etc/ssl/private/example.com.key -out /etc/ssl/certs/example.com.pem -subj "/C=BD/ST=Bangladesh/L=Dhaka/O=Company Name Ltd./OU=Organizational Unit/CN=example.com/streetAddress=Example 1/postalCode=1201"
-```
-
-### Update Postfix configuration for Dovecot
-
-```bash
-sudo vi /etc/postfix/main.cf
-
-# Add
-smtpd_tls_cert_file = /etc/ssl/certs/example.com.pem
-smtpd_tls_key_file = /etc/ssl/private/example.com.key
-smtpd_tls_security_level = encrypt
-smtp_tls_security_level = encrypt
-smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
-smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
-smtp_tls_mandatory_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
-smtp_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
-
-smtpd_sasl_type = dovecot
-smtpd_sasl_path = private/auth
-smtpd_sasl_auth_enable = yes
-smtpd_sasl_security_options = noanonymous
-smtpd_sasl_local_domain = $myhostname
-smtpd_recipient_restrictions = permit_mynetworks,permit_auth_destination,permit_sasl_authenticated,reject
-```
-
-### Update Postfix setup
-
-```bash
-sudo cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
-sudo vi /etc/postfix/master.cf
-
-# Update
-submission inet n       -       -       -       -       smtpd
-  -o syslog_name=postfix/submission
-  -o smtpd_tls_security_level=encrypt
-  -o smtpd_sasl_auth_enable=yes
-  -o smtpd_recipient_restrictions=permit_mynetworks,permit_sasl_authenticated,reject
-```
-
-### Update Dovecot configuration
-
-```bash
-sudo cp /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf.orig
-sudo vi /etc/dovecot/dovecot.conf
-
-# Add
-#set mailbox location to Maildir style
-disable_plaintext_auth = yes
-mail_privileged_group = mail
-mail_location = ~/Maildir
-
-userdb {
-      driver = passwd
-}
-
-passdb {
-     args = %s
-     driver = pam
-}
-
-protocols = "imap"
-
-# create and autosubscribe to some default folders
-namespace inbox {
-  inbox = yes
-
-  mailbox Trash {
-    auto = subscribe
-    special_use = \Trash
-  }
-  mailbox Sent {
-    auto = subscribe
-    special_use = \Sent
-  }
-  mailbox Drafts {
-    auto = subscribe
-    special_use = \Drafts
-  }
-  mailbox Spam {
-    auto = subscribe
-    special_use = \Junk
-  }
-  mailbox Archive {
-    auto = subscribe
-    special_use = \Archive
-  }
-}
-
-service auth {
-      unix_listener /var/spool/postfix/private/auth {
-      mode = 0660
-      user = postfix
-      group = postfix
-    }
-}
-
-# set your certificate
-ssl = required
-ssl_cert = </etc/ssl/certs/example.com.pem
-ssl_key = </etc/ssl/private/example.com.key
-```
-
-### Restart Postfix and Dovecot services
-
-```bash
-sudo systemctl restart postfix dovecot
 ```

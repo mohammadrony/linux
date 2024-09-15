@@ -66,3 +66,11 @@ Find max length line
 ```bash
 awk '{ if (length($0) > max) max = length($0) } END { print max }' foo.txt
 ```
+
+Insert in empty file
+
+```bash
+sudo touch myfile.txt
+
+sudo awk -i inplace 'BEGINFILE {print "foo\tbar\nline\t2"}' myfile.txt
+```
