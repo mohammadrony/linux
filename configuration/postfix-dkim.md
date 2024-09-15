@@ -19,7 +19,7 @@ DNS record entries for SPAM protection
 | A     | mail            | mail.server.ip.address                                                      | Auto      |
 | MX    | @               | mail.example.com                                                             | Auto      |
 | TXT   | @               | `v=spf1 mx ~all`                                                          | Auto      |
-| TXT   | dkim._domainkey | "v=DKIM1; h=sha256; k=rsa; p=Encrypted_key"                                 | Auto      |
+| TXT   | default._domainkey | "v=DKIM1; h=sha256; k=rsa; p=Encrypted_key"                                 | Auto      |
 | TXT   | _dmarc          | "v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:<dmarc@example.com>; ruf=mailto:<dmarc@example.com>; fo=1; pct=100" | Auto      |
 | CNAME | autodiscover    | mail.example.com                                                             | Auto      |
 | CNAME | autoconfig      | mail.example.com                                                             | Auto      |
@@ -266,6 +266,12 @@ sudo systemctl restart postfix
 ```
 
 ### Verify the DNS record
+
+```bash
+dig TXT example.com +short
+dig TXT _dmarc.example.com +short
+dig TXT default._domainkey.example.com +short
+```
 
 ```bash
 sudo opendkim-testkey -d example.com -s default -vvv
