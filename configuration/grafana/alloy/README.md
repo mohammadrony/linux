@@ -24,10 +24,20 @@ Start service
 
 ```bash
 sudo systemctl enable --now alloy
+sudo systemctl status alloy
 ```
 
+Update config for metrics and logs
+
 ```bash
-sudo systemctl status alloy
+sudo cp config.alloy /etc/alloy/config.alloy
+```
+
+Reload config
+
+```bash
+curl -X POST http://localhost:12345/-/reload
+# sudo systemctl reload alloy
 ```
 
 Browse [alloy ui](http://localhost:12345).

@@ -1,5 +1,6 @@
 # Configuration
 
+- [Grafana](./grafana/)
 - [Bugzilla setup with Apache and MySQL](./bugzilla-apache-mysql.md)
 - [FTP Server](./ftp-server.md)
 - [Initial OS Setup](./initial-os-setup.md)

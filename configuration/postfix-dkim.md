@@ -14,15 +14,15 @@ Goto any domain registrar and select your favorite domain. Some of the popular d
 
 DNS record entries for SPAM protection
 
-| Type  | Name            | Content                                                                     | TTL value |
-|-------|-----------------|-----------------------------------------------------------------------------|-----------|
-| A     | mail            | mail.server.ip.address                                                      | Auto      |
-| MX    | @               | mail.example.com                                                             | Auto      |
-| TXT   | @               | `v=spf1 mx ~all`                                                          | Auto      |
-| TXT   | default._domainkey | "v=DKIM1; h=sha256; k=rsa; p=Encrypted_key"                                 | Auto      |
-| TXT   | _dmarc          | "v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:<dmarc@example.com>; ruf=mailto:<dmarc@example.com>; fo=1; pct=100" | Auto      |
-| CNAME | autodiscover    | mail.example.com                                                             | Auto      |
-| CNAME | autoconfig      | mail.example.com                                                             | Auto      |
+| Type  | Name                | Content                                                                                                             | TTL value |
+|-------|---------------------|---------------------------------------------------------------------------------------------------------------------|-----------|
+| A     | mail                | mail.server.ip.address                                                                                              | Auto      |
+| MX    | @                   | mail.example.com                                                                                                    | Auto      |
+| TXT   | @                   | v=spf1 mx ~all                                                                                                      | Auto      |
+| TXT   | default._domainkey  | v=DKIM1; h=sha256; k=rsa; p=Encrypted_key                                                                           | Auto      |
+| TXT   | _dmarc              | v=DMARC1; p=quarantine; aspf=r; sp=none; rua=mailto:dmarc@example.com; ruf=mailto:dmarc@example.com; fo=1; pct=100  | Auto      |
+| CNAME | autodiscover        | mail.example.com                                                                                                    | Auto      |
+| CNAME | autoconfig          | mail.example.com                                                                                                    | Auto      |
 
 *Low value in priority means higher the priority.*
 
@@ -268,9 +268,9 @@ sudo systemctl restart postfix
 ### Verify the DNS record
 
 ```bash
-dig TXT example.com +short
-dig TXT _dmarc.example.com +short
-dig TXT default._domainkey.example.com +short
+host -t TXT example.com
+host -t TXT _dmarc.example.com
+host -t TXT default._domainkey.example.com
 ```
 
 ```bash
