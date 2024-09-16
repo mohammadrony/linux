@@ -12,6 +12,7 @@
 - [Editor](./editor/)
 - [Files](./files/)
 - [Git](./git/)
+- [Grafana](./grafana/)
 - [Known Issues](./issues/)
 - [Memory](./memory/)
 - [Monitoring](./monitoring/)

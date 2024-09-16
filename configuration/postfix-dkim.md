@@ -154,7 +154,7 @@ sudo cat /etc/opendkim/keys/example.com/default.txt
 default._domainkey IN TXT ("v=DKIM1; h=sha256; k=rsa; p=Encrypted_key");
 ```
 
-Upload keys in **DNS record**
+Remove extra `"` from key and save in **DNS record**
 
 ### Update DKIM configuration
 
