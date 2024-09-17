@@ -80,7 +80,11 @@ sudo vi /etc/mailname
 example.com
 ```
 
-### Reload Postfix
+### Restart Postfix
+
+```bash
+sudo systemctl enable postfix
+```
 
 ```bash
 sudo systemctl restart postfix
@@ -258,7 +262,15 @@ smtpd_milters = local:/var/spool/postfix/opendkim/opendkim.sock
 non_smtpd_milters = $smtpd_milters
 ```
 
-### Restart services
+### Update services
+
+```bash
+sudo chmod 777 /var/spool/postfix/opendkim/opendkim.sock
+```
+
+```bash
+sudo systemctl disable --now apparmor
+```
 
 ```bash
 sudo systemctl restart opendkim
