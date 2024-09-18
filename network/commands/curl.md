@@ -1,5 +1,39 @@
 # curl
 
+## Common usage
+
+Quite mode
+
+```bash
+curl -s www.example.com
+```
+
+Save file by specific name
+
+```bash
+curl -o filename www.example.com
+```
+
+Save file in remote name
+
+```bash
+curl -O www.example.com
+```
+
+Visit redirected url
+
+```bash
+curl -L www.example.com
+```
+
+Get response code
+
+```bash
+curl -I www.example.com
+```
+
+## Multiple request
+
 ```bash
 curl http://localhost/path[1-3]
 ```
