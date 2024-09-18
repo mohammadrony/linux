@@ -5,7 +5,7 @@ Common
 ```bash
 alias gl='git pull'
 alias gp='git push'
-alias gpom='git push origin main'
+alias gpm='git push origin main'
 ```
 
 To keep changes
