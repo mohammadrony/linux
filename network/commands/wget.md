@@ -1,6 +1,6 @@
 # wget
 
-Save file in remote name
+Save in remote name
 
 ```bash
 wget https://example.com/
@@ -12,7 +12,7 @@ Save log in file
 wget -o logfile https://example.com/
 ```
 
-Save file in specific name
+Save in specific name
 
 ```bash
 wget -O filename https://example.com/

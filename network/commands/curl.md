@@ -8,13 +8,13 @@ Quite mode
 curl -s www.example.com
 ```
 
-Save file in specific name
+Save in specific name
 
 ```bash
 curl -o filename www.example.com
 ```
 
-Save file in remote name
+Save in remote name
 
 ```bash
 curl -O www.example.com
