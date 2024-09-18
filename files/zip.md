@@ -1,5 +1,11 @@
 # Zip
 
+Zip file
+
+```bash
+zip -r filename.zip files/
+```
+
 Unzip file
 
 ```bash
