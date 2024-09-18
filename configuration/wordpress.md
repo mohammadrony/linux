@@ -59,7 +59,10 @@ sudo cp wp-config-sample.php wp-config.php
 ```
 
 ```bash
-sudo sed -e 's/database_name_here/wordpressdb/g' -e 's/username_here/wp_user/g' -e 's/password_here/wp_password/g' -i wp-config.php
+sudo sed -i 's/database_name_here/wordpressdb/' wp-config.php
+sudo sed -i 's/username_here/wp_user/' wp-config.php
+sudo sed -i 's/password_here/wp_password/' wp-config.php
+sudo sed -i 's/localhost/localhost/' wp-config.php
 ```
 
 ## Nginx
