@@ -85,6 +85,10 @@ server {
         try_files $uri $uri/ /index.php?$args;
     }
 
+    location ~ /\.ht {
+        deny all;
+    }
+
     location = /favicon.ico {
         log_not_found off;
         access_log off;
@@ -107,7 +111,6 @@ server {
        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
        include fastcgi_params;
     }
-
 }
 EOF
 ```
