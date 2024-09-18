@@ -8,7 +8,7 @@ Quite mode
 curl -s www.example.com
 ```
 
-Save file by specific name
+Save file in specific name
 
 ```bash
 curl -o filename www.example.com
