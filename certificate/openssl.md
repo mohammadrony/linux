@@ -44,3 +44,9 @@ Generate certificate
 ```bash
 sudo openssl req -new -newkey rsa:2048 -nodes -keyout /etc/ssl/private/www.example.com.key -out /etc/ssl/certs/www.example.com.csr
 ```
+
+Decode CSR file
+
+```bash
+openssl req -text -in /etc/ssl/certs/www.example.com.csr
+```

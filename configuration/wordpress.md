@@ -1,23 +1,46 @@
 # WordPress
 
-Installation tutorial
+Installation notes
 
 - [Install and configure WordPress](https://ubuntu.com/tutorials/install-and-configure-wordpress)
-- [Install WordPress with PostgreSQL](https://medium.com/@shoaibhassan_/install-wordpress-with-postgresql-using-apache-in-5-min-a26078d496fb)
-- []
+- [How to install and configure WordPress with NGINX](https://www.ionos.com/digitalguide/hosting/blogs/wordpress-nginx/)
+- [PG4WP broken with php-8.x for Postgresql](https://wordpress.org/support/topic/completely-broken-with-php-8-x/)
 
-LAMP Stack
+## PHP
 
 ```bash
 sudo apt update
-sudo apt install -y apache2 ghostscript libapache2-mod-php mysql-server
 ```
 
 ```bash
-sudo apt install -y php php-bcmath php-curl php-imagick php-intl php-json php-mbstring php-mysql php-xml php-zip php-cli php-fpm php-opcache php-gd
+sudo apt install -y php ghostscript php-bcmath php-curl php-imagick php-intl php-json php-mbstring php-mysql php-xml php-zip php-cli php-fpm php-opcache php-gd
 ```
 
-Application
+```bash
+sudo systemctl enable --now php-fpm
+sudo systemctl status php-fpm
+```
+
+## MySQL
+
+```bash
+sudo apt install -y mysql-server
+```
+
+```bash
+sudo mysql -u root -p
+```
+
+```sql
+CREATE DATABASE wordpressdb CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+```
+
+```sql
+CREATE USER 'wp_user'@'localhost' IDENTIFIED BY 'wp_password'
+GRANT ALL PRIVILEGES ON wordpressdb.* TO 'wp_user'@'localhost'
+```
+
+## Application
 
 ```bash
 cd /var/www/
@@ -26,27 +49,8 @@ sudo tar -xvzf latest.tar.gz
 sudo rm -rf latest.tar.gz
 ```
 
-Apache Config
-
-Postgresql Config
-
 ```bash
-sudo -i -u postgres psql
-```
-
-```psql
-create database wordpress;
-create user wordpress with password 'wordpress1234';
-grant all privileges on database wordpress to wordpress;
-\q
-```
-
-```bash
-cd /var/www/wordpress/wp-content
-sudo git clone https://github.com/kevinoid/postgresql-for-wordpress.git
-sudo mv postgresql-for-wordpress/pg4wp Pg4wp
-sudo rm -rf postgresql-for-wordpress
-sudo cp Pg4wp/db.php db.php
+sudo chown -R www-data: /var/www/wordpress/
 ```
 
 ```bash
@@ -54,11 +58,14 @@ cd /var/www/wordpress
 sudo cp wp-config-sample.php wp-config.php
 ```
 
-Nginx Config
+```bash
+sudo sed -e 's/database_name_here/wordpressdb/g' -e 's/username_here/wp_user/g' -e 's/password_here/wp_password/g' -i wp-config.php
+```
+
+## Nginx
 
 ```bash
-cd /var/www/html
-sudo chown www-data: wordpress/ -R
+sudo apt install -y nginx
 ```
 
 ```conf
@@ -68,23 +75,14 @@ server {
     listen [::]:80;
 
     server_name example.com www.example.com;
-    access_log /var/log/nginx/example-access.log;
-    error_log  /var/log/nginx/example-error.log error;
+    access_log /var/log/nginx/wordpress-access.log;
+    error_log  /var/log/nginx/wordpress-error.log error;
 
-    root /var/www/html/wordpress;
+    root /var/www/wordpress;
     index index.php index.html;
 
     location / {
-        try_files $uri $uri/ =404;
-    }
-
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
-    }
-    
-    location ~ /\.ht {
-        deny all;
+        try_files $uri $uri/ /index.php?$args;
     }
 
     location = /favicon.ico {
@@ -102,6 +100,14 @@ server {
         expires max;
         log_not_found off;
     }
+
+    location ~ \.php$ {
+       include snippets/fastcgi-php.conf;
+       fastcgi_pass unix:/var/run/php/php-fpm.sock;
+       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+       include fastcgi_params;
+    }
+
 }
 EOF
 ```
@@ -114,3 +120,17 @@ sudo ln -s ../sites-available/wordpress.conf ./
 ```bash
 sudo systemctl reload nginx
 ```
+
+Certificate
+
+```bash
+sudo apt install -y certbot python3-certbot-nginx
+```
+
+```bash
+sudo certbot --nginx -d www.example.com
+```
+
+## Browse Application
+
+Open [wordpress](www.example.com) from browser.
