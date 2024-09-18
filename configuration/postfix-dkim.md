@@ -258,7 +258,6 @@ sudo vi /etc/postfix/main.cf
 milter_default_action = accept
 milter_protocol = 6
 smtpd_milters = local:opendkim/opendkim.sock
-# smtpd_milters = local:/var/spool/postfix/opendkim/opendkim.sock
 non_smtpd_milters = $smtpd_milters
 ```
 
