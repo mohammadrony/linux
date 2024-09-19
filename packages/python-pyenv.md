@@ -9,7 +9,7 @@ sudo apt install -y git
 sudo apt install -y build-essential libbz2-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev tk-dev
 
 # Optional scientific package headers (for Numpy, Matplotlib, SciPy, etc.)
-sudo apt install -y libpng-dev libfreetype6-dev 
+sudo apt install -y libpng-dev libfreetype6-dev
 ```
 
 ```bash
@@ -40,11 +40,11 @@ sudo apt install -y python3 python3-pip python3-venv python-is-python3
 ### Install Python with Pyenv
 
 ```bash
-pyenv install 3.7.0
+pyenv install 3.10.0
 ```
 
 ```bash
-pyenv virtualenv 3.7.0 general
+pyenv virtualenv 3.10.0 general
 ```
 
 ```bash
@@ -60,7 +60,7 @@ pyenv uninstall general
 Version setup for directory
 
 ```bash
-pyenv virtualenv 3.7.0 project_1
+pyenv virtualenv 3.10.0 project_1
 ```
 
 ```bash

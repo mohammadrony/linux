@@ -7,4 +7,5 @@ Project
 
 Shell
 
+- [Loop](./loop.md)
 - [Shell Environment](./shell-environment.md)

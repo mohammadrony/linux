@@ -28,7 +28,7 @@ awk '{print}' foo.txt
 Print lines having text
 
 ```bash
-awk '/text/ {print}' foo.txt 
+awk '/text/ {print}' foo.txt
 ```
 
 Print first and third field
@@ -47,18 +47,18 @@ Print selected line
 
 ```bash
 # Print third line
-awk 'NR==3 {print NR,$0}' foo.txt 
+awk 'NR==3 {print NR,$0}' foo.txt
 ```
 
 ```bash
 # Print 3rd to 6th line
-awk 'NR==3, NR==6 {print NR,$0}' foo.txt 
+awk 'NR==3, NR==6 {print NR,$0}' foo.txt
 ```
 
 Print first and last field
 
 ```bash
-awk '{print $1,$NF}' foo.txt 
+awk '{print $1,$NF}' foo.txt
 ```
 
 Find max length line

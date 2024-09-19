@@ -29,7 +29,7 @@ cd /opt
 sudo groupadd keycloak
 sudo useradd -r -g keycloak -d /opt/keycloak -s /sbin/nologin keycloak
 
-sudo chown -R keycloak:keycloak keycloak 
+sudo chown -R keycloak:keycloak keycloak
 sudo chmod o+x /opt/keycloak/bin
 ```
 
@@ -46,7 +46,7 @@ sudo vi keycloak.service
 [Unit]
 Description=Keycloak Authorization Server
 After=network.target
- 
+
 [Service]
 User=keycloak
 Group=keycloak
@@ -65,7 +65,7 @@ Start keycloak service
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl start keycloak.service 
+sudo systemctl start keycloak.service
 sudo systemctl status keycloak.service
 ```
 
@@ -167,7 +167,7 @@ sudo vi /etc/apache2/sites-available/keycloak.conf
   HostnameLookups Off
   UseCanonicalName Off
   ProxyPreserveHost On
-  
+
   RequestHeader set "X-Forwarded-Proto" "https"
   RequestHeader set "X-Forwarded-Port" "443"
   RequestHeader set x-ssl-client-cert "%{SSL_CLIENT_CERT}s"
@@ -175,7 +175,7 @@ sudo vi /etc/apache2/sites-available/keycloak.conf
   ProxyPass /auth http://localhost:8443/auth
   ProxyPassReverse /auth http://localhost:8443/auth
   ProxyRequests Off
-  
+
   ErrorLog ${APACHE_LOG_DIR}/keycloak-error.log
   CustomLog ${APACHE_LOG_DIR}/keycloak-access.log combined
 

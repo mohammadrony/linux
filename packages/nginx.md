@@ -70,7 +70,7 @@ server {
     proxy_connect_timeout                 60s;
     proxy_send_timeout                    60s;
     proxy_read_timeout                    60s;
-    
+
     proxy_cache_use_stale                 error timeout invalid_header updating http_500 http_502 http_503 http_504;
   }
 }

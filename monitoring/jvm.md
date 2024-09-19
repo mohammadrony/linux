@@ -17,7 +17,7 @@ curl -L https://raw.githubusercontent.com/amarjeetanandsingh/jps_stat/master/jps
 ```
 
 ```bash
-chmod +x jpsstat.sh 
+chmod +x jpsstat.sh
 ```
 
 ```bash

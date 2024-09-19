@@ -267,7 +267,7 @@ server {
   server_name example.com;
   access_log /var/log/nginx/example.log;
   error_log  /var/log/nginx/example.log error;
-  
+
   location / {
         rewrite ^/$ /app redirect;
     }
