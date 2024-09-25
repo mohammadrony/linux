@@ -1,4 +1,4 @@
-# Read
+# read
 
 ## Input from file
 
