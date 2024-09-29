@@ -42,6 +42,12 @@ find ./ -type f -mmin -7 # minutes
 find ./ -type f -mtime -7 # days
 ```
 
+Find files older than 30 days and remove
+
+```bash
+find . -mtime +30 | xargs rm
+```
+
 ## Execute command in files
 
 Execute command for one file

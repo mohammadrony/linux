@@ -1,6 +1,15 @@
 # Linux Files
 
-## Remove old Snap versions
+## Remove old files
+
+Remove files older than 30 days
+
+```bash
+set -eu
+find . -mtime +30 | xargs rm 2>/dev/null
+```
+
+## Remove old snap versions
 
 ```bash
 set -eu
