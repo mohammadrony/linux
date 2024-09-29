@@ -54,25 +54,67 @@ mc ls
 ```
 
 ```bash
-mc ls MINIO/bucket/
+mc ls MINIO/bucket
+```
+
+### Bucket
+
+Create bucket
+
+```bash
+mc mb MINIO/bucket
+```
+
+Remove bucket
+
+```bash
+mc rb MINIO/bucket
+```
+
+### Remove
+
+Test run remove files
+
+```bash
+mc rm --dry-run MINIO/bucket/a.txt
+```
+
+Remove files
+
+```bash
+mc rm MINIO/bucket/a.txt
+```
+
+Remove files recursively
+
+```bash
+mc rm -r --force MINIO/bucket/files
 ```
 
 ### Copy
 
-Copy file locally
+Copy files locally
 
 ```bash
-mc cp file1.txt file2.txt
+mc cp a.txt b.txt
 ```
 
-Copy local file to MINIO server
+Copy local to MINIO server
 
 ```bash
-mc cp file1.txt MINIO/bucket/file.txt
+mc cp -r files MINIO/bucket/
 ```
 
-Copy files from one to another server
+```bash
+mc cp a.txt MINIO/bucket/b.txt
+```
+
+Copy file between servers
 
 ```bash
-mc cp MINIO1/bucket1/file1.txt MINIO2/bucket2/file2.txt
+mc cp -r MINIO1/bucket1 MINIO2/bucket2/files/
+```
+
+```bash
+mc cp MINIO1/bucket1/a.txt MINIO2/bucket2/b.txt
 ```
