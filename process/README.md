@@ -5,4 +5,4 @@
 - [Kill Process](./kill.md)
 - [PIDs](./pids.md)
 - [Process Status](./process-details.md)
-- [Scripts](./scripts.md)
+- [Process Size](./process-size.md)
