@@ -35,6 +35,12 @@ find . -anewer /tmp/foo
 find . -newermt 2024-06-01
 ```
 
+Find 7 days older files in current directory
+
+```bash
+find ./ -maxdepth 1 -mtime +7 -name "myfile-*"
+```
+
 Find files with modified time
 
 ```bash
