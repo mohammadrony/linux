@@ -118,3 +118,17 @@ mc cp -r MINIO1/bucket1 MINIO2/bucket2/files/
 ```bash
 mc cp MINIO1/bucket1/a.txt MINIO2/bucket2/b.txt
 ```
+
+### Trace
+
+```bash
+mc admin trace --help
+```
+
+```bash
+mc admin trace MINIO
+```
+
+```bash
+mc admin trace -v MINIO > MINIO.log &
+```
