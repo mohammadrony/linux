@@ -6,6 +6,7 @@ Remove files older than 30 days
 
 ```bash
 set -eu
+cd /path
 find . -mtime +30 | xargs rm 2>/dev/null
 ```
 
