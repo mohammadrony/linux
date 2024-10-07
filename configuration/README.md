@@ -3,6 +3,7 @@
 - [Grafana](./grafana/)
 - [Bugzilla setup with Apache and MySQL](./bugzilla-apache-mysql.md)
 - [FTP Server](./ftp-server.md)
+- [Github Actions](./github-actions.md)
 - [Initial OS Setup](./initial-os-setup.md)
 - [Jenkins](./jenkins.md)
 - [Custom Keycloak and Nginx](./keycloak-nginx.md)

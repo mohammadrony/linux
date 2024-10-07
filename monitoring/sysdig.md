@@ -43,6 +43,8 @@ EOF
 
 ## Usage
 
+csysdig
+
 ```bash
-sudo sysdig
+sudo csysdig
 ```
