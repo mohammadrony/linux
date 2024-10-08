@@ -4,14 +4,22 @@
 ssh -o StrictHostKeyChecking=no user@host
 ```
 
-Add host as known hosts
+Remove host from known_hosts file
 
 ```bash
-ssh-keyscan -H <host> >> ~/.ssh/known_hosts
+ssh-keygen -R <host>,<ip-address>
 ```
 
-Remove host from known hosts
+Add hosts to known_hosts
 
 ```bash
-ssh-keygen -R <host>
+ssh-keyscan -H <host>,<ip-address>
+```
+
+```bash
+ssh-keyscan -t rsa -H <host>
+```
+
+```bash
+ssh-keyscan -H <host>,<ip-address> >> ~/.ssh/known_hosts
 ```

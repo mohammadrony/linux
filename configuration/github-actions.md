@@ -20,9 +20,9 @@ cat ~/.ssh/github_actions
 
 Secret
 
-| Name              | Value                           |
-|-------------------|---------------------------------|
-| `SSH_PRIVATE_KEY` | *Output of previous command*    |
-| `SSH_HOST`        | `<example.com>`                 |
-| `SSH_USERNAME`    | `<user>`                        |
-| `KNOWN_HOSTS`     | `ssh-keyscan -H <example.com>`  |
+| Name              | Value                                     |
+|-------------------|-------------------------------------------|
+| `SSH_PRIVATE_KEY` | *Output of previous command*              |
+| `SSH_HOST`        | `<example.com>`                           |
+| `SSH_USERNAME`    | `<user>`                                  |
+| `KNOWN_HOSTS`     | `ssh-keyscan -t ed25519 -H <example.com>` |

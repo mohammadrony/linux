@@ -20,13 +20,6 @@ Copy SSH key to remote host
 ssh-copy-id -i ~/.ssh/id_rsa.pub user@host
 ```
 
-Remove host from known_hosts file
-
-```bash
-ssh-keygen -R <host>,<ip-address>
-ssh-keyscan -H <host>,<ip-address> >> ~/.ssh/known_hosts
-```
-
 Generate fingerprint from public key
 
 ```bash
