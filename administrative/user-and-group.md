@@ -7,23 +7,37 @@ Update **USER** and **GROUP** with real value.
 CentOS and Ubuntu
 
 ```bash
-USER=linux
+USER=foo
 sudo useradd $USER
 sudo usermod -aG wheel $USER
+```
+
+```bash
+USER=foo
+PASSWORD=linux
+useradd -m -s /bin/bash -p $(openssl passwd -1 $PASSWORD) $USER
+usermod -aG sudo $USER
 ```
 
 Ubuntu
 
 ```bash
-USER=linux
+USER=foo
 sudo adduser --gecos "" $USER
 sudo usermod -aG sudo $USER
+```
+
+```bash
+USER=foo
+PASSWORD=linux
+useradd -m -s /bin/bash -p $(openssl passwd -1 $PASSWORD) $USER
+usermod -aG sudo $USER
 ```
 
 Password less sudo command execution
 
 ```bash
-USER=linux
+USER=foo
 sudo tee -a /etc/sudoers.d/$USER << EOF
 $USER ALL=(ALL) NOPASSWD: ALL
 EOF
