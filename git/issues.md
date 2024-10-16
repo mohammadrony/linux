@@ -34,3 +34,17 @@ git status
 git reset
 git stash pop
 ```
+
+## RPC failed; HTTP/2 protocol error
+
+Update http version
+
+```bash
+git config --global http.version HTTP/1.1
+```
+
+Reset after
+
+```bash
+git config --global --unset http.version
+```
