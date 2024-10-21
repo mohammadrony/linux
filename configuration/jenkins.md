@@ -30,6 +30,8 @@ sudo systemctl daemon-reload
 sudo systemctl restart jenkins
 ```
 
+Config file: `config.xml`
+
 ## Configuration
 
 Inital setup
@@ -72,3 +74,19 @@ Create a folder
 Create a pipeline
 
 - Goto Dashboard > New Item > Create a job > Pipeline > Add configuration > Save
+
+## Update Jenkins
+
+```bash
+sudo systemctl stop jenkins
+```
+
+```bash
+wget https://updates.jenkins-ci.org/latest/jenkins.war
+```
+
+```bash
+sudo systemctl start jenkins
+```
+
+## Troubleshooting
