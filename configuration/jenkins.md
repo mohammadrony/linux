@@ -77,16 +77,30 @@ Create a pipeline
 
 ## Update Jenkins
 
+War deployment update
+
 ```bash
 sudo systemctl stop jenkins
 ```
+
+Backup jenkins binary and related files
+
+```bash
+mv jenkins.war jenkins.war.old
+```
+
+```bash
+tar -cvzf jenkins.tar.gz /var/lib/jenkins
+```
+
+Download latest release
 
 ```bash
 wget https://updates.jenkins-ci.org/latest/jenkins.war
 ```
 
+Restart service
+
 ```bash
 sudo systemctl start jenkins
 ```
-
-## Troubleshooting
