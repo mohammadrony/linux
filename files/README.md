@@ -10,5 +10,4 @@
 - [PDF](./pdf.md)
 - [PWD Stack](./pwd-stack.md)
 - [Tar Archive](./tar.md)
-- [Video](./video.md)
 - [Zip](./zip.md)
