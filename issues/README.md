@@ -1,3 +1,4 @@
 # Known Issues
 
-- [Package Installation](./package-install.md)
+- [RedHat Packages](./redhat-package.md)
+- [Ubuntu Packages](./ubuntu-package.md)
