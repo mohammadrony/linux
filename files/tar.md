@@ -5,32 +5,49 @@
 Create new archive
 
 ```bash
-tar -cvf my-files.tar file1 ...
+tar -cvf archive.tar file1 ...
+```
+
+```bash
+tar -cvzf archive.tgz file1 ...
+tar -cvzf archive.tar.gz file1 ...
 ```
 
 ## Extract
 
 ```bash
-tar -xvf my-files.tar
+tar -xvf archive.tar
 ```
 
-Extract archive to a directory
-
 ```bash
-mkdir files
-tar -xvf my-files.tar -C files
+tar -xvzf archive.tgz
+tar -xvzf archive.tar.gz
 ```
 
 Extract specific file
 
 ```bash
-tar -xvf my-files.tar ./file1
+tar -xvf archive.tar ./file1
+```
+
+Extract archive to a directory
+
+```bash
+mkdir -p /target/directory
+tar -xvf archive.tar -C /target/directory
+```
+
+Extract by ignoring first level dir
+
+```bash
+mkdir -p /target/directory
+tar -xvf archive.tar -C /target/directory --strip-components=1
 ```
 
 ## Read
 
 ```bash
-tar -tvf my-files.tar
+tar -tvf archive.tar
 ```
 
 ## Modify
@@ -38,17 +55,18 @@ tar -tvf my-files.tar
 Add files to existing archive
 
 ```bash
-tar -rvf my-files.tar file1
+tar -rvf archive.tar file1
 ```
 
 Update existing file in archive
 
 ```bash
-tar -uvf my-files.tar file1
+tar -uvf archive.tar file1
+# cannot update .tar.gz file 
 ```
 
 Delete files from archive
 
 ```bash
-tar --delete -vf my-files.tar file1
+tar --delete -vf archive.tar file1
 ```
