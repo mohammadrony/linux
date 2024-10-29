@@ -16,7 +16,7 @@ Install packages
 sudo yum update
 ```
 
-Reset changes
+Reset configuration
 
 ```bash
 cd /etc/yum.repos.d/

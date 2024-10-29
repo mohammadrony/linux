@@ -1,6 +1,6 @@
 # Ubuntu Packages
 
-Could not get lock /var/lib/dpkg/lock-frontend
+## Could not get lock /var/lib/dpkg/lock-frontend
 
 ```bash
 sudo killall apt apt-get
@@ -24,7 +24,7 @@ sudo apt update
 sudo apt install package_name
 ```
 
-Override package
+## Override to update package
 
 ```bash
 sudo dpkg -i --force-overwrite /var/cache/apt/archives/PACKAGE_VERSION.deb
