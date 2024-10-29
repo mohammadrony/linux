@@ -7,5 +7,5 @@
 - [Known Hosts](./known-hosts.md)
 - [Login](./login.md)
 - [Public Key Authentication](./pubkey-authentication.md)
-- [SSH Config](./ssh-config.md)
+- [SSH Client Config](./ssh-config.md)
 - [SSH Server Config](./sshd-config.md)
