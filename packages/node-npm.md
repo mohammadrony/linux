@@ -12,7 +12,7 @@ source ~/.bashrc
 nvm install 20.0
 ```
 
-## Packages Installation
+## NVM Install
 
 ### Install nvm
 
@@ -43,7 +43,7 @@ Check version
 nvm --version
 ```
 
-### Install Node using nvm
+### Install node using nvm
 
 List available versions
 
@@ -95,7 +95,7 @@ nvm use 20.0
 nvm use node
 ```
 
-## Uninstall Package
+### Uninstall node
 
 Uninstall Node
 
@@ -113,4 +113,35 @@ Remove nvm entry from login file
 
 ```bash
 vi .bashrc
+```
+
+## Package Install
+
+### NodeSource install
+
+```bash
+version=lts # 20 18
+curl -fsSL "https://deb.nodesource.com/setup_${version}.x" -o nodesource_setup.sh
+```
+
+```bash
+bash nodesource_setup.sh
+```
+
+Install nodejs
+
+```bash
+sudo apt install -y nodejs
+```
+
+Hold apt package
+
+```bash
+sudo apt-mark hold nodejs npm
+```
+
+### Uninstall nodejs
+
+```bash
+sudo apt remove -y nodejs
 ```
