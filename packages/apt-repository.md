@@ -1,15 +1,12 @@
 # APT Repository
 
-## Add Repository
+## Repository
 
-Add
+Commands
 
 ```bash
 sudo apt-add-repository --yes REPOSITORY
-
 ```
-
-Remove
 
 ```bash
 sudo apt-add-repository --remove --yes REPOSITORY
