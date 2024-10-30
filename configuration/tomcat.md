@@ -149,10 +149,8 @@ sudo vi /etc/logrotate.d/tomcat
 ```
 
 ```txt
-/opt/tomcat/logs/catalina.out.7
-/opt/tomcat/logs/*.log.7
-/opt/tomcat/logs/*.txt.7 {
-  rotate 90
+/opt/tomcat/logs/catalina.out.7 {
+  rotate 30
   missingok
   notifempty
   compress
@@ -163,9 +161,7 @@ sudo vi /etc/logrotate.d/tomcat
   olddir /opt/tomcat/logs/archive
 }
 
-/opt/tomcat/logs/catalina.out
-/opt/tomcat/logs/*.log
-/opt/tomcat/logs/*.txt {
+/opt/tomcat/logs/catalina.out {
   daily
   rotate 7
   missingok
