@@ -23,6 +23,7 @@
 
 ## Developer Tools
 
+- [TLDR](./tldr.md)
 - [Visual Studio Code](./vscode.md)
 
 ## Desktop Applications
