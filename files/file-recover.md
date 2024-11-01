@@ -6,11 +6,14 @@
 sudo apt install -y testdisk
 ```
 
-Recover
+Scan and restore disk
 
 ```bash
-photorec
+sudo testdisk
+```
 
-# Select disk
-# Select destination
+Photo and media recovery
+
+```bash
+sudo photorec
 ```

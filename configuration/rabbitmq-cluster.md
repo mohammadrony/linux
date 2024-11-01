@@ -57,7 +57,7 @@ sudo apt install -y erlang-base \
 ```
 
 ```bash
-sudo apt install -y --fix-missing rabbitmq-server
+sudo apt install -y rabbitmq-server
 ```
 
 Check status
@@ -110,11 +110,18 @@ Enable management plugin
 sudo rabbitmq-plugins enable rabbitmq_management rabbitmq_prometheus
 ```
 
-Add admin user
+```bash
+sudo rabbitmqctl list_feature_flags
+sudo rabbitmqctl enable_feature_flag all # name
+```
+
+Add user
 
 ```bash
 sudo rabbitmqctl add_user admin admin
 ```
+
+Set permission
 
 ```bash
 sudo rabbitmqctl set_user_tags admin administrator
@@ -122,11 +129,13 @@ sudo rabbitmqctl set_user_tags admin administrator
 
 ```bash
 sudo rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+sudo rabbitmqctl set_permissions --vhost / admin ".*" ".*" ".*"
 ```
 
+Change user password
+
 ```bash
-sudo rabbitmqctl list_feature_flags
-sudo rabbitmqctl enable_feature_flag all # name
+sudo rabbitmqctl change_password <user> <password>
 ```
 
 ## Management Console configuration
