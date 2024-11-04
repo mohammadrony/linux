@@ -19,7 +19,9 @@ EOF
 sudo apt install -y curl gnupg apt-transport-https -y
 ```
 
-## Installation
+## Configuration
+
+### Package Install
 
 Add gpg keys
 
@@ -52,7 +54,7 @@ Install rabbitmq server
 sudo apt install -y erlang-base \
   erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \
   erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key \
-  erlang-runtime-tools erlang-snmp erlang-ssl \
+  erlang-runtime-tools erlang-snmp erlang-ssl erlang-manpages \
   erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl
 ```
 
@@ -66,7 +68,7 @@ Check status
 systemctl status rabbitmq-server
 ```
 
-## Clustering
+### Clustering
 
 Updater erlang cookie for clustering
 
@@ -98,7 +100,7 @@ sudo rabbitmqctl join_cluster rabbit@rabbitmq-1
 sudo rabbitmqctl start_app
 ```
 
-## Management Console setup
+### RabbitMQ Management
 
 ```bash
 sudo rabbitmq-plugins list
@@ -138,7 +140,7 @@ Change user password
 sudo rabbitmqctl change_password <user> <password>
 ```
 
-## Management Console configuration
+### Management Console Configuration
 
 Login
 
@@ -154,8 +156,33 @@ Export definition
 
 - Goto Overview page > Export definitions > Enter filename > Select Virtual host > Download broker definitions.
 
-## Stop Service
+## Cleanup
+
+Stop rabbitmq service
 
 ```bash
 sudo systemctl disable --now rabbitmq-server
+```
+
+Remove package source
+
+```bash
+sudo rm /etc/apt/sources.list.d/rabbitmq.list
+sudo rm /etc/apt/keyrings/*rabbitmq* -rf
+```
+
+Remove rabbitmq server
+
+```bash
+sudo apt remove -y rabbitmq-server
+```
+
+Remove related packages
+
+```bash
+sudo apt remove -y erlang-base \
+  erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \
+  erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key \
+  erlang-runtime-tools erlang-snmp erlang-ssl erlang-manpages \
+  erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl
 ```
