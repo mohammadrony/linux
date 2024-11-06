@@ -299,3 +299,9 @@ mail <user>@example.com
 > ...
 > ^D
 ```
+
+Sendmail
+
+```bash
+echo "Subject: Test" | sendmail -v user@example.com
+```

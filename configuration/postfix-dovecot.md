@@ -124,8 +124,33 @@ ssl_cert = </etc/ssl/certs/example.com.pem
 ssl_key = </etc/ssl/private/example.com.key
 ```
 
+```bash
+sudo usermod -aG ssl-cert postfix
+```
+
+```bash
+sudo cp /etc/letsencrypt/live/mail.example.com/fullchain.pem /etc/ssl/certs/mail.example.com.crt
+sudo cp /etc/letsencrypt/live/mail.example.com/privkey.pem  /etc/ssl/private/mail.example.com.key
+```
+
 ### Restart Postfix and Dovecot services
 
 ```bash
 sudo systemctl restart postfix dovecot
+```
+
+## Send Mail
+
+```bash
+mail <user>@example.com
+> Cc: <enter>
+> Subject: <Subject line>
+> <Message body>
+> ...
+> ...
+> ^D
+```
+
+```bash
+echo "Subject: Test" | sendmail -v user@example.com
 ```
