@@ -2,8 +2,16 @@
 
 ## Mount
 
+Ubuntu
+
 ```bash
-sudo dnf -y install nfs-utils
+sudo apt install -y nfs-common
+```
+
+CentOS
+
+```bash
+sudo dnf install -y nfs-utils
 ```
 
 ```bash

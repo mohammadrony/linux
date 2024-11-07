@@ -18,18 +18,24 @@ sudo systemctl enable --now dovecot
 sudo systemctl status dovecot
 ```
 
-### Generate SSL certificate
-
-```bash
-sudo openssl req -new -newkey rsa:2048 -nodes -keyout /etc/ssl/private/example.com.key -out /etc/ssl/certs/example.com.pem -subj "/C=BD/ST=Bangladesh/L=Dhaka/O=Company Name Ltd./OU=Organizational Unit/CN=example.com/streetAddress=Example 1/postalCode=1201"
-```
-
 ### Update Postfix configuration for Dovecot
 
+Copy certificate
+
 ```bash
+sudo cp /etc/letsencrypt/live/mail.example.com/fullchain.pem /etc/ssl/certs/mail.example.com.crt
+sudo cp /etc/letsencrypt/live/mail.example.com/privkey.pem  /etc/ssl/private/mail.example.com.key
+```
+
+```bash
+sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.bak
 sudo vi /etc/postfix/main.cf
 
-# Add
+```conf
+# Enable submission port
+submission_enable = yes
+
+# TLS settings
 smtpd_tls_cert_file = /etc/ssl/certs/example.com.pem
 smtpd_tls_key_file = /etc/ssl/private/example.com.key
 smtpd_tls_security_level = encrypt
@@ -38,13 +44,15 @@ smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
 smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
 smtp_tls_mandatory_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
 smtp_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
+smtpd_tls_mandatory_ciphers = high
+smtpd_tls_auth_only = yes
 
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
 smtpd_sasl_auth_enable = yes
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_local_domain = $myhostname
-smtpd_recipient_restrictions = permit_mynetworks,permit_auth_destination,permit_sasl_authenticated,reject
+broken_sasl_auth_clients = yes
 ```
 
 ### Update Postfix setup
@@ -52,39 +60,34 @@ smtpd_recipient_restrictions = permit_mynetworks,permit_auth_destination,permit_
 ```bash
 sudo cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
 sudo vi /etc/postfix/master.cf
+```
 
-# Update
-submission inet n       -       -       -       -       smtpd
+```conf
+submission inet n       -       n       -       -       smtpd
   -o syslog_name=postfix/submission
   -o smtpd_tls_security_level=encrypt
   -o smtpd_sasl_auth_enable=yes
-  -o smtpd_recipient_restrictions=permit_mynetworks,permit_sasl_authenticated,reject
+  -o smtpd_sasl_type=dovecot
+  -o smtpd_sasl_path=private/auth
+  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
 ```
 
 ### Update Dovecot configuration
 
 ```bash
-sudo cp /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf.orig
-sudo vi /etc/dovecot/dovecot.conf
+sudo vi /etc/dovecot/conf.d/10-master.conf
+```
 
-# Add
-#set mailbox location to Maildir style
-disable_plaintext_auth = yes
-mail_privileged_group = mail
-mail_location = ~/Maildir
-
-userdb {
-      driver = passwd
+```conf
+service auth {
+  unix_listener /var/spool/postfix/private/auth {
+    mode = 0660
+    user = postfix
+    group = postfix
+  }
 }
 
-passdb {
-     args = %s
-     driver = pam
-}
-
-protocols = "imap"
-
-# create and autosubscribe to some default folders
 namespace inbox {
   inbox = yes
 
@@ -109,37 +112,57 @@ namespace inbox {
     special_use = \Archive
   }
 }
-
-service auth {
-      unix_listener /var/spool/postfix/private/auth {
-      mode = 0660
-      user = postfix
-      group = postfix
-    }
-}
-
-# set your certificate
-ssl = required
-ssl_cert = </etc/ssl/certs/example.com.pem
-ssl_key = </etc/ssl/private/example.com.key
-```
-
-```bash
-sudo usermod -aG ssl-cert postfix
-```
-
-```bash
-sudo cp /etc/letsencrypt/live/mail.example.com/fullchain.pem /etc/ssl/certs/mail.example.com.crt
-sudo cp /etc/letsencrypt/live/mail.example.com/privkey.pem  /etc/ssl/private/mail.example.com.key
 ```
 
 ### Restart Postfix and Dovecot services
 
 ```bash
-sudo systemctl restart postfix dovecot
+sudo vi /etc/dovecot/conf.d/10-auth.conf
 ```
 
-## Send Mail
+```conf
+auth_mechanisms = plain login
+```
+
+### Restart Services
+
+```bash
+sudo systemctl restart postfix
+sudo systemctl restart dovecot
+```
+
+Status check
+
+```bash
+sudo systemctl status postfix
+sudo systemctl status dovecot
+```
+
+## Others
+
+```bash
+sudo cp /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf.orig
+sudo vi /etc/dovecot/dovecot.conf
+
+# Add
+#set mailbox location to Maildir style
+disable_plaintext_auth = yes
+mail_privileged_group = mail
+mail_location = ~/Maildir
+
+userdb {
+      driver = passwd
+}
+
+passdb {
+     args = %s
+     driver = pam
+}
+
+protocols = "imap"
+```
+
+## Send Email
 
 ```bash
 mail <user>@example.com
@@ -153,4 +176,8 @@ mail <user>@example.com
 
 ```bash
 echo "Subject: Test" | sendmail -v user@example.com
+```
+
+```bash
+swaks --auth-user=user --auth-password=password --tls --server mail.example.com:587
 ```
