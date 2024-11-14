@@ -1,5 +1,5 @@
 # nano
 
 ```bash
-nano -h
+nano
 ```
