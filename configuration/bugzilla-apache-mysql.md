@@ -8,9 +8,9 @@ Configure server domain name
 
 ```bash
 sudo apt update; sudo apt -y upgrade
-sudo echo 'dev.example.com' > /etc/hostname
-sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tdev.example.com' /etc/hosts
-sudo sysctl kernel.hostname=dev.example.com
+sudo echo 'example.com' > /etc/hostname
+sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\texample.com' /etc/hosts
+sudo sysctl kernel.hostname=example.com
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
@@ -77,7 +77,7 @@ sudo vi sites-available/bugzilla
 
 ```bash
 <VirtualHost *:80>
-  ServerName dev.example.com
+  ServerName example.com
 
   RedirectMatch ^/$ /bugzilla/
   #DocumentRoot /var/www/webapps/bugzilla
@@ -234,10 +234,10 @@ sudo certbot renew --dry-run
 
 ## Browser application from browser
 
-- Visit [Bugzilla Website](https://dev.example.com/bugzilla) from the browser.
+- Visit [Bugzilla Website](https://example.com/bugzilla) from the browser.
 
-- Visit [Bugzilla – Configuration: Required Settings](https://dev.example.com/bugzilla/editparams.cgi) > Add `urlbase: https://dev.example.com/bugzilla/` > Selct `On` for `ssl_redirect` > Add `sslbase: https://dev.example.com/bugzilla/` > Add `cookiepath: /bugzilla/` > Save Changes.
+- Visit [Bugzilla – Configuration: Required Settings](https://example.com/bugzilla/editparams.cgi) > Add `urlbase: https://example.com/bugzilla/` > Selct `On` for `ssl_redirect` > Add `sslbase: https://example.com/bugzilla/` > Add `cookiepath: /bugzilla/` > Save Changes.
 
-- Visit [Bugzilla – Configuration: Email](https://dev.example.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: Sendmail` > Update `mailfrom: Bugzilla<noreply@dev.example.com>` > Save Changes.
+- Visit [Bugzilla – Configuration: Email](https://example.com/bugzilla/editparams.cgi?section=mta) > Select `mail_delivery_method: Sendmail` > Update `mailfrom: Bugzilla<noreply@example.com>` > Save Changes.
 
 Follow [Bugzilla Documentation](https://bugzilla.readthedocs.io/en/latest/index.html) for more information.

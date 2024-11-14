@@ -6,7 +6,7 @@ Hard disk scan
 
 - Start with Advanced optioins for Ubuntu
 - Select Ubuntu with recovery mode
-- Scan devices with logs enabled
+- Scan devices and monitor logs
 
 ## /dev/sdX1 contains a filesystem with error
 

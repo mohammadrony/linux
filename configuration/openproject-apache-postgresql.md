@@ -1,7 +1,7 @@
 # OpenProject setup with Apache and PostgreSQL
 
 ```bash
-sudo echo 'dev.example.com' > /etc/hostname
+sudo echo 'example.com' > /etc/hostname
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```
@@ -113,7 +113,7 @@ Configure OpenProject with SSL certificate
 
 - Web server
   - install > Install apache2 server
-  - fqdn > dev.example.com
+  - fqdn > example.com
   - prefix > /openproject
 
 - SSL
@@ -148,9 +148,9 @@ sudo certbot certonly --apache
 
 - SSL
   - yes > Yes
-  - server/ssl_cert > /etc/letsencrypt/live/dev.example.com/fullchain.pem
-  - server/ssl_key > /etc/letsencrypt/live/dev.example.com/privkey.pem
-  - server/ssl_ca > /etc/letsencrypt/live/dev.example.com/fullchain.pem
+  - server/ssl_cert > /etc/letsencrypt/live/example.com/fullchain.pem
+  - server/ssl_key > /etc/letsencrypt/live/example.com/privkey.pem
+  - server/ssl_ca > /etc/letsencrypt/live/example.com/fullchain.pem
 
 Verify Certbot auto renewal
 
@@ -169,7 +169,7 @@ Update Apache configuration
 
 ```bash
 sudo cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf.orig
-sudo echo "ServerName dev.example.com" >> /etc/apache2/apache2.conf
+sudo echo "ServerName example.com" >> /etc/apache2/apache2.conf
 ```
 
 ```bash
@@ -200,7 +200,7 @@ server {
   listen 80;
   listen [::]:80;
 
-  server_name dev.example.com;
+  server_name example.com;
   root /opt/openproject/public;
 
   location ~ / {
@@ -245,7 +245,7 @@ sudo apt install -y python3-certbot-nginx
 Get SSL Certificate
 
 ```bash
-sudo certbot --nginx -d dev.example.com
+sudo certbot --nginx -d example.com
 ```
 
 Verify Certbot auto renewal

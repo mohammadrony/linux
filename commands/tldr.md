@@ -1,12 +1,12 @@
-# TLDR
+# tldr
 
-Simplified commands
+Installation
 
 ```bash
 sudo apt install -y tldr
 ```
 
-Usage
+Get useful commands
 
 ```bash
 tldr ls

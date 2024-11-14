@@ -10,7 +10,7 @@ ip addr show eth0
 List only IP addresses
 
 ```bash
-hostname -i
+hostname -I
 ```
 
 ```bash
