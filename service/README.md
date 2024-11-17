@@ -3,4 +3,4 @@
 - [Cronjob](./cronjob.md)
 - [Service Setup](./service-setup.md)
 - [Service Status](./service-status.md)
-- [Screen Command](./screen.md)
+- [Screen](./screen.md)
