@@ -4,6 +4,8 @@
 sudo snap install jq
 ```
 
+## Commands
+
 Print json path
 
 ```bash

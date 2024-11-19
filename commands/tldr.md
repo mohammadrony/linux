@@ -6,7 +6,7 @@ Installation
 sudo apt install -y tldr
 ```
 
-Get useful commands
+## Commands
 
 ```bash
 tldr ls

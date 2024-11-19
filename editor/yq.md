@@ -6,6 +6,8 @@ Installation
 sudo snap install yq
 ```
 
+## Commands
+
 json to yaml
 
 ```bash

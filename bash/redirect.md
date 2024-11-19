@@ -2,9 +2,28 @@
 
 [Redirection](https://www.gnu.org/software/bash/manual/bash.html#Redirections)
 
-## Send stdout stderr to /dev/null
+## Commands
+
+Save output in multiple file
+
+```bash
+echo "1st line"
+echo "2nd line" >&2
+echo "3rd line" >&3
+echo "4th line"
+echo "5th line" >&2
+echo "6th line" >&3
+```
+
+```bash
+source script.sh >file1.txt 2>file2.txt 3>file3.txt
+```
 
 Redirects stdout to /dev/null
+
+```bash
+command >/dev/null | grep 'something'
+```
 
 ```bash
 command 1>/dev/null | grep 'something'
@@ -33,18 +52,3 @@ command 2>&1 >/dev/null | grep 'something'
 ```
 
 *[Details here.](https://stackoverflow.com/questions/2342826/how-can-i-pipe-stderr-and-not-stdout)*
-
-## Save output in multiple file
-
-```bash
-echo "1st line"
-echo "2nd line" >&2
-echo "3rd line" >&3
-echo "4th line"
-echo "5th line" >&2
-echo "6th line" >&3
-```
-
-```bash
-source script.sh >file1.txt 2>file2.txt 3>file3.txt
-```

@@ -1,5 +1,7 @@
 # Xargs
 
+## Commands
+
 ```bash
 seq 5 | xargs -I{} curl http://localhost/path{}
 ```

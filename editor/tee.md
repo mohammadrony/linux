@@ -1,5 +1,7 @@
 # tee
 
+## Commands
+
 Save text to new file
 
 ```bash

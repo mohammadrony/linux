@@ -1,5 +1,7 @@
 # date
 
+## Commands
+
 Day
 
 ```bash

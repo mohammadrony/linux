@@ -6,7 +6,7 @@ Installation
 sudo apt install -y tree
 ```
 
-Usage
+## Commands
 
 ```bash
 tree
