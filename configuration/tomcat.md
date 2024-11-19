@@ -62,8 +62,9 @@ Environment=JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
 Environment=CATALINA_Home=/opt/tomcat
 Environment=CATALINA_BASE=/opt/tomcat
-Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
-Environment='JAVA_OPTS.awt.headless=true -Djava.security.egd=file:/dev/v/urandom'
+# 4GB RAM 2 CPU
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseG1GC -XX:ParallelGCThreads=2 -XX:MaxGCPauseMillis=100 -XX:+HeapDumpOnOutOfMemoryError'
+Environment='JAVA_OPTS=-Dawt.headless=true -Djava.security.egd=file:/dev/v/urandom'
 
 ExecStart=/opt/tomcat/bin/startup.sh
 ExecStop=/opt/tomcat/bin/shutdown.sh
