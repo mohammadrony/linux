@@ -52,9 +52,9 @@ sudo apt install -y mailutils
 ```bash
 sudo dpkg-reconfigure postfix
 > Internet Site
-> System mail name: mail.example.com
+> System mail name: example.com
 > Recipient for root: <enter>
-> Other destinations to accept mail: mail.example.com, example.com, localhost.example.com, localhost
+> Other destinations to accept mail: example.com, mail.example.com, localhost.example.com, localhost
 > Force synchronous updates: <No>
 > Local networks: 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 > Mailbox size limit: 0
