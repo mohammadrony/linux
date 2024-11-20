@@ -1,6 +1,7 @@
 # Network
 
 - [Commands](./commands/)
-- [Load Testing](./load-testing/)
-- [monitor](./monitor/)
-- [vpn](./vpn/)
+- [DNS](./dns/)
+- [Testing](./testing/)
+- [Monitoring](./monitor/)
+- [VPN](./vpn/)
