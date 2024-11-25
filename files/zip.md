@@ -1,5 +1,13 @@
 # Zip
 
+Installation
+
+```bash
+sudo apt install -y zip
+```
+
+## Commands
+
 Zip file
 
 ```bash

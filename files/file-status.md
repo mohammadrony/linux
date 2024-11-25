@@ -1,6 +1,6 @@
 # File Status
 
-## See file details
+## Commands
 
 ```bash
 stat file...

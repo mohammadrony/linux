@@ -2,9 +2,13 @@
 
 ## Testdisk
 
+Installation
+
 ```bash
 sudo apt install -y testdisk
 ```
+
+### Commands
 
 Scan and restore disk
 
