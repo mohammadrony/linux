@@ -34,5 +34,5 @@ sudo vi /etc/ssh/sshd_config
 ## Restart SSH service
 
 ```bash
-sudo systemctl reload sshd
+sudo systemctl reload ssh
 ```
