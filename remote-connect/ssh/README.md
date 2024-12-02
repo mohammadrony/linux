@@ -3,6 +3,7 @@
 - [Auth Agent](./agent.md)
 - [Ansible with SSH](./ansible-with-ssh.md)
 - [Audit](./audit.md)
+- [Fail2ban](./fail2ban.md)
 - [SSH Key](./key.md)
 - [Known Hosts](./known-hosts.md)
 - [Login](./login.md)
