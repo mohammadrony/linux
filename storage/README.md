@@ -7,3 +7,4 @@
 - [Minio Client](./minio-client.md)
 - [NFS](./nfs.md)
 - [XFS](./xfs.md)
+- [s3cmd](./s3cmd.md)

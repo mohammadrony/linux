@@ -35,8 +35,7 @@ sudo cp /etc/letsencrypt/live/mail.example.com/privkey.pem  /etc/ssl/private/mai
 ```
 
 ```bash
-sudo mv /etc/postfix/main.cf /etc/postfix/main.cf.bak
-# empty file
+sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.bak
 sudo vi /etc/postfix/main.cf
 ```
 
