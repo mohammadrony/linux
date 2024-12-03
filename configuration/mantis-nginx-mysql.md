@@ -7,7 +7,7 @@ Article: <https://thishosting.rocks/how-to-install-mantisbt-on-ubuntu/>
 
 ```bash
 #!/bin/bash
-sudo echo 'mantisbt' > /etc/hostname
+sudo hostnamectl set-hostname mantisbt
 sudo apt update; sudo apt -y upgrade
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now

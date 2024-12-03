@@ -4,7 +4,7 @@
 
 ### Buy a new Domain
 
-Goto any domain registrar and select your favorite domain. Some of the popular domain registrer are,
+Goto any domain registrar and acquire your domain. Some of the popular domain registrer are,
 
 - [Freenom](https://www.freenom.com)
 - [Hostinger](https://www.hostinger.com)
@@ -32,8 +32,8 @@ DNS record entries for SPAM protection
 
 ```bash
 sudo apt update; sudo apt -y upgrade
-sudo echo 'mail.example.com' > /etc/hostname
-sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\tmail.example.com' /etc/hosts
+sudo hostnamectl set-hostname mail.example.com
+sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1 mail.example.com' /etc/hosts
 sudo sysctl kernel.hostname=mail.example.com
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
@@ -83,10 +83,6 @@ example.com
 ### Restart Postfix
 
 ```bash
-sudo systemctl enable postfix
-```
-
-```bash
 sudo systemctl restart postfix
 postconf -n
 ```
@@ -96,21 +92,21 @@ postconf -n
 ```bash
 telnet smtp.google.com 25
 > ehlo smtp.google.com
+> quit
 ```
 
 ### Setup Mail Aliases
 
 ```bash
 sudo vi /etc/aliases
+```
 
-# Add
-dmarc: postmaster
-postmaster: root
-app: root
-USER: root
-root: sysadmin@example.com
-noreply: /dev/null
-no-reply: /dev/null
+```txt
+dmarc:        postmaster
+postmaster:   root
+root:         sysadmin@example.com
+USER:         user@example.com
+noreply:      /dev/null
 ```
 
 ### Reload Aliases

@@ -1,7 +1,7 @@
 # OpenProject setup with Apache and PostgreSQL
 
 ```bash
-sudo echo 'example.com' > /etc/hostname
+sudo hostnamectl set-hostname example.com
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
 ```

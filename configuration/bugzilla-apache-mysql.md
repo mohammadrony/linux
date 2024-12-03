@@ -8,8 +8,8 @@ Configure server domain name
 
 ```bash
 sudo apt update; sudo apt -y upgrade
-sudo echo 'example.com' > /etc/hostname
-sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1\texample.com' /etc/hosts
+sudo hostnamectl set-hostname example.com
+sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1 example.com' /etc/hosts
 sudo sysctl kernel.hostname=example.com
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now

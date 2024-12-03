@@ -36,8 +36,8 @@ sudo swapon -a
 
 ```bash
 cd /var/log
-sudo cat /dev/null > messages
-sudo cat /dev/null > wtmp
+sudo cp /dev/null > messages
+sudo cp /dev/null > wtmp
 ```
 
 ```bash
