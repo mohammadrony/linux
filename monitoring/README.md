@@ -1,10 +1,11 @@
 # Monitoring
 
 - [Input Output](./io.md)
+- [iotop](./iotop.md)
 - [JVM](./jvm.md)
 - [pidstat](./pidstat.md)
-- [Sysdig](./sysdig.md)
+- [sysdig](./sysdig.md)
 - [sysstat](./sysstat.md)
 - [Tools](./tools.md)
-- [Top](./top.md)
-- [Watch](./watch.md)
+- [top](./top.md)
+- [watch](./watch.md)

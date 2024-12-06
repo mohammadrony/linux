@@ -1,4 +1,4 @@
-# Sysdig
+# sysdig
 
 [Repository](https://github.com/draios/sysdig)
 

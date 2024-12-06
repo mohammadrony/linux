@@ -1,4 +1,4 @@
-# Watch
+# watch
 
 Monitor command
 

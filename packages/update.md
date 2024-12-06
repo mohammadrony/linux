@@ -7,6 +7,13 @@ sudo apt update
 sudo apt upgrade -y
 ```
 
+Update including phased update
+
+```bash
+sudo apt update
+sudo apt -o APT::Get::Always-Include-Phased-Updates=true -y upgrade
+```
+
 ## Hold
 
 Hold Upgrade
