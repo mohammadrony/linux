@@ -22,3 +22,10 @@ Internet facing ip address (public)
 ```bash
 curl ifconfig.me
 ```
+
+Routing table
+
+```bash
+ip r
+ip route
+```

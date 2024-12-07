@@ -18,6 +18,7 @@
 - [Network](./network/)
 - [Packages](./packages/)
 - [Process](./process/)
+- [Random](./random/)
 - [Remote Connect](./remote-connect/)
 - [Scripts](./scripts/)
 - [Service](./service/)
