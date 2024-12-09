@@ -25,6 +25,8 @@ cd /etc/nginx/
 sudo mkdir sites-available sites-enabled
 ```
 
+### HTTP Service
+
 ```bash
 sudo vi /etc/nginx/sites-available/example.com.conf
 ```
@@ -41,7 +43,7 @@ server {
   error_log  /var/log/nginx/example-error.log error;
 
   location / {
-    proxy_pass                            http://192.168.0.101:8080;
+    proxy_pass                            http://192.168.0.2:8080;
 
     # Memory efficient
     proxy_buffer_size                     16k;
@@ -83,7 +85,7 @@ server {
   ...
   ...
   location / {
-    proxy_pass          http://192.168.0.101:8080;
+    proxy_pass          http://192.168.0.2:8080;
   }
 }
 ```
@@ -92,8 +94,8 @@ Load balancer
 
 ```conf
 upstream myapplication {
-  server 192.168.0.101:8080;
-  server 192.168.0.102:8080;
+  server 192.168.0.2:8080;
+  server 192.168.0.3:8080;
 }
 
 server {
@@ -135,9 +137,8 @@ server {
   ...
   ...
   location / {
-    proxy_pass          http://192.168.0.101:8080;
-    rewrite             ^/[^/]+(.*)$ /$1 last;
-    # rewrite             ^/(.*)$ /$1 break;
+    proxy_pass          http://192.168.0.2:8080;
+    rewrite             ^/(.*)$ /$1 break;
   }
 }
 ```
@@ -150,7 +151,7 @@ server {
   ...
   location / {
     rewrite             ^/$ /path redirect;
-    proxy_pass          http://192.168.0.101:8080;
+    proxy_pass          http://192.168.0.2:8080;
   }
 }
 ```
@@ -164,7 +165,7 @@ server {
   }
 
   location / {
-    proxy_pass          http://192.168.0.101:8080;
+    proxy_pass          http://192.168.0.2:8080;
   }
 }
 ```
@@ -180,7 +181,7 @@ server {
   }
 
   location / {
-    proxy_pass          http://192.168.0.101:8080;
+    proxy_pass          http://192.168.0.2:8080;
   }
 }
 ```
@@ -190,8 +191,43 @@ cd /etc/nginx/sites-enabled/
 sudo ln -s ../sites-available/example.com.conf example.com.conf
 ```
 
+### TCP Stream
+
+```bash
+sudo vi /etc/nginx/sites-available/example.conf
+```
+
+TCP load balancer
+
+```conf
+stream {
+  upstream myapp {
+    server 192.168.0.2:5432;
+    server 192.168.0.3:5432;
+  }
+
+  server {
+    listen 5432;
+    proxy_pass myapp;
+    proxy_timeout 5m;
+    proxy_connect_timeout 5m;
+  }
+}
+```
+
+```bash
+cd /etc/nginx/sites-enabled/
+sudo ln -s ../sites-available/example.conf example.conf
+```
+
+### Reload
+
+Reload service
+
+```bash
+sudo nginx -s reload
+```
+
 ```bash
 sudo systemctl restart nginx
 ```
-
-To use certbot for SSL certificate follow [certbot](./certbot.md) file.
