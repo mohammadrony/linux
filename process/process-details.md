@@ -1,62 +1,41 @@
 # Process Details
 
-`ps` options
+## ps commands
 
-- `f`: tree format
-
-## List running process
+Process by command
 
 ```bash
-ps auxf
+ps -o pid,%cpu,%mem,cmd -C <command>
 ```
 
-```bash
-ps -ef
-ps -ef | grep foo
-```
-
-## Pid to process
-
-```bash
-ps -p <pid> -o comm=
-```
-
-```bash
-ps -p <pid> -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS
-```
-
-```bash
-ps -p <pid> -o %cpu,%mem,cmd
-```
-
-## Process by command
-
-```bash
-ps -C <command> -o %cpu,%mem,cmd
-```
-
-## Print selected field
+Print selected field
 
 ```bash
 ps -eo pid,user,group,args,etime,lstart
 ```
 
-## Related process and files
+## Process Memory
 
-Display process tree
+List process by memory usage
 
 ```bash
-pstree -p <pid>
+sudo python ps_mem.py
 ```
 
-List open files
+Top memory usage
 
 ```bash
-lsof -p <pid>
+ps -eo pmem,pcpu,vsize,pid,cmd | sort -k 1 -nr | head -5
 ```
 
-More info
+List of process size
 
 ```bash
-cat /proc/<pid>/status
+ps auxf | grep -E 'nginx|httpd|apache2' | grep -v grep | awk '{print $6/1024;}'
+```
+
+Average process size
+
+```bash
+ps auxf | grep -E 'nginx|httpd|apache2' | grep -v grep | awk '{print $6/1024;}' | awk '{avg += ($1 - avg) / NR;} END {print avg " MB";}'
 ```

@@ -35,7 +35,7 @@ fg %1
 Find process details
 
 ```bash
-ps -p <pid> -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS
+ps -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS -p <pid>
 ```
 
 Kill running jobs
