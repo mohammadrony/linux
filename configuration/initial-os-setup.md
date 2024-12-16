@@ -10,17 +10,17 @@ sudo hostnamectl set-hostname <hostname>
 sudo timedatectl set-timezone Asia/Dhaka
 ```
 
-## Basic Packages
+## Package install
 
 ```bash
 sudo apt install -y build-essential
 ```
 
 ```bash
-sudo apt install sysstat -y
+sudo apt install -y sysstat
 sudo systemctl enable --now sysstat
 ```
 
 ```bash
-sudo apt install tree
+sudo apt install -y tree
 ```

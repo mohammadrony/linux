@@ -12,7 +12,7 @@ wget https://github.com/keycloak/keycloak/releases/download/$KEYCLOAK_VERSION/ke
 ## Nginx
 
 ```bash
-sudo apt install nginx
+sudo apt install -y nginx
 ```
 
 ```bash

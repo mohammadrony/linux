@@ -17,7 +17,7 @@ sudo apt install -y tasksel
 GDM3
 
 ```bash
-sudo apt-get install --no-install-recommends gnome-core
+sudo apt install -y --no-install-recommends gnome-core
 ```
 
 ```bash

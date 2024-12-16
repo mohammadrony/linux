@@ -144,7 +144,7 @@ php artisan optimize
 Remove PHP
 
 ```bash
-sudo apt-get purge "php*"
+sudo apt purge "php*"
 ```
 
 ## RHEL

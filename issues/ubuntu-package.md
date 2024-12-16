@@ -21,7 +21,7 @@ sudo apt update
 ```
 
 ```bash
-sudo apt install package_name
+sudo apt install -y PACKAGE
 ```
 
 ## Override to update package

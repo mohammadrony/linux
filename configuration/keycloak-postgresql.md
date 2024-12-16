@@ -3,7 +3,7 @@
 ## Install Packages
 
 ```bash
-sudo apt install openjdk-17-jdk openjdk-17-jre
+sudo apt install -y openjdk-17-jdk openjdk-17-jre
 ```
 
 ```bash
