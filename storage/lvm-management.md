@@ -1,6 +1,6 @@
 # LVM Management
 
-## Create Volume from disk
+## Create Volume from Disk
 
 ```bash
 lsblk
@@ -65,9 +65,11 @@ sudo vi /etc/fstab
 sudo systemctl daemon-reload
 ```
 
-## Extend Volume from disk
+## Extend Volume from Disk
 
-volume groups
+### Create partition
+
+Volume group
 
 ```bash
 sudo vgs
@@ -103,13 +105,23 @@ sudo lvs
 sudo lvscan
 ```
 
+### Extend volume
+
 ```bash
 sudo lvextend -l +100%FREE /dev/vg-data/lv-data
 # sudo lvextend -L +5G /dev/vg-data/lv-data
 ```
 
+Extend xfs partition
+
 ```bash
 sudo xfs_growfs /dev/vg-data/lv-data
+```
+
+Extend ext4 partition
+
+```bash
+sudo resize2fs /dev/vg-data/lv-data
 ```
 
 ## Cleanup

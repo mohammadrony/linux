@@ -24,6 +24,7 @@
 ## Developer Tools
 
 - [Visual Studio Code](./vscode.md)
+- [Jetbrains Toolbox](./jetbrains-toolbox.md)
 
 ## Desktop Applications
 
