@@ -1,6 +1,7 @@
 # Configuration
 
 - [Grafana](./grafana/)
+- [Ansible](./ansible.md)
 - [Bugzilla setup with Apache and MySQL](./bugzilla-apache-mysql.md)
 - [FTP Server](./ftp-server.md)
 - [Github Actions](./github-actions.md)

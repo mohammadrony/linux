@@ -15,17 +15,8 @@ ssh-copy-id -i ~/.ssh/rsa.pub user@host
 ## Update sshd configuration
 
 ```bash
-sudo vi /etc/ssh/sshd_config
-```
-
-```txt
-PubkeyAuthentication yes
-AuthorizedKeysFile .ssh/authorized_keys
-```
-
-```bash
-# sudo sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
-# sudo sed -i 's/^#AuthorizedKeysFile\s.ssh\/authorized_keys/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
+sudo sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+sudo sed -i 's/^#AuthorizedKeysFile\s.ssh\/authorized_keys/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
 ```
 
 ```bash
