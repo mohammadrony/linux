@@ -1,8 +1,8 @@
 # Network
 
-- [Commands](./commands/)
-- [DNS](./dns/)
-- [Testing](./testing/)
-- [Monitoring](./monitor/)
-- [VPN](./vpn/)
-- [Tools](./tools.md)
+- [Commands](./commands/README.md)
+- [DNS](./dns/README.md)
+- [Testing](./testing/README.md)
+- [Monitoring](./monitor/README.md)
+- [Router](./router/README.md)
+- [VPN](./vpn/README.md)

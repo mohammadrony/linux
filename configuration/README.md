@@ -1,6 +1,6 @@
 # Configuration
 
-- [Grafana](./grafana/)
+- [Grafana](./grafana/README.md)
 - [Ansible](./ansible.md)
 - [Bugzilla setup with Apache and MySQL](./bugzilla-apache-mysql.md)
 - [FTP Server](./ftp-server.md)

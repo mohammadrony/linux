@@ -1,3 +1,3 @@
 # Grafana
 
-- [Alloy](./alloy)
+- [Alloy](./alloy/README.md)

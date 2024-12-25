@@ -1,9 +1,8 @@
 # Scripts
 
-Project
+Pubilc application
 
-- [Yearly Prayer Time](./prayer-time/)
-- [School Info](./school-info/)
+- [School Info](./school-info/README.md)
 
 Shell
 

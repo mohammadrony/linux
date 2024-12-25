@@ -12,18 +12,31 @@ Copy new public key to remote hosts `~.ssh/authorized_keys` file
 ssh-copy-id -i ~/.ssh/rsa.pub user@host
 ```
 
-## Update sshd configuration
+## Update configuration
 
 ```bash
 sudo sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
 sudo sed -i 's/^#AuthorizedKeysFile\s.ssh\/authorized_keys/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
 ```
 
+Or
+
 ```bash
-sudo systemctl reload sshd
+sudo vi /etc/ssh/sshd_config
 ```
 
-## Connect from remote host
+```txt
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+```
+
+Reload service
+
+```bash
+sudo systemctl reload ssh # sshd
+```
+
+## Connect with ssh
 
 ```bash
 ssh <user>@<host>

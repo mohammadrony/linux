@@ -10,10 +10,10 @@
 
 ## Programming Language setup
 
-- [PHP](./php.md)
 - [Java and Maven](./java-maven.md)
-- [Python setup with pyenv](./python-pyenv.md)
 - [Nodejs and NPM setup with NVM](./node-npm.md)
+- [PHP](./php.md)
+- [Python setup with pyenv](./python-pyenv.md)
 
 ## Server Tools
 
@@ -23,8 +23,8 @@
 
 ## Developer Tools
 
-- [Visual Studio Code](./vscode.md)
 - [Jetbrains Toolbox](./jetbrains-toolbox.md)
+- [Visual Studio Code](./vscode.md)
 
 ## Desktop Applications
 

@@ -2,13 +2,7 @@
 
 ## Connect VM
 
-- [SSH](./ssh)
-
-## Copy Files
-
-- [SCP](./scp.md)
-
-## Remote Login
-
-- [X11 Login](./x11-login/)
-- [Server setup](./rdp/server-setup.md)
+- [Copy Files](./copy/README.md)
+- [Remote Desktop](./rdp/README.md)
+- [SSH](./ssh/README.md)
+- [X11 Login](./x11-login/README.md)

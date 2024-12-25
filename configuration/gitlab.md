@@ -4,7 +4,7 @@
 
 ## Ubuntu
 
-Pre-requisites
+Prerequisites
 
 ```bash
 sudo apt update

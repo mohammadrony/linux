@@ -1,6 +1,4 @@
-# Tools
-
-Winbox
+# Winbox
 
 ```bash
 sudo snap install winbox
