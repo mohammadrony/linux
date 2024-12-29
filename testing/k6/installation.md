@@ -4,6 +4,14 @@
 
 ## Installation
 
+Snap
+
+```bash
+sudo snap install k6
+```
+
+Ubuntu
+
 ```bash
 sudo gpg -k
 sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
