@@ -4,6 +4,7 @@
 - [Alias](./alias/README.md)
 - [Bash](./bash/README.md)
 - [Certificate](./certificate/README.md)
+- [Continuous Integration](./ci/README.md)
 - [Cleanup](./cleanup/README.md)
 - [Commands](./commands/README.md)
 - [Configuration](./configuration/README.md)
