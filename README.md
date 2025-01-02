@@ -1,6 +1,7 @@
 # Linux
 
 - [Administrative](./administrative/README.md)
+- [Artificial Intelligence](./ai/README.md)
 - [Alias](./alias/README.md)
 - [Bash](./bash/README.md)
 - [Certificate](./certificate/README.md)
