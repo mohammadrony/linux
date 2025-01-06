@@ -100,18 +100,21 @@ sudo vi /etc/systemd/system.conf
 # Limit for 8 GB RAM
 DefaultLimitNOFILE=32768
 DefaultLimitNPROC=32768
+# DefaultTasksMax=32768
 ```
 
 ```conf
 # Limit for 16 GB RAM
 DefaultLimitNOFILE=65535
 DefaultLimitNPROC=65535
+# DefaultTasksMax=65535
 ```
 
 ```conf
 # Limit for 32 GB RAM
 DefaultLimitNOFILE=131072
 DefaultLimitNPROC=131072
+# DefaultTasksMax=131072
 ```
 
 [Optional] User level system service
@@ -124,18 +127,21 @@ sudo vi /etc/systemd/user.conf
 # Limit for 8 GB RAM
 DefaultLimitNOFILE=32768
 DefaultLimitNPROC=32768
+# DefaultTasksMax=32768
 ```
 
 ```conf
 # Limit for 16 GB RAM
 DefaultLimitNOFILE=65535
 DefaultLimitNPROC=65535
+# DefaultTasksMax=65535
 ```
 
 ```conf
 # Limit for 32 GB RAM
 DefaultLimitNOFILE=131072
 DefaultLimitNPROC=131072
+# DefaultTasksMax=131072
 ```
 
 ### Limit apply in new session
@@ -185,4 +191,27 @@ Restart
 
 ```bash
 sudo reboot
+```
+
+## Check Status
+
+Kernel parameters
+
+```bash
+sysctl -a
+```
+
+```bash
+sysctl fs.file-max
+```
+
+System configuration
+
+```bash
+systemctl show
+```
+
+```bash
+systemctl show --property DefaultLimitNPROC
+systemctl show --property DefaultLimitNOFILE
 ```
