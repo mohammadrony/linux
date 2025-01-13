@@ -1,4 +1,4 @@
-# Keycloak with Postgresql Database
+# Keycloak and PostgreSQL
 
 ## Install Packages
 

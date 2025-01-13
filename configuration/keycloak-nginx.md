@@ -1,4 +1,4 @@
-# Custom Keycloak and Nginx
+# Keycloak and Nginx
 
 ## Keycloak
 
