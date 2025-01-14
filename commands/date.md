@@ -1,5 +1,11 @@
 # date
 
+## Timezone
+
+```bash
+sudo timedatectl set-timezone Asia/Dhaka
+```
+
 ## Commands
 
 Day
