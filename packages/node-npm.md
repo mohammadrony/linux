@@ -20,7 +20,10 @@ Latest version of [NVM](https://github.com/nvm-sh/nvm)
 
 ```bash
 version=v0.39.7
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$version/install.sh | bash
+curl -O https://raw.githubusercontent.com/nvm-sh/nvm/$version/install.sh
+
+bash install.sh
+rm -f install.sh
 ```
 
 ```bash

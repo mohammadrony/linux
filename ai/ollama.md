@@ -3,5 +3,8 @@
 Installation
 
 ```bash
-curl -fsSL https://ollama.com/install.sh | sh
+curl -LO https://ollama.com/install.sh
+
+sh install.sh
+rm -f install.sh
 ```

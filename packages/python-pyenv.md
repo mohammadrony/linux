@@ -13,7 +13,10 @@ sudo apt install -y libpng-dev libfreetype6-dev
 ```
 
 ```bash
-curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer -o install.sh
+
+bash install.sh
+rm -f install.sh
 ```
 
 ```bash
