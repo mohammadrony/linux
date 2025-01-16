@@ -3,12 +3,13 @@
 ## Application Source
 
 - [APT Repository](./apt-repository.md)
+- [EPEL Release](./epel-release.md)
 - [Flatpak](./flatpak.md)
 - [RHEL](./rhel.md)
 - [Snap](./snap.md)
 - [Update](./update.md)
 
-## Programming Language setup
+## Programming Language
 
 - [Java and Maven](./java-maven.md)
 - [Nodejs and NPM setup with NVM](./node-npm.md)
@@ -20,6 +21,10 @@
 - [Nginx](./nginx.md)
 - [Speedtest CLI](./speedtest.md)
 - [Tomcat](./tomcat.md)
+
+## Debugging Tools
+
+- [htop](./htop.md)
 
 ## Developer Tools
 

@@ -1,14 +1,13 @@
 # RHEL
 
-Update package list
+DNF utils
 
 ```bash
 sudo dnf install -y dnf-utils
-sudo dnf install -y epel-release
 ```
 
-Install htop
+YUM utils
 
 ```bash
-sudo dnf install -y htop
+sudo yum install -y yum-utils
 ```
