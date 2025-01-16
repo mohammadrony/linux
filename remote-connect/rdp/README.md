@@ -1,5 +1,27 @@
 # Remote Desktop
 
+## Ubuntu
+
+Gnome desktop
+
+```bash
+sudo apt install -y ubuntu-gnome-desktop
+```
+
+RDP server
+
+```bash
+sudo apt install -y xrdp
+```
+
+```bash
+cat /etc/xrdp/xrdp.ini
+```
+
+```bash
+sudo systemctl enable --now xrdp
+```
+
 ## RHEL
 
 Server with GUI
@@ -21,28 +43,6 @@ RDP server
 
 ```bash
 sudo yum install -y xrdp tigervnc-server
-```
-
-```bash
-sudo systemctl enable --now xrdp
-```
-
-## Ubuntu
-
-Gnome desktop
-
-```bash
-sudo apt install -y ubuntu-gnome-desktop
-```
-
-RDP server
-
-```bash
-sudo apt install -y xrdp
-```
-
-```bash
-cat /etc/xrdp/xrdp.ini
 ```
 
 ```bash

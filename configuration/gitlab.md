@@ -11,10 +11,13 @@ sudo apt update
 sudo apt install -y ca-certificates tzdata perl net-tools
 ```
 
-Package repository
+Install
 
 ```bash
-curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh -o install.sh
+
+sudo bash install.sh
+rm -f install.sh
 ```
 
 Install gitlab

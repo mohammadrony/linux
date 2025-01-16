@@ -21,9 +21,19 @@ tar -zxvf speedtest-cli.tgz
 
 ## Ubuntu
 
+Package
+
 ```bash
-curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
 sudo apt install -y speedtest
+```
+
+Script
+
+```bash
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh -o install.sh
+
+sudo bash install.sh
+rm -f install.sh
 ```
 
 ```bash
@@ -32,16 +42,26 @@ speedtest
 
 ## RHEL
 
+Package
+
 ```bash
-curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.rpm.sh | sudo bash
 sudo yum install -y speedtest
+```
+
+Script
+
+```bash
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.rpm.sh -o install.sh
+
+sudo bash install.sh
+rm -f install.sh
 ```
 
 ```bash
 speedtest
 ```
 
-## Remove speedtest
+## Uninstall
 
 Ubuntu
 
