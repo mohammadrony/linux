@@ -190,7 +190,7 @@ sudo systemctl restart systemd-logind
 Restart
 
 ```bash
-sudo reboot
+sudo reboot now
 ```
 
 ## Check Status
