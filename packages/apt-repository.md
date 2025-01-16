@@ -35,7 +35,7 @@ sudo add-apt-repository -r -y -s "deb http://archive.ubuntu.com/ubuntu/ jammy ma
 Upgrade all package
 
 ```bash
-sudo apt -y upgrade
+sudo apt upgrade -y
 ```
 
 Upgrade specific package

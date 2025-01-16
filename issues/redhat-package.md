@@ -13,7 +13,7 @@ sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org
 Install packages
 
 ```bash
-sudo yum update
+sudo yum update -y
 ```
 
 Reset configuration

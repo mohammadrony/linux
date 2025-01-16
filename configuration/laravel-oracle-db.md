@@ -208,7 +208,7 @@ sudo yum install -y libnsl php-pear systemtap-sdt-devel
 ```bash
 # # Not sure if needed
 # sudo dnf config-manager --set-enabled powertools
-# sudo yum -y install libedit-devel php-devel gcc curl-devel zlib-devel pcre-devel php-pecl-http
+# sudo yum install -y libedit-devel php-devel gcc curl-devel zlib-devel pcre-devel php-pecl-http
 ```
 
 ```bash

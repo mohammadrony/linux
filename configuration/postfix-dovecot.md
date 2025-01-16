@@ -8,7 +8,7 @@
 ### Install Dovecot packages
 
 ```bash
-sudo apt -y install dovecot-imapd dovecot-pop3d
+sudo apt install -y dovecot-imapd dovecot-pop3d
 ```
 
 ### Start Dovecot service

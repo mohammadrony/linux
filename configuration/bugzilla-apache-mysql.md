@@ -7,7 +7,7 @@ Installation guide: <https://bugzilla.readthedocs.io/en/latest/installing/quick-
 Configure server domain name
 
 ```bash
-sudo apt update; sudo apt -y upgrade
+sudo apt update; sudo apt upgrade -y
 sudo hostnamectl set-hostname example.com
 sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1 example.com' /etc/hosts
 sudo sysctl kernel.hostname=example.com

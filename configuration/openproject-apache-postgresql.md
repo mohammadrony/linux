@@ -14,7 +14,7 @@ sudo reboot now
 sudo sh -c 'echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 sudo wget -O /etc/apt/trusted.gpg.d/postgresql.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg -
-sudo apt update; sudo apt -y upgrade
+sudo apt update; sudo apt upgrade -y
 sudo apt install -y postgresql-16
 ```
 
@@ -72,7 +72,7 @@ GRANT ALL PRIVILEGES ON DATABASE openproject TO openproject;
 
 ```bash
 sudo apt update
-sudo apt -y install apt-transport-https ca-certificates wget net-tools
+sudo apt install -y apt-transport-https ca-certificates wget net-tools
 ```
 
 ```bash
@@ -85,7 +85,7 @@ sudo wget -O /etc/apt/sources.list.d/openproject.list https://dl.packager.io/srv
 
 ```bash
 sudo apt update
-sudo apt -y install openproject
+sudo apt install -y openproject
 ```
 
 ### Openproject configure

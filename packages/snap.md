@@ -18,7 +18,7 @@ Adding recommended repositories
 
 ```bash
 sudo subscription-manager repos --enable "rhel-*-optional-rpms" --enable "rhel-*-extras-rpms"
-sudo yum update
+sudo yum update -y
 ```
 
 Install snapd

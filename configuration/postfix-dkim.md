@@ -31,7 +31,7 @@ DNS record entries for SPAM protection
 ### Setup server name
 
 ```bash
-sudo apt update; sudo apt -y upgrade
+sudo apt update; sudo apt upgrade -y
 sudo hostnamectl set-hostname mail.example.com
 sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1 mail.example.com' /etc/hosts
 sudo sysctl kernel.hostname=mail.example.com

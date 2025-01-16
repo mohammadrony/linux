@@ -2,10 +2,24 @@
 
 ## RHEL
 
-Install RDP server
+Server with GUI
 
 ```bash
-sudo yum -y install xrdp tigervnc-server
+sudo yum groupinstall -y "Server with GUI"
+```
+
+```bash
+sudo ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
+```
+
+```bash
+sudo reboot now
+```
+
+RDP server
+
+```bash
+sudo yum install -y xrdp tigervnc-server
 ```
 
 ```bash
@@ -14,10 +28,16 @@ sudo systemctl enable --now xrdp
 
 ## Ubuntu
 
-Install gnome desktop and RDP server
+Gnome desktop
 
 ```bash
-sudo apt install xrdp ubuntu-gnome-desktop
+sudo apt install -y ubuntu-gnome-desktop
+```
+
+RDP server
+
+```bash
+sudo apt install -y xrdp
 ```
 
 ```bash

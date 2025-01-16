@@ -1,12 +1,16 @@
 # Server GUI
 
+## Ubuntu
+
+Gnome desktop
+
+```bash
+sudo apt install -y ubuntu-gnome-desktop
+```
+
 ## RHEL
 
 Server with GUI
-
-```bash
-sudo yum update -y
-```
 
 ```bash
 sudo yum groupinstall -y "Server with GUI"
