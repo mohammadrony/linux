@@ -21,5 +21,6 @@ sudo ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.tar
 ```
 
 ```bash
-sudo reboot now
+sudo systemctl isolate graphical.target
+sudo systemctl set-default graphical.target
 ```

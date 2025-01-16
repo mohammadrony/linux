@@ -76,7 +76,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt $(lsb
 sudo wget -O /etc/apt/trusted.gpg.d/postgresql.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg -
 sudo apt update; sudo apt upgrade -y
-sudo apt install -y postgresql-16
+sudo apt install -y postgresql-17
 ```
 
 ### Update configuration
@@ -84,8 +84,8 @@ sudo apt install -y postgresql-16
 Allow external server connection
 
 ```bash
-sudo cp /etc/postgresql/16/main/postgresql.conf /etc/postgresql/16/main/postgresql.conf.orig
-sudo vi /etc/postgresql/16/main/postgresql.conf
+sudo cp /etc/postgresql/17/main/postgresql.conf /etc/postgresql/17/main/postgresql.conf.orig
+sudo vi /etc/postgresql/17/main/postgresql.conf
 ```
 
 ```conf
