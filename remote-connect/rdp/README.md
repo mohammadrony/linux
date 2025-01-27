@@ -15,11 +15,18 @@ sudo apt install -y xrdp
 ```
 
 ```bash
-cat /etc/xrdp/xrdp.ini
+sudo sed -i 's/max_bpp=.*/max_bpp=24/' /etc/xrdp/xrdp.ini
 ```
 
 ```bash
-sudo systemctl enable --now xrdp
+cat /etc/xrdp/xrdp.ini | grep max_bpp
+```
+
+Restart service
+
+```bash
+sudo systemctl enable xrdp
+sudo systemctl restart xrdp
 ```
 
 ## RHEL
@@ -46,5 +53,16 @@ sudo yum install -y xrdp tigervnc-server
 ```
 
 ```bash
-sudo systemctl enable --now xrdp
+sudo sed -i 's/max_bpp=.*/max_bpp=24/' /etc/xrdp/xrdp.ini
+```
+
+```bash
+cat /etc/xrdp/xrdp.ini | grep max_bpp
+```
+
+Restart service
+
+```bash
+sudo systemctl enable xrdp
+sudo systemctl restart xrdp
 ```
