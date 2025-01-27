@@ -1,4 +1,4 @@
-# Branches in Git
+# Branches
 
 ## Setup Default Initial Branch
 
