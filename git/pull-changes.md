@@ -1,4 +1,4 @@
-# Pull Changes in Local Repository
+# Pull Changes
 
 ## Download Latest Changes from Remote Repository
 

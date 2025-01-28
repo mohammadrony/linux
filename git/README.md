@@ -10,5 +10,5 @@
 - [Gitless](./gitless.md)
 - [Related Issues](./issues.md)
 - [Patch](./patch.md)
-- [Pull Changes in Local Repository](./pull-changes.md)
+- [Pull Changes](./pull-changes.md)
 - [Tag and Release](./tag-release.md)
