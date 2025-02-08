@@ -6,26 +6,26 @@ War deployment update
 sudo systemctl stop jenkins
 ```
 
-Backup jenkins binary and related files
+Backup related files
 
 ```bash
 tar -cvzf ~/jenkins.tar.gz /var/lib/jenkins
 ```
 
 ```bash
-cd /var/lib/jenkins
+cd /usr/share/java
 sudo mv jenkins.war jenkins.war.old
 ```
 
 Download latest release
 
 ```bash
-wget https://updates.jenkins-ci.org/latest/jenkins.war
-sudo mv jenkins.war /var/lib/jenkins
+cd /usr/share/java
+sudo wget https://updates.jenkins-ci.org/latest/jenkins.war
 ```
 
 Restart service
 
 ```bash
-sudo systemctl start jenkins
+sudo systemctl restart jenkins
 ```
