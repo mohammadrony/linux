@@ -1,16 +1,34 @@
 # Update
 
-War deployment update
+## Stable (LTS)
+
+Unhold current version
+
+```bash
+sudo apt-mark unhold jenkins
+```
+
+Update jenkins
+
+```bash
+sudo apt install -y jenkins
+```
+
+Hold current version
+
+```bash
+sudo apt-mark hold jenkins
+```
+
+## Weekly release
+
+Stop service
 
 ```bash
 sudo systemctl stop jenkins
 ```
 
-Backup related files
-
-```bash
-tar -cvzf ~/jenkins.tar.gz /var/lib/jenkins
-```
+Backup jenkins binary
 
 ```bash
 cd /usr/share/java
