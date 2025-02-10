@@ -9,12 +9,40 @@ sh install.sh
 rm -f install.sh
 ```
 
-## Commands
-
-Start server
+## Server
 
 ```bash
 ollama serve
+```
+
+Allow public access
+
+```bash
+sudo vi /etc/systemd/system/ollama.service
+```
+
+```txt
+[Service]
+...
+...
+...
+
+Environment="OLLAMA_HOST=0.0.0.0"'
+```
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart ollama
+```
+
+Check status
+
+```bash
+sudo systemctl status ollama
+```
+
+```bash
+sudo netstat -nltp
 ```
 
 List models
@@ -22,6 +50,8 @@ List models
 ```bahs
 ollama list
 ```
+
+## Model
 
 Run model
 
