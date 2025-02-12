@@ -5,8 +5,7 @@
 Install PHP
 
 ```bash
-sudo apt update
-sudo apt install -y software-properties-common curl unzip tree
+sudo apt install -y software-properties-common
 ```
 
 ```bash

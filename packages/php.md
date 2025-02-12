@@ -13,10 +13,6 @@ sudo add-apt-repository -y ppa:ondrej/php
 ```
 
 ```bash
-sudo apt update
-```
-
-```bash
 N=7.2 # 8 9
 sudo apt install -y php$N php$N-fpm
 ```

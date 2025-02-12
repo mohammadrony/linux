@@ -1,8 +1,13 @@
 # Ansible
 
-## Control Node
+## Installation
 
 Ubuntu package
+
+```bash
+sudo apt install -y software-properties-common
+sudo add-apt-repository -y ppa:ansible/ansible
+```
 
 ```bash
 sudo apt install -y ansible
@@ -15,38 +20,7 @@ sudo dnf install -y epel-release
 sudo dnf install -y ansible
 ```
 
-Create SSH authentication
-
-```bash
-ssh-keygen -f ~/.ssh/id_rsa
-```
-
-```bash
-ssh-copy-id -i ~/.ssh/id_rsa.pub user@host
-```
-
-## Remote Node
-
-Update sshd config
-
-```bash
-sudo sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
-sudo sed -i 's/#AuthorizedKeysFile\s.ssh\/authorized_keys/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
-sudo systemctl reload ssh # sshd
-```
-
-Password less sudo command execution
-
-```bash
-USER=username
-tee -a /etc/sudoers.d/$USER << EOF
-$USER ALL=(ALL) NOPASSWD: ALL
-EOF
-```
-
-## Config and Inventory setup
-
-Ansible config
+## Config
 
 ```bash
 tee -a ./ansible.cfg << EOF
@@ -62,7 +36,38 @@ forks                   = 5
 EOF
 ```
 
-Inventory file
+## Connect Node
+
+Generate SSH key
+
+```bash
+ssh-keygen -f ~/.ssh/id_rsa
+```
+
+Connect remote server
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@host
+```
+
+Remote node's config
+
+```bash
+sudo sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+sudo sed -i 's/#AuthorizedKeysFile\s.ssh\/authorized_keys/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
+sudo systemctl reload ssh # sshd
+```
+
+Passwordless sudo user
+
+```bash
+USER=username
+tee -a /etc/sudoers.d/$USER << EOF
+$USER ALL=(ALL) NOPASSWD: ALL
+EOF
+```
+
+## Inventory
 
 ```bash
 sudo tee -a ./hosts << EOF
@@ -80,11 +85,17 @@ ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 EOF
 ```
 
-Other inventory file
+Default inventory
 
 - `/etc/ansible/hosts`
 
-## Ping for ansible connection
+Inventory info
+
+```bash
+ansible-inventory --list
+```
+
+## Ping test
 
 ```bash
 ansible all -m ping

@@ -113,9 +113,7 @@ sudo systemctl restart mysql
 Add Ondrej PPA repository
 
 ```bash
-LC_ALL=C.UTF-8
-sudo add-apt-repository ppa:ondrej/php
-sudo apt update
+sudo add-apt-repository -y ppa:ondrej/php
 ```
 
 Install PHP
