@@ -2,6 +2,14 @@
 
 ## Common usage
 
+Internet facing ip address (public)
+
+```bash
+curl ifconfig.me
+```
+
+## Options
+
 Quite mode
 
 ```bash
