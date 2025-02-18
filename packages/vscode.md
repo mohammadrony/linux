@@ -3,7 +3,7 @@
 Snap package
 
 ```bash
-sudo snap install code --classic
+sudo snap install --classic code
 ```
 
 APT package

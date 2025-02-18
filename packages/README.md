@@ -11,6 +11,7 @@
 
 ## Programming Language
 
+- [Go](./go.md)
 - [Java and Maven](./java-maven.md)
 - [Nodejs and NPM setup with NVM](./node-npm.md)
 - [PHP](./php.md)
