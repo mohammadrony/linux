@@ -124,12 +124,6 @@ Display process tree
 pstree -p <pid>
 ```
 
-## Open files
-
-```bash
-lsof -p <pid>
-```
-
 ## Others
 
 ```bash
