@@ -14,7 +14,6 @@
 - [Editor](./editor/README.md)
 - [Files](./files/README.md)
 - [Git](./git/README.md)
-- [Known Issues](./issues/README.md)
 - [Memory](./memory/README.md)
 - [Monitoring](./monitoring/README.md)
 - [Network](./network/README.md)
@@ -26,3 +25,4 @@
 - [Service](./service/README.md)
 - [Storage](./storage/README.md)
 - [Testing](./testing/README.md)
+- [Troubleshoot](./troubleshoot/README.md)

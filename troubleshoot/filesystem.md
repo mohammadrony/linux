@@ -1,14 +1,13 @@
 # Filesystem
 
-## Troubleshooting
+## /dev/sdX1 contains a filesystem with error
 
 Hard disk scan
 
+- Enter into GRUB menu with `ESC` key
 - Start with Advanced optioins for Ubuntu
 - Select Ubuntu with recovery mode
 - Scan devices and monitor logs
-
-## /dev/sdX1 contains a filesystem with error
 
 Check and repair filesystem
 
