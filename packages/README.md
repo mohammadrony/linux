@@ -5,6 +5,7 @@
 - [APT Repository](./apt-repository.md)
 - [EPEL Release](./epel-release.md)
 - [Flatpak](./flatpak.md)
+- [Release Upgrade](./release-upgrade.md)
 - [RHEL](./rhel.md)
 - [Snap](./snap.md)
 - [Update](./update.md)
