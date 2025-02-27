@@ -1,4 +1,4 @@
-# Nodejs and NPM setup with NVM
+# Nodejs and NPM
 
 ## TL;DR
 
