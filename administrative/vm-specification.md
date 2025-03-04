@@ -3,7 +3,12 @@
 CPU
 
 ```bash
-lscpu  | grep "Thread\|Core"
+nproc
+```
+
+```bash
+lscpu
+lscpu | grep "Thread\|Core"
 ```
 
 RAM
