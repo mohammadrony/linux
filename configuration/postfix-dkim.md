@@ -260,15 +260,18 @@ non_smtpd_milters = $smtpd_milters
 ### Update services
 
 ```bash
-sudo chmod 777 /var/spool/postfix/opendkim/opendkim.sock
-```
-
-```bash
 sudo systemctl disable --now apparmor
 ```
 
 ```bash
 sudo systemctl restart opendkim
+```
+
+```bash
+sudo chmod 777 /var/spool/postfix/opendkim/opendkim.sock
+```
+
+```bash
 sudo systemctl restart postfix
 ```
 
