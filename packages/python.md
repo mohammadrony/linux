@@ -1,5 +1,40 @@
 # Python
 
+## UV
+
+```bash
+curl -LO https://astral.sh/uv/install.sh
+
+bash install.sh
+rm -f install.sh
+```
+
+Commands
+
+```bash
+uv
+```
+
+Create virtual environment
+
+```bash
+uv venv
+source .venv/bin/activate
+```
+
+Install packages
+
+```bash
+uv pip install -r requirements.txt
+uv pip install <module>
+```
+
+Deactivate venv
+
+```bash
+deactivate
+```
+
 ## Conda
 
 ```bash
@@ -37,7 +72,7 @@ Env list
 conda env list
 ```
 
-Create conda env
+Create conda environment
 
 ```bash
 conda create -n <venv>
@@ -181,7 +216,7 @@ Run application
 python main.py
 ```
 
-Deactivate virtual environment
+Deactivate venv
 
 ```bash
 deactivate
