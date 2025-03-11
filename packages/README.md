@@ -16,7 +16,7 @@
 - [Java and Maven](./java-maven.md)
 - [Nodejs and NPM setup with NVM](./node-npm.md)
 - [PHP](./php.md)
-- [Python setup with pyenv](./python-pyenv.md)
+- [Python](./python.md)
 
 ## Server Tools
 
