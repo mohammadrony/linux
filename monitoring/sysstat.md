@@ -61,7 +61,7 @@ sudo systemctl daemon-reload
 Restart sysstat service
 
 ```bash
-sudo systemctl enable --now sysstat
+sudo systemctl restart sysstat
 ```
 
 ### State of the Server
