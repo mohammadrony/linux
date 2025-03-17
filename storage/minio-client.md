@@ -43,6 +43,8 @@ mc alias remove MINIO
 
 ### Admin
 
+Minio information
+
 ```bash
 mc admin info MINIO
 ```
