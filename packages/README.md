@@ -3,6 +3,7 @@
 ## Application Source
 
 - [APT Repository](./apt-repository.md)
+- [AppImage](./appimage.md)
 - [EPEL Release](./epel-release.md)
 - [Flatpak](./flatpak.md)
 - [Release Upgrade](./release-upgrade.md)
