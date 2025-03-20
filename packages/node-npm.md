@@ -128,7 +128,7 @@ curl -fsSL "https://deb.nodesource.com/setup_${version}.x" -o nodesource_setup.s
 ```
 
 ```bash
-bash nodesource_setup.sh
+sudo bash nodesource_setup.sh
 ```
 
 Install nodejs

@@ -19,7 +19,7 @@ sudo apt install -y php$N php$N-fpm
 
 ```bash
 N=7.2 # 8 9
-sudo apt install -y php$N-fpm php$N-common php$N-cli php$N-curl
+sudo apt install -y php$N-fpm php$N-common php$N-cli php$N-curl php$N-xml
 ```
 
 ```bash
