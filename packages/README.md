@@ -31,6 +31,7 @@
 
 ## Developer Tools
 
+- [Atom Editor](./atom.md)
 - [Jetbrains Toolbox](./jetbrains-toolbox.md)
 - [Visual Studio Code](./vscode.md)
 

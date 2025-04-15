@@ -17,6 +17,7 @@
 - [Memory](./memory/README.md)
 - [Monitoring](./monitoring/README.md)
 - [Network](./network/README.md)
+- [Nvidia](./nvidia/README.md)
 - [Packages](./packages/README.md)
 - [Process](./process/README.md)
 - [Random](./random/README.md)
