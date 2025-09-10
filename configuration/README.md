@@ -16,5 +16,6 @@
 - [Dovecot in Postfix](./postfix-dovecot.md)
 - [RabbitMQ Cluster](./rabbitmq-cluster.md)
 - [Redis](./redis.md)
+- [Terraform](./terraform.md)
 - [Tomcat](./tomcat.md)
 - [WordPress](./wordpress.md)

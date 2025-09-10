@@ -17,10 +17,5 @@ sudo apt install -y build-essential
 ```
 
 ```bash
-sudo apt install -y sysstat
-sudo systemctl enable --now sysstat
-```
-
-```bash
-sudo apt install -y tree
+sudo apt install -y ubuntu-restricted-extras
 ```
