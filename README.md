@@ -26,4 +26,5 @@
 - [Service](./service/README.md)
 - [Storage](./storage/README.md)
 - [Testing](./testing/README.md)
+- [Tools](./tools/README.md)
 - [Troubleshoot](./troubleshoot/README.md)
