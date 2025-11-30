@@ -2,26 +2,26 @@
 
 Update package
 
-```bash
+```sh
 sudo apt update
 sudo apt upgrade -y
 ```
 
 Upgrade operating system
 
-```bash
+```sh
 sudo do-release-upgrade
 ```
 
 Update all held back package
 
-```bash
+```sh
 sudo apt update
 sudo apt full-upgrade -y
 ```
 
 Restart
 
-```bash
+```sh
 sudo reboot now
 ```

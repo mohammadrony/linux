@@ -6,7 +6,7 @@
 
 ### Installation
 
-```bash
+```sh
 git clone https://github.com/bitbrute/evillimiter.git
 cd evillimiter
 sudo python3 setup.py install
@@ -14,6 +14,6 @@ sudo python3 setup.py install
 
 ### Usage
 
-```bash
+```sh
 evillimiter -h
 ```

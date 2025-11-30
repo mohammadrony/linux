@@ -2,20 +2,20 @@
 
 Install Flatpak
 
-```bash
+```sh
 sudo apt install -y flatpak gnome-software-plugin-flatpak
 ```
 
-```bash
+```sh
 sudo reboot now
 ```
 
 Install Flathub
 
-```bash
+```sh
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
-```bash
+```sh
 sudo flatpak install -y flathub
 ```

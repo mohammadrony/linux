@@ -9,20 +9,20 @@
 
 Install vsftpd
 
-```bash
+```sh
 sudo apt install -y vsftpd
 ```
 
 Start service
 
-```bash
+```sh
 sudo systemctl enable --now vsftpd
 sudo systemctl status vsftpd
 ```
 
 Disable firewall
 
-```bash
+```sh
 sudo systemctl disable --now ufw
 # sudo ufw allow 20/tcp
 # sudo ufw allow 21/tcp
@@ -31,37 +31,37 @@ sudo systemctl disable --now ufw
 
 Create admin user
 
-```bash
+```sh
 sudo useradd -m -s /bin/bash admin
 ```
 
-```bash
+```sh
 sudo passwd admin
 # Password:
 ```
 
-```bash
+```sh
 sudo chown admin:ftp /srv/ftp -R
 ```
 
 Create read user
 
-```bash
+```sh
 sudo useradd -m -s /bin/bash ftpuser
 ```
 
-```bash
+```sh
 sudo passwd ftpuser
 # Password:
 ```
 
 Create config file backup
 
-```bash
+```sh
 sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.orig
 ```
 
-```bash
+```sh
 sudo vi /etc/vsftpd.conf
 ```
 
@@ -87,7 +87,7 @@ allow_writeable_chroot=YES
 
 Create chroot file
 
-```bash
+```sh
 sudo touch /etc/vsftpd.chroot_list
 ```
 
@@ -95,13 +95,13 @@ Add user in `/etc/vsftpd.chroot_list` file to access `/` files
 
 Generate SSL certificate
 
-```bash
+```sh
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
 ```
 
 Update SSL configuration
 
-```bash
+```sh
 sudo vi /etc/vsftpd.conf
 ```
 
@@ -131,18 +131,18 @@ ssl_ciphers=HIGH
 
 Restart vsftpd service
 
-```bash
+```sh
 sudo systemctl restart vsftpd
 ```
 
 Deny SSH Login
 
-```bash
+```sh
 sudo tee -a /etc/ssh/sshd_config << EOF
 DenyUsers admin ftpuser
 EOF
 ```
 
-```bash
+```sh
 sudo systemctl restart ssh
 ```

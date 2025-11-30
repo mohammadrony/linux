@@ -4,13 +4,13 @@
 
 List all services
 
-```bash
+```sh
 sudo systemctl --type=service
 ```
 
 List running services
 
-```bash
+```sh
 sudo systemctl --type=service --state=running
 
 sudo systemctl --type=service --state=failed
@@ -22,7 +22,7 @@ sudo systemctl --type=service --state=exited
 
 ## Create new service
 
-```bash
+```sh
 sudo vi /etc/systemd/system/example.service
 ```
 
@@ -46,32 +46,32 @@ WantedBy=multi-user.target
 
 Start and Enable service
 
-```bash
+```sh
 systemctl daemon-reload
 ```
 
-```bash
+```sh
 sudo systemctl enable --now example
 ```
 
-```bash
+```sh
 sudo systemctl enable example
 sudo systemctl start example
 ```
 
 Restart service
 
-```bash
+```sh
 sudo systemctl restart example
 ```
 
-```bash
+```sh
 sudo systemctl stop example
 sudo systemctl start example
 ```
 
 Check dependency
 
-```bash
+```sh
 systemctl list-dependencies example
 ```

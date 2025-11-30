@@ -2,40 +2,40 @@
 
 Provider password for ssh
 
-```bash
+```sh
 sshpass -p '<password>' ssh <user>@<host>
 ```
 
 Login with identity file
 
-```bash
+```sh
 ssh -i ~/.ssh/<file> <user>@<host>
 ```
 
-```bash
+```sh
 ssh -i ~/.ssh/<file> -o IdentitiesOnly=yes <user>@<host>
 ```
 
 Manage login to unknown hosts
 
-```bash
+```sh
 ssh -o StrictHostKeyChecking=no <user>@<host>
 ```
 
 For ssh-dss algorithm (legacy version)
 
-```bash
+```sh
 ssh -o HostKeyAlgorithms=+ssh-dss <user>@<host>
 ```
 
 Use password authentication
 
-```bash
+```sh
 ssh -o PreferredAuthentications=password <user>@<host>
 ```
 
 Using key exchange algorithm
 
-```bash
+```sh
 ssh -o KexAlgorithms=curve25519-sha256 <user>@<host>
 ```

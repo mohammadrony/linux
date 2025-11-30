@@ -6,13 +6,13 @@ Update **USER** and **GROUP** with real value.
 
 CentOS and Ubuntu
 
-```bash
+```sh
 USER=username
 sudo useradd $USER
 sudo usermod -aG wheel $USER
 ```
 
-```bash
+```sh
 USER=username
 PASSWORD=password
 useradd -m -s /bin/bash -p $(openssl passwd -1 $PASSWORD) $USER
@@ -21,13 +21,13 @@ usermod -aG sudo $USER
 
 Ubuntu
 
-```bash
+```sh
 USER=username
 sudo adduser --gecos "" $USER
 sudo usermod -aG sudo $USER
 ```
 
-```bash
+```sh
 USER=username
 PASSWORD=password
 useradd -m -s /bin/bash -p $(openssl passwd -1 $PASSWORD) $USER
@@ -36,7 +36,7 @@ usermod -aG sudo $USER
 
 Password less sudo command execution
 
-```bash
+```sh
 USER=username
 sudo tee -a /etc/sudoers.d/$USER << EOF
 $USER ALL=(ALL) NOPASSWD: ALL
@@ -45,7 +45,7 @@ EOF
 
 *Sometimes user needs to logout and re-login to update the group. Or [follow this](https://superuser.com/questions/272061/reload-a-linux-users-group-assignments-without-logging-out) to reload users groups without logging out.*
 
-```bash
+```sh
 logout
 ```
 
@@ -53,13 +53,13 @@ logout
 
 CentOS and Ubuntu
 
-```bash
+```sh
 sudo groupadd GROUP
 ```
 
 Ubuntu
 
-```bash
+```sh
 sudo addgroup GROUP
 ```
 
@@ -67,39 +67,39 @@ sudo addgroup GROUP
 
 Add users to group
 
-```bash
+```sh
 sudo usermod -aG GROUP USER
 ```
 
-```bash
+```sh
 sudo gpasswd -a USER GROUP
 ```
 
 Update user password
 
-```bash
+```sh
 sudo passwd USER
 ```
 
 Remove user from a group
 
-```bash
+```sh
 sudo gpasswd -d USER GROUP
 ```
 
 Update user default shell
 
-```bash
+```sh
 sudo usermod -s /bin/bash USER
 ```
 
-```bash
+```sh
 sudo usermod -s /usr/sbin/nologin USER
 ```
 
 Delete password
 
-```bash
+```sh
 sudo passwd -d USER
 ```
 
@@ -107,19 +107,19 @@ sudo passwd -d USER
 
 CentOS and Ubuntu
 
-```bash
+```sh
 sudo userdel USER
 ```
 
 Ubuntu
 
-```bash
+```sh
 sudo deluser USER
 ```
 
 Delete user files
 
-```bash
+```sh
 sudo rm /home/USER -rf
 ```
 
@@ -127,12 +127,12 @@ sudo rm /home/USER -rf
 
 CentOS and Ubuntu
 
-```bash
+```sh
 sudo groupdel GROUP
 ```
 
 Ubuntu
 
-```bash
+```sh
 sudo delgroup GROUP
 ```

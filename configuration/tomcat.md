@@ -9,14 +9,14 @@
 
 Create tomcat user
 
-```bash
+```sh
 sudo groupadd tomcat
 sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 ```
 
 Download and extract tomcat binary
 
-```bash
+```sh
 cd /tmp
 
 curl -O https://downloads.apache.org/tomcat/tomcat-9/v9.0.90/bin/apache-tomcat-9.0.90.tar.gz # version 9
@@ -29,20 +29,20 @@ sudo tar xzvf /tmp/apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
 
 Update file permission
 
-```bash
+```sh
 sudo chown tomcat:tomcat /opt/tomcat -R
 sudo chmod -R g+rx /opt/tomcat/conf
 ```
 
 Find Java Home
 
-```bash
+```sh
 dirname $(dirname $(readlink -f $(which java)))
 ```
 
 Create tomcat service
 
-```bash
+```sh
 sudo tee /etc/systemd/system/tomcat.service << EOF
 [Unit]
 Description=Apache Tomcat Web Application Container
@@ -76,7 +76,7 @@ EOF
 
 Start the service
 
-```bash
+```sh
 sudo systemctl daemon-reload
 
 # cd /opt/tomcat/bin
@@ -88,7 +88,7 @@ sudo systemctl status tomcat
 
 Create tomcat user applications account
 
-```bash
+```sh
 sudo vi /opt/tomcat/conf/tomcat-users.xml
 ```
 
@@ -109,11 +109,11 @@ Password: `1D5dof06su`
 
 Allow remote access to manager and host manager ui. *(By default tomcat is configured to access these pages from localhost only)*
 
-```bash
+```sh
 sudo vi /opt/tomcat/webapps/manager/META-INF/context.xml
 ```
 
-```bash
+```sh
 sudo vi /opt/tomcat/webapps/host-manager/META-INF/context.xml
 ```
 
@@ -139,13 +139,13 @@ Update following configuration to access from specific ip address (i.e. `80.80.8
 
 Log rotation
 
-```bash
+```sh
 sudo mkdir -p /opt/tomcat/logs/archive
 sudo chown tomcat:tomcat /opt/tomcat/logs/archive
 sudo chmod 755 /opt/tomcat/logs/archive
 ```
 
-```bash
+```sh
 sudo vi /etc/logrotate.d/tomcat
 ```
 
@@ -175,13 +175,13 @@ sudo vi /etc/logrotate.d/tomcat
 }
 ```
 
-```bash
+```sh
 sudo logrotate -d /etc/logrotate.d/tomcat
 ```
 
 Restart if change are not applied
 
-```bash
+```sh
 sudo systemctl restart tomcat
 ```
 
@@ -194,13 +194,13 @@ sudo systemctl restart tomcat
 
 ## Deploy jar/war Application
 
-```bash
+```sh
 sudo cp app.war /opt/tomcat/webapps/
 ```
 
 To deploy app in context path `/`
 
-```bash
+```sh
 sudo vi /opt/tomcat/conf/server.xml
 ```
 
@@ -218,24 +218,24 @@ sudo vi /opt/tomcat/conf/server.xml
 
 ## SSL Certificate
 
-```bash
+```sh
 sudo su
 ```
 
-```bash
+```sh
 cd /etc/letsencrypt/live/example.com
 ln -s cert.pem /opt/tomcat/conf
 ln -s chain.pem /opt/tomcat/conf
 ln -s privkey.pem /opt/tomcat/conf
 ```
 
-```bash
+```sh
 sudo vi /opt/tomcat/conf/server.xml
 ```
 
 Uncomment following segment
 
-```bash
+```sh
 <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
 maxThreads="150" SSLEnabled="true">
   <SSLHostConfig>
@@ -246,19 +246,19 @@ maxThreads="150" SSLEnabled="true">
 </Connector>
 ```
 
-```bash
+```sh
 sudo systemctl restart tomcat
 ```
 
 ## Nginx Reverse Proxy
 
-```bash
+```sh
 sudo apt install -y nginx
 ```
 
 [How to enable port 80 on Apache tomcat?](https://www.digitalocean.com/community/questions/how-to-enable-port-80-on-apache-tomcat)
 
-```bash
+```sh
 sudo tee -a /etc/nginx/sites-available/example.com.conf << EOF
 server {
   server_name example.com;
@@ -287,12 +287,12 @@ server {
 EOF
 ```
 
-```bash
+```sh
 cd /etc/nginx/sites-enabled/
 sudo ln -s ../sites-available/example.com.conf ./
 ```
 
-```bash
+```sh
 sudo systemctl restart nginx
 ```
 
@@ -300,31 +300,31 @@ sudo systemctl restart nginx
 
 Stop service
 
-```bash
+```sh
 sudo systemctl disable --now tomcat
 ```
 
 Delete tomcat files
 
-```bash
+```sh
 sudo rm -rf /opt/tomcat
 ```
 
 Remove tomcat package if any
 
-```bash
+```sh
 sudo apt remove -y tomcat
 ```
 
 Delete tomcat user and group
 
-```bash
+```sh
 sudo userdel tomcat
 sudo groupdel tomcat
 ```
 
 Remove system service file
 
-```bash
+```sh
 sudo rm /etc/systemd/system/tomcat.service
 ```

@@ -2,6 +2,6 @@
 
 Install snap
 
-```bash
+```sh
 sudo snap install kdenlive
 ```

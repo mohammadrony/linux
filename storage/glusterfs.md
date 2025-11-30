@@ -4,73 +4,73 @@
 
 CentOS
 
-```bash
+```sh
 sudo dnf -y install centos-release-gluster11
 ```
 
-```bash
+```sh
 sudo sed -i -e "s/enabled=1/enabled=0/g" /etc/yum.repos.d/CentOS-Gluster-11.repo
 ```
 
-```bash
+```sh
 sudo dnf --enablerepo=centos-gluster11,powertools -y install glusterfs-server
 ```
 
 Ubuntu
 
-```bash
+```sh
 sudo apt install glusterfs-server
 ```
 
-```bash
+```sh
 sudo systemctl enable --now glusterd
 ```
 
 Storage setup
 
-```bash
+```sh
 sudo gluster peer probe node_2
 ```
 
-```bash
+```sh
 sudo gluster peer status
 ```
 
-```bash
+```sh
 sudo -p /mnt/appdata
 sudo chmod 775 /mnt -R
 ```
 
-```bash
+```sh
 sudo gluster volume create myvol transport tcp node_1:/data force
 ```
 
-```bash
+```sh
 sudo gluster volume start myvol
 ```
 
-```bash
+```sh
 sudo gluster volume info
 ```
 
 Add storage to gluster
 
-```bash
+```sh
 sudo gluster volume add-brick myvol node_2:/data force
 ```
 
-```bash
+```sh
 sudo gluster volume rebalance myvol start
 sudo gluster volume status
 ```
 
 ## Client Setup
 
-```bash
+```sh
 sudo apt install -y glusterfs-client
 ```
 
-```bash
+```sh
 mount -t glusterfs node_1:/myvol /mnt/appdata
 ```
 
@@ -78,6 +78,6 @@ mount -t glusterfs node_1:/myvol /mnt/appdata
 
 Unmount
 
-```bash
+```sh
 sudo umount -f -l /mnt/appdata
 ```

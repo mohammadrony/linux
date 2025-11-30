@@ -2,7 +2,7 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y diffutils
 ```
 
@@ -10,18 +10,18 @@ sudo apt install -y diffutils
 
 File to file comparision
 
-```bash
+```sh
 diff file1 file2
 ```
 
 Folder to folder comparision
 
-```bash
+```sh
 diff folder1 folder2
 ```
 
 Folder to file comparision
 
-```bash
+```sh
 diff folder1 folder2/file1
 ```

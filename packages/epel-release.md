@@ -4,11 +4,11 @@
 
 Redhat Linux 8 9
 
-```bash
+```sh
 sudo dnf install -y epel-release
 ```
 
-```bash
+```sh
 N=9 # 8
 sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$N.noarch.rpm
 sudo dnf upgrade
@@ -16,7 +16,7 @@ sudo dnf upgrade
 
 RedHat Linux 7
 
-```bash
+```sh
 sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo dnf upgrade
 ```
@@ -25,6 +25,6 @@ sudo dnf upgrade
 
 Oracle Linux 7
 
-```bash
+```sh
 sudo yum install -y oracle-epel-release-el7
 ```

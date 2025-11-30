@@ -2,43 +2,43 @@
 
 CPU
 
-```bash
+```sh
 nproc
 ```
 
-```bash
+```sh
 lscpu
 lscpu | grep "Thread\|Core"
 ```
 
 RAM
 
-```bash
+```sh
 dmidecode -t 17 | grep Size
 ```
 
-```bash
+```sh
 free -h | grep Mem | awk '{print $2}'
 ```
 
-```bash
+```sh
 grep MemTotal /proc/meminfo | awk '{print $2 / 1024}'
 ```
 
-```bash
+```sh
 lshw -c memory
 ```
 
 Hard Disk
 
-```bash
+```sh
 df -h
 ```
 
-```bash
+```sh
 lsblk | grep "disk" | awk '{print $4}'
 ```
 
-```bash
+```sh
 findmnt
 ```

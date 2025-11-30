@@ -2,26 +2,26 @@
 
 Generate key
 
-```bash
+```sh
 ssh-keygen
 ```
 
-```bash
+```sh
 ssh-keygen -t rsa -f ~/.ssh/id_rsa
 ```
 
-```bash
+```sh
 ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
 ```
 
 Copy SSH key to remote host
 
-```bash
+```sh
 ssh-copy-id -i ~/.ssh/id_rsa.pub user@host
 ```
 
 Generate fingerprint from public key
 
-```bash
+```sh
 ssh-keygen -lf ~/.ssh/id_rsa.pub -E sha256 | awk '{print $2}'
 ```

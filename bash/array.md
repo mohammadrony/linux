@@ -4,26 +4,26 @@
 
 Declare an array
 
-```bash
+```sh
 arr1=("foo" "bar" "baz")
 ```
 
 Access items
 
-```bash
+```sh
 echo ${arr1[0]}
 echo ${arr1[-1]}
 ```
 
 Get array length
 
-```bash
+```sh
 echo ${#arr1[@]}
 ```
 
 Index items
 
-```bash
+```sh
 for i in "${arr1[@]}"; do
     echo $i
 done

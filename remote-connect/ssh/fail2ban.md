@@ -6,18 +6,18 @@
 
 ## Installation
 
-```bash
+```sh
 sudo apt install -y fail2ban
 ```
 
 ## Configuration
 
-```bash
+```sh
 cd /etc/fail2ban
 sudo cp jail.conf jail.local
 ```
 
-```bash
+```sh
 sudo vi jail.local 
 ```
 
@@ -28,17 +28,17 @@ ignoreip = 127.0.0.1/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16
 
 ## Restart service
 
-```bash
+```sh
 sudo systemctl restart fail2ban
 sudo systemctl status fail2ban
 ```
 
 ## Status
 
-```bash
+```sh
 sudo fail2ban-client status sshd
 ```
 
-```bash
+```sh
 sudo fail2ban-client get sshd ignoreip 
 ```

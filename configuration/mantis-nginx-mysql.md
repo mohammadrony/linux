@@ -5,7 +5,7 @@ Article: <https://thishosting.rocks/how-to-install-mantisbt-on-ubuntu/>
 
 ## Initial server setup
 
-```bash
+```sh
 #!/bin/bash
 sudo hostnamectl set-hostname mantisbt
 sudo apt update; sudo apt upgrade -y
@@ -15,7 +15,7 @@ sudo reboot now
 
 Install some base packages
 
-```bash
+```sh
 sudo apt install -y wget vim unzip software-properties-common ca-certificates lsb-release apt-transport-https net-tools
 ```
 
@@ -23,13 +23,13 @@ sudo apt install -y wget vim unzip software-properties-common ca-certificates ls
 
 Install Nginx
 
-```bash
+```sh
 sudo apt install -y nginx
 ```
 
 Start Nginx server
 
-```bash
+```sh
 sudo systemctl enable --now nginx
 sudo systemctl status nginx
 ```
@@ -38,20 +38,20 @@ sudo systemctl status nginx
 
 Install database packages
 
-```bash
+```sh
 sudo apt install -y mysql-server
 ```
 
 Start MySQL service
 
-```bash
+```sh
 sudo systemctl enable --now mysql
 sudo systemctl status mysql
 ```
 
 Initial MySQL setup
 
-```bash
+```sh
 sudo mysql
 > UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE User = 'root';
 > SELECT user,authentication_string,plugin,host FROM mysql.user;
@@ -59,7 +59,7 @@ sudo mysql
 > exit
 ```
 
-```bash
+```sh
 sudo mysql_secure_installation
 
 > VALIDATE PASSWORD component? y
@@ -72,7 +72,7 @@ sudo mysql_secure_installation
 
 Update database permission
 
-```bash
+```sh
 sudo mysql
 ```
 
@@ -85,7 +85,7 @@ FLUSH PRIVILEGES;
 
 Create new database
 
-```bash
+```sh
 sudo mysql -u root -p
 ```
 
@@ -95,7 +95,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'mantis'@'%';
 FLUSH PRIVILEGES;
 ```
 
-```bash
+```sh
 sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 
@@ -104,7 +104,7 @@ bind-address = 0.0.0.0
 mysqlx-bind-address = 0.0.0.0
 ```
 
-```bash
+```sh
 sudo systemctl restart mysql
 ```
 
@@ -112,20 +112,20 @@ sudo systemctl restart mysql
 
 Add Ondrej PPA repository
 
-```bash
+```sh
 sudo add-apt-repository -y ppa:ondrej/php
 ```
 
 Install PHP
 
-```bash
+```sh
 sudo apt install -y php
 sudo apt install -y php-fpm php-ldap php-soap php-gd php-curl php-mysqli php-mbstring
 ```
 
 Check PHP modules
 
-```bash
+```sh
 php -m
 ```
 
@@ -133,7 +133,7 @@ php -m
 
 Download MantisBT application
 
-```bash
+```sh
 mantis_version=2.26.0
 wget "https://downloads.sourceforge.net/project/mantisbt/mantis-stable/${mantis_version}/mantisbt-${mantis_version}.zip"
 unzip mantisbt-${mantis_version}.zip
@@ -141,7 +141,7 @@ unzip mantisbt-${mantis_version}.zip
 
 Save MantisBT app in server
 
-```bash
+```sh
 mv -v mantisbt-${mantis_version} /var/www/mantis
 sudo chown -R www-data:www-data /var/www/mantis/
 sudo chmod -R 755 /var/www/mantis
@@ -151,7 +151,7 @@ sudo chmod -R 755 /var/www/mantis
 
 Create new Nginx configuration
 
-```bash
+```sh
 sudo su
 cat > /etc/nginx/sites-available/mantis << EOF
 server {
@@ -183,7 +183,7 @@ EOF
 
 Update some other Nginx configuration
 
-```bash
+```sh
 sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/mantis /etc/nginx/sites-enabled/mantis
 sudo systemctl restart nginx
@@ -191,16 +191,16 @@ sudo systemctl restart nginx
 
 ### Setup MantisBT with Apache
 
-```bash
+```sh
 sudo apt install -y apache2
 ```
 
-```bash
+```sh
 cd /etc/apache2/sites-available
 sudo rm 000-default.conf
 ```
 
-```bash
+```sh
 sudo cat > mantisbt << EOF
 <VirtualHost *:80>
     ServerName mantis.example.com
@@ -219,7 +219,7 @@ sudo cat > mantisbt << EOF
 EOF
 ```
 
-```bash
+```sh
 sudo a2ensite mantisbt
 sudo systemctl restart apache2
 ```

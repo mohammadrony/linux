@@ -4,13 +4,13 @@
 
 Integer number
 
-```bash
+```sh
 for i in {1..100}; do
   echo $i
 done
 ```
 
-```bash
+```sh
 for ((i=1;i<=100;i++)); do
   echo $i
 done
@@ -18,7 +18,7 @@ done
 
 File list
 
-```bash
+```sh
 for file in *; do
   ls -l $file
 done
@@ -26,7 +26,7 @@ done
 
 Custom field
 
-```bash
+```sh
 for word in foo bar; do
   echo $word
 done
@@ -34,7 +34,7 @@ done
 
 Array
 
-```bash
+```sh
 arr=(foo bar)
 
 for word in ${arr[@]}; do
@@ -46,7 +46,7 @@ done
 
 Infinite loop
 
-```bash
+```sh
 while true; do
   date
   sleep 60
@@ -54,7 +54,7 @@ done
 
 Read from file
 
-```bash
+```sh
 while read a b; do
   echo Hello, $a and $b
 done < myfile
@@ -62,7 +62,7 @@ done < myfile
 
 Read from stdin
 
-```bash
+```sh
 while read a b; do
   echo Hello, $a and $b
 done < /dev/stdin

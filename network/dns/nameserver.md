@@ -1,6 +1,6 @@
 # Nameserver
 
-```bash
+```sh
 sudo cp /etc/systemd/resolved.conf /etc/systemd/resolved.conf.orig
 sudo vi /etc/systemd/resolved.conf
 ```
@@ -14,12 +14,12 @@ DNS=8.8.8.8 8.8.4.4
 
 Reload configuration
 
-```bash
+```sh
 sudo systemctl restart systemd-resolved
 ```
 
 Test settings
 
-```bash
+```sh
 resolvectl status
 ```

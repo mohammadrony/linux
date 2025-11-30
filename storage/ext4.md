@@ -2,7 +2,7 @@
 
 ## Mount Disk with existing data
 
-```bash
+```sh
 lsblk
 lsblk -f
 ```
@@ -11,7 +11,7 @@ Create or format the device (WIPE ALL PREVIOUS DATA).
 
 *Update `sdX` to appropriate name.*
 
-```bash
+```sh
 sudo fdisk /dev/sdX
 > Press 'g' to create gpt formated
 > Press 'n' to create new partition
@@ -23,19 +23,19 @@ sudo fdisk /dev/sdX
 > Press 'w' to save partition table
 ```
 
-```bash
+```sh
 sudo mkfs.ext4 /dev/sdX1
 # sudo mkfs.ext4 -f /dev/sdX1
 ```
 
-```bash
+```sh
 sudo mkdir /appdata
 sudo mount /dev/sdX1 /appdata
 ```
 
 Mount storage device on startup
 
-```bash
+```sh
 sudo vi /etc/fstab
 ```
 
@@ -44,7 +44,7 @@ sudo vi /etc/fstab
 /dev/sdX1               /appdata        ext4     defaults      0       2
 ```
 
-```bash
+```sh
 sudo systemctl daemon-reload
 ```
 
@@ -52,6 +52,6 @@ sudo systemctl daemon-reload
 
 Unmount
 
-```bash
+```sh
 sudo umount /dev/sdX1
 ```

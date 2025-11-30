@@ -1,5 +1,5 @@
 # nano
 
-```bash
+```sh
 nano
 ```

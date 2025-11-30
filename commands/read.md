@@ -4,14 +4,14 @@
 
 Line separate
 
-```bash
+```sh
 IFS=" "
 while read i ; do echo $i; done < input.txt
 ```
 
 Space separate
 
-```bash
+```sh
 IFS=" "
 for i in $(cat ./input.txt) ; do echo $i; done
 ```

@@ -6,7 +6,7 @@ Installation guide: <https://bugzilla.readthedocs.io/en/latest/installing/quick-
 
 Configure server domain name
 
-```bash
+```sh
 sudo apt update; sudo apt upgrade -y
 sudo hostnamectl set-hostname example.com
 sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1 example.com' /etc/hosts
@@ -19,13 +19,13 @@ sudo reboot now
 
 Install some base packages
 
-```bash
+```sh
 sudo apt install -y git net-tools tree
 ```
 
 Install required packages
 
-```bash
+```sh
 sudo apt install -y apache2 build-essential mariadb-server libcgi-pm-perl libdigest-sha-perl libtimedate-perl libdatetime-perl \
   libdatetime-timezone-perl libdbi-perl libdbix-connector-perl libtemplate-perl libemail-address-perl libemail-sender-perl \
   libemail-mime-perl liburi-perl liblist-moreutils-perl libmath-random-isaac-perl libjson-xs-perl libgd-perl libchart-perl \
@@ -39,7 +39,7 @@ sudo apt install -y apache2 build-essential mariadb-server libcgi-pm-perl libdig
 
 Add firewall rule
 
-```bash
+```sh
 sudo ufw enable
 sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp
@@ -49,7 +49,7 @@ sudo ufw reload
 
 ## Configure Apache
 
-```bash
+```sh
 cd /etc/apache2/mods-available
 sudo cp mpm_event.conf mpm_event.conf.orig
 sudo vi mpm_event.conf
@@ -69,13 +69,13 @@ Update
 </IfModule>
 ```
 
-```bash
+```sh
 cd /etc/apache2
 sudo rm sites-enabled/000-default.conf
 sudo vi sites-available/bugzilla
 ```
 
-```bash
+```sh
 <VirtualHost *:80>
   ServerName example.com
 
@@ -104,13 +104,13 @@ sudo vi sites-available/bugzilla
 
 Start service
 
-```bash
+```sh
 sudo apachectl configtest
 sudo a2ensite bugzilla
 sudo a2enmod cgi mpm_event headers expires rewrite
 ```
 
-```bash
+```sh
 sudo systemctl enable --now apache2
 sudo systemctl restart apache2
 apache2 -t
@@ -120,7 +120,7 @@ apache2 -t
 
 Update MariaDB configuration
 
-```bash
+```sh
 sudo vi /etc/mysql/mariadb.conf.d/50-server.cnf
 ```
 
@@ -131,7 +131,7 @@ ft_min_word_len=2
 
 Create new database
 
-```bash
+```sh
 db_pass='1234bz5678'
 sudo mysql -u root -e "CREATE DATABASE IF NOT EXISTS bugs CHARACTER SET = 'utf8'"
 sudo mysql -u root -e "GRANT ALL PRIVILEGES ON bugs.* TO bugs@localhost IDENTIFIED BY '$db_pass'"
@@ -139,7 +139,7 @@ sudo mysql -u root -e "GRANT ALL PRIVILEGES ON bugs.* TO bugs@localhost IDENTIFI
 
 Restart database service
 
-```bash
+```sh
 sudo systemctl enable --now mariadb
 sudo systemctl restart mariadb
 ```
@@ -148,7 +148,7 @@ sudo systemctl restart mariadb
 
 Download Bugzilla
 
-```bash
+```sh
 sudo mkdir -p /var/www/webapps
 cd /var/www/webapps
 sudo git clone --branch release-5.0-stable https://github.com/bugzilla/bugzilla bugzilla
@@ -156,14 +156,14 @@ sudo git clone --branch release-5.0-stable https://github.com/bugzilla/bugzilla 
 
 Check Setup
 
-```bash
+```sh
 cd /var/www/webapps/bugzilla
 sudo ./checksetup.pl
 ```
 
 Edit localconfig file
 
-```bash
+```sh
 cd /var/www/webapps/bugzilla
 sudo vi localconfig
 
@@ -174,7 +174,7 @@ $db_pass = '1234bz5678';
 
 Check Setup again
 
-```bash
+```sh
 cd /var/www/webapps/bugzilla
 sudo ./checksetup.pl
 ```
@@ -191,12 +191,12 @@ Admin-pass: <password>
 
 Install certbot
 
-```bash
+```sh
 # Method 1
 sudo apt install -y python3-certbot-apache
 ```
 
-```bash
+```sh
 # Method 2
 sudo snap install core
 sudo snap refresh core
@@ -207,19 +207,19 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
 Get SSL Certificate
 
-```bash
+```sh
 sudo certbot --apache -d example.com -d www.example.com
 ```
 
 Verify Certbot auto renewal
 
-```bash
+```sh
 # Method 1
 systemctl list-timers
 sudo systemctl status certbot.timer
 ```
 
-```bash
+```sh
 # Method 2
 systemctl list-timers
 sudo systemctl status snap.certbot.renew.timer
@@ -228,7 +228,7 @@ sudo systemctl status snap.certbot.renew.service
 
 Certificate renew command
 
-```bash
+```sh
 sudo certbot renew --dry-run
 ```
 

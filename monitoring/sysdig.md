@@ -8,28 +8,28 @@
 
 Installation
 
-```bash
+```sh
 curl -s https://download.sysdig.com/DRAIOS-GPG-KEY.public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sysdig.gpg > /dev/null
 sudo curl -s -o /etc/apt/sources.list.d/draios.list https://download.sysdig.com/stable/deb/draios.list  
 sudo apt update
 ```
 
-```bash
+```sh
 sudo apt install -y linux-headers-$(uname -r)
 ```
 
-```bash
+```sh
 sudo apt install -y sysdig
 ```
 
 Update user permission
 
-```bash
+```sh
 sudo groupadd sysdig
 sudo usermod -aG sysdig $USER
 ```
 
-```bash
+```sh
 sudo tee -a /etc/sudoers.d/sysdig << EOF
 %sysdig ALL= /usr/bin/sysdig
 EOF
@@ -39,6 +39,6 @@ EOF
 
 csysdig
 
-```bash
+```sh
 sudo csysdig
 ```

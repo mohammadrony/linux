@@ -2,10 +2,10 @@
 
 Installing `.AppImage` package
 
-```bash
+```sh
 chmod +x <package>.AppImage
 ```
 
-```bash
+```sh
 ./<package>.AppImage
 ```

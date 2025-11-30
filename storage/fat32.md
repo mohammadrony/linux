@@ -2,37 +2,37 @@
 
 Backup partition data (i.e. `/boot/efi`)
 
-```bash
+```sh
 sudo mkdir /boot/efi_backup
 sudo cp -r /boot/efi /boot/efi_backup
 ```
 
 Unmount the partition
 
-```bash
+```sh
 sudo umount /boot/efi
 ```
 
 Create a new FAT32 filesystem (This will delete all data on the partition)
 
-```bash
+```sh
 sudo mkfs.fat -F32 /dev/sdX1
 ```
 
 Remount partition
 
-```bash
+```sh
 sudo mount /dev/sdX1 /boot/efi
 ```
 
 Restore backup
 
-```bash
+```sh
 sudo cp -r /boot/efi_backup/* /boot/efi/
 ```
 
 Verify partition size
 
-```bash
+```sh
 df -h /boot/efi
 ```

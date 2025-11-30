@@ -4,11 +4,11 @@
 
 Restore file in current branch
 
-```bash
+```sh
 git restore *.file
 ```
 
-```bash
+```sh
 git restore ./path/to/file
 ```
 
@@ -16,24 +16,24 @@ git restore ./path/to/file
 
 Save changes
 
-```bash
+```sh
 git stash
 ```
 
 Apply latest stash
 
-```bash
+```sh
 git stash apply
 git stash drop
 ```
 
-```bash
+```sh
 git stash pop
 ```
 
 Clear all saved copy
 
-```bash
+```sh
 git stash list
 git stash clear
 ```

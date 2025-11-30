@@ -4,7 +4,7 @@
 
 Package
 
-```bash
+```sh
 sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt update
@@ -13,18 +13,18 @@ sudo apt install -y jenkins
 
 Service
 
-```bash
+```sh
 sudo systemctl daemon-reload
 sudo systemctl restart jenkins
 ```
 
 ## Nginx
 
-```bash
+```sh
 sudo apt install -y nginx
 ```
 
-```bash
+```sh
 sudo tee -a /etc/nginx/sites-available/jenkins.conf << EOF
 server {
   listen 80;
@@ -47,11 +47,11 @@ server {
 EOF
 ```
 
-```bash
+```sh
 sudo ln -s /etc/nginx/sites-available/jenkins.conf /etc/nginx/sites-enabled/
 sudo nginx -t
 ```
 
-```bash
+```sh
 sudo systemctl restart nginx
 ```

@@ -4,7 +4,7 @@
 
 Save text to new file
 
-```bash
+```sh
 tee file.txt << eof
 hello!
 eof
@@ -12,7 +12,7 @@ eof
 
 Append new text
 
-```bash
+```sh
 tee -a file.txt << eof
 hello world!!
 eof
@@ -20,11 +20,11 @@ eof
 
 Watch command output and save in file
 
-```bash
+```sh
 while true; do date; sleep 1; done |& tee -a file.txt
 ```
 
-```bash
+```sh
 watch '(date; sleep 1) | tee -a file.txt'
 ```
 

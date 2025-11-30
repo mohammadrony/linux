@@ -6,19 +6,19 @@
 
 Install and use [Node](../packages/node-npm.md)
 
-```bash
+```sh
 node -v
 ```
 
 Install gemini-cli
 
-```bash
+```sh
 npm install -g @google/gemini-cli
 ```
 
 Add API key in `~/.zshrc` or `~/.bashrc`
 
-```bash
+```sh
 # Optional
 export GEMINI_API_KEY="<YOUR_API_KEY>"
 ```
@@ -27,26 +27,26 @@ export GEMINI_API_KEY="<YOUR_API_KEY>"
 
 Start cli
 
-```bash
+```sh
 cd ./project/directory
 gemini
 ```
 
 One-off command
 
-```bash
+```sh
 gemini "What is the distance between the Earth and the Moon?"
 ```
 
 Include multiple directory
 
-```bash
+```sh
 gemini --include-directories ../lib,../docs
 ```
 
 Quit CLI
 
-```bash
+```sh
 /quit
 ```
 
@@ -54,6 +54,6 @@ Quit CLI
 
 List servers
 
-```bash
+```sh
 gemini mcp list
 ```

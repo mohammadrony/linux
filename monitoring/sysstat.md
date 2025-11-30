@@ -4,24 +4,24 @@
 
 Debian
 
-```bash
+```sh
 sudo apt install -y sysstat
 ```
 
 RHEL
 
-```bash
+```sh
 sudo yum install -y sysstat
 ```
 
-```bash
+```sh
 sudo cp /etc/default/sysstat /etc/default/sysstat.orig
 sudo sed -i 's/ENABLED="false"/ENABLED="true"/' /etc/default/sysstat
 ```
 
 ## Update timer for sysstat
 
-```bash
+```sh
 sudo vi /etc/cron.d/sysstat
 ```
 
@@ -33,7 +33,7 @@ Cronjob
 
 System timer
 
-```bash
+```sh
 sudo systemctl edit sysstat-collect.timer
 ```
 
@@ -54,13 +54,13 @@ WantedBy=sysstat.service
 ### Lines below this comment will be discarded
 ```
 
-```bash
+```sh
 sudo systemctl daemon-reload
 ```
 
 Restart sysstat service
 
-```bash
+```sh
 sudo systemctl restart sysstat
 ```
 
@@ -68,17 +68,17 @@ sudo systemctl restart sysstat
 
 Current state monitoring
 
-```bash
+```sh
 sar -h
 ```
 
-```bash
+```sh
 sar -A
 sar -u
 sar -r
 ```
 
-```bash
+```sh
 sar -A 1 5
 sar -u 1 5
 sar -r 1 5
@@ -86,11 +86,11 @@ sar -r 1 5
 
 Time range state monitoring
 
-```bash
+```sh
 sar -A -f /var/log/sysstat/saXX
 sar -A -f /var/log/sysstat/saXX -s 00:00:00 -e 23:00:00
 ```
 
-```bash
+```sh
 sar -A > $(date +`hostname`-%d-%m-%y-%H%M.log)
 ```

@@ -1,6 +1,6 @@
 # jq
 
-```bash
+```sh
 sudo snap install jq
 ```
 
@@ -8,6 +8,6 @@ sudo snap install jq
 
 Print json path
 
-```bash
+```sh
 cat file.json | jq -c 'paths|join(".")'
 ```

@@ -6,40 +6,40 @@
 
 Ubuntu
 
-```bash
+```sh
 sudo apt install -y s3cmd
 ```
 
 Source download [here](https://sourceforge.net/projects/s3tools/files/s3cmd/)
 
-```bash
+```sh
 wget https://sourceforge.net/projects/s3tools/files/s3cmd/2.4.0/s3cmd-2.4.0.tar.gz
 tar xzf s3cmd-2.4.0.tar.gz
 ```
 
-```bash
+```sh
 cd s3cmd-2.4.0 
 sudo python setup.py install
 ```
 
-```bash
+```sh
 sudo cp s3cmd /usr/local/bin
 ```
 
 ## Usage
 
-```bash
+```sh
 s3cmd
 ```
 
 Configure
 
-```bash
+```sh
 s3cmd --configure
 ```
 
 Commands
 
-```bash
+```sh
 s3cmd ls
 ```

@@ -2,30 +2,30 @@
 
 List IP address details
 
-```bash
+```sh
 ip a
 ip addr show eth0
 ```
 
 List only IP addresses
 
-```bash
+```sh
 hostname -I
 ```
 
-```bash
+```sh
 ip addr | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
 ```
 
 Internet facing ip address (public)
 
-```bash
+```sh
 curl ifconfig.me
 ```
 
 Routing table
 
-```bash
+```sh
 ip r
 ip route
 ```

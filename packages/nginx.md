@@ -4,36 +4,36 @@
 
 Ubuntu
 
-```bash
+```sh
 sudo apt install -y nginx
 ```
 
 RHEL
 
-```bash
+```sh
 sudo dnf install -y nginx
 ```
 
 ## Server setup
 
-```bash
+```sh
 sudo sed '36a \tinclude /etc/nginx/sites-enabled/*.conf;' nginx.conf
 ```
 
-```bash
+```sh
 cd /etc/nginx/
 sudo mkdir sites-available sites-enabled
 ```
 
 ### HTTP Service
 
-```bash
+```sh
 sudo vi /etc/nginx/sites-available/example.com.conf
 ```
 
 Full config
 
-```bash
+```sh
 server {
   listen 80;
   listen [::]:80;
@@ -109,7 +109,7 @@ server {
 
 Allow specific ip range
 
-```bash
+```sh
 sudo tee -a /etc/hosts << EOF
 192.168.1.101 example.com
 EOF
@@ -186,14 +186,14 @@ server {
 }
 ```
 
-```bash
+```sh
 cd /etc/nginx/sites-enabled/
 sudo ln -s ../sites-available/example.com.conf example.com.conf
 ```
 
 ### TCP Stream
 
-```bash
+```sh
 sudo vi /etc/nginx/sites-available/example.conf
 ```
 
@@ -215,7 +215,7 @@ stream {
 }
 ```
 
-```bash
+```sh
 cd /etc/nginx/sites-enabled/
 sudo ln -s ../sites-available/example.conf example.conf
 ```
@@ -224,10 +224,10 @@ sudo ln -s ../sites-available/example.conf example.conf
 
 Reload service
 
-```bash
+```sh
 sudo nginx -s reload
 ```
 
-```bash
+```sh
 sudo systemctl restart nginx
 ```

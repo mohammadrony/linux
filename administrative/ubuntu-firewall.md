@@ -2,7 +2,7 @@
 
 ## Setup UFW Firewall
 
-```bash
+```sh
 sudo apt install -y ufw
 sudo ufw enable
 sudo reboot now
@@ -12,43 +12,43 @@ sudo reboot now
 
 List Available Applications
 
-```bash
+```sh
 sudo ufw app list
 ```
 
 See firewall status
 
-```bash
+```sh
 sudo ufw status
 ```
 
-```bash
+```sh
 sudo ufw status numbered
 ```
 
 ### Allow port connection
 
-```bash
+```sh
 sudo ufw allow 22/tcp
 ```
 
-```bash
+```sh
 sudo ufw allow "OpenSSH"
 ```
 
 Allow connection from selected IP address
 
-```bash
+```sh
 sudo ufw allow from 0.0.0.0 to any port 22
 ```
 
 ### Deny port connection
 
-```bash
+```sh
 sudo ufw deny 22/tcp
 ```
 
-```bash
+```sh
 sudo ufw deny "OpenSSH"
 ```
 
@@ -56,20 +56,20 @@ sudo ufw deny "OpenSSH"
 
 See firewall status
 
-```bash
+```sh
 sudo ufw status numbered
 ```
 
-```bash
+```sh
 sudo ufw delete 1
 ```
 
-```bash
+```sh
 sudo ufw delete allow 22/tcp
 ```
 
 ## Disable Firewall
 
-```bash
+```sh
 sudo ufw disable
 ```

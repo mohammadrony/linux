@@ -2,37 +2,37 @@
 
 Process viewer
 
-```bash
+```sh
 htop
 ```
 
 Resource monitor
 
-```bash
+```sh
 btop
 ```
 
 Monitoring with remote access
 
-```bash
+```sh
 glances
 ```
 
 Interactive resource viewer
 
-```bash
+```sh
 nmon
 ```
 
 System resource statistics
 
-```bash
+```sh
 dstat
 ```
 
 System information
 
-```bash
+```sh
 curl https://raw.githubusercontent.com/jedrecord/sysinfo/master/sysinfo -o sysinfo
 chmod +x sysinfo
 sudo mv sysinfo /usr/local/bin/sysinfo

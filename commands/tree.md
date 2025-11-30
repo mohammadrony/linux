@@ -2,36 +2,36 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y tree
 ```
 
 ## Commands
 
-```bash
+```sh
 tree
 ```
 
 Select directory
 
-```bash
+```sh
 tree foo/bar
 ```
 
 List direcory
 
-```bash
+```sh
 tree -d
 ```
 
 Set max depth
 
-```bash
+```sh
 tree -L 2
 ```
 
 Ignore files
 
-```bash
+```sh
 tree -I foo
 ```

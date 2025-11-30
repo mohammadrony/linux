@@ -4,22 +4,22 @@
 
 Get version form [release](https://github.com/keycloak/keycloak/releases/).
 
-```bash
+```sh
 KEYCLOAK_VERSION=24.0.4
 wget https://github.com/keycloak/keycloak/releases/download/$KEYCLOAK_VERSION/keycloak-$KEYCLOAK_VERSION.tar.gz
 ```
 
 ## Nginx
 
-```bash
+```sh
 sudo apt install -y nginx
 ```
 
-```bash
+```sh
 cd /etc/nginx/sites-available
 ```
 
-```bash
+```sh
 sudo vi sso.example.com.conf
 ```
 

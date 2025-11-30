@@ -4,25 +4,25 @@
 
 Ubuntu package
 
-```bash
+```sh
 sudo apt install -y software-properties-common
 sudo add-apt-repository -y ppa:ansible/ansible
 ```
 
-```bash
+```sh
 sudo apt install -y ansible
 ```
 
 RHEL package
 
-```bash
+```sh
 sudo dnf install -y epel-release
 sudo dnf install -y ansible
 ```
 
 ## Config
 
-```bash
+```sh
 tee -a ./ansible.cfg << EOF
 [defaults]
 log_path                = ./ansible.log
@@ -40,19 +40,19 @@ EOF
 
 Generate SSH key
 
-```bash
+```sh
 ssh-keygen -f ~/.ssh/id_rsa
 ```
 
 Connect remote server
 
-```bash
+```sh
 ssh-copy-id -i ~/.ssh/id_rsa.pub user@host
 ```
 
 Remote node's config
 
-```bash
+```sh
 sudo sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
 sudo sed -i 's/#AuthorizedKeysFile\s.ssh\/authorized_keys/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
 sudo systemctl reload ssh # sshd
@@ -60,7 +60,7 @@ sudo systemctl reload ssh # sshd
 
 Passwordless sudo user
 
-```bash
+```sh
 USER=username
 tee -a /etc/sudoers.d/$USER << EOF
 $USER ALL=(ALL) NOPASSWD: ALL
@@ -69,7 +69,7 @@ EOF
 
 ## Inventory
 
-```bash
+```sh
 sudo tee -a ./hosts << EOF
 [all:vars]
 ansible_user=USERNAME
@@ -91,12 +91,12 @@ Default inventory
 
 Inventory info
 
-```bash
+```sh
 ansible-inventory --list
 ```
 
 ## Ping test
 
-```bash
+```sh
 ansible all -m ping
 ```

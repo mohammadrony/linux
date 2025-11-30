@@ -4,7 +4,7 @@
 
 Remove files older than 30 days
 
-```bash
+```sh
 set -eu
 cd /path
 find . -mtime +30 | xargs rm 2>/dev/null
@@ -12,7 +12,7 @@ find . -mtime +30 | xargs rm 2>/dev/null
 
 ## Remove old snap versions
 
-```bash
+```sh
 set -eu
 snap list --all | awk '/disabled/{print $1, $3}' |
   while read snapname revision; do
@@ -22,7 +22,7 @@ snap list --all | awk '/disabled/{print $1, $3}' |
 
 ## Clear RAM cache and Swap
 
-```bash
+```sh
 set -eu
 sudo sync
 echo 1 | sudo tee /proc/sys/vm/drop_caches
@@ -34,12 +34,12 @@ sudo swapon -a
 
 ## Log cleanup
 
-```bash
+```sh
 cd /var/log
 sudo cp /dev/null > messages
 sudo cp /dev/null > wtmp
 ```
 
-```bash
+```sh
 sudo journalctl --vacuum-size=200M
 ```

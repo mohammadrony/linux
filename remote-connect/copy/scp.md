@@ -2,34 +2,34 @@
 
 Send Files
 
-```bash
+```sh
 scp ~/my-file.txt user@host:~/
 ```
 
-```bash
+```sh
 scp -i secret.pem ~/my-file.txt user@host:~/
 ```
 
 Download Files
 
-```bash
+```sh
 scp user@host:~/my-file.txt ~/
 ```
 
-```bash
+```sh
 scp -i secret.pem user@host:~/my-file.txt ~/
 ```
 
 Special use case
 
-```bash
+```sh
 scp user@host:"~/my-files/*.txt" ~/my-files/
 ```
 
-```bash
+```sh
 scp 'user@host:"~/my files/*.txt"' ~/my-files/
 ```
 
-```bash
+```sh
 scp user1@host1:"~/my-files/*.txt" user2@host2:~/my-files/
 ```

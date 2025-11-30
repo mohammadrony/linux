@@ -4,21 +4,21 @@
 
 pdftk
 
-```bash
+```sh
 pdftk A=in1.pdf B=in2.pdf cat A1-2 B3-end output out.pdf
 ```
 
-```bash
+```sh
 pdftk A=in1.pdf cat A1-2 A3-endeast output out.pdf
 ```
 
 pdfunite
 
-```bash
+```sh
 pdfunite PDF1.pdf PDF2.pdf PDF-full.pdf
 ```
 
-```bash
+```sh
 pdfunite `ls -1v doc1*.pdf` doc1.pdf
 ```
 
@@ -26,19 +26,19 @@ pdfunite `ls -1v doc1*.pdf` doc1.pdf
 
 Single image to PDF
 
-```bash
+```sh
 convert image.jpg image.pdf
 ```
 
 Reduce image quality
 
-```bash
+```sh
 convert image.jpg -quality 50 -resize 900x1200 image.jpg
 ```
 
 Rotate vartical image to horizontal
 
-```bash
+```sh
 for file in images/*; do
   echo $file
   (( $(identify -format '%w > %h' $file) )) && convert $file -rotate 90 new-$file
@@ -47,7 +47,7 @@ done
 
 Convert images to PDF
 
-```bash
+```sh
 exiftool -all= images/*
 # rm images/*_original
 for file in images/* ; do
@@ -56,7 +56,7 @@ done
 convert images/*.jpg images.pdf
 ```
 
-```bash
+```sh
 ls images/* | sort -V | tr '\n' ' ' | sed 's/$/\ my-images.pdf/' | xargs convert
 ```
 
@@ -64,19 +64,19 @@ ls images/* | sort -V | tr '\n' ' ' | sed 's/$/\ my-images.pdf/' | xargs convert
 
 pdfunite and pdfseparate
 
-```bash
+```sh
 first_page=1
 last_page=10
 pdfseparate input.pdf -f $first_page -l $last_page page-%d.pdf
 ```
 
-```bash
+```sh
 ls -1v page-*.pdf | tr '\n' ' ' | sed 's/$/ output.pdf/' | xargs pdfunite
 ```
 
 pdftk
 
-```bash
+```sh
 pdftk A=in1.pdf B=in2.pdf cat A1-12 B14-end output out1.pdf
 ```
 
@@ -84,17 +84,17 @@ pdftk A=in1.pdf B=in2.pdf cat A1-12 B14-end output out1.pdf
 
 Pdfjam
 
-```bash
+```sh
 sudo apt install -y texlive-extra-utils
 ```
 
-```bash
+```sh
 pdfjam in.pdf --paper a4paper -o out.pdf
 ```
 
 Ghostscript
 
-```bash
+```sh
 gs \
   -o out.pdf \
   -sDEVICE=pdfwrite \

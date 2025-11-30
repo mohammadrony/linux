@@ -30,7 +30,7 @@ DNS record entries for SPAM protection
 
 ### Setup server name
 
-```bash
+```sh
 sudo apt update; sudo apt upgrade -y
 sudo hostnamectl set-hostname mail.example.com
 sudo sed -i '/^127.0.0.1\s*localhost/a 127.0.0.1 mail.example.com' /etc/hosts
@@ -43,13 +43,13 @@ sudo reboot now
 
 ### Install required packages
 
-```bash
+```sh
 sudo apt install -y mailutils
 ```
 
 ### Setup Postfix configuration
 
-```bash
+```sh
 sudo dpkg-reconfigure postfix
 > Internet Site
 > System mail name: example.com
@@ -64,7 +64,7 @@ sudo dpkg-reconfigure postfix
 
 Custom configuration
 
-```bash
+```sh
 sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.orig
 sudo vi /etc/postfix/main.cf
 
@@ -73,7 +73,7 @@ myorigin = /etc/mailname
 home_mailbox = Maildir/
 ```
 
-```bash
+```sh
 sudo vi /etc/mailname
 
 # Add
@@ -82,14 +82,14 @@ example.com
 
 ### Restart Postfix
 
-```bash
+```sh
 sudo systemctl restart postfix
 postconf -n
 ```
 
 ### Verify server connection
 
-```bash
+```sh
 telnet smtp.google.com 25
 > ehlo smtp.google.com
 > quit
@@ -97,7 +97,7 @@ telnet smtp.google.com 25
 
 ### Setup Mail Aliases
 
-```bash
+```sh
 sudo vi /etc/aliases
 ```
 
@@ -111,7 +111,7 @@ noreply:      /dev/null
 
 ### Reload Aliases
 
-```bash
+```sh
 sudo newaliases
 ```
 
@@ -119,19 +119,19 @@ sudo newaliases
 
 ### Install DKIM packages
 
-```bash
+```sh
 sudo apt install -y opendkim opendkim-tools
 ```
 
 ### Add Postfix user to OpenDKIM group
 
-```bash
+```sh
 sudo usermod -aG opendkim postfix
 ```
 
 ### Setup OpenDKIM key directory
 
-```bash
+```sh
 sudo mkdir -p /etc/opendkim/keys
 sudo chown -R opendkim:opendkim /etc/opendkim
 sudo chmod  744 /etc/opendkim/keys
@@ -139,7 +139,7 @@ sudo chmod  744 /etc/opendkim/keys
 
 ### Generate DKIM key for domain
 
-```bash
+```sh
 sudo mkdir /etc/opendkim/keys/example.com
 sudo opendkim-genkey -b 2048 -d example.com -D /etc/opendkim/keys/example.com -s default -v
 sudo chown opendkim:opendkim /etc/opendkim/keys/example.com/default.private
@@ -147,7 +147,7 @@ sudo chown opendkim:opendkim /etc/opendkim/keys/example.com/default.private
 
 ### Update DKIM key in DNS record
 
-```bash
+```sh
 sudo cat /etc/opendkim/keys/example.com/default.txt
 
 # Output
@@ -158,7 +158,7 @@ Remove extra `"` from key and save in **DNS record**
 
 ### Update DKIM configuration
 
-```bash
+```sh
 sudo cp /etc/opendkim.conf /etc/opendkim.conf.orig
 sudo vi /etc/opendkim.conf
 
@@ -185,7 +185,7 @@ InternalHosts           /etc/opendkim/trusted.hosts
 
 ### Update Signing table
 
-```bash
+```sh
 sudo tee -a /etc/opendkim/signing.table << EOF
 *@example.com   default._domainkey.example.com
 *@*.example.com default._domainkey.example.com
@@ -194,7 +194,7 @@ EOF
 
 ### Update Key table
 
-```bash
+```sh
 sudo tee -a /etc/opendkim/key.table << EOF
 default._domainkey.example.com  example.com:default:/etc/opendkim/keys/example.com/default.private
 EOF
@@ -202,7 +202,7 @@ EOF
 
 ### Update hosts
 
-```bash
+```sh
 sudo tee -a /etc/opendkim/trusted.hosts << EOF
 127.0.0.1
 localhost
@@ -212,7 +212,7 @@ EOF
 
 ### Restart OpenDKIM
 
-```bash
+```sh
 sudo systemctl restart opendkim
 ```
 
@@ -220,12 +220,12 @@ sudo systemctl restart opendkim
 
 ### Update socket file configuration
 
-```bash
+```sh
 sudo mkdir /var/spool/postfix/opendkim
 sudo chown opendkim:postfix /var/spool/postfix/opendkim
 ```
 
-```bash
+```sh
 sudo cp /etc/default/opendkim /etc/default/opendkim.orig
 sudo vi /etc/default/opendkim
 
@@ -235,7 +235,7 @@ SOCKET="local:/var/spool/postfix/opendkim/opendkim.sock"
 
 ### Update opendkim configuration
 
-```bash
+```sh
 # check backup copy
 sudo vi /etc/opendkim.conf
 
@@ -245,7 +245,7 @@ Socket    local:/var/spool/postfix/opendkim/opendkim.sock
 
 ### Update Postfix configuration
 
-```bash
+```sh
 # check backup copy
 sudo vi /etc/postfix/main.cf
 
@@ -259,37 +259,37 @@ non_smtpd_milters = $smtpd_milters
 
 ### Update services
 
-```bash
+```sh
 sudo systemctl disable --now apparmor
 ```
 
-```bash
+```sh
 sudo systemctl restart opendkim
 ```
 
-```bash
+```sh
 sudo chmod 777 /var/spool/postfix/opendkim/opendkim.sock
 ```
 
-```bash
+```sh
 sudo systemctl restart postfix
 ```
 
 ### Verify the DNS record
 
-```bash
+```sh
 host -t TXT example.com
 host -t TXT _dmarc.example.com
 host -t TXT default._domainkey.example.com
 ```
 
-```bash
+```sh
 sudo opendkim-testkey -d example.com -s default -vvv
 ```
 
 ## Send Email
 
-```bash
+```sh
 mail <user>@example.com
 > Cc: <enter>
 > Subject: <Subject line>
@@ -301,6 +301,6 @@ mail <user>@example.com
 
 Sendmail
 
-```bash
+```sh
 echo "Subject: Test" | sendmail -v user@example.com
 ```

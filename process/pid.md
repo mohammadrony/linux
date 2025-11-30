@@ -4,13 +4,13 @@
 
 Process details
 
-```bash
+```sh
 ps -ef
 ```
 
 Resource usage with process hierarchy
 
-```bash
+```sh
 ps auxf
 ```
 
@@ -18,39 +18,39 @@ ps auxf
 
 All process full format
 
-```bash
+```sh
 ps -ef | grep <pid>
 ```
 
 All process specific format
 
-```bash
+```sh
 ps -eo pid,comm | grep <pid>
 ```
 
 Selected process and format
 
-```bash
+```sh
 ps -o comm -p <pid>
 ```
 
-```bash
+```sh
 ps -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS -p <pid>
 ```
 
-```bash
+```sh
 ps -o %cpu,%mem,cmd -p <pid>
 ```
 
 Selected process full format
 
-```bash
+```sh
 ps -f -p <pid>
 ```
 
 ## Pid to Service
 
-```bash
+```sh
 sudo systemctl status <pid>
 ```
 
@@ -58,17 +58,17 @@ sudo systemctl status <pid>
 
 Process list
 
-```bash
+```sh
 ps -ef | grep <process>
 ```
 
-```bash
+```sh
 ps -eo pid,comm | grep <process>
 ```
 
 Process pid
 
-```bash
+```sh
 pgrep <process>
 
 # 15+ character process name
@@ -78,41 +78,41 @@ pgrep -f <process>
 pgrep -d',' <process>
 ```
 
-```bash
+```sh
 pidof <process>
 ```
 
 Pid by user
 
-```bash
+```sh
 pgrep -u root <process>
 ```
 
-```bash
+```sh
 pgrep -u root,daemon
 ```
 
 ## Service to Pid
 
-```bash
+```sh
 systemctl status <service> | grep 'Main PID'
 ```
 
-```bash
+```sh
 systemctl show --property=MainPID <service>
 ```
 
 ## Port to Pid
 
-```bash
+```sh
 sudo fuser <port>/tcp
 ```
 
-```bash
+```sh
 netstat -nltup | grep :<port>
 ```
 
-```bash
+```sh
 ss -nltup | grep :<port>
 ```
 
@@ -120,12 +120,12 @@ ss -nltup | grep :<port>
 
 Display process tree
 
-```bash
+```sh
 pstree -p <pid>
 ```
 
 ## Others
 
-```bash
+```sh
 cat /proc/<pid>/status
 ```

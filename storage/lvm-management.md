@@ -2,7 +2,7 @@
 
 ## Create Volume from Disk
 
-```bash
+```sh
 lsblk
 lsblk -f
 ```
@@ -11,7 +11,7 @@ Create or format the device (WIPE ALL PREVIOUS DATA).
 
 *Update `sdX` to appropriate name.*
 
-```bash
+```sh
 sudo fdisk /dev/sdX
 > Press 'g' to create gpt formated
 > Press 'n' to create new partition
@@ -25,7 +25,7 @@ sudo fdisk /dev/sdX
 
 Create physical volume
 
-```bash
+```sh
 sudo pvcreate /dev/sdX1
 sudo pvdisplay
 sudo vgcreate vg-data /dev/sdX1
@@ -33,26 +33,26 @@ sudo vgcreate vg-data /dev/sdX1
 
 Create logical volume
 
-```bash
+```sh
 sudo lvcreate --name lv-data -l 100%FREE vg-data
 sudo lvdisplay
 ```
 
 Make filesystem
 
-```bash
+```sh
 sudo mkfs.xfs /dev/vg-data/lv-data
 # sudo mkfs.xfs -f /dev/vg-data/lv-data
 ```
 
-```bash
+```sh
 sudo mkdir /appdata
 sudo mount /dev/vg-data/lv-data /appdata
 ```
 
 Mount storage device on startup
 
-```bash
+```sh
 sudo vi /etc/fstab
 ```
 
@@ -61,7 +61,7 @@ sudo vi /etc/fstab
 /dev/vg-data/lv-data    /appdata        xfs     defaults      0       2
 ```
 
-```bash
+```sh
 sudo systemctl daemon-reload
 ```
 
@@ -71,14 +71,14 @@ sudo systemctl daemon-reload
 
 Volume group
 
-```bash
+```sh
 sudo vgs
 sudo vgscan
 ```
 
 Create or format the device
 
-```bash
+```sh
 sudo fdisk /dev/sdY
 > Press 'g' to create gpt formated
 > Press 'n' to create new partition
@@ -92,7 +92,7 @@ sudo fdisk /dev/sdY
 
 Create physical volume
 
-```bash
+```sh
 sudo pvcreate /dev/sdY1
 sudo pvdisplay
 sudo vgextend vg-data /dev/sdY1
@@ -100,27 +100,27 @@ sudo vgextend vg-data /dev/sdY1
 
 Logical volume
 
-```bash
+```sh
 sudo lvs
 sudo lvscan
 ```
 
 ### Extend volume
 
-```bash
+```sh
 sudo lvextend -l +100%FREE /dev/vg-data/lv-data
 # sudo lvextend -L +5G /dev/vg-data/lv-data
 ```
 
 Extend xfs partition
 
-```bash
+```sh
 sudo xfs_growfs /dev/vg-data/lv-data
 ```
 
 Extend ext4 partition
 
-```bash
+```sh
 sudo resize2fs /dev/vg-data/lv-data
 ```
 
@@ -133,12 +133,12 @@ Backup data from mount point
 
 Unmount volume
 
-```bash
+```sh
 sudo umount /dev/vg-data/lv-data
 ```
 
 Remove volume
 
-```bash
+```sh
 sudo lvremove /dev/vg-data/lv-data
 ```

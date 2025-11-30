@@ -6,11 +6,11 @@ Prerequisites
 
 ## Run
 
-```bash
+```sh
 ollama run deepseek-r1
 ```
 
-```bash
+```sh
 ollama run deepseek-r1:1.5b
 ```
 
@@ -18,7 +18,7 @@ ollama run deepseek-r1:1.5b
 
 Streaming response
 
-```bash
+```sh
 curl -X POST http://127.0.0.1:11434/api/generate -d '{
   "model": "deepseek-r1:7b",
   "prompt": "Hello!",
@@ -28,7 +28,7 @@ curl -X POST http://127.0.0.1:11434/api/generate -d '{
 
 Full response
 
-```bash
+```sh
 curl -X POST http://127.0.0.1:11434/api/generate -d '{
   "model": "deepseek-r1:7b",
   "prompt": "Hello!",

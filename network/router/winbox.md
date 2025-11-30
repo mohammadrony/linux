@@ -1,5 +1,5 @@
 # Winbox
 
-```bash
+```sh
 sudo snap install winbox
 ```

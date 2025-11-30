@@ -2,24 +2,24 @@
 
 Current working directory
 
-```bash
+```sh
 pwd
 ```
 
 Save working directory to stack
 
-```bash
+```sh
 pushd <directory>
 ```
 
 See lists for directory stack
 
-```bash
+```sh
 dirs
 ```
 
 Goto previous working directory
 
-```bash
+```sh
 popd
 ```

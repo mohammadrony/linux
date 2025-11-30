@@ -2,20 +2,20 @@
 
 ## Nethogs
 
-```bash
+```sh
 sudo apt install -y nethogs
 ```
 
-```bash
+```sh
 sudo nethogs
 ```
 
 ## Speedtest
 
-```bash
+```sh
 sudo apt install -y speedtest-cli
 ```
 
-```bash
+```sh
 speedtest
 ```

@@ -2,7 +2,7 @@
 
 Default config for vi editor
 
-```bash
+```sh
 vi ~/.vimrc
 ```
 

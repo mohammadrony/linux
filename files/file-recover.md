@@ -4,7 +4,7 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y testdisk
 ```
 
@@ -12,12 +12,12 @@ sudo apt install -y testdisk
 
 Scan and restore disk
 
-```bash
+```sh
 sudo testdisk
 ```
 
 Photo and media recovery
 
-```bash
+```sh
 sudo photorec
 ```

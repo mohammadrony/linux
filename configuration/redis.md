@@ -2,22 +2,22 @@
 
 Redis components
 
-```bash
+```sh
 sudo apt install -y redis
 ```
 
 Server
 
-```bash
+```sh
 sudo apt install -y redis-server
 ```
 
 Client
 
-```bash
+```sh
 sudo apt install -y redis-tools
 ```
 
-```bash
+```sh
 redis-cli -h 127.0.0.1 -p 6379
 ```

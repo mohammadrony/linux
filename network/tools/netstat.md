@@ -2,35 +2,35 @@
 
 Running service in TCP port
 
-```bash
+```sh
 netstat -nltp
 ```
 
 Internet gateway
 
-```bash
+```sh
 netstat -rn
 ```
 
-```bash
+```sh
 netstat -rn | grep default
 ```
 
 Connected IP address
 
-```bash
+```sh
 netstat -ntu|awk '{print $5}'|cut -d: -f1 -s|sort|uniq -c|sort -nk1 -r
 ```
 
 Alive connection for HTTP service
 
-```bash
+```sh
 netstat -ant | grep -E ':80|:443' | grep -v grep | wc -l
 ```
 
 Watch connections
 
-```bash
+```sh
 watch 'for port in 80 443; do
   echo -n "port $port: "
   netstat -ant | grep -E ":$port" |

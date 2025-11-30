@@ -2,7 +2,7 @@
 
 Run script in background
 
-```bash
+```sh
 (
   script
 ) &
@@ -10,37 +10,37 @@ Run script in background
 
 List running jobs
 
-```bash
+```sh
 jobs
 ```
 
-```bash
+```sh
 jobs -l
 ```
 
 Restart a stopped background process
 
-```bash
+```sh
 # bg %n
 bg %1
 ```
 
 Bring process to frontend
 
-```bash
+```sh
 # fg %n
 fg %1
 ```
 
 Find process details
 
-```bash
+```sh
 ps -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS -p <pid>
 ```
 
 Kill running jobs
 
-```bash
+```sh
 # kill %n
 kill %1
 ```

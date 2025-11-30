@@ -2,14 +2,14 @@
 
 Set Gnome login screen to x11
 
-```bash
+```sh
 sudo sed -i 's/^#\(WaylandEnable=false\)/\1/' /etc/gdm3/custom.conf
 ```
 
-```bash
+```sh
 cat /etc/gdm3/custom.conf | grep Wayland
 ```
 
-```bash
+```sh
 sudo reboot now
 ```

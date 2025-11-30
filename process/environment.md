@@ -2,22 +2,22 @@
 
 ## Process Working Directory
 
-```bash
+```sh
 ps -ef | grep <process>
 ps aux | grep <process>
 ```
 
-```bash
+```sh
 pwdx <pid>
 ```
 
-```bash
+```sh
 ls -l /proc/<pid>/cwd
 ```
 
 ## Environment Variable
 
-```bash
+```sh
 sudo cat /proc/<pid>/environ
 sudo grep --color -w -a USER /proc/<pid>/environ
 ```

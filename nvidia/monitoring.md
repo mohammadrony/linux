@@ -7,14 +7,14 @@
 
 Nvidia SMI
 
-```bash
+```sh
 sudo apt install -y nvidia-smi
 ```
 
-```bash
+```sh
 nvidia-smi
 ```
 
-```bash
+```sh
 watch -n1 nvidia-smi
 ```

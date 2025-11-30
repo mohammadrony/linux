@@ -2,17 +2,17 @@
 
 ## Ubuntu
 
-```bash
+```sh
 sudo apt install -y htop
 ```
 
 ## RHEL
 
-```bash
+```sh
 sudo dnf install -y dnf-utils
 sudo dnf install -y epel-release
 ```
 
-```bash
+```sh
 sudo dnf install -y htop
 ```

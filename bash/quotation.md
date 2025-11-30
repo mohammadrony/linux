@@ -4,7 +4,7 @@
 
 Single Quoted(') string refers to the exact quotation value. Such as
 
-```bash
+```sh
 name='your-name'
 echo 'Hello, ${name}'
 
@@ -13,7 +13,7 @@ echo 'Hello, ${name}'
 
 Double quoted(") string replace the variable with the value before executing the command. Such as
 
-```bash
+```sh
 name='your-name'
 echo "Hello, ${name}"
 

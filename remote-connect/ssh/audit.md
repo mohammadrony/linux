@@ -2,12 +2,12 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y ssh-audit
 ```
 
 Usage
 
-```bash
+```sh
 ssh-audit <host>
 ```

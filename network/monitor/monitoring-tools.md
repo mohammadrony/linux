@@ -2,38 +2,38 @@
 
 System monitoring tool
 
-```bash
+```sh
 nmon
 ```
 
 System resource statistics
 
-```bash
+```sh
 dstat
 ```
 
 Display current network usage
 
-```bash
+```sh
 nload
 ```
 
 Bandwidth monitor
 
-```bash
+```sh
 bmon
 ```
 
 TCP connections on the network
 
-```bash
+```sh
 tcptrack
 sudo tcptrack -i ens3
 ```
 
 Network load monitor
 
-```bash
+```sh
 slurm
 slurm -i ens3
 ```

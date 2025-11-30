@@ -2,6 +2,6 @@
 
 Flatpak package
 
-```bash
+```sh
 sudo flatpak install -y flathub org.torproject.torbrowser-launcher
 ```

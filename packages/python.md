@@ -2,7 +2,7 @@
 
 ## UV
 
-```bash
+```sh
 curl -LO https://astral.sh/uv/install.sh
 
 bash install.sh
@@ -11,37 +11,37 @@ rm -f install.sh
 
 Commands
 
-```bash
+```sh
 uv
 ```
 
 Create virtual environment
 
-```bash
+```sh
 uv venv
 source .venv/bin/activate
 ```
 
-```bash
+```sh
 uv venv --python 3.14 ./myvenv
 ```
 
 Install packages
 
-```bash
+```sh
 uv pip install -r requirements.txt
 uv pip install <module>
 ```
 
 Deactivate venv
 
-```bash
+```sh
 deactivate
 ```
 
 ## Conda
 
-```bash
+```sh
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O install.sh
 # yes
 bash install.sh
@@ -50,7 +50,7 @@ rm -f install.sh
 
 Disable base env activation
 
-```bash
+```sh
 conda config --set auto_activate_base false
 ```
 
@@ -60,83 +60,83 @@ Shell command
 eval "$(<installation/path>/bin/conda shell.zsh hook)"
 ```
 
-```bash
+```sh
 eval "$(<installation/path>/bin/conda shell.bash hook)"
 ```
 
 Configuration
 
-```bash
+```sh
 conda config -h
 ```
 
 Env list
 
-```bash
+```sh
 conda env list
 ```
 
 Create conda environment
 
-```bash
+```sh
 conda create -n <venv>
 ```
 
-```bash
+```sh
 conda create -n <venv> python=3.12
 ```
 
 Activate environment
 
-```bash
+```sh
 conda activate <venv>
 ```
 
-```bash
+```sh
 conda env list
 ```
 
 Install packages
 
-```bash
+```sh
 conda install pandas ...
 ```
 
-```bash
+```sh
 pip install pandas ...
 ```
 
 Package list
 
-```bash
+```sh
 conda list
 ```
 
-```bash
+```sh
 pip list
 ```
 
 Deactivate environment
 
-```bash
+```sh
 conda deactivate
 ```
 
 Remove environment
 
-```bash
+```sh
 conda env remove -n <venv>
 ```
 
 ## APT package
 
-```bash
+```sh
 sudo apt install -y python3 python3-pip python3-venv python-is-python3
 ```
 
 ## pip package
 
-```bash
+```sh
 pip install --upgrade setuptools pip wheel
 ```
 
@@ -144,7 +144,7 @@ pip install --upgrade setuptools pip wheel
 
 Install pyenv
 
-```bash
+```sh
 sudo apt install -y git
 sudo apt install -y build-essential libbz2-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev tk-dev
 
@@ -152,55 +152,55 @@ sudo apt install -y build-essential libbz2-dev libssl-dev libreadline-dev libffi
 sudo apt install -y libpng-dev libfreetype6-dev
 ```
 
-```bash
+```sh
 curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer -o install.sh
 
 bash install.sh
 rm -f install.sh
 ```
 
-```bash
+```sh
 vi ~/.bashrc
 ```
 
-```bashrc
+```shrc
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 ```
 
-```bash
+```sh
 exec $SHELL
 source ~/.bashrc
 ```
 
 Install python with pyenv
 
-```bash
+```sh
 pyenv install 3.12
 ```
 
-```bash
+```sh
 pyenv virtualenv 3.12 general
 ```
 
-```bash
+```sh
 pyenv global general
 ```
 
 Uninstall
 
-```bash
+```sh
 pyenv uninstall general
 ```
 
 Version setup for directory
 
-```bash
+```sh
 pyenv virtualenv 3.12 <project>
 ```
 
-```bash
+```sh
 pyenv local <project>
 ```
 
@@ -208,33 +208,33 @@ pyenv local <project>
 
 Create virtual environment
 
-```bash
+```sh
 python -m venv <venv>
 source <venv>/bin/activate
 ```
 
 Find required packages
 
-```bash
+```sh
 pip install pip-tools
 pip-compile --upgrade --build-isolation --generate-hashes --allow-unsafe --output-file requirements.txt requirements.in
 ```
 
 Install required packages
 
-```bash
+```sh
 pip install -r requirements.txt
 pip install <module>
 ```
 
 Run application
 
-```bash
+```sh
 python main.py
 ```
 
 Deactivate venv
 
-```bash
+```sh
 deactivate
 ```

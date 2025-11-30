@@ -2,13 +2,13 @@
 
 ## TL;DR
 
-```bash
+```sh
 version=v0.39.7
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$version/install.sh | bash
 source ~/.bashrc
 ```
 
-```bash
+```sh
 nvm install 20.0
 ```
 
@@ -18,7 +18,7 @@ nvm install 20.0
 
 Latest version of [NVM](https://github.com/nvm-sh/nvm)
 
-```bash
+```sh
 version=v0.39.7
 curl -O https://raw.githubusercontent.com/nvm-sh/nvm/$version/install.sh
 
@@ -26,23 +26,23 @@ bash install.sh
 rm -f install.sh
 ```
 
-```bash
+```sh
 vi ~/.bashrc
 ```
 
-```bashrc
+```shrc
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
-```bash
+```sh
 source .bashrc
 ```
 
 Check version
 
-```bash
+```sh
 nvm --version
 ```
 
@@ -50,51 +50,51 @@ nvm --version
 
 List available versions
 
-```bash
+```sh
 nvm ls
 ```
 
-```bash
+```sh
 nvm ls-remote
 ```
 
 Install Node and NPM
 
-```bash
+```sh
 nvm install node
 ```
 
-```bash
+```sh
 nvm install stable
 ```
 
-```bash
+```sh
 nvm install --lts
 ```
 
-```bash
+```sh
 nvm install 20.0
 ```
 
 Use specific version
 
-```bash
+```sh
 nvm alias default 20.0
 ```
 
-```bash
+```sh
 nvm use default
 ```
 
-```bash
+```sh
 nvm use --lts
 ```
 
-```bash
+```sh
 nvm use 20.0
 ```
 
-```bash
+```sh
 nvm use node
 ```
 
@@ -102,19 +102,19 @@ nvm use node
 
 Uninstall Node
 
-```bash
+```sh
 nvm uninstall <version>
 ```
 
 Uninstall nvm
 
-```bash
+```sh
 rm -rf .nvm
 ```
 
 Remove nvm entry from login file
 
-```bash
+```sh
 vi .bashrc
 ```
 
@@ -122,29 +122,29 @@ vi .bashrc
 
 ### NodeSource install
 
-```bash
+```sh
 version=lts # 20 18
 curl -fsSL "https://deb.nodesource.com/setup_${version}.x" -o nodesource_setup.sh
 ```
 
-```bash
+```sh
 sudo bash nodesource_setup.sh
 ```
 
 Install nodejs
 
-```bash
+```sh
 sudo apt install -y nodejs
 ```
 
 Hold apt package
 
-```bash
+```sh
 sudo apt-mark hold nodejs npm
 ```
 
 ### Uninstall nodejs
 
-```bash
+```sh
 sudo apt remove -y nodejs
 ```

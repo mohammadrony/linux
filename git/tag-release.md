@@ -2,7 +2,7 @@
 
 ## Get Tag
 
-```bash
+```sh
 git tag
 ```
 
@@ -10,19 +10,19 @@ git tag
 
 Create a new tag
 
-```bash
+```sh
 git tag <tagname>
 ```
 
 Push a specific tag
 
-```bash
+```sh
 git push origin <tagname>
 ```
 
 Push all tags
 
-```bash
+```sh
 git push --tags
 ```
 
@@ -30,13 +30,13 @@ git push --tags
 
 Delete a local tag
 
-```bash
+```sh
 git tag -d <tagname>
 ```
 
 Delete a remote tag
 
-```bash
+```sh
 git push origin --delete <tagname>
 ```
 

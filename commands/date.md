@@ -2,7 +2,7 @@
 
 ## Timezone
 
-```bash
+```sh
 sudo timedatectl set-timezone Asia/Dhaka
 ```
 
@@ -10,18 +10,18 @@ sudo timedatectl set-timezone Asia/Dhaka
 
 Day
 
-```bash
+```sh
 date +%A
 ```
 
 Day-Month-Year
 
-```bash
+```sh
 date +%d-%b-%Y
 ```
 
 Hour:Minute:Second
 
-```bash
+```sh
 date '+TIME:%H:%M:%S'
 ```

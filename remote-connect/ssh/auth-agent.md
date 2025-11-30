@@ -6,47 +6,47 @@ Related information
 
 Check agent status
 
-```bash
+```sh
 echo $SSH_AUTH_SOCK
 echo $SSH_AGENT_PID
 ```
 
 List all identities
 
-```bash
+```sh
 ssh-add -l
 ```
 
 Adding key to agent *for current session*
 
-```bash
+```sh
 ssh-add ~/.ssh/id_ed25519
 ```
 
 Test connection
 
-```bash
+```sh
 ssh -T user@host
 ```
 
-```bash
+```sh
 ssh -i ~/.ssh/id_ed25519 -T user@host
 ```
 
 Kill current agent
 
-```bash
+```sh
 eval $(ssh-agent -k)
 ```
 
 Start new agent *for current session*
 
-```bash
+```sh
 eval $(ssh-agent -s)
 ```
 
 Clear known keys from agent
 
-```bash
+```sh
 ssh-add -D
 ```

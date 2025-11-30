@@ -6,14 +6,14 @@
 
 Prerequisites
 
-```bash
+```sh
 sudo apt update
 sudo apt install -y ca-certificates tzdata perl net-tools
 ```
 
 Install
 
-```bash
+```sh
 curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh -o install.sh
 
 sudo bash install.sh
@@ -22,14 +22,14 @@ rm -f install.sh
 
 Install gitlab
 
-```bash
+```sh
 sudo EXTERNAL_URL="http://git.example.com" apt install -y gitlab-ee
 sudo apt-mark hold gitlab-ee
 ```
 
 Initial root password
 
-```bash
+```sh
 sudo cat /etc/gitlab/initial_root_password
 ```
 

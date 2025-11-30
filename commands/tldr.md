@@ -2,16 +2,16 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y tldr
 ```
 
 ## Commands
 
-```bash
+```sh
 tldr ls
 ```
 
-```bash
+```sh
 tldr ssh
 ```

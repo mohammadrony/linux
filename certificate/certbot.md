@@ -4,30 +4,30 @@
 
 Snap
 
-```bash
+```sh
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
 Ubuntu
 
-```bash
+```sh
 sudo apt install -y certbot python3-certbot-nginx # python3-certbot-apache
 ```
 
 RHEL
 
-```bash
+```sh
 sudo dnf install -y epel-release
 ```
 
-```bash
+```sh
 sudo dnf install -y certbot python3-certbot-nginx mod_ssl # python3-certbot-apache
 ```
 
 Amazon Linux 2023
 
-```bash
+```sh
 sudo dnf install -y augeas-libs
 sudo python3 -m venv /opt/certbot/
 sudo /opt/certbot/bin/pip install --upgrade pip
@@ -37,7 +37,7 @@ sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
 
 Service setup
 
-```bash
+```sh
 sudo tee -a /usr/lib/systemd/system/certbot-renew.service << EOF
 [Unit]
 Description=This service automatically renews any certbot certificates found
@@ -49,7 +49,7 @@ ExecStart=/usr/bin/certbot renew --noninteractive --no-random-sleep-on-renew
 EOF
 ```
 
-```bash
+```sh
 sudo tee -a /usr/lib/systemd/system/certbot-renew.timer << EOF
 [Unit]
 Description=This is the timer to set the schedule for automated renewals
@@ -64,7 +64,7 @@ WantedBy=timers.target
 EOF
 ```
 
-```bash
+```sh
 sudo systemctl enable --now certbot-renew.timer certbot-renew.service
 ```
 
@@ -72,15 +72,15 @@ sudo systemctl enable --now certbot-renew.timer certbot-renew.service
 
 Nginx
 
-```bash
+```sh
 sudo certbot --nginx -d example.com -d www.example.com
 ```
 
-```bash
+```sh
 sudo certbot --apache -d example.com -d www.example.com
 ```
 
-```bash
+```sh
 sudo su
 
 cd /etc/letsencrypt/live/www.example.com/
@@ -92,14 +92,14 @@ chmod 644 /opt/tomcat/conf/*.pem
 
 Certificate auto renewal service
 
-```bash
+```sh
 # apt or dnf install
 systemctl list-timers
 sudo systemctl status certbot-renew.timer
 sudo systemctl status certbot-renew.service
 ```
 
-```bash
+```sh
 # snap install
 systemctl list-timers
 sudo systemctl status snap.certbot.renew.timer
@@ -108,29 +108,29 @@ sudo systemctl status snap.certbot.renew.service
 
 Renew certificate command
 
-```bash
+```sh
 sudo certbot renew --dry-run
 ```
 
 Generate certificate only
 
-```bash
+```sh
 sudo certbot certonly -d www.example.com
 ```
 
-```bash
+```sh
 sudo certbot certonly --nginx -d www.example.com
 sudo certbot certonly --standalone -d www.example.com
 ```
 
 List certificates
 
-```bash
+```sh
 sudo certbot certificates
 ```
 
 Delete domain and certificates
 
-```bash
+```sh
 sudo certbot delete --cert-name www.example.com
 ```

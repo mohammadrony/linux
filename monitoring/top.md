@@ -1,10 +1,10 @@
 # top
 
-```bash
+```sh
 top
 ```
 
-```bash
+```sh
 top -p <pid>
 # top -p $(pgrep -d',' <process>)
 ```

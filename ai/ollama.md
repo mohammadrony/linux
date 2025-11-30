@@ -2,7 +2,7 @@
 
 Installation
 
-```bash
+```sh
 curl -LO https://ollama.com/install.sh
 
 sh install.sh
@@ -11,13 +11,13 @@ rm -f install.sh
 
 ## Server
 
-```bash
+```sh
 ollama serve
 ```
 
 Allow public access
 
-```bash
+```sh
 sudo vi /etc/systemd/system/ollama.service
 ```
 
@@ -30,18 +30,18 @@ sudo vi /etc/systemd/system/ollama.service
 Environment="OLLAMA_HOST=0.0.0.0"'
 ```
 
-```bash
+```sh
 sudo systemctl daemon-reload
 sudo systemctl restart ollama
 ```
 
 Check status
 
-```bash
+```sh
 sudo systemctl status ollama
 ```
 
-```bash
+```sh
 sudo netstat -nltp
 ```
 
@@ -55,18 +55,18 @@ ollama list
 
 Run model
 
-```bash
+```sh
 ollama run MODEL
 ```
 
 Stop model
 
-```bash
+```sh
 ollama stop MODEL
 ```
 
 Remove model
 
-```bash
+```sh
 ollama rm MODEL
 ```

@@ -1,5 +1,5 @@
 # XFS
 
-```bash
+```sh
 sudo mkfs.xfs /dev/sdX1
 ```

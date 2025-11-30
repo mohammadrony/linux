@@ -8,7 +8,7 @@ Error message
 
 Solution 1
 
-```bash
+```sh
 find .git/objects/ -type f -empty -delete
 git fetch -p
 git fsck --full
@@ -16,21 +16,21 @@ git fsck --full
 
 Solution 2
 
-```bash
+```sh
 git stash
 rm .git/objects/...
 git status
 rm .git/index
 ```
 
-```bash
+```sh
 git reset
 git pull
 tail -n 2 .git/logs/refs/heads/BRANCH_NAME
 git update-ref HEAD BRANCH_NAME
 git status
 
-```bash
+```sh
 git reset
 git stash pop
 ```
@@ -39,12 +39,12 @@ git stash pop
 
 Update http version
 
-```bash
+```sh
 git config --global http.version HTTP/1.1
 ```
 
 Reset after
 
-```bash
+```sh
 git config --global --unset http.version
 ```

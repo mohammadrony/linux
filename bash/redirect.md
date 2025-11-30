@@ -6,7 +6,7 @@
 
 Save output in multiple file
 
-```bash
+```sh
 echo "1st line"
 echo "2nd line" >&2
 echo "3rd line" >&3
@@ -15,39 +15,39 @@ echo "5th line" >&2
 echo "6th line" >&3
 ```
 
-```bash
+```sh
 source script.sh >file1.txt 2>file2.txt 3>file3.txt
 ```
 
 Redirects stdout to /dev/null
 
-```bash
+```sh
 command >/dev/null | grep 'something'
 ```
 
-```bash
+```sh
 command 1>/dev/null | grep 'something'
 ```
 
 Redirects stderr to /dev/null
 
-```bash
+```sh
 command 2>/dev/null | grep 'something'
 ```
 
 Redirects stderr to /dev/null then redirects stdout to stderr address
 
-```bash
+```sh
 command 2>/dev/null 1>&2
 ```
 
-```bash
+```sh
 command &>/dev/null
 ```
 
 Redirect stderr to stdout then redirect stdout to /dev/null
 
-```bash
+```sh
 command 2>&1 >/dev/null | grep 'something'
 ```
 

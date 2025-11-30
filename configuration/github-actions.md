@@ -2,19 +2,19 @@
 
 Generate key
 
-```bash
+```sh
 ssh-keygen -t ed25519 -f ~/.ssh/github_actions
 ```
 
 Add public key to authorized keys
 
-```bash
+```sh
 cat github_actions.pub >> ~/.ssh/authorized_keys
 ```
 
 Add private key to repository secrets
 
-```bash
+```sh
 cat ~/.ssh/github_actions
 ```
 

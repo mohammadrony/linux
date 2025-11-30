@@ -2,13 +2,13 @@
 
 Service health
 
-```bash
+```sh
 sudo systemctl status SERVICE
 ```
 
 Running port service
 
-```bash
+```sh
 grep PORT /etc/services
 ```
 

@@ -2,7 +2,7 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y iotop
 ```
 
@@ -10,12 +10,12 @@ sudo apt install -y iotop
 
 I/O process
 
-```bash
+```sh
 iotop
 ```
 
 Active I/O process
 
-```bash
+```sh
 iotop -o
 ```

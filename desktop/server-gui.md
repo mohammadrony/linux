@@ -4,7 +4,7 @@
 
 Gnome desktop
 
-```bash
+```sh
 sudo apt install -y ubuntu-gnome-desktop
 ```
 
@@ -12,15 +12,15 @@ sudo apt install -y ubuntu-gnome-desktop
 
 Server with GUI
 
-```bash
+```sh
 sudo yum groupinstall -y "Server with GUI"
 ```
 
-```bash
+```sh
 sudo ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
 ```
 
-```bash
+```sh
 sudo systemctl isolate graphical.target
 sudo systemctl set-default graphical.target
 ```

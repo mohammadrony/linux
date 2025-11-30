@@ -11,7 +11,7 @@ Hard disk scan
 
 Check and repair filesystem
 
-```bash
+```sh
 sudo fsck /dev/sdX1
 
 # y for yes
@@ -22,18 +22,18 @@ sudo fsck /dev/sdX1
 
 SMART monitoring
 
-```bash
+```sh
 sudo apt install -y smartmontools
 ```
 
 Check status
 
-```bash
+```sh
 sudo smartctl -H /dev/sdX
 ```
 
 Details information
 
-```bash
+```sh
 sudo smartctl -a /dev/sdX
 ```

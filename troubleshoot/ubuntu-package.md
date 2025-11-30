@@ -2,38 +2,38 @@
 
 ## Could not get lock /var/lib/dpkg/lock-frontend
 
-```bash
+```sh
 sudo killall apt apt-get
 ```
 
-```bash
+```sh
 sudo rm /var/lib/apt/lists/lock
 sudo rm /var/cache/apt/archives/lock
 sudo rm /var/lib/dpkg/lock*
 ```
 
-```bash
+```sh
 sudo dpkg --configure -a
 ```
 
-```bash
+```sh
 sudo apt update
 ```
 
-```bash
+```sh
 sudo apt install -y PACKAGE
 ```
 
 ## Override to update package
 
-```bash
+```sh
 sudo dpkg -i --force-overwrite /var/cache/apt/archives/PACKAGE_VERSION.deb
 ```
 
-```bash
+```sh
 sudo apt --fix-broken install
 ```
 
-```bash
+```sh
 sudo apt upgrade -y
 ```

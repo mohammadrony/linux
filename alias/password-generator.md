@@ -4,7 +4,7 @@
 
 Bash
 
-```bash
+```sh
 passgen() {
   read -rs -p 'Encryption key: ' key
   echo '' # line break
@@ -26,7 +26,7 @@ passgen() {
 
 Bash
 
-```bash
+```sh
 passgen () {
   read -rs -p 'Encryption key: ' key
   echo '' # line break

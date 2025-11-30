@@ -1,5 +1,5 @@
 # Run Test
 
-```bash
+```sh
 k6 run script.js
 ```

@@ -2,36 +2,36 @@
 
 ## Download Latest Changes from Remote Repository
 
-```bash
+```sh
 git fetch
 ```
 
 ## Update Current Repository with Latest Changes
 
-```bash
+```sh
 git pull
 ```
 
 Apply local changes on top of remote changes
 
-```bash
+```sh
 git pull --rebase
 ```
 
 Merge local changes with remote changes
 
-```bash
+```sh
 git pull --merge
 ```
 
 Update pulling config for best practice
 
-```bash
+```sh
 git config --global pull.rebase true
 ```
 
 ## Additional commands
 
-```bash
+```sh
 git rebase -i
 ```

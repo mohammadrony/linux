@@ -5,7 +5,7 @@
 
 ## Prerequisites
 
-```bash
+```sh
 sudo vi /etc/sysctl.conf
 ```
 
@@ -14,16 +14,16 @@ vm.max_map_count=524288
 fs.file-max=131072
 ```
 
-```bash
+```sh
 sudo sysctl --system
 ```
 
-```bash
+```sh
 ulimit -n 131072
 ulimit -u 8192
 ```
 
-```bash
+```sh
 sudo vi /etc/security/limits.d/99-sonarqube.conf
 ```
 
@@ -34,11 +34,11 @@ sudo vi /etc/security/limits.d/99-sonarqube.conf
 
 ## Database
 
-```bash
+```sh
 sudo -i -u postgres psql
 ```
 
-```bash
+```sh
 CREATE USER sonarqube WITH PASSWORD 'sonarqube';
 CREATE DATABASE sonarqube OWNER sonarqube;
 GRANT ALL PRIVILEGES ON DATABASE sonarqube TO sonarqube;
@@ -46,30 +46,30 @@ GRANT ALL PRIVILEGES ON DATABASE sonarqube TO sonarqube;
 
 ## Sonarqube
 
-```bash
+```sh
 sudo useradd -b /opt/sonarqube -s /bin/bash sonarqube
 ```
 
-```bash
+```sh
 sudo apt install unzip software-properties-common wget
 ```
 
 [Download Sonarqube Community Build](https://www.sonarsource.com/products/sonarqube/downloads/success-download-community-edition/)
 
-```bash
+```sh
 unzip sonarqube-*.zip
 ```
 
-```bash
+```sh
 sudo mv sonarqube-* /opt/
 sudo mv /opt/sonarqube-* /opt/sonarqube
 ```
 
-```bash
+```sh
 sudo chown -R sonarqube:sonarqube /opt/sonarqube
 ```
 
-```bash
+```sh
 sudo tee -a /opt/sonarqube/conf/sonar.properties << EOF
 sonar.jdbc.username=sonarqube
 sonar.jdbc.password=sonarqube
@@ -85,7 +85,7 @@ sonar.path.logs=logs
 EOF
 ```
 
-```bash
+```sh
 sudo tee -a /etc/systemd/system/sonarqube.service << EOF
 [Unit]
 Description=SonarQube service
@@ -106,22 +106,22 @@ WantedBy=multi-user.target
 EOF
 ```
 
-```bash
+```sh
 sudo systemctl daemon-reload
 ```
 
-```bash
+```sh
 sudo systemctl enable --now sonarqube
 sudo systemctl status sonarqube
 ```
 
 ## Nginx
 
-```bash
+```sh
 sudo apt install -y nginx
 ```
 
-```bash
+```sh
 sudo tee -a /etc/nginx/sites-available/sonarqube.conf << EOF
 server {
   listen 80;
@@ -144,11 +144,11 @@ server {
 EOF
 ```
 
-```bash
+```sh
 sudo ln -s /etc/nginx/sites-available/sonarqube.conf /etc/nginx/sites-enabled/
 sudo nginx -t
 ```
 
-```bash
+```sh
 sudo systemctl restart nginx
 ```

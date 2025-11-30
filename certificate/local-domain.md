@@ -2,7 +2,7 @@
 
 Generate certificate
 
-```bash
+```sh
 tee -a root-certificate.conf << EOF
 [req]
 prompt = no
@@ -29,21 +29,21 @@ IP.1 = 192.168.1.100
 EOF
 ```
 
-```bash
+```sh
 openssl genrsa -out rootCA.key 2048
 openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -out rootCA.pem -config config.conf
 ```
 
-```bash
+```sh
 openssl genrsa -out example.local.key 2048
 openssl req -new -key example.local.key -out example.local.csr -config config.conf
 ```
 
-```bash
+```sh
 openssl x509 -req -days 1024 -in example.local.csr -signkey example.local.key -out example.local.crt
 ```
 
-```bash
+```sh
 sudo cp example.local.csr /etc/ssl/certs
 sudo cp example.local.crt /etc/ssl/certs
 sudo cp example.local.key /etc/ssl/private

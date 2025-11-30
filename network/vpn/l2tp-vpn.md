@@ -1,5 +1,5 @@
 # L2TP VPN
 
-```bash
+```sh
 sudo apt install -y network-manager-l2tp-gnome
 ```

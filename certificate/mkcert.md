@@ -1,23 +1,23 @@
 # mkcert
 
-```bash
+```sh
 sudo apt install -y libnss3-tools
 ```
 
 Install local CA
 
-```bash
+```sh
 mkcert -install
 ```
 
 Generate certificate
 
-```bash
+```sh
 mkcert example.com "*.example.com" localhost 127.0.0.1 ::1
 ```
 
 Uninstall local CA
 
-```bash
+```sh
 mkcert -uninstall
 ```

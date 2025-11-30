@@ -1,9 +1,9 @@
 # Stress Testing
 
-```bash
+```sh
 sudo apt install -y stress-ng
 ```
 
-```bash
+```sh
 stress-ng -h
 ```

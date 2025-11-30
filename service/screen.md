@@ -2,23 +2,23 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y screen
 ```
 
 New session
 
-```bash
+```sh
 screen
 ```
 
-```bash
+```sh
 screen -S <name>
 ```
 
 List available session
 
-```bash
+```sh
 screen -ls
 ```
 
@@ -26,36 +26,36 @@ Detach screen
 
 `Ctrl` + `a`, `d`
 
-```bash
+```sh
 screen -d
 ```
 
-```bash
+```sh
 screen -d <name>
 ```
 
 Reattach to session
 
-```bash
+```sh
 screen -r
 ```
 
-```bash
+```sh
 screen -r <name>
 ```
 
 Run command in terminal
 
-```bash
+```sh
 while true; do date; sleep 1; done
 ```
 
 Terminate session
 
-```bash
+```sh
 screen -X quit
 ```
 
-```bash
+```sh
 screen -X -S <name> quit
 ```

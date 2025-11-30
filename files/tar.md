@@ -4,49 +4,49 @@
 
 Create new archive
 
-```bash
+```sh
 tar -cvf archive.tar file1 ...
 ```
 
-```bash
+```sh
 tar -cvzf archive.tgz file1 ...
 tar -cvzf archive.tar.gz file1 ...
 ```
 
 ## Extract
 
-```bash
+```sh
 tar -xvf archive.tar
 ```
 
-```bash
+```sh
 tar -xvzf archive.tgz
 tar -xvzf archive.tar.gz
 ```
 
 Extract specific file
 
-```bash
+```sh
 tar -xvf archive.tar ./file1
 ```
 
 Extract archive to a directory
 
-```bash
+```sh
 mkdir -p /target/directory
 tar -xvf archive.tar -C /target/directory
 ```
 
 Extract by ignoring first level dir
 
-```bash
+```sh
 mkdir -p /target/directory
 tar -xvf archive.tar -C /target/directory --strip-components=1
 ```
 
 ## Read
 
-```bash
+```sh
 tar -tvf archive.tar
 ```
 
@@ -54,19 +54,19 @@ tar -tvf archive.tar
 
 Add files to existing archive
 
-```bash
+```sh
 tar -rvf archive.tar file1
 ```
 
 Update existing file in archive
 
-```bash
+```sh
 tar -uvf archive.tar file1
 # cannot update .tar.gz file 
 ```
 
 Delete files from archive
 
-```bash
+```sh
 tar --delete -vf archive.tar file1
 ```

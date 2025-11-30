@@ -2,7 +2,7 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y 7zip
 ```
 
@@ -12,19 +12,19 @@ sudo apt install -y 7zip
 
 Create archive
 
-```bash
+```sh
 7z a archive.7z file1.txt file2.txt file3.txt
 ```
 
 Add files in archive
 
-```bash
+```sh
 7z u archive.7z file4.txt file5.txt
 ```
 
 Create archive excluding specific files
 
-```bash
+```sh
 7z a archive.7z * -x!*.log -x!temp/
 ```
 
@@ -32,7 +32,7 @@ Create archive excluding specific files
 
 List contents of archive
 
-```bash
+```sh
 7z l archive.7z
 ```
 
@@ -40,30 +40,30 @@ List contents of archive
 
 Extract archive
 
-```bash
+```sh
 7z x archive.7z
 ```
 
 Extract in specific directory
 
-```bash
+```sh
 7z x archive.7z -o /path/to/directory
 ```
 
 Extract specific file
 
-```bash
+```sh
 7z x archive.7z -o /path/to/directory file1.txt
 ```
 
 Extract with progress details
 
-```bash
+```sh
 7z x -bsp1 archive.7z
 ```
 
 Extract archive excluding specific files
 
-```bash
+```sh
 7z x archive.7z -x!*.log -x!temp/
 ```

@@ -1,9 +1,9 @@
 # Weather
 
-```bash
+```sh
 sudo snap install wethr
 ```
 
-```bash
+```sh
 wethr
 ```

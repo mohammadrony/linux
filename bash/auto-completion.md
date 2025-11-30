@@ -1,5 +1,5 @@
 # Auto Completion
 
-```bash
+```sh
 sudo apt install -y bash-completion
 ```

@@ -4,28 +4,28 @@
 
 Gnome desktop
 
-```bash
+```sh
 sudo apt install -y ubuntu-gnome-desktop xrdp
 ```
 
 Tasksel
 
-```bash
+```sh
 sudo apt install -y tasksel
 ```
 
 GDM3
 
-```bash
+```sh
 sudo apt install -y --no-install-recommends gnome-core
 ```
 
-```bash
+```sh
 sudo apt install -y gdm3
 sudo dpkg-reconfigure gdm3
 ```
 
-```bash
+```sh
 sudo reboot now
 ```
 
@@ -33,12 +33,12 @@ sudo reboot now
 
 Logout
 
-```bash
+```sh
 gnome-session-quit
 ```
 
 Logout immediately
 
-```bash
+```sh
 gnome-session-quit --no-prompt
 ```

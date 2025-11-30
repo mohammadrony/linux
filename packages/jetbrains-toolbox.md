@@ -4,18 +4,18 @@
 
 Install prerequisites
 
-```bash
+```sh
 sudo apt install -y libfuse2
 ```
 
 Extract package
 
-```bash
+```sh
 tar -xvzf jetbrains-toolbox-xxx.tar.gz
 ```
 
 Install toolbox
 
-```bash
+```sh
 jetbrains-toolbox-*/jetbrains-toolbox
 ```

@@ -2,7 +2,7 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y zip
 ```
 
@@ -10,22 +10,22 @@ sudo apt install -y zip
 
 Zip file
 
-```bash
+```sh
 zip -r filename.zip files/
 ```
 
 Unzip file
 
-```bash
+```sh
 unzip filename.zip
 ```
 
 List contents of zip file
 
-```bash
+```sh
 unzip -l filename.zip
 ```
 
-```bash
+```sh
 zipinfo filename.zip
 ```

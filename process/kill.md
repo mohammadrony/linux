@@ -4,48 +4,48 @@ Useful commands:  `fuser`, `kill`, `pkill`, `killall`.
 
 Kill process by port usage
 
-```bash
+```sh
 sudo fuser -k 80/tcp
 ```
 
 Simulate kill signal
 
-```bash
+```sh
 sudo kill -s 0 <pid>
 ```
 
 Gracefully shutdown process
 
-```bash
+```sh
 sudo kill <pid>
 ```
 
 Kill newest process
 
-```bash
+```sh
 sudo pkill -n <process>
 ```
 
 Kill process by pid forcefully
 
-```bash
+```sh
 sudo kill -9 <pid>
 ```
 
 Kill process by name forcefully
 
-```bash
+```sh
 sudo pkill -9 <process>
 ```
 
 Kill process and wait to finish
 
-```bash
+```sh
 sudo pkill -f nginx & wait $!
 ```
 
 Kill process by name
 
-```bash
+```sh
 sudo killall <process>
 ```

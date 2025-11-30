@@ -1,43 +1,43 @@
 # pidstat
 
-```bash
+```sh
 pidstat
 ```
 
-```bash
+```sh
 pidstat -p ALL
 ```
 
 Start program and monitor
 
-```bash
+```sh
 pidstat -e <program> <args>
 ```
 
 Task threads status
 
-```bash
+```sh
 pidstat -t
 ```
 
 Process status
 
-```bash
+```sh
 pidstat -p <pid>
 ```
 
-```bash
+```sh
 pidstat -C <command>
 ```
 
 Display multiple report
 
-```bash
+```sh
 pidstat -p <pid> <interval> <count>
 ```
 
 Monitor command process and its threads
 
-```bash
+```sh
 pidstat -t -C <command> <interval> <count>
 ```

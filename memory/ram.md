@@ -4,18 +4,18 @@
 
 Human readable
 
-```bash
+```sh
 free -h
 ```
 
 Memory in GiB
 
-```bash
+```sh
 free -g
 ```
 
 Memory in MiB
 
-```bash
+```sh
 free -m
 ```

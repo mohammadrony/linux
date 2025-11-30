@@ -1,17 +1,17 @@
 # Login Session
 
-```bash
+```sh
 w
 ```
 
-```bash
+```sh
 who
 ```
 
-```bash
+```sh
 last
 ```
 
-```bash
+```sh
 pkill -9 -t <tty-name>
 ```

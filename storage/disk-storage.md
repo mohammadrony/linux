@@ -16,55 +16,55 @@
 - HDD for 1
 - SSD for 0
 
-```bash
+```sh
 lsblk -d -o name,rota
 cat /sys/block/sdX/queue/rotational
 ```
 
 ### Disks and mountpoints
 
-```bash
+```sh
 findmnt
 ```
 
-```bash
+```sh
 ls -l /dev/disk/by-uuid
 ```
 
-```bash
+```sh
 blkid
 ```
 
-```bash
+```sh
 sudo dumpe2fs /dev/sdX | grep UUID
 ```
 
 List block device
 
-```bash
+```sh
 lsblk -f | grep -v loop
 ```
 
-```bash
+```sh
 lsblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL,PARTUUID | grep -v loop
 ```
 
 List attached hardware
 
-```bash
+```sh
 hwinfo --all
 hwinfo --all --short
 ```
 
-```bash
+```sh
 hwinfo --disk --short
 ```
 
-```bash
+```sh
 sudo lshw -class disk
 ```
 
-```bash
+```sh
 duf
 ```
 
@@ -72,7 +72,7 @@ duf
 
 Create or format the device (WIPE ALL PREVIOUS DATA)
 
-```bash
+```sh
 sudo fdisk /dev/sdX
 > Press 'g' to create gpt formated
 > Press 'n' to create new partition
@@ -80,20 +80,20 @@ sudo fdisk /dev/sdX
 > Press 'w' to save partition table
 ```
 
-```bash
+```sh
 sudo mkfs.ext4 /dev/sdX1
 ```
 
 Mount ext4 formatted device
 
-```bash
+```sh
 sudo mkdir /mnt/foo
 sudo mount /dev/sdX1 /mnt/foo -t ext4
 ```
 
 Mount storage device on startup
 
-```bash
+```sh
 sudo vi /etc/fstab
 
 # <file system> <mount point>   <type>  <options>         <dump>  <pass>
@@ -111,14 +111,14 @@ UUID=<uuid>     /boot/efi       vfat    umask=0077        0       1
 
 Check swap status
 
-```bash
+```sh
 sudo swapon --show
 free -h
 ```
 
 Create swapfile
 
-```bash
+```sh
 sudo fallocate -l 1G /swapfile
 sudo chmod 600 /swapfile
 ls -lh /swapfile
@@ -126,7 +126,7 @@ ls -lh /swapfile
 
 Mark the file as swap space
 
-```bash
+```sh
 sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo swapon --show
@@ -134,28 +134,28 @@ sudo swapon --show
 
 Create permanent entry in fstab
 
-```bash
+```sh
 sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
-```bash
+```sh
 free -h
 ```
 
 Additional settings
 
-```bash
+```sh
 cat /proc/sys/vm/swappiness
 cat /proc/sys/vm/vfs_cache_pressure
 ```
 
-```bash
+```sh
 sudo sysctl vm.swappiness=30
 sudo sysctl vm.vfs_cache_pressure=50
 ```
 
-```bash
+```sh
 sudo vi /etc/sysctl.conf
 
 # Add
@@ -163,7 +163,7 @@ vm.swappiness=30
 vm.vfs_cache_pressure=50
 ```
 
-```bash
+```sh
 cat /proc/sys/vm/swappiness
 cat /proc/sys/vm/vfs_cache_pressure
 ```

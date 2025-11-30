@@ -2,12 +2,12 @@
 
 DNF utils
 
-```bash
+```sh
 sudo dnf install -y dnf-utils
 ```
 
 YUM utils
 
-```bash
+```sh
 sudo yum install -y yum-utils
 ```

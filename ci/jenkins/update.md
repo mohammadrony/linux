@@ -4,19 +4,19 @@
 
 Unhold current version
 
-```bash
+```sh
 sudo apt-mark unhold jenkins
 ```
 
 Update jenkins
 
-```bash
+```sh
 sudo apt install -y jenkins
 ```
 
 Hold current version
 
-```bash
+```sh
 sudo apt-mark hold jenkins
 ```
 
@@ -24,26 +24,26 @@ sudo apt-mark hold jenkins
 
 Stop service
 
-```bash
+```sh
 sudo systemctl stop jenkins
 ```
 
 Backup jenkins binary
 
-```bash
+```sh
 cd /usr/share/java
 sudo mv jenkins.war jenkins.war.old
 ```
 
 Download latest release
 
-```bash
+```sh
 cd /usr/share/java
 sudo wget https://updates.jenkins-ci.org/latest/jenkins.war
 ```
 
 Restart service
 
-```bash
+```sh
 sudo systemctl restart jenkins
 ```

@@ -4,27 +4,27 @@
 
 Gnome desktop
 
-```bash
+```sh
 sudo apt install -y ubuntu-gnome-desktop
 ```
 
 RDP server
 
-```bash
+```sh
 sudo apt install -y xrdp
 ```
 
-```bash
+```sh
 sudo sed -i 's/max_bpp=.*/max_bpp=24/' /etc/xrdp/xrdp.ini
 ```
 
-```bash
+```sh
 cat /etc/xrdp/xrdp.ini | grep max_bpp
 ```
 
 Restart service
 
-```bash
+```sh
 sudo systemctl enable xrdp
 sudo systemctl restart xrdp
 ```
@@ -33,36 +33,36 @@ sudo systemctl restart xrdp
 
 Server with GUI
 
-```bash
+```sh
 sudo yum groupinstall -y "Server with GUI"
 ```
 
-```bash
+```sh
 sudo ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
 ```
 
-```bash
+```sh
 sudo systemctl isolate graphical.target
 sudo systemctl set-default graphical.target
 ```
 
 RDP server
 
-```bash
+```sh
 sudo yum install -y xrdp tigervnc-server
 ```
 
-```bash
+```sh
 sudo sed -i 's/max_bpp=.*/max_bpp=24/' /etc/xrdp/xrdp.ini
 ```
 
-```bash
+```sh
 cat /etc/xrdp/xrdp.ini | grep max_bpp
 ```
 
 Restart service
 
-```bash
+```sh
 sudo systemctl enable xrdp
 sudo systemctl restart xrdp
 ```

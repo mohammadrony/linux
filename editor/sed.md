@@ -2,10 +2,10 @@
 
 Documentation
 
-```bash
+```sh
 man sed
 ```
 
-```bash
+```sh
 info sed
 ```

@@ -2,20 +2,20 @@
 
 ## Commands
 
-```bash
+```sh
 stat file...
 ```
 
-```bash
+```sh
 getfacl file...
 ```
 
-```bash
+```sh
 cd /media
 sudo mkdir mydir
 sudo setfacl -m u:mydir:rwx myuser
 ```
 
-```bash
+```sh
 setfacl file...
 ```

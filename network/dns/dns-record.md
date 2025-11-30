@@ -11,30 +11,30 @@ Common record types
 
 nslookup
 
-```bash
+```sh
 nslookup example.com
 ```
 
 host
 
-```bash
+```sh
 host example.com
 ```
 
-```bash
+```sh
 host -t A example.com
 ```
 
 dig
 
-```bash
+```sh
 dig example.com
 ```
 
-```bash
+```sh
 dig A example.com
 ```
 
-```bash
+```sh
 dig +short example.com
 ```

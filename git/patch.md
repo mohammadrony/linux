@@ -4,26 +4,26 @@
 
 Current change
 
-```bash
+```sh
 git add .
 git diff > <file>
 ```
 
 Specific commit
 
-```bash
+```sh
 git format-patch -1 <commit>
 ```
 
 Commit to HEAD change
 
-```bash
+```sh
 git format-patch <commit>
 ```
 
 Save patch in directory
 
-```bash
+```sh
 git format-patch -1 <commit> -o <path>
 ```
 
@@ -31,22 +31,22 @@ git format-patch -1 <commit> -o <path>
 
 Check
 
-```bash
+```sh
 git apply --check <file>
 ```
 
 Apply
 
-```bash
+```sh
 git apply <file>
 ```
 
-```bash
+```sh
 git apply --verbose <file>
 ```
 
 Apply in reverse
 
-```bash
+```sh
 git apply -R <file>
 ```

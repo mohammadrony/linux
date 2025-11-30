@@ -2,20 +2,20 @@
 
 ## Update default config
 
-```bash
+```sh
 sudo hostnamectl set-hostname <hostname>
 ```
 
-```bash
+```sh
 sudo timedatectl set-timezone Asia/Dhaka
 ```
 
 ## Package install
 
-```bash
+```sh
 sudo apt install -y build-essential
 ```
 
-```bash
+```sh
 sudo apt install -y ubuntu-restricted-extras
 ```

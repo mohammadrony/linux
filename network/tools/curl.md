@@ -4,7 +4,7 @@
 
 Internet facing ip address (public)
 
-```bash
+```sh
 curl ifconfig.me
 ```
 
@@ -12,56 +12,56 @@ curl ifconfig.me
 
 Quite mode
 
-```bash
+```sh
 curl -s www.example.com
 ```
 
 Save in specific name
 
-```bash
+```sh
 curl -o filename www.example.com
 ```
 
 Save in remote name
 
-```bash
+```sh
 curl -O www.example.com
 ```
 
 Visit redirected url
 
-```bash
+```sh
 curl -L www.example.com
 ```
 
 Get response code
 
-```bash
+```sh
 curl -I www.example.com
 ```
 
 ## Multiple request
 
-```bash
+```sh
 curl http://localhost/path[1-3]
 ```
 
-```bash
+```sh
 curl http://localhost/path{1,2,3}
 ```
 
-```bash
+```sh
 curl http://localhost/path{1,2,3}/subpath[1-3]
 ```
 
 Using xargs
 
-```bash
+```sh
 seq 5 | xargs -I{} curl http://localhost/path{}
 ```
 
 Issue 500 requests with 5 always going in parallel
 
-```bash
+```sh
 seq 100 | xargs -P5 -I{} curl http://localhost/path{}
 ```

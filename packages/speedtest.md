@@ -2,7 +2,7 @@
 
 ## Snap
 
-```bash
+```sh
 sudo snap install speedtest-cli
 ```
 
@@ -10,33 +10,33 @@ Install snapd in [RHEL](./snap.md).
 
 ## Binary
 
-```bash
+```sh
 wget https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-x86_64.tgz -O speedtest-cli.tgz
 tar -zxvf speedtest-cli.tgz
 ./speedtest
 ```
 
-```bash
+```sh
 ```
 
 ## Ubuntu
 
 Package
 
-```bash
+```sh
 sudo apt install -y speedtest
 ```
 
 Script
 
-```bash
+```sh
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh -o install.sh
 
 sudo bash install.sh
 rm -f install.sh
 ```
 
-```bash
+```sh
 speedtest
 ```
 
@@ -44,20 +44,20 @@ speedtest
 
 Package
 
-```bash
+```sh
 sudo yum install -y speedtest
 ```
 
 Script
 
-```bash
+```sh
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.rpm.sh -o install.sh
 
 sudo bash install.sh
 rm -f install.sh
 ```
 
-```bash
+```sh
 speedtest
 ```
 
@@ -65,16 +65,16 @@ speedtest
 
 Ubuntu
 
-```bash
+```sh
 sudo apt remove -y speedtest-cli
 ```
 
 RHEL
 
-```bash
+```sh
 sudo rm /etc/yum.repos.d/ookla_speedtest-cli.repo
 ```
 
-```bash
+```sh
 sudo yum remove -y speedtest
 ```

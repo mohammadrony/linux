@@ -2,7 +2,7 @@
 
 Previous command with sudo
 
-```bash
+```sh
 systemctl restart nginx
 sudo !!
 # sudo systemctl restart nginx
@@ -10,7 +10,7 @@ sudo !!
 
 Previous all argument
 
-```bash
+```sh
 vi filename
 nano !*
 # nano filename
@@ -18,7 +18,7 @@ nano !*
 
 Previous last argument
 
-```bash
+```sh
 ls /var /opt /etc /usr
 cd !$
 # cd /usr

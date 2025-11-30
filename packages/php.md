@@ -4,103 +4,103 @@
 
 ### Ubuntu
 
-```bash
+```sh
 sudo apt install -y software-properties-common
 ```
 
-```bash
+```sh
 sudo add-apt-repository -y ppa:ondrej/php
 ```
 
-```bash
+```sh
 N=7.2 # 8 9
 sudo apt install -y php$N php$N-fpm
 ```
 
-```bash
+```sh
 N=7.2 # 8 9
 sudo apt install -y php$N-fpm php$N-common php$N-cli php$N-curl php$N-xml
 ```
 
-```bash
+```sh
 N=7.2 # 8 9
 sudo systemctl enable --now php$N-fpm
 ```
 
 Version check
 
-```bash
+```sh
 php -v
 ```
 
 Package check
 
-```bash
+```sh
 php -m
 ```
 
 Remove PHP
 
-```bash
+```sh
 sudo apt remove -y "php*"
 ```
 
 ### RHEL
 
-```bash
+```sh
 N=8 # 9
 sudo yum install yum-utils http://rpms.remirepo.net/enterprise/remi-release-$N.rpm
 ```
 
-```bash
+```sh
 N=7.2 # 8 9
 sudo yum module enable -y php:remi-$N
 ```
 
-```bash
+```sh
 sudo yum install -y php
 ```
 
 HTTPD less installation
 
-```bash
+```sh
 sudo yum install -y php-fpm php-common php-cli php-curl
 ```
 
 Start PHP-FPM
 
-```bash
+```sh
 sudo systemctl enable --now php-fpm
 ```
 
 Version check
 
-```bash
+```sh
 php -v
 ```
 
 Package check
 
-```bash
+```sh
 php -m
 ```
 
 Remove PHP
 
-```bash
+```sh
 sudo yum remove -y "php*"
 ```
 
 ## Composer
 
-```bash
+```sh
 curl -sS https://getcomposer.org/installer -o composer-setup.php
 ```
 
-```bash
+```sh
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ```
 
-```bash
+```sh
 composer
 ```

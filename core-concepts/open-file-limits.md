@@ -9,7 +9,7 @@
 
 ### System wide configuration
 
-```bash
+```sh
 sudo vi /etc/sysctl.conf
 ```
 
@@ -44,13 +44,13 @@ net.ipv4.tcp_max_syn_backlog=65536
 fs.inotify.max_user_watches=262144
 ```
 
-```bash
+```sh
 sudo sysctl -p
 ```
 
 ### Process resource limits
 
-```bash
+```sh
 sudo vi /etc/security/limits.conf
 ```
 
@@ -92,7 +92,7 @@ root  hard     nofile     131072
 
 ### System service resources
 
-```bash
+```sh
 sudo vi /etc/systemd/system.conf
 ```
 
@@ -119,7 +119,7 @@ DefaultLimitNPROC=131072
 
 [Optional] User level system service
 
-```bash
+```sh
 sudo vi /etc/systemd/user.conf
 ```
 
@@ -146,7 +146,7 @@ DefaultLimitNPROC=131072
 
 ### Limit apply in new session
 
-```bash
+```sh
 sudo vi /etc/pam.d/common-session
 ```
 
@@ -156,7 +156,7 @@ Add
 session required pam_limits.so
 ```
 
-```bash
+```sh
 sudo vi /etc/pam.d/common-session-noninteractive
 ```
 
@@ -170,26 +170,26 @@ session required pam_limits.so
 
 Daemon reload
 
-```bash
+```sh
 sudo systemctl daemon-reload
 ```
 
 Restart services
 
-```bash
+```sh
 sudo systemctl restart <service-name>
 ```
 
 Reload login session
 
-```bash
+```sh
 sudo systemctl restart systemd-logind
 # exec su -l $USER
 ```
 
 Restart
 
-```bash
+```sh
 sudo reboot now
 ```
 
@@ -197,21 +197,21 @@ sudo reboot now
 
 Kernel parameters
 
-```bash
+```sh
 sysctl -a
 ```
 
-```bash
+```sh
 sysctl fs.file-max
 ```
 
 System configuration
 
-```bash
+```sh
 systemctl show
 ```
 
-```bash
+```sh
 systemctl show --property DefaultLimitNPROC
 systemctl show --property DefaultLimitNOFILE
 ```

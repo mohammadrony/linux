@@ -1,9 +1,9 @@
 # IO Test
 
-```bash
+```sh
 sudo apt install -y bonnie++
 ```
 
-```bash
+```sh
 bonnie
 ```

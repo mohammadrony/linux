@@ -4,25 +4,25 @@
 
 Exit immediately if error return
 
-```bash
+```sh
 set -e
 ```
 
 Treat unset variable as error
 
-```bash
+```sh
 set -u
 ```
 
 Print command before executing
 
-```bash
+```sh
 set -x
 ```
 
 Return error if fail in pipe command
 
-```bash
+```sh
 set -o pipefail
 ```
 
@@ -32,12 +32,12 @@ Using `+` in option will unset this config. i.e. `set +eux`
 
 Print command and exit on error
 
-```bash
+```sh
 set -eux
 ```
 
 Return error and exit including pipe error
 
-```bash
+```sh
 set -euo pipefail
 ```

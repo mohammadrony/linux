@@ -1,22 +1,22 @@
 # OS Architecture
 
-```bash
+```sh
 dpkg --print-architecture
 ```
 
-```bash
+```sh
 uname -m
 ```
 
-```bash
+```sh
 arch
 ```
 
-```bash
+```sh
 lscpu | awk '/Architecture:/{print $2}'
 ```
 
-```bash
+```sh
 architecture=""
 case $(uname -m) in
     i386 | i686)  architecture="386" ;;

@@ -2,7 +2,7 @@
 
 ## User Config
 
-```bash
+```sh
 git config --global user.name 'User Name'
 git config --global user.email 'username@example.com'
 git config --list
@@ -10,6 +10,6 @@ git config --list
 
 ## Disable warning
 
-```bash
+```sh
 git config advice.ignoredHook false
 ```

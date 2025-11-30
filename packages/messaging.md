@@ -2,6 +2,6 @@
 
 Google chat
 
-```bash
+```sh
 sudo snap install google-chat-electron
 ```

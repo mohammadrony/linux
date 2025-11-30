@@ -2,12 +2,12 @@
 
 ## Libre Office
 
-```bash
+```sh
 sudo snap install libreoffice
 ```
 
 ## Only Office
 
-```bash
+```sh
 sudo snap install onlyoffice-desktopeditors
 ```

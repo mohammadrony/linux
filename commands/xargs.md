@@ -2,13 +2,13 @@
 
 ## Commands
 
-```bash
+```sh
 seq 5 | xargs -I{} curl http://localhost/path{}
 ```
 
 Issue 500 requests with 5 always going in parallel
 
-```bash
+```sh
 seq 100 | xargs -P5 -I{} curl http://localhost/path{}
 ```
 

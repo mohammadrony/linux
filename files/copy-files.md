@@ -2,21 +2,21 @@
 
 ## cp
 
-```bash
+```sh
 cp source dest
 ```
 
-```bash
+```sh
 cp -r source/* dest/
 ```
 
 ## cpio
 
-```bash
+```sh
 cpio source dest
 ```
 
-```bash
+```sh
 sudo cpio -iR USER:GROUP -F app.tar.gz
 ```
 
@@ -24,18 +24,18 @@ sudo cpio -iR USER:GROUP -F app.tar.gz
 
 Geeksforgeeks [documentaion](https://www.geeksforgeeks.org/rsync-command-in-linux-with-examples/).
 
-```bash
+```sh
 rsync source dest
 ```
 
-```bash
+```sh
 rsync --ignore-existing
 ````
 
-```bash
+```sh
 rsync -avzh -e ssh --progress --chown=USER:GROUP /foo user@host:/tmp/
 ```
 
-```bash
+```sh
 rsync --ignore-existing -avzh -e ssh --progress /foo user@host:/tmp/ >> log.txt 2>&1
 ```

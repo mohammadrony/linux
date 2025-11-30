@@ -2,13 +2,13 @@
 
 Copy original config
 
-```bash
+```sh
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.orig
 ```
 
 ## Change configuration
 
-```bash
+```sh
 sudo vi /etc/ssh/sshd_config
 ```
 
@@ -33,6 +33,6 @@ sudo vi /etc/ssh/sshd_config
 
 ## Restart SSH service
 
-```bash
+```sh
 sudo systemctl reload ssh
 ```

@@ -2,20 +2,20 @@
 
 ## Setup Default Initial Branch
 
-```bash
+```sh
 git config --global init.defaultBranch main
 ```
 
 ## Create and Switch to New Branch
 
-```bash
+```sh
 git branch feature
 git checkout feature
 ```
 
 Or
 
-```bash
+```sh
 git checkout -b feature
 ```
 
@@ -23,13 +23,13 @@ git checkout -b feature
 
 Local branches
 
-```bash
+```sh
 git branch
 ```
 
 Remote branches
 
-```bash
+```sh
 git branch -r
 ```
 
@@ -37,14 +37,14 @@ git branch -r
 
 Receive updated changes from main branch to feature branch.
 
-```bash
+```sh
 git checkout feature
 git rebase main
 ```
 
 ## Merge feature Branch to main Branch
 
-```bash
+```sh
 git checkout feature
 git add .
 git commit -m "Update feature"
@@ -54,7 +54,7 @@ git merge feature
 
 ## Delete branch
 
-```bash
+```sh
 git branch -d feature
 git push origin :feature
 ```

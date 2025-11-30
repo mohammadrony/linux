@@ -4,58 +4,58 @@
 
 List files
 
-```bash
+```sh
 ls
 ```
 
 List all files
 
-```bash
+```sh
 ls -a
 ls -A # ingore . ..
 ```
 
 Show long listing format of file
 
-```bash
+```sh
 ls -l
 ```
 
 List file in one vertical line
 
-```bash
+```sh
 ls -1
 ```
 
 Print files index number
 
-```bash
+```sh
 ls -i
 ```
 
 Print file size
 
-```bash
+```sh
 ls -lh # size in 1024 power
 ls -l --si # size in 1000 power
 ```
 
 Hide owner and group from long listing format
 
-```bash
+```sh
 ls -log
 ```
 
 Time based sort
 
-```bash
+```sh
 ls -lt
 ls -ltr # reverse order
 ```
 
 Sort by file size
 
-```bash
+```sh
 ls -lS
 ls -lhS # human readable size
 ls -lhSr # reverse order
@@ -63,24 +63,24 @@ ls -lhSr # reverse order
 
 Sort by file extention
 
-```bash
+```sh
 ls -X
 ```
 
 Sorting in reverse order
 
-```bash
+```sh
 ls -lr
 ```
 
 Show file type
 
-```bash
+```sh
 ls -F
 ```
 
 List files recursively
 
-```bash
+```sh
 ls -R
 ```

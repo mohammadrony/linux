@@ -4,11 +4,11 @@
 
 Commands
 
-```bash
+```sh
 sudo apt-add-repository --yes REPOSITORY
 ```
 
-```bash
+```sh
 sudo apt-add-repository --remove --yes REPOSITORY
 ```
 
@@ -16,17 +16,17 @@ sudo apt-add-repository --remove --yes REPOSITORY
 
 Add repository
 
-```bash
+```sh
 sudo add-apt-repository -y -s "deb http://archive.ubuntu.com/ubuntu/ jammy main universe"
 ```
 
-```bash
+```sh
 sudo apt update
 ```
 
 Remove repository
 
-```bash
+```sh
 sudo add-apt-repository -r -y -s "deb http://archive.ubuntu.com/ubuntu/ jammy main universe"
 ```
 
@@ -34,16 +34,16 @@ sudo add-apt-repository -r -y -s "deb http://archive.ubuntu.com/ubuntu/ jammy ma
 
 Upgrade all package
 
-```bash
+```sh
 sudo apt upgrade -y
 ```
 
 Upgrade specific package
 
-```bash
+```sh
 sudo apt install -y PACKAGE
 ```
 
-```bash
+```sh
 sudo apt install -y PACKAGE=VERSION*
 ```

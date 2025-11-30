@@ -2,7 +2,7 @@
 
 ## File size
 
-```bash
+```sh
 du *.zip
 ```
 
@@ -10,26 +10,26 @@ du *.zip
 
 Exclude specific directory
 
-```bash
+```sh
 sudo du -sh ./* --exclude /home
 ```
 
-```bash
+```sh
 sudo du -hcsx -- /* | sort -rh
 ```
 
 Highest directory size including hidden files
 
-```bash
+```sh
 sudo du -hcsx -- .[!.]* /* | sort -rh
 ```
 
 ## dutop
 
-```bash
+```sh
 curl -O -L http://www.pixelbeat.org/scripts/dutop
 ```
 
-```bash
+```sh
 python dutop
 ```

@@ -1,5 +1,5 @@
 # traceroute
 
-```bash
+```sh
 traceroute <host>
 ```

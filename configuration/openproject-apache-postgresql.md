@@ -1,6 +1,6 @@
 # OpenProject setup with Apache and PostgreSQL
 
-```bash
+```sh
 sudo hostnamectl set-hostname example.com
 sudo timedatectl set-timezone Asia/Dhaka
 sudo reboot now
@@ -10,7 +10,7 @@ sudo reboot now
 
 ### Install PostgreSQL 17
 
-```bash
+```sh
 sudo sh -c 'echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 sudo wget -O /etc/apt/trusted.gpg.d/postgresql.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg -
@@ -20,7 +20,7 @@ sudo apt install -y postgresql-17
 
 ### Update configuration
 
-```bash
+```sh
 sudo cp /etc/postgresql/17/main/postgresql.conf /etc/postgresql/17/main/postgresql.conf.orig
 sudo vi /etc/postgresql/17/main/postgresql.conf
 ```
@@ -29,18 +29,18 @@ sudo vi /etc/postgresql/17/main/postgresql.conf
 listen_addresses = 'localhost'
 ```
 
-```bash
+```sh
 sudo systemctl restart postgresql
 sudo systemctl status postgresql
 ```
 
-```bash
+```sh
 sudo pg_lsclusters
 ```
 
 ### Create database and user
 
-```bash
+```sh
 sudo -u postgres psql
 # sudo -u postgres psql --port 5432
 ```
@@ -70,31 +70,31 @@ GRANT ALL PRIVILEGES ON DATABASE openproject TO openproject;
 
 ### Install packages
 
-```bash
+```sh
 sudo apt update
 sudo apt install -y apt-transport-https ca-certificates wget net-tools
 ```
 
-```bash
+```sh
 sudo wget -O /etc/apt/trusted.gpg.d/openproject.asc https://dl.packager.io/srv/opf/openproject/key
 ```
 
-```bash
+```sh
 sudo wget -O /etc/apt/sources.list.d/openproject.list https://dl.packager.io/srv/opf/openproject/stable/13/installer/ubuntu/22.04.repo
 ```
 
-```bash
+```sh
 sudo apt update
 sudo apt install -y openproject
 ```
 
 ### Openproject configure
 
-```bash
+```sh
 sudo openproject config:set DATABASE_URL="postgresql://openproject:1password1@localhost:5432/openproject"
 ```
 
-```bash
+```sh
 sudo openproject reconfigure
 sudo openproject configure
 ```
@@ -134,13 +134,13 @@ Configure OpenProject with SSL certificate
 
 ### Install Apache certbot
 
-```bash
+```sh
 sudo apt install -y python3-certbot-apache
 ```
 
 Get SSL Certificates
 
-```bash
+```sh
 sudo certbot certonly --apache
 ```
 
@@ -154,25 +154,25 @@ sudo certbot certonly --apache
 
 Verify Certbot auto renewal
 
-```bash
+```sh
 systemctl list-timers
 sudo systemctl status certbot.timer
 ```
 
 Certificate renew command
 
-```bash
+```sh
 sudo certbot renew --dry-run
 ```
 
 Update Apache configuration
 
-```bash
+```sh
 sudo cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf.orig
 sudo echo "ServerName example.com" >> /etc/apache2/apache2.conf
 ```
 
-```bash
+```sh
 sudo vi /etc/apache2/sites-enabled/openproject.conf
 ```
 
@@ -186,7 +186,7 @@ IncludeOptional /etc/openproject/addons/apache2/custom/server/*.conf
 </VirtualHost>
 ```
 
-```bash
+```sh
 sudo systemctl restart apache2
 sudo systemctl status apache2
 ```
@@ -238,25 +238,25 @@ server {
 
 ### Install Nginx certbot
 
-```bash
+```sh
 sudo apt install -y python3-certbot-nginx
 ```
 
 Get SSL Certificate
 
-```bash
+```sh
 sudo certbot --nginx -d example.com
 ```
 
 Verify Certbot auto renewal
 
-```bash
+```sh
 systemctl list-timers
 sudo systemctl status certbot.timer
 ```
 
 Certificate renew command
 
-```bash
+```sh
 sudo certbot renew --dry-run
 ```

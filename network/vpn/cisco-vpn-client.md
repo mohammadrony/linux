@@ -2,20 +2,20 @@
 
 ## Package setup
 
-```bash
+```sh
 sudo apt install -y openvpn openconnect vpnc network-manager-openconnect-gnome
 ```
 
 Save [vpnc-script](https://gitlab.com/openconnect/vpnc-scripts/raw/master/vpnc-script) in `/etc/vpnc/vpnc-script` file.
 
-```bash
+```sh
 sudo curl -so /etc/vpnc/vpnc-script https://gitlab.com/openconnect/vpnc-scripts/raw/master/vpnc-script
 sudo chmod +x /etc/vpnc/vpnc-script
 ```
 
 Add `myvpn` function in `~/.bash_functions` and `~/.zsh_functions`.
 
-```bash
+```sh
 myvpn () {
   if [[ $# -gt 0 && $1 == 'vpn1' ]]; then
     VPNUSER=VPN1_USER
@@ -40,7 +40,7 @@ myvpn () {
 
 Example command
 
-```bash
+```sh
 /opt/cisco/anyconnect/bin/vpn -s connect <host> << EOF
 0
 <username>

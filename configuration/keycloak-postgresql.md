@@ -2,11 +2,11 @@
 
 ## Install Packages
 
-```bash
+```sh
 sudo apt install -y openjdk-17-jdk openjdk-17-jre
 ```
 
-```bash
+```sh
 # Update ~/.bashrc and ~/.zshrc
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export PATH=$PATH:$JAVA_HOME/bin
@@ -14,7 +14,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 Find latest keycloak version from [here](https://github.com/keycloak/keycloak/releases/).
 
-```bash
+```sh
 VERSION=23.0.6
 wget https://github.com/keycloak/keycloak/releases/download/$VERSION/keycloak-$VERSION.tar.gz -O keycloak-$VERSION.tar.gz
 tar -xvf keycloak-$VERSION.tar.gz
@@ -23,7 +23,7 @@ sudo mv keycloak-$VERSION /opt/keycloak
 
 Setup keycloak files
 
-```bash
+```sh
 cd /opt
 
 sudo groupadd keycloak
@@ -37,7 +37,7 @@ sudo chmod o+x /opt/keycloak/bin
 
 Create a service in the system
 
-```bash
+```sh
 cd /etc/systemd/system
 sudo vi keycloak.service
 ```
@@ -63,7 +63,7 @@ WantedBy=multi-user.target
 
 Start keycloak service
 
-```bash
+```sh
 sudo systemctl daemon-reload
 sudo systemctl start keycloak.service
 sudo systemctl status keycloak.service
@@ -71,7 +71,7 @@ sudo systemctl status keycloak.service
 
 ## Database setup
 
-```bash
+```sh
 sudo sh -c 'echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 sudo wget -O /etc/apt/trusted.gpg.d/postgresql.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg -
@@ -83,7 +83,7 @@ sudo apt install -y postgresql-17
 
 Allow external server connection
 
-```bash
+```sh
 sudo cp /etc/postgresql/17/main/postgresql.conf /etc/postgresql/17/main/postgresql.conf.orig
 sudo vi /etc/postgresql/17/main/postgresql.conf
 ```
@@ -92,16 +92,16 @@ sudo vi /etc/postgresql/17/main/postgresql.conf
 listen_addresses = '*'
 ```
 
-```bash
+```sh
 sudo systemctl restart postgresql
 sudo systemctl status postgresql
 ```
 
-```bash
+```sh
 sudo pg_lsclusters
 ```
 
-```bash
+```sh
 sudo -i -u postgres psql
 ```
 
@@ -119,7 +119,7 @@ GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
 
 ## Keycloak configuration
 
-```bash
+```sh
 sudo vi /opt/keycloak/conf/keycloak.conf
 ```
 
@@ -140,20 +140,20 @@ log=file
 log-file=/var/log/keycloak.log
 ```
 
-```bash
+```sh
 sudo /opt/keycloak/bin/kc.sh build
 ```
 
 Restart keycloak service
 
-```bash
+```sh
 sudo systemctl daemon-reload
 sudo systemctl restart keycloak
 ```
 
 Apache proxy configuration
 
-```bash
+```sh
 sudo vi /etc/apache2/sites-available/keycloak.conf
 ```
 
@@ -187,7 +187,7 @@ sudo vi /etc/apache2/sites-available/keycloak.conf
 
 Enable keycloak proxy service
 
-```bash
+```sh
 sudo apachectl configtest
 sudo a2ensite keycloak
 sudo systemctl reload apache2

@@ -6,7 +6,7 @@
 
 ## Installation
 
-```bash
+```sh
 npm install -g pm2
 ```
 
@@ -14,26 +14,26 @@ npm install -g pm2
 
 Application list
 
-```bash
+```sh
 pm2 list
 ```
 
 Start application
 
-```bash
+```sh
 pm2 start app.js
 ```
 
 Auto restart service
 
-```bash
+```sh
 pm2 startup
 ```
 
-```bash
+```sh
 sudo env PATH=$PATH:...
 ```
 
-```bash
+```sh
 pm2 save
 ```

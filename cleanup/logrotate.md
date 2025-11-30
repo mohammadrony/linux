@@ -2,7 +2,7 @@
 
 ## Install logrotate
 
-```bash
+```sh
 sudo apt install -y logrotate
 ```
 
@@ -10,7 +10,7 @@ sudo apt install -y logrotate
 
 Log directory
 
-```bash
+```sh
 sudo mkdir -p /opt/tomcat/logs/archive
 sudo chown tomcat:tomcat /opt/tomcat/logs/archive
 sudo chmod 755 /opt/tomcat/logs/archive
@@ -18,7 +18,7 @@ sudo chmod 755 /opt/tomcat/logs/archive
 
 Create rotation config
 
-```bash
+```sh
 sudo vi /etc/logrotate.d/tomcat
 ```
 
@@ -56,13 +56,13 @@ logrotate for 7 days of uncompressed then 90 days of compressed log
 
 Debug or test config file
 
-```bash
+```sh
 sudo logrotate -d /etc/logrotate.d/tomcat
 ```
 
 Log rotate using command
 
-```bash
+```sh
 sudo logrotate -f /etc/logrotate.d/tomcat
 ```
 
@@ -70,17 +70,17 @@ sudo logrotate -f /etc/logrotate.d/tomcat
 
 Update log directory permission
 
-```bash
+```sh
 sudo chown root /var/www/*/content/logs
 ```
 
-```bash
+```sh
 sudo chmod 755 /var/www/*/content/logs
 ```
 
 Create rotation config
 
-```bash
+```sh
 sudo vi /etc/logrotate.d/ghost
 ```
 
@@ -108,12 +108,12 @@ logrotate for 30 days compressed
 
 Debug or test config file
 
-```bash
+```sh
 sudo logrotate -d /etc/logrotate.d/ghost
 ```
 
 Log rotate using command
 
-```bash
+```sh
 sudo logrotate -f /etc/logrotate.d/ghost
 ```

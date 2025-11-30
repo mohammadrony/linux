@@ -4,43 +4,43 @@
 
 File
 
-```bash
+```sh
 lsof <file>
 ```
 
 Directory
 
-```bash
+```sh
 lsof +d <directory>
 ```
 
 Recursive directory
 
-```bash
+```sh
 lsof +D <directory>
 ```
 
 Command
 
-```bash
+```sh
 lsof -c <command>
 ```
 
 User
 
-```bash
+```sh
 lsof -u <user>
 ```
 
 PID
 
-```bash
+```sh
 lsof -p <pid>
 ```
 
 Multiple argument
 
-```bash
+```sh
 lsof -d <directory> -a -c <command>
 ```
 
@@ -48,34 +48,34 @@ lsof -d <directory> -a -c <command>
 
 Internet protocol
 
-```bash
+```sh
 lsof -i 4
 ```
 
-```bash
+```sh
 lsof -i 6
 ```
 
 Port connection
 
-```bash
+```sh
 lsof -Pi :<port>
 ```
 
 Network address
 
-```bash
+```sh
 lsof -Pni :<port>
 ```
 
 IP address connection
 
-```bash
+```sh
 lsof -Pni @127.0.0.1
 ```
 
 Multiple argument
 
-```bash
+```sh
 lsof -c <command> -a -Pni
 ```

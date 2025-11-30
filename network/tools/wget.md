@@ -2,18 +2,18 @@
 
 Save in remote name
 
-```bash
+```sh
 wget https://example.com/
 ```
 
 Save log in file
 
-```bash
+```sh
 wget -o logfile https://example.com/
 ```
 
 Save in specific name
 
-```bash
+```sh
 wget -O filename https://example.com/
 ```

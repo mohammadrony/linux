@@ -4,7 +4,7 @@
 
 Prefer password authentication
 
-```bash
+```sh
 sudo vi /etc/ssh/ssh_config
 ```
 
@@ -16,7 +16,7 @@ PreferredAuthentications password,publickey
 
 Set ssh file for host
 
-```bash
+```sh
 vi ~/.ssh/config
 ```
 

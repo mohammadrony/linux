@@ -7,13 +7,13 @@
 
 ### Install Dovecot packages
 
-```bash
+```sh
 sudo apt install -y dovecot-imapd dovecot-pop3d
 ```
 
 ### Start Dovecot service
 
-```bash
+```sh
 sudo systemctl enable --now dovecot
 sudo systemctl status dovecot
 ```
@@ -22,19 +22,19 @@ sudo systemctl status dovecot
 
 Generate certificate
 
-```bash
+```sh
 sudo openssl req -x509 -nodes -newkey rsa:2048 -days 3650 -keyout /etc/ssl/private/mail.example.com.key \
   -out /etc/ssl/certs/mail.example.com.crt -subj "/C=BD/ST=Dhaka/L=Dhaka/O=Security/OU=IT/CN=mail.example.com"
 ```
 
 Copy let's encrypt certificate
 
-```bash
+```sh
 sudo cp /etc/letsencrypt/live/mail.example.com/fullchain.pem /etc/ssl/certs/mail.example.com.crt
 sudo cp /etc/letsencrypt/live/mail.example.com/privkey.pem  /etc/ssl/private/mail.example.com.key
 ```
 
-```bash
+```sh
 sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.bak
 sudo vi /etc/postfix/main.cf
 ```
@@ -93,7 +93,7 @@ Reserved config for real certificate
 
 ### Update Postfix setup
 
-```bash
+```sh
 sudo cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
 sudo vi /etc/postfix/master.cf
 ```
@@ -113,7 +113,7 @@ submission inet n       -       n       -       -       smtpd
 
 ### Update Dovecot configuration
 
-```bash
+```sh
 sudo mv /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf.orig
 # empty file
 sudo vi /etc/dovecot/dovecot.conf
@@ -174,21 +174,21 @@ namespace inbox {
 
 Restart Services
 
-```bash
+```sh
 sudo systemctl restart postfix
 sudo systemctl restart dovecot
 ```
 
 Status check
 
-```bash
+```sh
 sudo systemctl status postfix
 sudo systemctl status dovecot
 ```
 
 ## Send Email
 
-```bash
+```sh
 mail <user>@example.com
 > Cc: <enter>
 > Subject: <Subject line>
@@ -198,10 +198,10 @@ mail <user>@example.com
 > ^D
 ```
 
-```bash
+```sh
 echo "Subject: Test" | sendmail -v user@example.com
 ```
 
-```bash
+```sh
 swaks --auth-user=user --auth-password=password --tls --server mail.example.com:587
 ```

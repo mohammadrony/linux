@@ -2,12 +2,12 @@
 
 ## Installation
 
-```bash
+```sh
 sudo apt install -y gnome-shell-extensions
 sudo apt install -y gnome-shell-extension-manager
 ```
 
-```bash
+```sh
 # Task widget dependency
 sudo apt install -y gir1.2-edataserver-1.2 gir1.2-ecal-2.0 gir1.2-ical-3.0
 gnome-session-quit

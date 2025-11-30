@@ -2,21 +2,21 @@
 
 ## Initialize Repository
 
-```bash
+```sh
 git config --global init.defaultBranch main
 git init
 ```
 
 ## Set Remote URL
 
-```bash
+```sh
 git remote add origin https://github.com/username/repository.git
 git remove set-url origin https://github.com/username/repository.git
 ```
 
 ## Config User for commit
 
-```bash
+```sh
 git config --global user.email "user@example.com"
 git config --global user.name "User Name"
 ```
@@ -25,24 +25,24 @@ git config --global user.name "User Name"
 
 ### Create new commit
 
-```bash
+```sh
 git add .
 git commit -m "Commit message." -m "Commit description."
 ```
 
-```bash
+```sh
 git commit -a -m "Commit message."
 ```
 
 ## Add Changes to Previous Commit
 
-```bash
+```sh
 git commit --amend --no-edit
 ```
 
 ## Pull Changes from Remote Repository
 
-```bash
+```sh
 git pull origin main
 ```
 
@@ -50,12 +50,12 @@ git pull origin main
 
 Publish regular changes.
 
-```bash
+```sh
 git push origin main
 ```
 
 Override commits in remote repository
 
-```bash
+```sh
 git push -f origin main
 ```

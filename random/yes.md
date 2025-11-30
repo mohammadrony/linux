@@ -2,10 +2,10 @@
 
 Repeat text infinitely
 
-```bash
+```sh
 yes
 ```
 
-```bash
+```sh
 yes text
 ```

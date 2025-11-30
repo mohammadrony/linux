@@ -4,17 +4,17 @@
 
 Package setup
 
-```bash
+```sh
 sudo apt install -y nfs-kernel-server
 ```
 
-```bash
+```sh
 sudo systemctl enable --now nfs-kernel-server
 ```
 
 Export mountpoint
 
-```bash
+```sh
 sudo tee -a /etc/exports << EOF
 /srv    *(ro,sync,subtree_check)
 /home   *(rw,sync,no_subtree_check)
@@ -22,7 +22,7 @@ sudo tee -a /etc/exports << EOF
 EOF
 ```
 
-```bash
+```sh
 sudo exportfs -a
 ```
 
@@ -32,53 +32,53 @@ sudo exportfs -a
 
 Ubuntu
 
-```bash
+```sh
 sudo apt install -y nfs-common
 ```
 
 CentOS
 
-```bash
+```sh
 sudo dnf install -y nfs-utils
 ```
 
-```bash
+```sh
 sudo mkdir /appdata
 sudo mount -t nfs 10.0.0.2:/nfs /appdata
 ```
 
-```bash
+```sh
 sudo tee -a /etc/fstab << EOF
 10.0.0.2:/nfs     /appdata    nfs     defaults   0 0
 EOF
 ```
 
-```bash
+```sh
 sudo mount -a
 ```
 
-```bash
+```sh
 df -h
 ```
 
 ### Unmount
 
-```bash
+```sh
 sudo umount /appdata
 ```
 
 Lazy unmount
 
-```bash
+```sh
 sudo umount -l /appdata
 ```
 
 Force an unmount
 
-```bash
+```sh
 sudo umount -f /appdata
 ```
 
-```bash
+```sh
 sudo umount -f -l /appdata
 ```

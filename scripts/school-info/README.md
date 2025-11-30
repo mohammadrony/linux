@@ -2,7 +2,7 @@
 
 ## Get EIIN No
 
-```bash
+```sh
 # both of them work identical but expressions are different
 sed -E 's/[0-9]+\s+A([0-9]{6}).*/\1/' ./ntrca_apply.txt | sort | uniq > ./EIIN.txt
 sed 's/^\S*\s*A\([0-9]\{6\}\).*/\1/' ./ntrca_apply.txt | sort | uniq > ./EIIN.txt
@@ -10,7 +10,7 @@ sed 's/^\S*\s*A\([0-9]\{6\}\).*/\1/' ./ntrca_apply.txt | sort | uniq > ./EIIN.tx
 
 ## School information from EIIN
 
-```bash
+```sh
 
 while read EIIN; do curl http://example.com/BANBEISR/getGenInfoEntryFormVarification1School.do\?eiin\=$EIIN\&\&year\=2020 |
   grep 'name="eiin"\|mpoCodeSchool\|instituteNameNew\|width:170px;' |
@@ -21,7 +21,7 @@ while read EIIN; do curl http://example.com/BANBEISR/getGenInfoEntryFormVarifica
 
 ## School MPO code by EIIN
 
-```bash
+```sh
 
 while read EIIN; do
   curl http://example.com/BANBEISR/getGenInfoEntryFormVarification1School.do\?eiin\=$EIIN\&\&year\=2020 |

@@ -7,6 +7,6 @@
 
 Remount filesystem in read write mode
 
-```bash
+```sh
 mount -o remount,rw /
 ```

@@ -8,26 +8,26 @@ Installation notes
 
 ## PHP
 
-```bash
+```sh
 sudo apt update
 ```
 
-```bash
+```sh
 sudo apt install -y php ghostscript php-bcmath php-curl php-imagick php-intl php-json php-mbstring php-mysql php-xml php-zip php-cli php-fpm php-opcache php-gd
 ```
 
-```bash
+```sh
 sudo systemctl enable --now php-fpm
 sudo systemctl status php-fpm
 ```
 
 ## MySQL
 
-```bash
+```sh
 sudo apt install -y mysql-server
 ```
 
-```bash
+```sh
 sudo mysql -u root -p
 ```
 
@@ -42,23 +42,23 @@ GRANT ALL PRIVILEGES ON wordpressdb.* TO 'wp_user'@'localhost'
 
 ## Application
 
-```bash
+```sh
 cd /var/www/
 sudo wget https://wordpress.org/latest.tar.gz
 sudo tar -xvzf latest.tar.gz
 sudo rm -rf latest.tar.gz
 ```
 
-```bash
+```sh
 sudo chown -R www-data: /var/www/wordpress/
 ```
 
-```bash
+```sh
 cd /var/www/wordpress
 sudo cp wp-config-sample.php wp-config.php
 ```
 
-```bash
+```sh
 sudo sed -i 's/database_name_here/wordpressdb/' wp-config.php
 sudo sed -i 's/username_here/wp_user/' wp-config.php
 sudo sed -i 's/password_here/wp_password/' wp-config.php
@@ -67,7 +67,7 @@ sudo sed -i 's/localhost/localhost/' wp-config.php
 
 ## Nginx
 
-```bash
+```sh
 sudo apt install -y nginx
 ```
 
@@ -118,22 +118,22 @@ server {
 EOF
 ```
 
-```bash
+```sh
 cd ../sites-enabled/
 sudo ln -s ../sites-available/wordpress.conf ./
 ``
 
-```bash
+```sh
 sudo systemctl reload nginx
 ```
 
 Certificate
 
-```bash
+```sh
 sudo apt install -y certbot python3-certbot-nginx
 ```
 
-```bash
+```sh
 sudo certbot --nginx -d www.example.com
 ```
 

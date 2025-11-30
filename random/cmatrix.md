@@ -2,12 +2,12 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y cmatrix
 ```
 
 Commands
 
-```bash
+```sh
 cmatrix
 ```

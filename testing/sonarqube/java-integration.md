@@ -2,7 +2,7 @@
 
 ## SpringBoot Maven
 
-```bash
+```sh
 vi pom.xml
 ```
 
@@ -57,7 +57,7 @@ vi pom.xml
 
 Run analysis
 
-```bash
+```sh
 mvn clean verify sonar:sonar \
   -Dsonar.scm.provider=git \
   -Dsonar.projectKey=project-key \

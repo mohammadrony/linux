@@ -2,7 +2,7 @@
 
 ## Installation
 
-```bash
+```sh
 curl https://dl.min.io/client/mc/release/linux-amd64/mc \
   --create-dirs \
   -o $HOME/.minio-binaries/mc
@@ -10,14 +10,14 @@ curl https://dl.min.io/client/mc/release/linux-amd64/mc \
 chmod +x $HOME/.minio-binaries/mc
 ```
 
-```bash
+```sh
 # Update ~/.bashrc and ~/.zshrc
 export PATH=$PATH:$HOME/.minio-binaries/
 ```
 
 ## Usage
 
-```bash
+```sh
 mc --help
 ```
 
@@ -25,19 +25,19 @@ mc --help
 
 Add Minio Host
 
-```bash
+```sh
 mc alias set MINIO $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY
 ```
 
 List targets
 
-```bash
+```sh
 mc alias list
 ```
 
 Remove target
 
-```bash
+```sh
 mc alias remove MINIO
 ```
 
@@ -45,17 +45,17 @@ mc alias remove MINIO
 
 Minio information
 
-```bash
+```sh
 mc admin info MINIO
 ```
 
 ### List
 
-```bash
+```sh
 mc ls
 ```
 
-```bash
+```sh
 mc ls MINIO/bucket
 ```
 
@@ -63,13 +63,13 @@ mc ls MINIO/bucket
 
 Create bucket
 
-```bash
+```sh
 mc mb MINIO/bucket
 ```
 
 Remove bucket
 
-```bash
+```sh
 mc rb MINIO/bucket
 ```
 
@@ -77,19 +77,19 @@ mc rb MINIO/bucket
 
 Test run remove files
 
-```bash
+```sh
 mc rm --dry-run MINIO/bucket/a.txt
 ```
 
 Remove files
 
-```bash
+```sh
 mc rm MINIO/bucket/a.txt
 ```
 
 Remove files recursively
 
-```bash
+```sh
 mc rm -r --force MINIO/bucket/files
 ```
 
@@ -97,40 +97,40 @@ mc rm -r --force MINIO/bucket/files
 
 Copy files locally
 
-```bash
+```sh
 mc cp a.txt b.txt
 ```
 
 Copy local to MINIO server
 
-```bash
+```sh
 mc cp -r files MINIO/bucket/
 ```
 
-```bash
+```sh
 mc cp a.txt MINIO/bucket/b.txt
 ```
 
 Copy file between servers
 
-```bash
+```sh
 mc cp -r MINIO1/bucket1 MINIO2/bucket2/files/
 ```
 
-```bash
+```sh
 mc cp MINIO1/bucket1/a.txt MINIO2/bucket2/b.txt
 ```
 
 ### Trace
 
-```bash
+```sh
 mc admin trace --help
 ```
 
-```bash
+```sh
 mc admin trace MINIO
 ```
 
-```bash
+```sh
 mc admin trace -v MINIO > MINIO.log &
 ```

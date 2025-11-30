@@ -2,38 +2,38 @@
 
 Running service in TCP port
 
-```bash
+```sh
 netstat -nltp
 ```
 
 Scan open ports
 
-```bash
+```sh
 nmap <host>
 ```
 
-```bash
+```sh
 nmap -p <port> <host>
 ```
 
-```bash
+```sh
 nmap -p 1-65535 <host>
 ```
 
 Connect to a port
 
-```bash
+```sh
 telnet <host> <port>
 ```
 
-```bash
+```sh
 ncat -vz <host> <port>
 ```
 
-```bash
+```sh
 nc -vz <host> <port>
 ```
 
-```bash
+```sh
 nc -vz -w3 <host> <port>
 ```

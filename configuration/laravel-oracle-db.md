@@ -4,21 +4,21 @@
 
 Install PHP
 
-```bash
+```sh
 sudo apt install -y software-properties-common
 ```
 
-```bash
+```sh
 sudo add-apt-repository -y ppa:ondrej/php
 ```
 
-```bash
+```sh
 sudo apt install -y php7.4 php7.4-fpm php7.4-common php7.4-cli php7.4-mbstring php7.4-curl php7.4-xml php7.4-bcmath php7.4-gd php7.4-zip
 ```
 
 Start PHP7.4-FPM
 
-```bash
+```sh
 sudo systemctl enable --now php7.4-fpm
 ```
 
@@ -26,65 +26,65 @@ Install SQLplus
 
 Download [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client/downloads.html)
 
-```bash
+```sh
 wget https://download.oracle.com/otn_software/linux/instantclient/1922000/instantclient-basic-linux.x64-19.22.0.0.0dbru.zip -O instantclient-basic-linux.zip
 wget https://download.oracle.com/otn_software/linux/instantclient/1922000/instantclient-sqlplus-linux.x64-19.22.0.0.0dbru.zip -O instantclient-sqlplus-linux.zip
 wget https://download.oracle.com/otn_software/linux/instantclient/1922000/instantclient-sdk-linux.x64-19.22.0.0.0dbru.zip -O instantclient-sdk-linux.zip
 ```
 
-```bash
+```sh
 sudo mkdir -p /usr/lib/oracle/19.22/client64
 ```
 
-```bash
+```sh
 sudo unzip -o instantclient-basic-linux.zip -d /usr/lib/oracle/19.22/client64/
 sudo unzip -o instantclient-sqlplus-linux.zip -d /usr/lib/oracle/19.22/client64/
 sudo unzip -o instantclient-sdk-linux.zip -d /usr/lib/oracle/19.22/client64/
 ```
 
-```bash
+```sh
 # # Not sure if needed
 # wget https://download.oracle.com/otn_software/linux/instantclient/1922000/instantclient-odbc-linux.x64-19.22.0.0.0dbru.zip -O instantclient-odbc-linux.zip
 
 # sudo unzip -o instantclient-odbc-linux.zip -d /usr/lib/oracle/19.22/client64/
 ```
 
-```bash
+```sh
 cd /usr/lib/oracle/19.22/client64
 ```
 
-```bash
+```sh
 sudo mv instantclient_19_22 lib
 ```
 
-```bash
+```sh
 cd lib
 sudo ln -sf libclntsh.so.19.1 libclntsh.so
 sudo ln -sf libocci.so.19.1 libocci.so
 ```
 
-```bash
+```sh
 echo '/usr/lib/oracle/19.22/client64/lib' | sudo tee -a /etc/ld.so.conf.d/oracle.conf
 ```
 
-```bash
+```sh
 sudo ldconfig
 ```
 
 Install oci8
 
-```bash
+```sh
 sudo apt install -y build-essential php-pear php7.4-dev libaio1 libapache2-mod-php7.4
 ```
 
 [oci8 install](http://pecl.php.net/package/oci8)
 
-```bash
+```sh
 sudo pecl channel-update pecl.php.net
 echo "instantclient,/usr/lib/oracle/19.22/client64/lib" | sudo pecl install oci8-2.2.0 # PHP = 7
 ```
 
-```bash
+```sh
 echo "extension=oci8.so" | sudo tee -a /etc/php/7.4/fpm/php.ini
 echo "extension=oci8.so" | sudo tee -a /etc/php/7.4/cli/php.ini
 echo "extension=oci8.so" | sudo tee -a /etc/php/7.4/apache2/php.ini
@@ -92,57 +92,57 @@ echo "extension=oci8.so" | sudo tee -a /etc/php/7.4/apache2/php.ini
 
 Library path environment setup
 
-```bash
+```sh
 # Update in .bashrc and .zshrc
 export LD_LIBRARY_PATH=/usr/lib/oracle/19.22/client64/lib:$LD_LIBRARY_PATH
 ```
 
-```bash
+```sh
 echo 'LD_LIBRARY_PATH=/usr/lib/oracle/19.22/client64/lib:$LD_LIBRARY_PATH' | sudo tee -a /etc/environment
 ```
 
-```bash
+```sh
 sudo systemctl restart php7.4-fpm
 ```
 
 Check status
 
-```bash
+```sh
 php -v
 php -m
 ```
 
 Install composer
 
-```bash
+```sh
 curl -sS https://getcomposer.org/installer -o composer-setup.php
 ```
 
-```bash
+```sh
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ```
 
-```bash
+```sh
 composer
 ```
 
-```bash
+```sh
 composer install
 ```
 
 Generate php files
 
-```bash
+```sh
 composer dump-autoload
 ```
 
-```bash
+```sh
 php artisan optimize
 ```
 
 Remove PHP
 
-```bash
+```sh
 sudo apt purge "php*"
 ```
 
@@ -150,26 +150,26 @@ sudo apt purge "php*"
 
 Install PHP
 
-```bash
+```sh
 sudo yum install -y epel-release
 sudo yum install -y curl unzip tree
 ```
 
-```bash
+```sh
 sudo yum install yum-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
 ```
 
-```bash
+```sh
 sudo yum module enable -y php:remi-7.4
 ```
 
-```bash
+```sh
 sudo yum install -y php php-fpm php-common php-cli php-mbstring php-curl php-xml php-bcmath php-pdo php-gd php-zip
 ```
 
 Start PHP-FPM
 
-```bash
+```sh
 sudo systemctl enable --now php-fpm
 ```
 
@@ -177,19 +177,19 @@ Install SQLplus
 
 Download [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client/downloads.html)
 
-```bash
+```sh
 wget https://download.oracle.com/otn_software/linux/instantclient/1922000/oracle-instantclient19.22-basic-19.22.0.0.0-1.x86_64.rpm -O oracle-instantclient19.22-basic.rpm
 wget https://download.oracle.com/otn_software/linux/instantclient/1922000/oracle-instantclient19.22-sqlplus-19.22.0.0.0-1.x86_64.rpm -O oracle-instantclient19.22-sqlplus.rpm
 wget https://download.oracle.com/otn_software/linux/instantclient/1922000/oracle-instantclient19.22-devel-19.22.0.0.0-1.x86_64.rpm -O oracle-instantclient19.22-devel.rpm
 ```
 
-```bash
+```sh
 sudo yum install -y oracle-instantclient19.22-basic.rpm
 sudo yum install -y oracle-instantclient19.22-sqlplus.rpm
 sudo yum install -y oracle-instantclient19.22-devel.rpm
 ```
 
-```bash
+```sh
 # # Not sure if needed
 # wget https://download.oracle.com/otn_software/linux/instantclient/1922000/oracle-instantclient19.22-odbc-19.22.0.0.0-1.x86_64.rpm -O oracle-instantclient19.22-odbc.rpm
 
@@ -200,75 +200,75 @@ Install oci8
 
 [Installation guide](https://linux.uits.uconn.edu/2020/03/06/php-and-oci8-installation-for-rhel8/)
 
-```bash
+```sh
 sudo yum install -y libnsl php-pear systemtap-sdt-devel
 ```
 
-```bash
+```sh
 # # Not sure if needed
 # sudo dnf config-manager --set-enabled powertools
 # sudo yum install -y libedit-devel php-devel gcc curl-devel zlib-devel pcre-devel php-pecl-http
 ```
 
-```bash
+```sh
 sudo setenforce 0
 ```
 
 [oci8 install](http://pecl.php.net/package/oci8)
 
-```bash
+```sh
 echo "instantclient,/usr/lib/oracle/19.22/client64/lib" | sudo PHP_DTRACE=yes pecl install oci8-2.2.0 # PHP = 7
 ```
 
-```bash
+```sh
 sudo su
 
 echo extension=oci8.so >> /etc/php.ini
 ```
 
-```bash
+```sh
 sudo systemctl restart php-fpm
 ```
 
 Check status
 
-```bash
+```sh
 php -v
 php -m
 ```
 
 Install composer
 
-```bash
+```sh
 curl -sS https://getcomposer.org/installer -o composer-setup.php
 ```
 
-```bash
+```sh
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ```
 
-```bash
+```sh
 composer
 ```
 
-```bash
+```sh
 composer install
 ```
 
 Generate php files
 
-```bash
+```sh
 composer dump-autoload
 ```
 
 Optimize for production
 
-```bash
+```sh
 php artisan optimize
 ```
 
 Remove PHP
 
-```bash
+```sh
 sudo yum remove "php*""
 ```

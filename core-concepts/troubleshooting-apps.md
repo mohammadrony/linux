@@ -8,15 +8,15 @@
 
 3. Changing file permission without chmod.
 
-   ```bash
+   ```sh
    /lib/ld-linux.so /bin/chmod +x /path/to/file
    ```
 
-   ```bash
+   ```sh
    lsattr /path/to/file
    ```
 
-   ```bash
+   ```sh
    chattr -i /path/to/file
    ```
 

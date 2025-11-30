@@ -2,32 +2,32 @@
 
 ## Text Select
 
-```bash
+```sh
 grep 'foo' file.txt
 cat file.txt | grep 'bar'
 ```
 
 Print matched text only
 
-```bash
+```sh
 echo 'bar baz' | grep -o 'bar'
 ```
 
 Ignore case of matched text
 
-```bash
+```sh
 cat file.txt | grep -i 'foo'
 ```
 
 Print previous few lines of matched line
 
-```bash
+```sh
 cat file.txt | grep -B 3 'foo'
 ```
 
 Print next few lines of matched line
 
-```bash
+```sh
 cat file.txt | grep -A 3 'foo'
 ```
 
@@ -35,39 +35,39 @@ cat file.txt | grep -A 3 'foo'
 
 Print lines doesn't start with #
 
-```bash
+```sh
 grep -v '^#' foo.txt
 ```
 
 Print line container number starting with 1
 
-```bash
+```sh
 grep '1[0-9]*' foo.txt
 ```
 
 Print only numbers
 
-```bash
+```sh
 grep -oP '\d+' foo.txt
 ```
 
 Print files containing text
 
-```bash
+```sh
 grep -n 'text' *.txt
 ```
 
 ## Examples
 
-```bash
+```sh
 grep -Rnw '/path/to/somewhere/' -e 'pattern'
 ```
 
-```bash
+```sh
 grep --include=\*.{c,h} -rnw '/path/to/somewhere/' -e "pattern"
 ```
 
-```bash
+```sh
 grep --exclude=\*.o -rnw '/path/to/search/' -e "pattern"
 grep --exclude-dir={dir1,dir2,*.dst} -rnw '/path/to/search/' -e "pattern"
 ```

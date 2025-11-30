@@ -2,14 +2,14 @@
 
 Update repository and package
 
-```bash
+```sh
 sudo apt update
 sudo apt upgrade -y
 ```
 
 Update including phased update
 
-```bash
+```sh
 sudo apt update
 sudo apt -o APT::Get::Always-Include-Phased-Updates=true -y upgrade
 ```
@@ -18,22 +18,22 @@ sudo apt -o APT::Get::Always-Include-Phased-Updates=true -y upgrade
 
 Hold Upgrade
 
-```bash
+```sh
 sudo apt-mark hold PACKAGE
 ```
 
-```bash
+```sh
 apt-mark showhold
 ```
 
 Unhold upgrade
 
-```bash
+```sh
 sudo apt-mark unhold PACKAGE
 ```
 
 Update package
 
-```bash
+```sh
 sudo apt install -y PACKAGE
 ```

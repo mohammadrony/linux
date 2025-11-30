@@ -2,7 +2,7 @@
 
 Installation
 
-```bash
+```sh
 sudo apt install -y wireshark tshark
 ```
 
@@ -10,6 +10,6 @@ sudo apt install -y wireshark tshark
 
 Capture remote server packet
 
-```bash
+```sh
 ssh <user>@<host> 'tshark -f "port !22" -w -' | wireshark -k -i -
 ```

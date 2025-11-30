@@ -67,7 +67,7 @@ Create a script in following path to run in corresponding interval.
 | Weekly    | `/etc/cron.weekly/`   |
 | Monthly   | `/etc/cron.monthly/`  |
 
-```bash
+```sh
 sudo tee -a /etc/cron.daily/script << EOF
 #!/bin/bash
 # ...
@@ -78,13 +78,13 @@ sudo tee -a /etc/cron.daily/script << EOF
 EOF
 ```
 
-```bash
+```sh
 sudo chmod +x /etc/cron.daily/script
 ```
 
 ## Custom Interval
 
-```bash
+```sh
 sudo tee -a script << EOF
 #!/bin/bash
 # ...
@@ -95,12 +95,12 @@ sudo tee -a script << EOF
 EOF
 ```
 
-```bash
+```sh
 sudo tee -a /etc/cron.d/job-name << EOF
 0 */6 * * *  root  /path/to/script 2>&1
 EOF
 ```
 
-```bash
+```sh
 sudo chmod +x script
 ```

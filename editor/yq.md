@@ -2,7 +2,7 @@
 
 Installation
 
-```bash
+```sh
 sudo snap install yq
 ```
 
@@ -10,17 +10,17 @@ sudo snap install yq
 
 json to yaml
 
-```bash
+```sh
 yq -P output.json
 ```
 
-```bash
+```sh
 cat output.json | yq -P
 ```
 
 Edit yaml
 
-```bash
+```sh
 yq e -i '.spec.type="NodePort"' service.yaml
 yq e -i '.spec.ports[0].nodePort = PORT_NUMBER' service.yaml
 ```
