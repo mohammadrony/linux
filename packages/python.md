@@ -22,6 +22,10 @@ uv venv
 source .venv/bin/activate
 ```
 
+```bash
+uv venv --python 3.14 ./myvenv
+```
+
 Install packages
 
 ```bash
@@ -207,6 +211,13 @@ Create virtual environment
 ```bash
 python -m venv <venv>
 source <venv>/bin/activate
+```
+
+Find required packages
+
+```bash
+pip install pip-tools
+pip-compile --upgrade --build-isolation --generate-hashes --allow-unsafe --output-file requirements.txt requirements.in
 ```
 
 Install required packages
