@@ -10,6 +10,7 @@
 - [Keycloak and Nginx](./keycloak-nginx.md)
 - [Keycloak and PostgreSQL](./keycloak-postgresql.md)
 - [Laravel with Oracle Database](./laravel-oracle-db.md)
+- [Locale](./locale.md)
 - [MantisBT with Nginx and MySQL](./mantis-nginx-mysql.md)
 - [OpenProject with Apache and PostgreSQL](./openproject-apache-postgresql.md)
 - [Postfix and DKIM](./postfix-dkim.md)
