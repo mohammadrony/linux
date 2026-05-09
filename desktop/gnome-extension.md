@@ -15,6 +15,7 @@ gnome-session-quit
 
 ## Useful Extensions
 
+- [Astra Monitor](https://extensions.gnome.org/extension/6682/astra-monitor/)
 - [Ubuntu Dock](https://extensions.gnome.org/extension/1300/ubuntu-dock/)
   - Position and size > Show on all monitor
   - Launchers > Isolate monitor
