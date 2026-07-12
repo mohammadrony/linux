@@ -3,13 +3,14 @@
 ## TL;DR
 
 ```sh
-version=v0.39.7
+version=$(curl https://api.github.com/repos/nvm-sh/nvm/releases/latest | jq -r .tag_name)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$version/install.sh | bash
 source ~/.bashrc
 ```
 
 ```sh
-nvm install 20.0
+nvm install node
+nvm install 24
 ```
 
 ## NVM Install
@@ -19,7 +20,7 @@ nvm install 20.0
 Latest version of [NVM](https://github.com/nvm-sh/nvm)
 
 ```sh
-version=v0.39.7
+version=$(curl https://api.github.com/repos/nvm-sh/nvm/releases/latest | jq -r .tag_name)
 curl -O https://raw.githubusercontent.com/nvm-sh/nvm/$version/install.sh
 
 bash install.sh
@@ -30,14 +31,21 @@ rm -f install.sh
 vi ~/.bashrc
 ```
 
-```shrc
+```sh
+for FILE in ~/.bashrc ~/.zshrc; do
+tee -a "$FILE" << 'EOF'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+EOF
+done
 ```
 
 ```sh
-source .bashrc
+case "$SHELL" in
+  */zsh) source ~/.zshrc ;;
+  */bash) source ~/.bashrc ;;
+esac
 ```
 
 Check version
@@ -73,13 +81,13 @@ nvm install --lts
 ```
 
 ```sh
-nvm install 20.0
+nvm install 26
 ```
 
 Use specific version
 
 ```sh
-nvm alias default 20.0
+nvm alias default 26
 ```
 
 ```sh
@@ -91,7 +99,7 @@ nvm use --lts
 ```
 
 ```sh
-nvm use 20.0
+nvm use 26
 ```
 
 ```sh
@@ -123,7 +131,7 @@ vi .bashrc
 ### NodeSource install
 
 ```sh
-version=lts # 20 18
+version=lts # 26 24
 curl -fsSL "https://deb.nodesource.com/setup_${version}.x" -o nodesource_setup.sh
 ```
 
