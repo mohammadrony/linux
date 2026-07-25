@@ -5,8 +5,7 @@ Ubuntu 26 / GNOME
 ## 1. Install Avro Phonetic Input
 
 ```bash
-sudo apt update
-sudo apt install ibus-avro
+sudo apt install -y ibus-avro
 ```
 
 Select IBus input method
