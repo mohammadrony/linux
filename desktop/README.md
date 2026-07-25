@@ -1,5 +1,6 @@
 # Desktop
 
+- [Bangla Typing](./bangla-typing.md)
 - [Gnome Extensions](./gnome-extension.md)
 - [Keep Desktop Alive](./keep-alive.md)
 - [Server GUI](./server-gui.md)
