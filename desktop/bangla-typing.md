@@ -7,10 +7,23 @@ Ubuntu 26 / GNOME
 ```bash
 sudo apt update
 sudo apt install ibus-avro
+```
+
+Select IBus input method
+
+1. Open **Settings**
+2. Go to **System** > **Region & Language**
+3. Click **Manage Installed Languages**, opening the **Language Support** dialog
+4. Under **Keyboard input method system**, select **IBus** (it defaults to "none")
+5. Close the dialog
+
+Restart IBus daemon
+
+```bash
 ibus restart
 ```
 
-Then:
+Add Avro input source
 
 1. Open **Settings**
 2. Go to **Keyboard**
