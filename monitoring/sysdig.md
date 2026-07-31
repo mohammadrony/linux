@@ -10,7 +10,7 @@ Installation
 
 ```sh
 curl -s https://download.sysdig.com/DRAIOS-GPG-KEY.public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sysdig.gpg > /dev/null
-sudo curl -s -o /etc/apt/sources.list.d/draios.list https://download.sysdig.com/stable/deb/draios.list  
+sudo curl -s -o /etc/apt/sources.list.d/draios.list https://download.sysdig.com/stable/deb/draios.list
 sudo apt update
 ```
 

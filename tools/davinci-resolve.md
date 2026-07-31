@@ -19,7 +19,7 @@ sudo ln -sf /usr/lib/x86_64-linux-gnu/libasound.so.2 /usr/lib/x86_64-linux-gnu/l
 ```
 
 ```sh
-sudo apt install -y dbus-x11 alsa-utils pulseaudio  
+sudo apt install -y dbus-x11 alsa-utils pulseaudio
 ```
 
 Unarchive package

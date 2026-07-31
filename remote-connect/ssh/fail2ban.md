@@ -18,7 +18,7 @@ sudo cp jail.conf jail.local
 ```
 
 ```sh
-sudo vi jail.local 
+sudo vi jail.local
 ```
 
 ```conf
@@ -40,5 +40,5 @@ sudo fail2ban-client status sshd
 ```
 
 ```sh
-sudo fail2ban-client get sshd ignoreip 
+sudo fail2ban-client get sshd ignoreip
 ```

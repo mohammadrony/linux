@@ -11,7 +11,7 @@ vi pom.xml
   <dependencies>
 
     <dependency>
-      <groupId>org.jacoco</groupId> 
+      <groupId>org.jacoco</groupId>
       <artifactId>jacoco-maven-plugin</artifactId>
       <version>0.8.12</version>
     </dependency>

@@ -18,7 +18,7 @@ tar xzf s3cmd-2.4.0.tar.gz
 ```
 
 ```sh
-cd s3cmd-2.4.0 
+cd s3cmd-2.4.0
 sudo python setup.py install
 ```
 

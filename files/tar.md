@@ -62,7 +62,7 @@ Update existing file in archive
 
 ```sh
 tar -uvf archive.tar file1
-# cannot update .tar.gz file 
+# cannot update .tar.gz file
 ```
 
 Delete files from archive
