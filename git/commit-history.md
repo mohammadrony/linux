@@ -1,5 +1,7 @@
 # Commit History of Repository
 
+Git commands to view history, reset, rebase, and revert commits.
+
 ## See Commit Logs
 
 Full commit history

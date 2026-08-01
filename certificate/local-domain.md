@@ -1,6 +1,8 @@
 # Local Domain
 
-Generate certificate
+Create a self-signed SSL certificate for a local domain with openssl.
+
+## Generate Certificate
 
 ```sh
 tee -a root-certificate.conf << EOF
