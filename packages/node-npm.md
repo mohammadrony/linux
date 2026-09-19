@@ -3,14 +3,101 @@
 ## TL;DR
 
 ```sh
-version=$(curl https://api.github.com/repos/nvm-sh/nvm/releases/latest | jq -r .tag_name)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$version/install.sh | bash
+curl -fsSL https://fnm.vercel.app/install | bash
 source ~/.bashrc
 ```
 
 ```sh
-nvm install node
-nvm install 24
+fnm install --lts
+fnm install 24
+```
+
+## FNM Install
+
+### Install fnm
+
+Latest version of [fnm](https://github.com/Schniz/fnm)
+
+```sh
+curl -fsSL https://fnm.vercel.app/install | bash
+```
+
+```sh
+for FILE in ~/.bashrc ~/.zshrc; do
+tee -a "$FILE" << 'EOF'
+export PATH="$HOME/.local/share/fnm:$PATH"
+eval "$(fnm env --use-on-cd)"
+EOF
+done
+```
+
+```sh
+case "$SHELL" in
+  */zsh) source ~/.zshrc ;;
+  */bash) source ~/.bashrc ;;
+esac
+```
+
+Check version
+
+```sh
+fnm --version
+```
+
+### Install node using fnm
+
+List available versions
+
+```sh
+fnm list
+```
+
+```sh
+fnm list-remote
+```
+
+Install Node and NPM
+
+```sh
+fnm install --lts
+```
+
+```sh
+fnm install 26
+```
+
+Use specific version
+
+```sh
+fnm default 26
+```
+
+```sh
+fnm use --lts
+```
+
+```sh
+fnm use 26
+```
+
+### Uninstall node
+
+Uninstall Node
+
+```sh
+fnm uninstall <version>
+```
+
+Uninstall fnm
+
+```sh
+rm -rf ~/.local/share/fnm
+```
+
+Remove fnm entry from login file
+
+```sh
+vi ~/.bashrc
 ```
 
 ## NVM Install

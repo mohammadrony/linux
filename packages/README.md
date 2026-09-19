@@ -18,6 +18,7 @@
 - [Nodejs and NPM setup with NVM](./node-npm.md)
 - [PHP](./php.md)
 - [Python](./python.md)
+- [Rust](./rust.md)
 
 ## Server Tools
 
