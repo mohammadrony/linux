@@ -2,8 +2,6 @@
 
 Ubuntu 24 / 26 (GNOME) - IBus Avro Phonetic
 
-[![Bangla Typing in Ubuntu 24.04 / 26.04 - Avro Phonetic Keyboard](./images/bangla-typing.jpg)](https://www.youtube.com/watch?v=tHTH6UGn_78)
-
 ## 1. Install Avro Phonetic Input
 
 ```bash
